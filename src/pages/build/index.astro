@@ -1,0 +1,551 @@
+---
+// ============================================================
+// FILE: src/pages/build/index.astro
+// Phase 4 — Guided build, Step 1 of 10 (replaces Phase 1 stub).
+// Long-form reading-width page, same convention as Get Ready:
+// max-w-3xl column, plain headed sections, Callout rendered
+// directly — no wrapping card.
+// ============================================================
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+---
+
+<BaseLayout title="Guided build — PC Customization Manual">
+  <article class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
+    <div class="max-w-3xl">
+      <h1 class="text-2xl font-medium md:text-3xl">Guided build</h1>
+      <p class="mt-4 text-lg text-secondary">
+        Follow these steps in order — motherboard prep happens outside the case
+        first, then everything comes together. Skipping ahead is how cables end
+        up trapped under components that are already screwed down.
+      </p>
+
+      <!-- Step 1 of 10 -->
+      <section class="mt-12" id="step-1">
+        <p class="font-mono text-xs text-secondary">Step 1 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Open the case</h2>
+
+        <p class="mt-4 text-base text-primary">
+          Before installing anything, get familiar with your case — where
+          things go, and what you'll need later.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            Place the case on a stable, well-lit surface with the side panel
+            facing up.
+          </li>
+          <li>
+            Remove the side panel(s) — usually secured with thumbscrews or a
+            latch. Check your case's manual if yours is different.
+          </li>
+          <li>
+            Locate the motherboard standoffs already installed inside the case.
+            Confirm their positions match your motherboard's screw holes for its
+            form factor.
+          </li>
+          <li>
+            Locate the front-panel connector headers near the bottom-front of the
+            case — power switch, reset switch, power LED, HDD LED, front-panel
+            USB and audio. Note their labels now; you'll connect these in step 9.
+          </li>
+          <li>
+            If your case has cable routing channels or grommets, note their
+            locations — you'll route cables through these for a clean build.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="caution" title="Standoff placement">
+            If your case's pre-installed standoffs don't match your motherboard's
+            form factor (e.g., positioned for Micro-ATX when your board is ATX),
+            reposition them before mounting the board. A standoff under the wrong
+            spot can short the board against the case.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/case/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the Case component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 2 of 10 -->
+      <section class="mt-12" id="step-2">
+        <p class="font-mono text-xs text-secondary">Step 2 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Install the CPU</h2>
+
+        <p class="mt-4 text-base text-primary">
+          With the motherboard still outside the case, install the CPU now —
+          it's far easier to see and align the socket before anything else is
+          in the way.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>Open the CPU socket's retention lever/arm on the motherboard.</li>
+          <li>
+            Locate the alignment marker on the CPU (a small triangle or notch,
+            depending on socket type) and the matching marker on the socket.
+          </li>
+          <li>
+            Align the CPU using that marker and lower it straight down into the
+            socket. Never force it — it should drop in with no pressure.
+          </li>
+          <li>Close the retention lever/arm to lock the CPU in place.</li>
+          <li>
+            If your socket has a protective cover attached to the lever, leave it
+            on — it will pop off on its own when you install the cooler in the
+            next step.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="danger" title="Never touch the pins">
+            Whether the pins are on the CPU (AMD) or in the socket (Intel), never
+            touch them directly. A single bent pin can make the CPU or motherboard
+            unusable, and it's typically not covered by warranty.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/cpu/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the CPU component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 3 of 10 -->
+      <section class="mt-12" id="step-3">
+        <p class="font-mono text-xs text-secondary">Step 3 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Install the CPU cooler</h2>
+
+        <p class="mt-4 text-base text-primary">
+          With the CPU installed, mount the cooler now — it's much easier to
+          access the socket area before the board goes into the case.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            If your cooler doesn't come with thermal paste pre-applied to its
+            base, apply a small pea-sized dot in the center of the CPU's heat
+            spreader.
+          </li>
+          <li>
+            Remove the CPU socket's protective cover if it's still attached — the
+            cooler won't seat correctly with it in place.
+          </li>
+          <li>
+            Position the cooler's mounting bracket over the CPU, aligning it with
+            the retention holes or bracket around the socket.
+          </li>
+          <li>
+            Tighten the mounting screws gradually, alternating between opposite
+            corners in a star pattern rather than fully tightening one screw at a
+            time — this seats the cooler evenly and avoids uneven pressure on the
+            CPU.
+          </li>
+          <li>
+            Connect the cooler's fan (and pump, if liquid-cooled) cable to the
+            motherboard's CPU_FAN header, typically located near the socket.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="caution" title="Even pressure matters">
+            Tightening one screw fully before moving to the next can seat the cooler
+            at an angle, causing uneven contact with the CPU and reduced cooling.
+            Always alternate between opposite corners in small increments.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/cpu-cooler/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the CPU Cooler component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 4 of 10 -->
+      <section class="mt-12" id="step-4">
+        <p class="font-mono text-xs text-secondary">Step 4 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Install RAM</h2>
+
+        <p class="mt-4 text-base text-primary">
+          With the CPU and cooler in place, install RAM next — the slots are
+          easy to access before the board is mounted in the case.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            Check your motherboard's manual for which slots to use first if
+            you're not filling all of them — common with 2 of 4 slots for
+            dual-channel.
+          </li>
+          <li>Open the retention clips at both ends of the RAM slot you're using.</li>
+          <li>
+            Align the notch on the RAM stick with the key in the slot — it only
+            fits one way.
+          </li>
+          <li>
+            Press down firmly and evenly on both ends until the retention clips
+            snap closed on their own.
+          </li>
+          <li>Repeat for each additional stick, following the same slot pattern.</li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="caution" title="Even pressure, both ends">
+            Pushing down on only one end of the stick can seat it at an angle,
+            causing boot failures or the board to fail to detect the RAM. Press both
+            ends evenly until you hear both clips click.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/ram/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the RAM component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 5 of 10 -->
+      <section class="mt-12" id="step-5">
+        <p class="font-mono text-xs text-secondary">Step 5 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Mount the motherboard in the case</h2>
+
+        <p class="mt-4 text-base text-primary">
+          With the CPU, cooler, and RAM installed, the motherboard is ready to
+          go into the case.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            Install the rear I/O shield into the matching cutout on the back of the
+            case, if it's not pre-installed — orient it so it matches your
+            motherboard's port layout, and press until it clicks into place.
+          </li>
+          <li>
+            Lower the motherboard into the case at an angle, aligning its rear ports
+            with the I/O shield's openings.
+          </li>
+          <li>
+            Set the board down onto the standoffs and check that every screw hole
+            lines up with a standoff underneath — don't force a screw into a hole
+            that isn't backed by a standoff.
+          </li>
+          <li>
+            Insert and hand-tighten each mounting screw, working in a diagonal
+            pattern across the board rather than one side at a time.
+          </li>
+          <li>
+            Once all screws are started, snug them down evenly — firm, but don't
+            overtighten. The board should feel solid with no flex.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="danger" title="Check every standoff">
+            A screw hole without a standoff beneath it can let the board flex and short
+            against the case when tightened. If you see a mounting hole with no
+            standoff underneath, either add one matching your board's form factor, or
+            skip that screw.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/motherboard/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the Motherboard component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 6 of 10 -->
+      <section class="mt-12" id="step-6">
+        <p class="font-mono text-xs text-secondary">Step 6 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Install the power supply</h2>
+
+        <p class="mt-4 text-base text-primary">
+          With the motherboard mounted, install the power supply next — it's
+          easier to route its cables now, before the case fills up with other
+          components.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            Determine your case's PSU mounting orientation — most modern cases
+            mount the PSU at the bottom, with its fan facing either down through
+            a dust filter or up into the case, depending on airflow design.
+          </li>
+          <li>
+            Slide the PSU into its mounting bay and secure it with the provided
+            screws through the back of the case.
+          </li>
+          <li>
+            If your PSU is modular, connect only the cables you need — before or
+            after mounting, whichever is easier to route in your case.
+          </li>
+          <li>
+            Route the main 24-pin motherboard power cable and the CPU power cable
+            (4/8-pin) toward the motherboard, but don't connect them yet — you'll
+            do that during cable management.
+          </li>
+          <li>
+            Leave unused modular cables disconnected and set aside; extra cables
+            you don't need only make airflow and cable management harder.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="caution" title="Check the voltage switch">
+            If your PSU has a manual voltage selector switch (110V/220V), confirm it
+            matches your region's power supply before plugging in. The wrong setting
+            can damage the PSU or other components when powered on.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/psu/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the PSU component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 7 of 10 -->
+      <section class="mt-12" id="step-7">
+        <p class="font-mono text-xs text-secondary">Step 7 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Install the GPU</h2>
+
+        <p class="mt-4 text-base text-primary">
+          With the PSU in place, install the GPU next — you'll need its power
+          cables ready, which you already routed in the last step.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            Locate the primary PCIe x16 slot on the motherboard — usually the
+            one closest to the CPU — and check your case for the matching
+            expansion slot covers to remove on the back.
+          </li>
+          <li>
+            Remove the expansion slot covers on the back of the case that align
+            with the GPU's width (most modern GPUs span two or three slots).
+          </li>
+          <li>
+            Open the PCIe slot's retention latch, then align the GPU's connector
+            with the slot and press straight down until it clicks into place.
+          </li>
+          <li>
+            Secure the GPU's mounting bracket to the case with screws through the
+            removed slot covers' openings.
+          </li>
+          <li>
+            Connect the required PCIe power cables from the PSU to the GPU —
+            check your GPU's documentation for how many it needs.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="caution" title="Support the weight">
+            Larger GPUs can sag under their own weight over time, straining the
+            PCIe slot. If your card is heavy, consider a support bracket —
+            especially if the case will be moved after the build.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/gpu/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the GPU component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 8 of 10 -->
+      <section class="mt-12" id="step-8">
+        <p class="font-mono text-xs text-secondary">Step 8 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Install storage</h2>
+
+        <p class="mt-4 text-base text-primary">
+          With the GPU installed, add storage next — the last major component
+          before cable management.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            For M.2 NVMe drives, locate the M.2 slot(s) on the motherboard —
+            often under a heatsink or shroud — and remove any retaining screw or
+            clip before inserting the drive at an angle.
+          </li>
+          <li>
+            Insert the M.2 drive into its slot at roughly a 30-degree angle, then
+            press it down flat and secure it with the retaining screw.
+          </li>
+          <li>
+            For 2.5" or 3.5" SATA drives, mount the drive into a drive bay or
+            tray using the provided screws or tool-less mounting clips.
+          </li>
+          <li>
+            Connect a SATA data cable from the drive to an available SATA port on
+            the motherboard.
+          </li>
+          <li>
+            Connect a SATA power cable from the PSU to the drive — most modular
+            PSU cables include several SATA power connectors on one cable run.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="note" title="M.2 heatsinks">
+            Some motherboards ship with a small heatsink covering the M.2 slot.
+            Remove it before installing the drive, and reattach it afterward —
+            running an NVMe drive without its heatsink can cause thermal
+            throttling under sustained load.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/storage/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the Storage component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 9 of 10 -->
+      <section class="mt-12" id="step-9">
+        <p class="font-mono text-xs text-secondary">Step 9 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">Cable management & front-panel headers</h2>
+
+        <p class="mt-4 text-base text-primary">
+          With every component installed, it's time to connect the front-panel
+          headers and tidy the cables — this is what separates a build that just
+          works from one that's actually pleasant to live with.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            Connect the front-panel headers you identified in step 1 — power
+            switch, reset switch, power LED, and HDD LED — to their labeled pins on
+            the motherboard, usually located along the bottom-front edge. Check
+            your motherboard's manual for the exact pinout; these headers are small
+            and easy to misalign.
+          </li>
+          <li>
+            Connect the front-panel USB and audio headers the same way, matching
+            each connector's label to its corresponding motherboard header.
+          </li>
+          <li>
+            Connect the 24-pin motherboard power cable and the CPU power cable
+            (4/8-pin) that you routed in step 6.
+          </li>
+          <li>
+            Route remaining cables along the back of the motherboard tray or
+            through your case's cable channels, keeping them away from fans and out
+            of the GPU's airflow path.
+          </li>
+          <li>
+            Bundle excess cable length with ties or velcro straps, and tuck it
+            behind the motherboard tray or in unused drive bays.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="caution" title="Front-panel header polarity">
+            Power and reset switch headers usually don't have polarity, but LED
+            headers do — connecting one backwards just means the LED won't light, not
+            a hazard, but it's worth checking your motherboard's manual if an LED
+            doesn't turn on after first boot.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/components/case/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See the Case component page →
+          </a>
+        </p>
+      </section>
+
+      <!-- Step 10 of 10 -->
+      <section class="mt-12" id="step-10">
+        <p class="font-mono text-xs text-secondary">Step 10 of 10</p>
+        <h2 class="mt-4 text-xl font-medium">First boot & BIOS</h2>
+
+        <p class="mt-4 text-base text-primary">
+          This is it — time to power on for the first time and confirm everything
+          is working before you close up the case.
+        </p>
+
+        <ol class="mt-4 list-decimal space-y-2 pl-6 text-base text-primary">
+          <li>
+            Connect your monitor, keyboard, and mouse, then plug the power supply
+            into the wall and switch it on at the back of the PSU.
+          </li>
+          <li>
+            Press the power button. Fans should spin, and you should see your
+            motherboard's logo or POST screen within a few seconds — don't close
+            the case yet, in case something needs adjusting.
+          </li>
+          <li>
+            If nothing happens, don't panic — double-check the 24-pin and CPU power
+            connections first; a loose power cable is the most common cause of a
+            no-boot on a fresh build.
+          </li>
+          <li>
+            Once you see the POST screen, enter the BIOS — usually by pressing
+            Delete or F2 repeatedly during boot — and confirm your CPU, RAM
+            capacity, and storage drive are all correctly detected.
+          </li>
+          <li>
+            If everything is detected correctly, exit the BIOS, install your
+            operating system, and only then close up the case and route any final
+            cables.
+          </li>
+        </ol>
+
+        <div class="mt-4">
+          <Callout variant="danger" title="No display, no POST">
+            If you get no display and no beeps or POST after checking power
+            connections, power off immediately and reseat the RAM and GPU one at a
+            time before trying again. Continuing to power cycle a system that won't
+            POST can indicate a deeper issue worth diagnosing before further attempts.
+          </Callout>
+        </div>
+
+        <p class="mt-4">
+          <a
+            href="/troubleshooting/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See Troubleshooting & reference →
+          </a>
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

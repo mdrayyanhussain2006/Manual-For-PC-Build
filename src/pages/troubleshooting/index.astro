@@ -1,0 +1,203 @@
+---
+// ============================================================
+// FILE: src/pages/troubleshooting/index.astro
+// PART B — replaces the Phase 1 stub. Long-form reference page,
+// same reading-width convention as Get Ready / Guided Build
+// (max-w-3xl, plain headed sections). Six independent entries:
+// h2 (symptom) + bulleted diagnostic checks + link paragraph.
+// Deliberately NO Callout components here — those are reserved
+// for hazard warnings elsewhere on the site.
+// Copy transcribed character-for-character from the prompt.
+// ============================================================
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Troubleshooting & reference — PC Customization Manual">
+  <article class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
+    <div class="max-w-3xl">
+      <h1 class="text-2xl font-medium md:text-3xl">Troubleshooting & reference</h1>
+      <p class="mt-4 text-lg text-secondary">
+        Most first-build issues trace back to one of a handful of causes. Start
+        here before assuming something's broken.
+      </p>
+
+      <!-- Entry 1 -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">No power / nothing happens when you press the power button</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+          <li>
+            Check the PSU's power switch (on the back, near the power cable) is
+            actually turned on.
+          </li>
+          <li>
+            Confirm the front-panel power switch header is connected to the
+            correct motherboard pins.
+          </li>
+          <li>
+            Verify the wall outlet or power strip is live; try a different outlet.
+          </li>
+        </ul>
+        <p class="mt-4">
+          <a
+            href="/build/#step-9"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See step 9
+          </a>
+        </p>
+      </section>
+
+      <!-- Entry 2 -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">Fans spin but no display / no POST</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+          <li>Reseat the RAM and GPU one at a time.</li>
+          <li>
+            Confirm the motherboard's 24-pin and CPU power cables are both fully
+            seated, not just partially clicked in.
+          </li>
+          <li>
+            Try a single stick of RAM in the slot closest to the CPU before
+            troubleshooting further.
+          </li>
+        </ul>
+        <p class="mt-4">
+          <a
+            href="/build/#step-10"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See step 10
+          </a> · <a
+            href="/components/ram/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            RAM component page
+          </a>
+        </p>
+      </section>
+
+      <!-- Entry 3 -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">RAM not detected, or wrong capacity shown in BIOS</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+          <li>
+            Confirm you're using the slots recommended in your motherboard's
+            manual for the number of sticks installed.
+          </li>
+          <li>Reseat each stick, making sure both retention clips fully close.</li>
+          <li>
+            Check your motherboard's QVL (qualified vendor list) if the BIOS
+            still won't detect the correct capacity after reseating.
+          </li>
+        </ul>
+        <p class="mt-4">
+          <a
+            href="/build/#step-4"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See step 4
+          </a> · <a
+            href="/components/ram/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            RAM component page
+          </a>
+        </p>
+      </section>
+
+      <!-- Entry 4 -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">GPU not detected / no display output from the graphics card</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+          <li>
+            Confirm the monitor cable is plugged into the GPU, not the
+            motherboard's video output (if your CPU even has one).
+          </li>
+          <li>Check that all required PCIe power cables are connected.</li>
+          <li>
+            Reseat the card, making sure it's fully clicked into the PCIe slot
+            and the retention latch is closed.
+          </li>
+        </ul>
+        <p class="mt-4">
+          <a
+            href="/build/#step-7"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See step 7
+          </a> · <a
+            href="/components/gpu/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            GPU component page
+          </a>
+        </p>
+      </section>
+
+      <!-- Entry 5 -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">Storage drive not detected</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+          <li>
+            For M.2 drives, confirm the drive is seated flat and the retaining
+            screw is tight — a drive that isn't screwed down can appear to seat
+            but fail to make contact.
+          </li>
+          <li>
+            For SATA drives, check both the data and power cable connections at
+            the drive.
+          </li>
+          <li>
+            Enter the BIOS and check that the relevant storage controller isn't
+            disabled.
+          </li>
+        </ul>
+        <p class="mt-4">
+          <a
+            href="/build/#step-8"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See step 8
+          </a> · <a
+            href="/components/storage/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            Storage component page
+          </a>
+        </p>
+      </section>
+
+      <!-- Entry 6 -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">Random shutdowns or thermal throttling</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+          <li>
+            Confirm the CPU cooler is making full, even contact — a cooler
+            mounted at an angle is a common cause.
+          </li>
+          <li>
+            Check that the cooler's fan cable is connected to the CPU_FAN header,
+            not a case fan header.
+          </li>
+          <li>
+            Confirm your case has adequate airflow — intake and exhaust fans both
+            present and not blocked.
+          </li>
+        </ul>
+        <p class="mt-4">
+          <a
+            href="/build/#step-3"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            See step 3
+          </a> · <a
+            href="/components/cpu-cooler/"
+            class="rounded-card text-sm font-medium text-accent underline-offset-4 hover:underline"
+          >
+            CPU Cooler component page
+          </a>
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

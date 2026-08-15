@@ -1,0 +1,22 @@
+---
+// ============================================================
+// FILE: src/components/StatGroup.astro
+// Phase 1 — reusable row of label/value stats.
+// Generic by design: reused later for component-library spec
+// sheets. No landing-specific content lives in here.
+// ============================================================
+interface Props {
+  stats: { label: string; value: string }[];
+}
+
+const { stats } = Astro.props;
+---
+
+<dl class="flex flex-wrap divide-x divide-primary/10">
+  {stats.map((stat) => (
+    <div class="py-2 pl-4 pr-4 first:pl-0 last:pr-0">
+      <dt class="text-xs text-secondary">{stat.label}</dt>
+      <dd class="mt-1 font-mono text-sm font-medium text-primary">{stat.value}</dd>
+    </div>
+  ))}
+</dl>

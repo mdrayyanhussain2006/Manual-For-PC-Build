@@ -1,0 +1,570 @@
+---
+// ============================================================
+// FILE: src/components/Model3D.astro
+// Phase 4 — adds buildCase alongside buildMotherboard (which is
+// left completely untouched). Registered under the quoted 'case'
+// key. buildCase bounding boxes audited pairwise below — no mesh
+// pair overlaps on any axis.
+// ============================================================
+interface Props {
+  /** Descriptive aria-label applied to the rendered canvas. */
+  label: string;
+  /** Key selecting which geometry-building function to run. */
+  geometry: string;
+}
+
+const { label, geometry } = Astro.props;
+---
+
+<div
+  class="relative aspect-[4/3] w-full overflow-hidden rounded-card border border-primary/10 bg-surface-raised"
+  data-model3d
+  data-label={label}
+  data-geometry={geometry}
+>
+  <noscript>
+    <p class="p-6 text-sm text-secondary">
+      3D preview requires JavaScript — see the specifications below for details.
+    </p>
+  </noscript>
+</div>
+
+<script>
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+  /* ---------- Design-token access (runtime, theme-aware) ---------- */
+
+  type Tokens = {
+    accent: string;
+    textSecondary: string;
+  };
+
+  function readTokens(): Tokens {
+    const styles = getComputedStyle(document.documentElement);
+    const read = (name: string) => styles.getPropertyValue(name).trim();
+    return {
+      accent: read('--accent'),
+      textSecondary: read('--text-secondary'),
+    };
+  }
+
+  /** Semantic material slots shared by every geometry builder. */
+  type MaterialSet = {
+    /** Key landmarks (CPU socket, RAM slots) — --accent. */
+    accent: THREE.MeshStandardMaterial;
+    /** PCB slab — translucent --text-secondary, schematic look. */
+    board: THREE.MeshStandardMaterial;
+    /** Neutral details (PCIe slot, rear I/O) — --text-secondary. */
+    trim: THREE.MeshStandardMaterial;
+  };
+
+  function applyTokensToMaterials(materials: MaterialSet, tokens: Tokens) {
+    materials.accent.color.set(tokens.accent);
+    materials.board.color.set(tokens.textSecondary);
+    materials.trim.color.set(tokens.textSecondary);
+  }
+
+  /* ---------- Geometry builders — one function per component ---------- */
+
+  function buildMotherboard(scene: THREE.Scene, materials: MaterialSet) {
+    const group = new THREE.Group();
+
+    // PCB base slab (neutral, translucent)
+    const pcb = new THREE.Mesh(new THREE.BoxGeometry(6.4, 0.12, 5.4), materials.board);
+    group.add(pcb);
+
+    const topY = 0.06; // top face of the slab
+
+    // CPU socket — raised square block, off-center, accent landmark
+    const socket = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.18, 1.5), materials.accent);
+    socket.position.set(-1.1, topY + 0.09, -0.9);
+    group.add(socket);
+
+    // RAM — four thin parallel slots in a row, accent landmarks.
+    // z-range is [-2.2, 1.0], kept deliberately clear of the PCIe
+    // slot band at z [1.35, 1.65] so the meshes never intersect.
+    for (let slotIndex = 0; slotIndex < 4; slotIndex += 1) {
+      const ramSlot = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.12, 3.2), materials.accent);
+      ramSlot.position.set(0.8 + slotIndex * 0.42, topY + 0.06, -0.6);
+      group.add(ramSlot);
+    }
+
+    // PCIe expansion slot — long thin slot, neutral
+    const pcieSlot = new THREE.Mesh(new THREE.BoxGeometry(3.6, 0.1, 0.3), materials.trim);
+    pcieSlot.position.set(-0.4, topY + 0.05, 1.5);
+    group.add(pcieSlot);
+
+    // Rear I/O block near the edge, neutral
+    const ioBlock = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.55, 1.7), materials.trim);
+    ioBlock.position.set(-2.8, topY + 0.275, -1.9);
+    group.add(ioBlock);
+
+    scene.add(group);
+  }
+
+  function buildCase(scene: THREE.Scene, materials: MaterialSet) {
+    const group = new THREE.Group();
+
+    // Case chassis — bottom, top, back, and LEFT side panels only.
+    // FRONT and RIGHT side are deliberately open (right panel removed)
+    // so the interior is visible.
+    //
+    // Pairwise bounding-box audit (axis ranges), all pairs disjoint:
+    //   bottomPanel  x[-2.3, 2.3]  y[-2.5, -2.4]  z[-2.5, 2.5]
+    //   topPanel     x[-2.3, 2.3]  y[ 2.4,  2.5]  z[-2.5, 2.5]
+    //   backPanel    x[-2.3, 2.3]  y[-2.35, 2.35] z[-2.5, -2.4]
+    //   leftPanel    x[-2.3, -2.2] y[-2.35, 2.35] z[-2.35, 2.5]
+    //   mbTray       x[-2.1, 1.7]  y[-1.4,  2.2]  z[-2.38, -2.28]
+    //   fpHeaders    x[ 1.0, 1.7]  y[-2.38,-2.22] z[ 1.9,  2.2]
+    //   sidePanelOut x[ 3.85,3.95] y[-2.5,  2.5]  z[-2.5, 2.5]
+    // Every pair separates on at least one axis (min gap 0.02),
+    // so no volumes intersect and no faces are coplanar.
+
+    // Bottom panel
+    const bottomPanel = new THREE.Mesh(new THREE.BoxGeometry(4.6, 0.1, 5.0), materials.trim);
+    bottomPanel.position.set(0, -2.45, 0);
+    group.add(bottomPanel);
+
+    // Top panel
+    const topPanel = new THREE.Mesh(new THREE.BoxGeometry(4.6, 0.1, 5.0), materials.trim);
+    topPanel.position.set(0, 2.45, 0);
+    group.add(topPanel);
+
+    // Back panel
+    const backPanel = new THREE.Mesh(new THREE.BoxGeometry(4.6, 4.7, 0.1), materials.trim);
+    backPanel.position.set(0, 0, -2.45);
+    group.add(backPanel);
+
+    // Left side panel
+    const leftPanel = new THREE.Mesh(new THREE.BoxGeometry(0.1, 4.7, 4.85), materials.trim);
+    leftPanel.position.set(-2.25, 0, 0.075);
+    group.add(leftPanel);
+
+    // Motherboard tray (standoffs landmark) — flat vertical panel
+    // against the inside face of the back panel, accent so it reads
+    // as the key landmark.
+    const mbTray = new THREE.Mesh(new THREE.BoxGeometry(3.8, 3.6, 0.1), materials.accent);
+    mbTray.position.set(-0.2, 0.4, -2.33);
+    group.add(mbTray);
+
+    // Front-panel headers landmark — small block near the
+    // bottom-front interior, accent.
+    const fpHeaders = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.16, 0.3), materials.accent);
+    fpHeaders.position.set(1.35, -2.3, 2.05);
+    group.add(fpHeaders);
+
+    // The removed side panel — floating apart to the right of the
+    // chassis, not touching it.
+    const sidePanelOut = new THREE.Mesh(new THREE.BoxGeometry(0.1, 5.0, 5.0), materials.trim);
+    sidePanelOut.position.set(3.9, 0, 0);
+    group.add(sidePanelOut);
+
+    scene.add(group);
+  }
+
+  function buildCpu(scene: THREE.Scene, materials: MaterialSet) {
+    const group = new THREE.Group();
+
+    // Three flush-stacked layers: substrate, IHS, alignment marker.
+    //
+    // Pairwise bounding-box audit (axis ranges):
+    //   substrate  x[-1.5, 1.5]  y[-0.14, -0.02]  z[-1.5, 1.5]
+    //   ihs        x[-1.2, 1.2]  y[-0.02,  0.12]  z[-1.2, 1.2]
+    //   marker     x[ 0.7, 1.0]  y[ 0.12,  0.14]  z[ 0.7, 1.0]
+    // No pair intersects in volume. substrate/ihs share only the
+    // y = -0.02 plane and ihs/marker share only the y = 0.12 plane;
+    // in each case the touching faces point in opposite directions,
+    // so one is backface-culled and no z-fighting can occur. The
+    // marker's TOP face sits 0.02 above the IHS top face so no two
+    // upward-facing faces are coplanar — it still reads as a flush
+    // inset visually.
+
+    // Substrate — flat square base
+    const substrate = new THREE.Mesh(new THREE.BoxGeometry(3.0, 0.12, 3.0), materials.trim);
+    substrate.position.set(0, -0.08, 0);
+    group.add(substrate);
+
+    // Integrated heat spreader — slightly smaller square, flush on top
+    const ihs = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.14, 2.4), materials.trim);
+    ihs.position.set(0, 0.05, 0);
+    group.add(ihs);
+
+    // Alignment marker — small square inset near one corner of the
+    // IHS top face (the landmark Step 2 tells builders to locate).
+    const marker = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.02, 0.3), materials.accent);
+    marker.position.set(0.85, 0.13, 0.85);
+    group.add(marker);
+
+    scene.add(group);
+  }
+
+  function buildCpuCooler(scene: THREE.Scene, materials: MaterialSet) {
+    const group = new THREE.Group();
+
+    // Air-tower cooler: contact base plate, three vertical heat pipes,
+    // fin stack, and a side-mounted fan disc. First builder to use
+    // CylinderGeometry alongside BoxGeometry.
+    //
+    // Pairwise bounding-box audit (axis ranges):
+    //   basePlate  x[-1.1, 1.1]     y[-1.7, -1.55]  z[-1.1, 1.1]
+    //   heatPipes  x c=-0.5/0/+0.5  y[-1.55, 1.0]   z[-0.09, 0.09]  (r=0.09)
+    //   finStack   x[-1.3, 1.3]     y[-1.25, 1.55]  z[-0.8, 0.8]
+    //   fanDisc    x[-1.35, 1.35]   y[-1.2, 1.5]    z[0.8, 1.1]
+    //
+    // Intentional TOUCHING boundaries (no volume overlap):
+    //   - each heat pipe's bottom face meets the base plate's top face
+    //     at y = -1.55 (opposite-facing normals, no z-fighting)
+    //   - the fan disc's back face meets the fin stack's front face
+    //     at z = 0.8 (flush side-mount, opposite-facing normals)
+    // Intentional EMBEDDING (by design):
+    //   - the heat pipes rise INTO the fin stack: their y [-1.25, 1.0]
+    //     portion sits inside the stack volume. This is the brief
+    //     ("rising from the base plate up into the fin stack"); no
+    //     coplanar faces are created, so no z-fighting.
+    // All remaining pairs separate on at least one axis:
+    //   basePlate/finStack (y gap 0.3), basePlate/fanDisc (y gap 0.35),
+    //   heatPipes/fanDisc (z gap 0.71).
+
+    // Contact base plate — the CPU-contact / thermal-paste surface,
+    // the landmark Step 3's instructions center on. Accent.
+    const basePlate = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.15, 2.2), materials.accent);
+    basePlate.position.set(0, -1.625, 0);
+    group.add(basePlate);
+
+    // Three thin vertical heat pipes rising from the base plate
+    // up into the fin stack.
+    for (let pipeIndex = 0; pipeIndex < 3; pipeIndex += 1) {
+      const heatPipe = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.09, 0.09, 2.55, 16),
+        materials.trim
+      );
+      heatPipe.position.set(-0.5 + pipeIndex * 0.5, -0.275, 0);
+      group.add(heatPipe);
+    }
+
+    // Fin stack — tall rectangular body surrounding/above the pipes.
+    const finStack = new THREE.Mesh(new THREE.BoxGeometry(2.6, 2.8, 1.6), materials.trim);
+    finStack.position.set(0, 0.15, 0);
+    group.add(finStack);
+
+    // Fan disc — wide, flat short cylinder, rotated so its axis runs
+    // along z and mounted flush against one side of the fin stack.
+    const fanDisc = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.35, 1.35, 0.3, 32),
+      materials.trim
+    );
+    fanDisc.rotation.x = Math.PI / 2;
+    fanDisc.position.set(0, 0.15, 0.95);
+    group.add(fanDisc);
+
+    scene.add(group);
+  }
+
+  function buildRam(scene: THREE.Scene, materials: MaterialSet) {
+    const group = new THREE.Group();
+
+    // Simplest geometry yet — two meshes: the standing card body and
+    // one flush notch marker.
+    //
+    // Pairwise bounding-box audit (axis ranges):
+    //   stickBody  x[-2.6, 2.6]  y[-0.95, 0.95]   z[-0.08, 0.08]
+    //   notch      x[ 0.2, 0.5]  y[-0.85, -0.65]  z[ 0.08, 0.14]
+    // The single pair shares only the z = 0.08 plane: the notch's
+    // BACK face meets the card's FRONT face — opposite-facing
+    // normals, one is backface-culled, so no z-fighting and no
+    // volume overlap. Same flush-marker pattern as the CPU's
+    // alignment marker. The notch is deliberately off-center
+    // (x center 0.35, not 0) and sits near the bottom edge — real
+    // RAM keys are asymmetric on purpose to prevent incorrect
+    // insertion.
+
+    // Stick body — thin standing card, long and tall, very thin depth
+    const stickBody = new THREE.Mesh(new THREE.BoxGeometry(5.2, 1.9, 0.16), materials.trim);
+    stickBody.position.set(0, 0, 0);
+    group.add(stickBody);
+
+    // Notch marker — small block flush against the front face,
+    // off-center near the bottom edge (the landmark Step 4 tells
+    // builders to align with the slot key).
+    const notch = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.2, 0.06), materials.accent);
+    notch.position.set(0.35, -0.75, 0.11);
+    group.add(notch);
+
+    scene.add(group);
+  }
+
+  function buildPsu(scene: THREE.Scene, materials: MaterialSet) {
+    const group = new THREE.Group();
+
+    // Simplest composition yet — three meshes, no rotations, and
+    // every relationship is a flush touch: opposite-facing normals,
+    // no volume overlap, no coplanar same-direction faces. Same
+    // pattern as the cooler's base plate / heat pipe touches.
+    //
+    // Pairwise bounding-box audit (axis ranges):
+    //   housing        x[-1.8, 1.8]  y[-0.9, 0.9]  z[-1.5, 1.5]
+    //   fanDisc        x[-1.2, 1.2]  y[ 0.9, 1.1]  z[-1.2, 1.2]  (r=1.2)
+    //   connectorPanel x[ 1.8, 1.9]  y[-0.6, 0.6]  z[-1.1, 1.1]
+    //
+    // Intentional TOUCHING boundaries (no volume overlap):
+    //   - the fan's bottom face meets the housing's TOP face at
+    //     y = 0.9 — the landmark Step 6's fan-facing orientation
+    //     instruction refers to (default upright cylinder, no rotation)
+    //   - the connector panel's inner face meets the housing's +x end
+    //     face at x = 1.8
+    // The remaining pair (fanDisc/connectorPanel) separates on x
+    // with a gap of 0.6.
+
+    // Housing — rectangular box, wider than it is tall
+    const housing = new THREE.Mesh(new THREE.BoxGeometry(3.6, 1.8, 3.0), materials.trim);
+    housing.position.set(0, 0, 0);
+    group.add(housing);
+
+    // Fan disc — short cylinder in its default upright orientation,
+    // sitting flush on the housing's top face. Accent landmark.
+    const fanDisc = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.2, 1.2, 0.2, 32),
+      materials.accent
+    );
+    fanDisc.position.set(0, 1.0, 0);
+    group.add(fanDisc);
+
+    // Modular connector panel — thin slab flush against one end face
+    // of the housing, representing the cable sockets.
+    const connectorPanel = new THREE.Mesh(new THREE.BoxGeometry(0.1, 1.2, 2.2), materials.trim);
+    connectorPanel.position.set(1.85, 0, 0);
+    group.add(connectorPanel);
+
+    scene.add(group);
+  }
+
+  function buildGpu(scene: THREE.Scene, materials: MaterialSet) {
+    const group = new THREE.Group();
+
+    // Graphics card: long thin PCB, cooling shroud, one fan disc,
+    // PCIe connector strip (gold fingers), power connector block.
+    // Two accent landmarks: pcieStrip and powerConn.
+    //
+    // Axis ranges:
+    //   pcb        x[-3.0, 3.0]    y[-0.06, 0.06]  z[-1.2, 1.2]
+    //   shroud     x[-2.8, 2.4]    y[ 0.06, 0.76]  z[-1.0, 1.0]
+    //   fanDisc    x[-2.45,-0.75]  y[ 0.76, 0.92]  z[-0.85, 0.85]  (r=0.85)
+    //   pcieStrip  x[-1.9, 0.7]    y[-0.20,-0.06]  z[-0.06, 0.06]
+    //   powerConn  x[ 1.75, 2.25]  y[ 0.76, 1.06]  z[-0.35, 0.35]
+    //
+    // Pairwise audit — all 10 pairs:
+    // TOUCHING (contact only, opposite-facing normals, no volume
+    // overlap, no coplanar same-direction faces):
+    //   1. pcb/shroud        — plane y = 0.06
+    //   2. pcb/pcieStrip     — plane y = -0.06
+    //   3. shroud/fanDisc    — plane y = 0.76
+    //   4. shroud/powerConn  — plane y = 0.76
+    // SEPARATED (gap on at least one axis):
+    //   5. pcb/fanDisc          — y gap 0.7
+    //   6. pcb/powerConn        — y gap 0.7
+    //   7. shroud/pcieStrip     — y gap 0.12
+    //   8. fanDisc/pcieStrip    — y gap 0.82
+    //   9. fanDisc/powerConn    — x gap 2.5 (y bands overlap, but the
+    //                               pair separates on x)
+    //  10. pcieStrip/powerConn  — y gap 0.82
+    // The fan footprint (r = 0.85 centered at x = -1.6, z = 0) sits
+    // fully inside the shroud's top face (x[-2.8,2.4], z[-1.0,1.0]).
+
+    // PCB base — long, thin card body
+    const pcb = new THREE.Mesh(new THREE.BoxGeometry(6.0, 0.12, 2.4), materials.trim);
+    pcb.position.set(0, 0, 0);
+    group.add(pcb);
+
+    // Cooling shroud — bulkier body sitting flush on the PCB,
+    // covering most of it
+    const shroud = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.7, 2.0), materials.trim);
+    shroud.position.set(-0.2, 0.41, 0);
+    group.add(shroud);
+
+    // Fan disc — short cylinder in default upright orientation,
+    // flush on the shroud's top face
+    const fanDisc = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.85, 0.85, 0.16, 32),
+      materials.trim
+    );
+    fanDisc.position.set(-1.6, 0.84, 0);
+    group.add(fanDisc);
+
+    // PCIe connector strip — gold fingers along the PCB's bottom
+    // edge (the landmark Step 7's "align the connector" instruction
+    // refers to). Accent.
+    const pcieStrip = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.14, 0.12), materials.accent);
+    pcieStrip.position.set(-0.6, -0.13, 0);
+    group.add(pcieStrip);
+
+    // Power connector block — near the back of the shroud, where the
+    // PCIe power cable plugs in. Accent.
+    const powerConn = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.3, 0.7), materials.accent);
+    powerConn.position.set(2.0, 0.91, 0);
+    group.add(powerConn);
+
+    scene.add(group);
+  }
+
+  function buildStorage(scene: THREE.Scene, materials: MaterialSet) {
+    const group = new THREE.Group();
+
+    // M.2 NVMe drive as the representative storage form factor —
+    // three meshes, back to the simpler tier of complexity.
+    //
+    // Axis ranges:
+    //   pcb         x[-2.4, 2.4]    y[-0.05, 0.05]  z[-0.65, 0.65]
+    //   connector   x[-2.52,-2.4]   y[-0.08, 0.08]  z[-0.5, 0.5]
+    //   screwMount  x[ 1.82, 2.18]  y[ 0.05, 0.13]  z[-0.18, 0.18]  (r=0.18)
+    //
+    // Pairwise audit — all 3 pairs:
+    // TOUCHING (contact only, opposite-facing normals, no volume
+    // overlap, no coplanar same-direction faces):
+    //   1. pcb/connector  — plane x = -2.4 (the gold edge that plugs
+    //                       into the M.2 slot)
+    //   2. pcb/screwMount — plane y = 0.05 (marker sits flush on the
+    //                       PCB's TOP face; the marker's own top face
+    //                       at y = 0.13 is not coplanar with anything)
+    // SEPARATED:
+    //   3. connector/screwMount — x gap 4.22
+    // The screwMount footprint (r = 0.18 centered at x = 2.0, z = 0)
+    // sits fully inside the PCB's top face (x[-2.4,2.4], z[-0.65,0.65]).
+
+    // PCB stick — small, thin, elongated card
+    const pcb = new THREE.Mesh(new THREE.BoxGeometry(4.8, 0.1, 1.3), materials.trim);
+    pcb.position.set(0, 0, 0);
+    group.add(pcb);
+
+    // Connector strip — gold edge flush against one end face of the
+    // PCB. Accent landmark.
+    const connector = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.16, 1.0), materials.accent);
+    connector.position.set(-2.46, 0, 0);
+    group.add(connector);
+
+    // Screw-mount marker — short cylinder flush on top of the PCB
+    // near the opposite end, where the retaining screw goes. Accent.
+    const screwMount = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.18, 0.18, 0.08, 24),
+      materials.accent
+    );
+    screwMount.position.set(2.0, 0.09, 0);
+    group.add(screwMount);
+
+    scene.add(group);
+  }
+
+  /** Registry: add new component types here — one key, one function. */
+  const geometryBuilders: Record<string, (scene: THREE.Scene, materials: MaterialSet) => void> = {
+    motherboard: buildMotherboard,
+    // Quoted explicitly: `case` is a reserved word.
+    'case': buildCase,
+    cpu: buildCpu,
+    cpuCooler: buildCpuCooler,
+    ram: buildRam,
+    psu: buildPsu,
+    gpu: buildGpu,
+    storage: buildStorage,
+  };
+
+  /* ---------- Viewer setup ---------- */
+
+  function initViewer(container: HTMLElement) {
+    const labelText = container.dataset.label ?? '3D model';
+    const geometryKey = container.dataset.geometry ?? '';
+
+    const scene = new THREE.Scene();
+
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+    camera.position.set(6.5, 5.5, 8);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const canvas = renderer.domElement;
+    canvas.setAttribute('role', 'img');
+    canvas.setAttribute('aria-label', labelText);
+    canvas.style.display = 'block';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    container.appendChild(canvas);
+
+    // Neutral illumination only — every model COLOR comes from tokens.
+    const white = new THREE.Color(1, 1, 1);
+    scene.add(new THREE.HemisphereLight(white, new THREE.Color(0.55, 0.55, 0.55), 0.9));
+    const keyLight = new THREE.DirectionalLight(white, 1.6);
+    keyLight.position.set(6, 10, 7);
+    scene.add(keyLight);
+    const fillLight = new THREE.DirectionalLight(white, 0.5);
+    fillLight.position.set(-8, 4, -6);
+    scene.add(fillLight);
+
+    const materials: MaterialSet = {
+      accent: new THREE.MeshStandardMaterial({ roughness: 0.45, metalness: 0.15 }),
+      board: new THREE.MeshStandardMaterial({
+        transparent: true,
+        opacity: 0.4,
+        roughness: 0.85,
+        metalness: 0,
+      }),
+      trim: new THREE.MeshStandardMaterial({
+        transparent: true,
+        opacity: 0.85,
+        roughness: 0.7,
+        metalness: 0.05,
+      }),
+    };
+    applyTokensToMaterials(materials, readTokens());
+
+    const builder = geometryBuilders[geometryKey];
+    if (builder) {
+      builder(scene, materials);
+    }
+
+    // User-driven orbit/zoom only. Never auto-rotates.
+    const controls = new OrbitControls(camera, canvas);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.08;
+    controls.enablePan = false;
+    controls.minDistance = 5;
+    controls.maxDistance = 18;
+    controls.target.set(0, 0.2, 0);
+
+    // Damping adds eased motion, so disable it under prefers-reduced-motion.
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const applyMotionPreference = () => {
+      controls.enableDamping = !motionQuery.matches;
+    };
+    motionQuery.addEventListener('change', applyMotionPreference);
+    applyMotionPreference();
+
+    // Re-read tokens whenever the theme class on <html> changes.
+    const themeObserver = new MutationObserver(() => {
+      applyTokensToMaterials(materials, readTokens());
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    // Responsive canvas sizing inside its token-colored container.
+    const resize = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      if (width === 0 || height === 0) return;
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+    };
+    new ResizeObserver(resize).observe(container);
+    resize();
+
+    const tick = () => {
+      controls.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-model3d]').forEach(initViewer);
+</script>

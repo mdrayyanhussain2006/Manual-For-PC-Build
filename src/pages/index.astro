@@ -1,0 +1,102 @@
+---
+// ============================================================
+// FILE: src/pages/index.astro
+// Phase 1 — real landing page. Phase 0 verification scaffolding
+// (swatches, type-scale list, callout demo) has been removed.
+// Copy below is used exactly as given.
+// ============================================================
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StatGroup from '../components/StatGroup.astro';
+
+const buildProfile = [
+  { label: 'Skill level', value: 'Beginner–Intermediate' },
+  { label: 'Estimated time', value: '2–4 hours' },
+  { label: 'Components covered', value: '8' },
+  { label: 'Prerequisite', value: 'None — first-time builders welcome' },
+];
+
+const releaseNotes = [
+  'Interactive 3D models for every major component',
+  'A guided, sequential build path — not just a parts list',
+  'Safety and caution callouts at every step that needs them',
+  'Troubleshooting reference for the most common first-build issues',
+];
+
+const sections = [
+  {
+    label: 'Get ready',
+    href: '/get-ready/',
+    blurb: 'Tools, safety precautions, and what to have on hand before you start.',
+  },
+  {
+    label: 'Component library',
+    href: '/components/',
+    blurb: 'Every part explained and modeled in 3D — see it before you install it.',
+  },
+  {
+    label: 'Guided build',
+    href: '/build/',
+    blurb: 'The assembly sequence, step by step, in the order that actually works.',
+  },
+  {
+    label: 'Troubleshooting & reference',
+    href: '/troubleshooting/',
+    blurb: "No POST? Something won't fit? Start here.",
+  },
+];
+---
+
+<BaseLayout title="PC Customization Manual — v1.0">
+  <!-- Hero: release-notes style -->
+  <section class="border-b border-primary/10">
+    <div class="mx-auto w-full max-w-content px-6 py-16 md:py-24">
+      <p class="inline-flex items-center gap-2 rounded-badge border border-primary/10 bg-surface-raised px-2 py-1 font-mono text-xs text-secondary">
+        <span class="size-1.5 rounded-full bg-success" aria-hidden="true"></span>
+        v1.0 · General availability
+      </p>
+
+      <h1 class="mt-6 max-w-3xl text-2xl font-medium md:text-3xl">
+        Build Your Own PC — The Complete Wiring & Assembly Guide
+      </h1>
+
+      <p class="mt-4 max-w-2xl text-lg text-secondary">
+        Most component manuals stop at the part in your hand. This one covers
+        what they leave out — how every piece connects, in the order that
+        actually works, with a 3D model of each component so you know what
+        you're looking at before you install it.
+      </p>
+
+      <div class="mt-8">
+        <StatGroup stats={buildProfile} />
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
+    <!-- What's in this release -->
+    <div class="max-w-3xl rounded-card border border-primary/10 bg-surface-raised p-6">
+      <h2 class="text-lg font-medium">What's in this release</h2>
+      <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+        {releaseNotes.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Section teasers: real links on the 12-column grid,
+         2-up at md:, stacked below -->
+    <div class="mt-12 grid grid-cols-12 gap-6">
+      {sections.map((section) => (
+        <a
+          href={section.href}
+          class="group col-span-12 block rounded-card border border-primary/10 bg-surface p-6 transition-colors hover:bg-surface-raised md:col-span-6"
+        >
+          <h2 class="text-base font-medium text-primary">{section.label}</h2>
+          <p class="mt-2 text-sm text-secondary transition-colors group-hover:text-primary">
+            {section.blurb}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

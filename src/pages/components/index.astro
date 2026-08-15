@@ -1,0 +1,46 @@
+---
+// ============================================================
+// FILE: src/pages/components/index.astro
+// Phase 4 — Component library index, reordered to build order.
+// Case and Motherboard are live; the other five remain muted
+// "Coming soon" cards.
+// ============================================================
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+type LibraryItem = {
+  label: string;
+  href: string;
+};
+
+const componentsList: LibraryItem[] = [
+  { label: 'Case', href: '/components/case/' },
+  { label: 'CPU', href: '/components/cpu/' },
+  { label: 'CPU Cooler', href: '/components/cpu-cooler/' },
+  { label: 'RAM', href: '/components/ram/' },
+  { label: 'Motherboard', href: '/components/motherboard/' },
+  { label: 'PSU', href: '/components/psu/' },
+  { label: 'GPU', href: '/components/gpu/' },
+  { label: 'Storage', href: '/components/storage/' },
+];
+---
+
+<BaseLayout title="Component library — PC Customization Manual">
+  <section class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
+    <h1 class="text-2xl font-medium md:text-3xl">Component library</h1>
+    <p class="mt-4 max-w-2xl text-lg text-secondary">
+      Eight components make up a typical build. Explore each one to see how it
+      connects before you start assembling.
+    </p>
+
+    <div class="mt-12 grid grid-cols-12 gap-6">
+      {componentsList.map((item) => (
+        <a
+          href={item.href}
+          class="group col-span-12 block rounded-card border border-primary/10 bg-surface p-6 transition-colors hover:bg-surface-raised md:col-span-6"
+        >
+          <span class="text-base font-medium text-primary">{item.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

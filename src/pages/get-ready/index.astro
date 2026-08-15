@@ -1,0 +1,86 @@
+---
+// ============================================================
+// FILE: src/pages/get-ready/index.astro
+// Phase 2 — Get ready (real content).
+// Long-form instructional page: reading-width column, plain
+// headed sections, existing Callout component. No new tokens,
+// components, or layout primitives.
+// ============================================================
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/Callout.astro';
+---
+
+<BaseLayout title="Get ready — PC Customization Manual">
+  <article class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
+    <div class="max-w-3xl">
+      <h1 class="text-2xl font-medium md:text-3xl">Get ready</h1>
+      <p class="mt-4 text-lg text-secondary">
+        A few minutes of preparation now saves a lot of frustration later.
+        Here's everything to have on hand and be aware of before you open a
+        single box.
+      </p>
+
+      <!-- Tools you'll need -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">Tools you'll need</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+          <li>Phillips #2 screwdriver — magnetic tip recommended</li>
+          <li>
+            Small Torx driver (T8/T10) — some coolers and case standoffs use
+            Torx instead of Phillips
+          </li>
+          <li>Anti-static wrist strap, or a plan to ground yourself manually (see below)</li>
+          <li>Cable ties or hook-and-loop straps for cable management</li>
+          <li>A small container for spare screws</li>
+          <li>A flashlight or phone light, for looking inside a closed case</li>
+        </ul>
+      </section>
+
+      <!-- Safety precautions -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">Safety precautions</h2>
+        <div class="mt-4 space-y-4">
+          <Callout variant="caution" title="Static discharge">
+            Components can be damaged by static electricity you can't even feel.
+            Wear an anti-static wrist strap clipped to an unpainted metal part of
+            the case, or touch the case chassis every few minutes while your PSU
+            is plugged in but switched off at the wall.
+          </Callout>
+
+          <Callout variant="danger" title="Power off before you start">
+            Unplug the power supply from the wall — don't just switch off the PC —
+            before installing or removing any component. Never work inside a
+            powered case.
+          </Callout>
+
+          <Callout variant="caution" title="Handling components">
+            Hold boards and cards by their edges. Never touch gold connector pins,
+            chip contacts, or CPU pins directly — oils from skin and static can
+            both cause damage.
+          </Callout>
+        </div>
+      </section>
+
+      <!-- Before you start -->
+      <section class="mt-12">
+        <h2 class="text-xl font-medium">Before you start</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-base text-primary">
+          <li>
+            Unbox every component and check for visible shipping damage before
+            installing anything
+          </li>
+          <li>
+            Have your motherboard's manual on hand (physical or PDF) for header
+            locations — front-panel, fan, and RGB pinouts vary by board
+          </li>
+          <li>Set up a monitor, keyboard, and mouse for first boot</li>
+          <li>If you're installing an OS, have the installer ready on a USB drive</li>
+          <li>
+            Set aside 2–4 hours of uninterrupted time — actual time varies with
+            experience and your specific components
+          </li>
+        </ul>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,173 @@
+---
+// ============================================================
+// FILE: src/layouts/BaseLayout.astro
+// Phase 0 — base shell: header/nav, footer, content slot
+// ============================================================
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'PC Customization Manual',
+  description = 'A documentation-style manual for customizing and building a personal computer.',
+} = Astro.props;
+
+const navItems = [
+  { label: 'Landing', href: '/' },
+  { label: 'Get ready', href: '/get-ready/' },
+  { label: 'Component library', href: '/components/' },
+  { label: 'Guided build', href: '/build/' },
+  { label: 'Troubleshooting', href: '/troubleshooting/' },
+];
+
+const currentPath = Astro.url.pathname;
+
+function isCurrent(href: string) {
+  return href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Geist via Fontsource CDN — weights 400 & 500 only, as locked.
+         (Production Astro would `npm i @fontsource/geist-sans @fontsource/geist-mono`
+         and import the same four weight files here instead.) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/400.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/500.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5/400.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5/500.css" />
+
+    <!-- Apply the theme class before first paint (no flash) -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('pc-manual-theme');
+          var dark = stored
+            ? stored === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.classList.toggle('dark', dark);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body class="flex min-h-dvh flex-col bg-surface font-sans text-base text-primary">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-50 focus:rounded-card focus:bg-surface-raised focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-accent"
+    >
+      Skip to content
+    </a>
+
+    <header class="sticky top-0 z-40 border-b border-primary/10 bg-surface">
+      <div class="mx-auto w-full max-w-content px-6">
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 py-3">
+          <!-- Wordmark -->
+          <a href="/" class="flex items-center gap-2 rounded-card py-1">
+            <span
+              aria-hidden="true"
+              class="grid size-7 place-items-center rounded-badge bg-accent font-mono text-xs font-medium text-surface"
+            >
+              PC
+            </span>
+            <span class="text-sm font-medium">PC Customization Manual</span>
+          </a>
+
+          <!-- Theme toggle (lets reviewers verify both token sets) -->
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Toggle dark mode"
+            class="order-2 ml-auto grid size-9 shrink-0 place-items-center rounded-card border border-primary/10 bg-surface-raised text-secondary transition-colors hover:text-primary md:order-3 md:ml-0"
+          >
+            <svg
+              class="hidden size-4 dark:block"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+            <svg
+              class="block size-4 dark:hidden"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+
+          <!-- Primary nav: wraps onto its own row on small screens (no overflow at 375px) -->
+          <nav aria-label="Primary" class="order-3 -mx-1 w-full md:order-2 md:mx-0 md:ml-auto md:w-auto">
+            <ul class="flex flex-wrap items-center gap-1 text-sm">
+              {navItems.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    aria-current={isCurrent(item.href) ? 'page' : undefined}
+                    class:list={[
+                      'block rounded-card px-3 py-1.5 text-secondary transition-colors hover:bg-surface-raised hover:text-primary',
+                      { 'bg-surface-raised font-medium text-accent': isCurrent(item.href) },
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Minimal single-row footer with version/changelog stub -->
+    <footer class="border-t border-primary/10">
+      <div class="mx-auto flex w-full max-w-content flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-4 text-sm text-secondary">
+        <p>
+          PC Customization Manual <span aria-hidden="true">·</span>
+          <span class="font-mono text-xs">v0.1.0</span>
+        </p>
+        <a
+          href="/changelog/"
+          class="rounded-card underline-offset-4 transition-colors hover:text-accent hover:underline"
+        >
+          Changelog
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('theme-toggle');
+      const rootEl = document.documentElement;
+
+      const syncToggle = () => {
+        toggle?.setAttribute('aria-pressed', String(rootEl.classList.contains('dark')));
+      };
+
+      toggle?.addEventListener('click', () => {
+        const isDark = !rootEl.classList.contains('dark');
+        rootEl.classList.toggle('dark', isDark);
+        localStorage.setItem('pc-manual-theme', isDark ? 'dark' : 'light');
+        syncToggle();
+      });
+
+      syncToggle();
+    </script>
+  </body>
+</html>
