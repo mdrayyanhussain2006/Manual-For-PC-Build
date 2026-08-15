@@ -3,3 +3,10 @@
 {"message":"connected.","label":"vite","level":"info"}
 {"message":" astro  v7.2.2 ready in 3476 ms\n┃ Local    http://localhost:4321/\n┃ Network  http://192.168.1.7:4321/","label":"SKIP_FORMAT","level":"info"}
 {"message":"watching for file changes...","label":null,"level":"info"}
+{"message":"[200] / 51ms","label":null,"level":"info"}
+{"message":"[200] / 54ms","label":null,"level":"info"}
+{"message":"[200] / 16ms","label":null,"level":"info"}
+{"message":"[200] / 13ms","label":null,"level":"info"}
+{"message":"[200] /get-ready/ 53ms","label":null,"level":"info"}
+{"message":"[200] /components/ 42ms","label":null,"level":"info"}
+{"message":"[200] /troubleshooting/ 21ms","label":null,"level":"info"}
