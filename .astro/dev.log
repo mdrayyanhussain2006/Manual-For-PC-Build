@@ -1,41 +1,15 @@
 {"message":"connected.","label":"vite","level":"info"}
-{"message":"Generated 2ms","label":"types","level":"info"}
+{"message":"Generated 1ms","label":"types","level":"info"}
 {"message":"connected.","label":"vite","level":"info"}
 {"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
-{"message":" astro  v7.2.2 ready in 3660 ms\n┃ Local    http://localhost:4321/\n┃ Network  http://192.168.1.9:4321/","label":"SKIP_FORMAT","level":"info"}
+{"message":" astro  v7.2.2 ready in 3657 ms\n┃ Local    http://localhost:4321/\n┃ Network  http://192.168.1.7:4321/","label":"SKIP_FORMAT","level":"info"}
 {"message":"watching for file changes...","label":null,"level":"info"}
-{"message":"Configuration file updated. Restarting...","label":null,"level":"info"}
-{"message":"connected.","label":"vite","level":"info"}
-{"message":"connected.","label":"vite","level":"info"}
-{"message":"server restarted.","label":"vite","level":"info"}
-{"message":"[200] / 52ms","label":null,"level":"info"}
-{"message":"[200] / 12ms","label":null,"level":"info"}
-{"message":"[200] /get-ready/ 22ms","label":null,"level":"info"}
-{"message":"[200] / 6ms","label":null,"level":"info"}
-{"message":"[200] /components/ 19ms","label":null,"level":"info"}
-{"message":"[200] /components/cpu/ 21ms","label":null,"level":"info"}
+{"message":"[200] / 61ms","label":null,"level":"info"}
+{"message":"[200] / 10ms","label":null,"level":"info"}
+{"message":"[200] /get-ready/ 29ms","label":null,"level":"info"}
+{"message":"[200] /components/ 24ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu/ 22ms","label":null,"level":"info"}
 {"message":"dependencies optimized: three, three/addons/controls/OrbitControls.js","label":"vite","level":"info"}
-{"message":"[200] /build/ 24ms","label":null,"level":"info"}
-{"message":"[200] /components/ 10ms","label":null,"level":"info"}
-{"message":"[200] /components/motherboard/ 16ms","label":null,"level":"info"}
-{"message":"[200] /components/ 5ms","label":null,"level":"info"}
-{"message":"[200] /components/gpu/ 28ms","label":null,"level":"info"}
+{"message":"[200] /build/ 23ms","label":null,"level":"info"}
+{"message":"[200] /troubleshooting/ 27ms","label":null,"level":"info"}
 {"message":"[200] / 8ms","label":null,"level":"info"}
-{"message":"[200] /get-ready/ 4ms","label":null,"level":"info"}
-{"message":"[200] /components/ 4ms","label":null,"level":"info"}
-{"message":"[200] /components/psu/ 34ms","label":null,"level":"info"}
-{"message":"[200] /components/ 8ms","label":null,"level":"info"}
-{"message":"[200] /components/storage/ 24ms","label":null,"level":"info"}
-{"message":"[200] /components/ 6ms","label":null,"level":"info"}
-{"message":"[200] /components/case/ 16ms","label":null,"level":"info"}
-{"message":"[200] /components/ 4ms","label":null,"level":"info"}
-{"message":"[200] /components/cpu-cooler/ 15ms","label":null,"level":"info"}
-{"message":"[200] /components/ 3ms","label":null,"level":"info"}
-{"message":"[200] /components/cpu/ 11ms","label":null,"level":"info"}
-{"message":"[200] /components/ 7ms","label":null,"level":"info"}
-{"message":"[200] /build/ 5ms","label":null,"level":"info"}
-{"message":"[200] /troubleshooting/ 16ms","label":null,"level":"info"}
-{"message":"[200] / 2ms","label":null,"level":"info"}
-{"message":"[200] /get-ready/ 6ms","label":null,"level":"info"}
-{"message":"[200] /components/ 8ms","label":null,"level":"info"}
-{"message":"[200] /build/ 11ms","label":null,"level":"info"}

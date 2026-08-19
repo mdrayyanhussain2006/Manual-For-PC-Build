@@ -31,6 +31,22 @@
   --success: #5FBF83;
 }
 
+/* ---------- Accent-theme overrides ----------
+   Scoped to data-accent-theme on <html>. No attribute present
+   = existing Signal Blue tokens above, unchanged. */
+:root[data-accent-theme="cyan"]    { --accent: #0891B2; }
+.dark[data-accent-theme="cyan"]    { --accent: #22D3EE; }
+:root[data-accent-theme="magenta"] { --accent: #C026D3; }
+.dark[data-accent-theme="magenta"] { --accent: #E879F9; }
+
+/* Swatch colors for the header accent-theme switcher. */
+[data-accent-swatch="blue"]          { background-color: #2563EB; }
+.dark [data-accent-swatch="blue"]    { background-color: #5B8DEF; }
+[data-accent-swatch="cyan"]          { background-color: #0891B2; }
+.dark [data-accent-swatch="cyan"]    { background-color: #22D3EE; }
+[data-accent-swatch="magenta"]       { background-color: #C026D3; }
+.dark [data-accent-swatch="magenta"] { background-color: #E879F9; }
+
 /* ---------- Tailwind v4 theme wiring ---------- */
 @theme inline {
   /* Colors → utilities: bg-surface, bg-surface-raised, text-primary,
@@ -47,6 +63,7 @@
   /* Typography — Geist Sans (UI/body), Geist Mono (specs/code) */
   --font-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", "SF Mono", monospace;
+  --font-display: "Orbitron", ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale: 12 / 14 / 16 / 18 / 24 / 32 / 48px.
      Body sizes get line-height 1.5; heading sizes get 1.2.
@@ -93,6 +110,10 @@
 
   body {
     @apply bg-surface font-sans text-base text-primary antialiased;
+  }
+
+  h1 {
+    font-family: var(--font-display);
   }
 
   /* Visible keyboard focus everywhere (acceptance criterion) */

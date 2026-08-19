@@ -1,10 +1,7 @@
 ---
 // ============================================================
 // FILE: src/components/Model3D.astro
-// Phase 4 — adds buildCase alongside buildMotherboard (which is
-// left completely untouched). Registered under the quoted 'case'
-// key. buildCase bounding boxes audited pairwise below — no mesh
-// pair overlaps on any axis.
+// Phase 6, Round 1 — shared materials/theme infrastructure only.
 // ============================================================
 interface Props {
   /** Descriptive aria-label applied to the rendered canvas. */
@@ -61,6 +58,7 @@ const { label, geometry } = Astro.props;
 
   function applyTokensToMaterials(materials: MaterialSet, tokens: Tokens) {
     materials.accent.color.set(tokens.accent);
+    materials.accent.emissive.set(tokens.accent);
     materials.board.color.set(tokens.textSecondary);
     materials.trim.color.set(tokens.textSecondary);
   }
@@ -79,6 +77,7 @@ const { label, geometry } = Astro.props;
     // CPU socket — raised square block, off-center, accent landmark
     const socket = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.18, 1.5), materials.accent);
     socket.position.set(-1.1, topY + 0.09, -0.9);
+    socket.userData.label = 'CPU Socket';
     group.add(socket);
 
     // RAM — four thin parallel slots in a row, accent landmarks.
@@ -87,6 +86,7 @@ const { label, geometry } = Astro.props;
     for (let slotIndex = 0; slotIndex < 4; slotIndex += 1) {
       const ramSlot = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.12, 3.2), materials.accent);
       ramSlot.position.set(0.8 + slotIndex * 0.42, topY + 0.06, -0.6);
+      ramSlot.userData.label = 'RAM Slot';
       group.add(ramSlot);
     }
 
@@ -146,12 +146,14 @@ const { label, geometry } = Astro.props;
     // as the key landmark.
     const mbTray = new THREE.Mesh(new THREE.BoxGeometry(3.8, 3.6, 0.1), materials.accent);
     mbTray.position.set(-0.2, 0.4, -2.33);
+    mbTray.userData.label = 'Motherboard Standoffs';
     group.add(mbTray);
 
     // Front-panel headers landmark — small block near the
     // bottom-front interior, accent.
     const fpHeaders = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.16, 0.3), materials.accent);
     fpHeaders.position.set(1.35, -2.3, 2.05);
+    fpHeaders.userData.label = 'Front-Panel Headers';
     group.add(fpHeaders);
 
     // The removed side panel — floating apart to the right of the
@@ -194,6 +196,7 @@ const { label, geometry } = Astro.props;
     // IHS top face (the landmark Step 2 tells builders to locate).
     const marker = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.02, 0.3), materials.accent);
     marker.position.set(0.85, 0.13, 0.85);
+    marker.userData.label = 'Alignment Marker';
     group.add(marker);
 
     scene.add(group);
@@ -230,6 +233,7 @@ const { label, geometry } = Astro.props;
     // the landmark Step 3's instructions center on. Accent.
     const basePlate = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.15, 2.2), materials.accent);
     basePlate.position.set(0, -1.625, 0);
+    basePlate.userData.label = 'Thermal Contact Plate';
     group.add(basePlate);
 
     // Three thin vertical heat pipes rising from the base plate
@@ -289,6 +293,7 @@ const { label, geometry } = Astro.props;
     // builders to align with the slot key).
     const notch = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.2, 0.06), materials.accent);
     notch.position.set(0.35, -0.75, 0.11);
+    notch.userData.label = 'Alignment Notch';
     group.add(notch);
 
     scene.add(group);
@@ -328,6 +333,7 @@ const { label, geometry } = Astro.props;
       materials.accent
     );
     fanDisc.position.set(0, 1.0, 0);
+    fanDisc.userData.label = 'Cooling Fan';
     group.add(fanDisc);
 
     // Modular connector panel — thin slab flush against one end face
@@ -396,12 +402,14 @@ const { label, geometry } = Astro.props;
     // refers to). Accent.
     const pcieStrip = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.14, 0.12), materials.accent);
     pcieStrip.position.set(-0.6, -0.13, 0);
+    pcieStrip.userData.label = 'PCIe Connector';
     group.add(pcieStrip);
 
     // Power connector block — near the back of the shroud, where the
     // PCIe power cable plugs in. Accent.
     const powerConn = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.3, 0.7), materials.accent);
     powerConn.position.set(2.0, 0.91, 0);
+    powerConn.userData.label = 'Power Connector';
     group.add(powerConn);
 
     scene.add(group);
@@ -440,6 +448,7 @@ const { label, geometry } = Astro.props;
     // PCB. Accent landmark.
     const connector = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.16, 1.0), materials.accent);
     connector.position.set(-2.46, 0, 0);
+    connector.userData.label = 'Connector Edge';
     group.add(connector);
 
     // Screw-mount marker — short cylinder flush on top of the PCB
@@ -449,6 +458,7 @@ const { label, geometry } = Astro.props;
       materials.accent
     );
     screwMount.position.set(2.0, 0.09, 0);
+    screwMount.userData.label = 'Mounting Screw';
     group.add(screwMount);
 
     scene.add(group);
@@ -499,7 +509,11 @@ const { label, geometry } = Astro.props;
     scene.add(fillLight);
 
     const materials: MaterialSet = {
-      accent: new THREE.MeshStandardMaterial({ roughness: 0.45, metalness: 0.15 }),
+      accent: new THREE.MeshStandardMaterial({
+        roughness: 0.45,
+        metalness: 0.15,
+        emissiveIntensity: 0.5,
+      }),
       board: new THREE.MeshStandardMaterial({
         transparent: true,
         opacity: 0.4,
@@ -520,6 +534,94 @@ const { label, geometry } = Astro.props;
       builder(scene, materials);
     }
 
+    /* ---------- Landmark tooltips (raycasting) ---------- */
+
+    const labeledMeshes: THREE.Mesh[] = [];
+    scene.traverse((obj) => {
+      const mesh = obj as THREE.Mesh;
+      if (mesh.isMesh && typeof mesh.userData.label === 'string') {
+        labeledMeshes.push(mesh);
+      }
+    });
+
+    const raycaster = new THREE.Raycaster();
+    const ndc = new THREE.Vector2();
+
+    const pickLabelAt = (x: number, y: number): string | null => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      if (width === 0 || height === 0 || labeledMeshes.length === 0) return null;
+      ndc.set((x / width) * 2 - 1, -(y / height) * 2 + 1);
+      raycaster.setFromCamera(ndc, camera);
+      const hits = raycaster.intersectObjects(labeledMeshes, false);
+      if (hits.length === 0) return null;
+      const hitLabel = hits[0].object.userData.label;
+      return typeof hitLabel === 'string' ? hitLabel : null;
+    };
+
+    const tooltip = document.createElement('div');
+    tooltip.className =
+      'pointer-events-none absolute z-10 hidden rounded-card border border-primary/10 bg-surface-raised px-2 py-1 font-mono text-xs text-primary';
+    container.appendChild(tooltip);
+
+    const showTooltip = (text: string, x: number, y: number) => {
+      tooltip.textContent = text;
+      tooltip.classList.remove('hidden');
+      const margin = 8;
+      const cursorOffset = 12;
+      const maxLeft = Math.max(margin, container.clientWidth - tooltip.offsetWidth - margin);
+      const maxTop = Math.max(margin, container.clientHeight - tooltip.offsetHeight - margin);
+      const left = Math.min(Math.max(x + cursorOffset, margin), maxLeft);
+      const top = Math.min(Math.max(y + cursorOffset, margin), maxTop);
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+    };
+
+    const hideTooltip = () => {
+      tooltip.classList.add('hidden');
+    };
+
+    canvas.addEventListener('pointermove', (event) => {
+      if (event.pointerType === 'touch') return;
+      if (event.buttons !== 0) {
+        hideTooltip();
+        return;
+      }
+      const hoverLabel = pickLabelAt(event.offsetX, event.offsetY);
+      if (hoverLabel) {
+        showTooltip(hoverLabel, event.offsetX, event.offsetY);
+      } else {
+        hideTooltip();
+      }
+    });
+    canvas.addEventListener('pointerleave', hideTooltip);
+
+    let pointerDownX = 0;
+    let pointerDownY = 0;
+    let toggledLabel: string | null = null;
+
+    canvas.addEventListener('pointerdown', (event) => {
+      pointerDownX = event.offsetX;
+      pointerDownY = event.offsetY;
+    });
+
+    canvas.addEventListener('pointerup', (event) => {
+      if (event.pointerType !== 'touch') return;
+      const movement = Math.hypot(
+        event.offsetX - pointerDownX,
+        event.offsetY - pointerDownY
+      );
+      if (movement > 6) return;
+      const tapLabel = pickLabelAt(event.offsetX, event.offsetY);
+      if (tapLabel && tapLabel !== toggledLabel) {
+        showTooltip(tapLabel, event.offsetX, event.offsetY);
+        toggledLabel = tapLabel;
+      } else {
+        hideTooltip();
+        toggledLabel = null;
+      }
+    });
+
     // User-driven orbit/zoom only. Never auto-rotates.
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;
@@ -537,13 +639,13 @@ const { label, geometry } = Astro.props;
     motionQuery.addEventListener('change', applyMotionPreference);
     applyMotionPreference();
 
-    // Re-read tokens whenever the theme class on <html> changes.
+    // Re-read tokens whenever the theme class or accent theme changes.
     const themeObserver = new MutationObserver(() => {
       applyTokensToMaterials(materials, readTokens());
     });
     themeObserver.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['class'],
+      attributeFilter: ['class', 'data-accent-theme'],
     });
 
     // Responsive canvas sizing inside its token-colored container.

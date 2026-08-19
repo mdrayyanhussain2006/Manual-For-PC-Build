@@ -45,8 +45,9 @@ function isCurrent(href: string) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5/500.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5/400.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5/500.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/orbitron@5/700.css" />
 
-    <!-- Apply the theme class before first paint (no flash) -->
+    <!-- Apply theme classes before first paint (no flash) -->
     <script is:inline>
       (function () {
         try {
@@ -55,6 +56,11 @@ function isCurrent(href: string) {
             ? stored === 'dark'
             : window.matchMedia('(prefers-color-scheme: dark)').matches;
           document.documentElement.classList.toggle('dark', dark);
+
+          var accent = localStorage.getItem('pc-manual-accent-theme');
+          if (accent === 'cyan' || accent === 'magenta') {
+            document.documentElement.setAttribute('data-accent-theme', accent);
+          }
         } catch (e) {}
       })();
     </script>
@@ -82,14 +88,21 @@ function isCurrent(href: string) {
             <span class="text-sm font-medium">PC Customization Manual</span>
           </a>
 
-          <!-- Theme toggle (lets reviewers verify both token sets) -->
-          <button
-            id="theme-toggle"
-            type="button"
-            aria-pressed="false"
-            aria-label="Toggle dark mode"
-            class="order-2 ml-auto grid size-9 shrink-0 place-items-center rounded-card border border-primary/10 bg-surface-raised text-secondary transition-colors hover:text-primary md:order-3 md:ml-0"
-          >
+          <!-- Accent-theme switcher + dark-mode toggle -->
+          <div class="order-2 ml-auto flex items-center gap-2 md:order-3 md:ml-0">
+            <div class="flex items-center gap-1" role="group" aria-label="Accent theme">
+              <button type="button" data-accent-swatch="blue" aria-pressed="false" aria-label="Use Signal Blue accent" class="size-5 rounded-full border border-primary/20 transition-shadow aria-pressed:ring-2 aria-pressed:ring-accent"></button>
+              <button type="button" data-accent-swatch="cyan" aria-pressed="false" aria-label="Use Neon Cyan accent" class="size-5 rounded-full border border-primary/20 transition-shadow aria-pressed:ring-2 aria-pressed:ring-accent"></button>
+              <button type="button" data-accent-swatch="magenta" aria-pressed="false" aria-label="Use Plasma Magenta accent" class="size-5 rounded-full border border-primary/20 transition-shadow aria-pressed:ring-2 aria-pressed:ring-accent"></button>
+            </div>
+
+            <button
+              id="theme-toggle"
+              type="button"
+              aria-pressed="false"
+              aria-label="Toggle dark mode"
+              class="grid size-9 shrink-0 place-items-center rounded-card border border-primary/10 bg-surface-raised text-secondary transition-colors hover:text-primary"
+            >
             <svg
               class="hidden size-4 dark:block"
               viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -107,7 +120,8 @@ function isCurrent(href: string) {
             >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
-          </button>
+            </button>
+          </div>
 
           <!-- Primary nav: wraps onto its own row on small screens (no overflow at 375px) -->
           <nav aria-label="Primary" class="order-3 -mx-1 w-full md:order-2 md:mx-0 md:ml-auto md:w-auto">
@@ -168,6 +182,38 @@ function isCurrent(href: string) {
       });
 
       syncToggle();
+
+      const accentSwatches = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-accent-swatch]')
+      );
+
+      const currentAccentTheme = () =>
+        rootEl.getAttribute('data-accent-theme') ?? 'blue';
+
+      const syncSwatches = () => {
+        const active = currentAccentTheme();
+        for (const swatch of accentSwatches) {
+          swatch.setAttribute(
+            'aria-pressed',
+            String(swatch.dataset.accentSwatch === active)
+          );
+        }
+      };
+
+      for (const swatch of accentSwatches) {
+        swatch.addEventListener('click', () => {
+          const choice = swatch.dataset.accentSwatch ?? 'blue';
+          if (choice === 'blue') {
+            rootEl.removeAttribute('data-accent-theme');
+          } else {
+            rootEl.setAttribute('data-accent-theme', choice);
+          }
+          localStorage.setItem('pc-manual-accent-theme', choice);
+          syncSwatches();
+        });
+      }
+
+      syncSwatches();
     </script>
   </body>
 </html>
