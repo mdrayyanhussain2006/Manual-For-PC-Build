@@ -29,6 +29,7 @@
       "meshPattern": "P02_controller*",
       "anchor": "H02",
       "fallbackOffset": [0, 1, 0.3],
+      "explode": { "dir": [0, 1, 0], "dist": 0.25, "stagger": 0.15 },
       "camera": { "position": [-0.08, 0.45, 0.55], "target": [-0.10, 0.0, 0.0], "fov": 24 }
     },
     {
@@ -37,6 +38,7 @@
       "meshPattern": "P03_nand_*",
       "anchor": "H03",
       "fallbackOffset": [0, 1, 0.3],
+      "explode": { "dir": [0, 1, 0], "dist": 0.22, "stagger": 0.15 },
       "camera": { "position": [0.22, 0.45, 0.55], "target": [0.20, 0.0, 0.0], "fov": 24 }
     },
     {
@@ -44,7 +46,8 @@
       "number": 4,
       "meshPattern": "P04_dram*",
       "anchor": "H04",
-      "fallbackOffset": [0, 1, 0.3]
+      "fallbackOffset": [0, 1, 0.3],
+      "explode": { "dir": [0, 1, 0], "dist": 0.22, "stagger": 0.15 }
     },
     {
       "id": "connector",
@@ -52,6 +55,7 @@
       "meshPattern": "P05_connector*",
       "anchor": "H05",
       "fallbackOffset": [0, 1, 0.2],
+      "explode": { "dir": [0, 0, -1], "dist": 0.25, "stagger": 0.1 },
       "camera": { "position": [-0.48, 0.35, 0.45], "target": [-0.45, 0.0, 0.0], "fov": 22 }
     },
     {
@@ -59,7 +63,8 @@
       "number": 6,
       "meshPattern": "P06_passives*",
       "anchor": "H06",
-      "fallbackOffset": [0, 1, 0.3]
+      "fallbackOffset": [0, 1, 0.3],
+      "explode": { "dir": [0, 1, 0], "dist": 0.15, "stagger": 0.2 }
     },
     {
       "id": "mounting",
@@ -67,7 +72,7 @@
       "meshPattern": "P07_mounting*",
       "anchor": "H07",
       "fallbackOffset": [0, 1, 0.4],
-      "explode": { "dir": [0, 1, 0], "dist": 0.4, "stagger": 0.0 },
+      "explode": { "dir": [0, 1, 0], "dist": 0.45, "stagger": 0.0 },
       "camera": { "position": [0.45, 0.35, 0.45], "target": [0.42, 0.0, 0.0], "fov": 22 }
     },
     {
@@ -76,7 +81,7 @@
       "meshPattern": "P08_label*",
       "anchor": "H08",
       "fallbackOffset": [0, 1, 0.4],
-      "explode": { "dir": [0, 1, 0], "dist": 0.55, "stagger": 0.1 }
+      "explode": { "dir": [0, 1, 0], "dist": 0.65, "stagger": 0.1 }
     }
   ],
   "xrayGroups": [

@@ -329,16 +329,24 @@ export class SoloComponentAdapter {
         return mnn === nn;
       });
 
-      // Compute anchor position
+      // Compute 3D surface anchor position
       let anchorPos = new THREE.Vector3();
       if (node) {
         anchorPos = node.getWorldPosition(new THREE.Vector3());
-      } else if (part.fallbackOffset) {
-        const center = this.#calculateMeshesCenter(meshes);
-        anchorPos = center.add(new THREE.Vector3(...part.fallbackOffset));
       } else {
         anchorPos = this.#calculateMeshesCenter(meshes);
       }
+
+      // Compute badge floating offset
+      let badgeOffset = new THREE.Vector3(0, 0, 0);
+      if (Array.isArray(part.fallbackOffset)) {
+        badgeOffset = new THREE.Vector3(...part.fallbackOffset).normalize().multiplyScalar(0.22);
+      } else {
+        const centerDir = anchorPos.clone().normalize();
+        badgeOffset = centerDir.length() > 0.05 ? centerDir.multiplyScalar(0.22) : new THREE.Vector3(0.18, 0.18, 0.1);
+      }
+
+      const badgeAnchorPos = anchorPos.clone().add(badgeOffset);
 
       this.#partsByNum.set(nn, {
         number: nn,
@@ -354,7 +362,7 @@ export class SoloComponentAdapter {
         connectionTips: copyData.connectionTips,
         meshes,
         anchor: anchorPos.clone(),
-        badgeAnchor: anchorPos.clone(),
+        badgeAnchor: badgeAnchorPos.clone(),
       });
 
       // Calculate primary explode vector
@@ -435,7 +443,7 @@ export class SoloComponentAdapter {
       const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       line.setAttribute('stroke', 'rgba(56, 189, 248, 0.45)');
       line.setAttribute('stroke-width', '1.2');
-      line.setAttribute('stroke-dasharray', '3,3');
+      line.setAttribute('stroke-dasharray', '4,3');
       svg.appendChild(line);
       this.#badgeLeaderLines.set(nn, line);
 
@@ -484,13 +492,20 @@ export class SoloComponentAdapter {
       const dot = this.#badgeAnchorDots.get(nn);
       if (!part) continue;
 
+      const isSelected = nn === this.#selectedPartNumber;
       const meshAnchorPos = part.anchor.clone();
       const badgePos = part.badgeAnchor.clone();
 
-      const explodeOffset = this.#badgeExplodeOffsets.get(nn);
-      if (this.#explodeProgress > 0 && explodeOffset) {
-        meshAnchorPos.addScaledVector(explodeOffset, this.#explodeProgress);
-        badgePos.addScaledVector(explodeOffset, this.#explodeProgress);
+      // Mesh anchor moves with the mesh displacement
+      const meshOffset = (part.meshes[0] && this.#meshExplodeOffsets.get(part.meshes[0])) || this.#badgeExplodeOffsets.get(nn);
+      if (this.#explodeProgress > 0 && meshOffset) {
+        meshAnchorPos.addScaledVector(meshOffset, this.#explodeProgress);
+      }
+
+      // Badge floats outward with explode progression
+      const badgeOffset = this.#badgeExplodeOffsets.get(nn);
+      if (this.#explodeProgress > 0 && badgeOffset) {
+        badgePos.addScaledVector(badgeOffset, this.#explodeProgress * 1.15);
       }
 
       const projectedAnchor = meshAnchorPos.project(this.#camera);
@@ -519,6 +534,16 @@ export class SoloComponentAdapter {
       if (dot) {
         dot.setAttribute('cx', String(anchorX));
         dot.setAttribute('cy', String(anchorY));
+        if (isSelected) {
+          dot.setAttribute('r', '4.5');
+          dot.setAttribute('fill', '#ffffff');
+          dot.setAttribute('stroke', '#38bdf8');
+          dot.setAttribute('stroke-width', '2');
+        } else {
+          dot.setAttribute('r', '3');
+          dot.setAttribute('fill', '#38bdf8');
+          dot.setAttribute('stroke', 'none');
+        }
       }
 
       if (line) {
@@ -526,6 +551,15 @@ export class SoloComponentAdapter {
         line.setAttribute('y1', String(anchorY));
         line.setAttribute('x2', String(badgeX));
         line.setAttribute('y2', String(badgeY));
+        if (isSelected) {
+          line.setAttribute('stroke', '#38bdf8');
+          line.setAttribute('stroke-width', '2');
+          line.setAttribute('stroke-dasharray', 'none');
+        } else {
+          line.setAttribute('stroke', 'rgba(56, 189, 248, 0.45)');
+          line.setAttribute('stroke-width', '1.2');
+          line.setAttribute('stroke-dasharray', '4,3');
+        }
       }
     }
   }

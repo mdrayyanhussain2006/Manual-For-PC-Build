@@ -25,12 +25,12 @@
       "fallbackOffset": [0, 1, 0.4],
       "explode": {
         "dir": [0, 0, -1],
-        "dist": 0.5,
+        "dist": 0.85,
         "stagger": 0.0,
         "overrides": [
-          { "meshPattern": "P01_heat_spreader_front*", "dir": [0, 0, -1] },
-          { "meshPattern": "P01_heat_spreader_back*", "dir": [0, 0, 1] },
-          { "meshPattern": "P01_heat_spreader_bridges*", "dir": [0, 1, 0], "dist": 0.4 }
+          { "meshPattern": "P01_heat_spreader_front*", "dir": [0, 0, -1], "dist": 0.85 },
+          { "meshPattern": "P01_heat_spreader_back*", "dir": [0, 0, 1], "dist": 0.85 },
+          { "meshPattern": "P01_heat_spreader_bridges*", "dir": [0, 1, 0], "dist": 0.5 }
         ]
       },
       "camera": { "position": [0.85, 0.35, 0.9], "target": [0, 0.05, 0], "fov": 34 }
@@ -40,15 +40,22 @@
       "number": 2,
       "meshPattern": "P02_thermal_pad*",
       "anchor": "H02",
-      "explode": { "dir": [0, 0, -1], "dist": 0.35, "stagger": 0.1, "fadeIn": true }
+      "explode": { "dir": [0, 0, -1], "dist": 0.55, "stagger": 0.1, "fadeIn": true }
     },
-    { "id": "pcb", "number": 3, "meshPattern": "P03_pcb", "anchor": "H03" },
-    { "id": "dram_packages", "number": 4, "meshPattern": "P04_dram_*", "anchor": "H04" },
+    { "id": "pcb", "number": 3, "meshPattern": "P03_pcb*", "anchor": "H03" },
+    {
+      "id": "dram_packages",
+      "number": 4,
+      "meshPattern": "P04_dram_*",
+      "anchor": "H04",
+      "explode": { "dir": [0, 0, -1], "dist": 0.28, "stagger": 0.15 }
+    },
     {
       "id": "spd_pmic",
       "number": 5,
       "meshPattern": "P05_spd_pmic",
       "anchor": "H05",
+      "explode": { "dir": [0, 0, -1], "dist": 0.32, "stagger": 0.15 },
       "camera": { "position": [0.5, 0.75, 0.45], "target": [0, 0, 0.1], "fov": 30 }
     },
     {
@@ -56,6 +63,7 @@
       "number": 6,
       "meshPattern": "P06_contacts",
       "anchor": "H06",
+      "explode": { "dir": [0, -1, 0], "dist": 0.25, "stagger": 0.1 },
       "camera": { "position": [0.25, 0.08, 0.95], "target": [0, 0, -0.42], "fov": 26 }
     },
     {
@@ -63,9 +71,15 @@
       "number": 7,
       "meshPattern": "P07_diffuser",
       "anchor": "H07",
-      "explode": { "dir": [0, 1, 0], "dist": 0.4, "stagger": 0.2 }
+      "explode": { "dir": [0, 1, 0], "dist": 0.65, "stagger": 0.2 }
     },
-    { "id": "mounting", "number": 8, "meshPattern": "P08_notch_clips", "anchor": "H08" }
+    {
+      "id": "mounting",
+      "number": 8,
+      "meshPattern": "P08_notch_clips",
+      "anchor": "H08",
+      "explode": { "dir": [0, -1, 0], "dist": 0.3, "stagger": 0.1 }
+    }
   ],
   "idle": [{ "type": "rgbCycle", "targets": "P07_diffuser", "speed": 0.6, "reducedMotion": "hold" }],
   "sequences": [{ "clip": "anim_seq_dimm_insert", "label": "See how it installs" }],
