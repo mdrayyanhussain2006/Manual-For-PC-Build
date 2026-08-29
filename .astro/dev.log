@@ -272,3 +272,32 @@
 {"message":"dist/index.html","label":"watch","level":"info"}
 {"message":"dist/get-ready/index.html","label":"watch","level":"info"}
 {"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"[200] / 87ms","label":null,"level":"info"}
+{"message":"[200] /components/ 8ms","label":null,"level":"info"}
+{"message":"[200] /components/motherboard/ 5ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"src/pages/index.astro","label":"watch","level":"info"}
+{"message":"src/lib/3d/FullPCExperienceAdapter.ts","label":"watch","level":"info"}
+{"message":"src/lib/3d/SoloComponentAdapter.ts","label":"watch","level":"info"}
+{"message":"src/components/Model3D.astro","label":"watch","level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"src/lib/3d/SoloComponentAdapter.ts","label":"watch","level":"info"}

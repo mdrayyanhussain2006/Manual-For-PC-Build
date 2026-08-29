@@ -38,15 +38,15 @@
 }
 
 [data-theme="accent"] {
-  --surface: #070A0F;
-  --surface-raised: #0E1420;
-  --text-primary: #F1F5F9;
+  --surface: #040817;
+  --surface-raised: #0A1128;
+  --text-primary: #F8FAFC;
   --text-secondary: #94A3B8;
-  --accent: #06B6D4;
+  --accent: #3880FF;
   --caution: #F59E0B;
   --danger: #EF4444;
   --success: #10B981;
-  --border-subtle: rgba(6, 182, 212, 0.22);
+  --border-subtle: rgba(56, 128, 255, 0.25);
 }
 
 /* ---------- Tailwind v4 theme wiring ---------- */

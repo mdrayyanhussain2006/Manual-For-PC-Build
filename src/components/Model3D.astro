@@ -116,18 +116,48 @@ const metadata = getComponentBySlug(canonicalSlug);
   </div>
 
   <!-- Selected Part Details Tray -->
-  <div class="border-t border-primary/10 bg-surface p-4 transition-all duration-300" data-details-tray>
-    <div class="flex items-start gap-3" data-details-content>
-      <div class="flex size-7 shrink-0 items-center justify-center rounded-full bg-accent/10 border border-accent/30 font-mono text-xs font-bold text-accent" data-part-chip>
-        --
-      </div>
-      <div class="flex-1 min-w-0">
-        <h3 class="text-sm font-medium text-primary" data-part-title>
+  <div class="border-t border-primary/10 bg-surface p-5 transition-all duration-300" data-details-tray>
+    <div class="flex flex-col gap-4" data-details-content>
+      <!-- Title Header -->
+      <div class="flex items-center gap-3">
+        <div class="flex size-7 shrink-0 items-center justify-center rounded-full bg-accent text-surface font-mono text-xs font-bold shadow-md" data-part-chip>
+          --
+        </div>
+        <h3 class="text-base font-semibold text-primary" data-part-title>
           Select an annotation pin or part
         </h3>
-        <p class="mt-1 text-xs text-secondary leading-relaxed line-clamp-2" data-part-summary>
-          Click any numbered badge in the 3D viewer or part geometry to inspect its technical role and specifications.
-        </p>
+      </div>
+
+      <!-- Initial / Empty placeholder hint -->
+      <p class="text-xs text-secondary leading-relaxed" data-part-initial-hint>
+        Click any numbered badge in the 3D viewer or part geometry to inspect its technical role, function, and specifications.
+      </p>
+
+      <!-- Educational Breakdown (Hidden until part selected) -->
+      <div class="hidden flex flex-col gap-3.5 pt-1" data-part-sections>
+        <!-- WHAT IT IS -->
+        <div data-section-what-is>
+          <div class="font-mono text-[10px] font-bold text-accent uppercase tracking-wider">WHAT IT IS</div>
+          <p class="mt-1 text-xs text-primary leading-relaxed" data-part-description></p>
+        </div>
+
+        <!-- WHAT IT DOES -->
+        <div data-section-what-does>
+          <div class="font-mono text-[10px] font-bold text-accent uppercase tracking-wider">WHAT IT DOES</div>
+          <p class="mt-1 text-xs text-secondary leading-relaxed" data-part-function></p>
+        </div>
+
+        <!-- WHY IT MATTERS -->
+        <div data-section-why-matters>
+          <div class="font-mono text-[10px] font-bold text-accent uppercase tracking-wider">WHY IT MATTERS</div>
+          <p class="mt-1 text-xs text-secondary leading-relaxed" data-part-importance></p>
+        </div>
+
+        <!-- KEY FACTS -->
+        <div data-section-key-facts>
+          <div class="font-mono text-[10px] font-bold text-accent uppercase tracking-wider">KEY FACTS</div>
+          <ul class="mt-1.5 list-disc list-inside text-xs text-secondary space-y-1" data-part-facts></ul>
+        </div>
       </div>
     </div>
   </div>
@@ -150,24 +180,24 @@ const metadata = getComponentBySlug(canonicalSlug);
     border-radius: 9999px;
     min-width: 24px;
     height: 24px;
-    background: var(--surface-raised);
+    background: rgba(14, 20, 32, 0.85);
     backdrop-filter: blur(8px);
-    border: 1px solid var(--accent);
-    color: var(--text-primary);
+    border: 1.5px solid #38bdf8;
+    color: #f8fafc;
     cursor: pointer;
     pointer-events: auto;
     user-select: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     white-space: nowrap;
     z-index: 10;
   }
 
   .badge-anchor:hover {
     transform: translate(-50%, -50%) scale(1.1);
-    background: var(--surface);
-    border-color: var(--accent);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    background: #0f172a;
+    border-color: #38bdf8;
+    box-shadow: 0 0 16px rgba(56, 189, 248, 0.7);
   }
 
   .badge-anchor .badge-chip {
@@ -180,26 +210,27 @@ const metadata = getComponentBySlug(canonicalSlug);
     font-family: var(--font-mono, ui-monospace, monospace);
     font-weight: 700;
     font-size: 10px;
-    color: var(--surface);
-    background: var(--accent);
+    color: #040817;
+    background: #38bdf8;
     flex-shrink: 0;
   }
 
   .badge-anchor .badge-label {
     display: none;
     font-size: 11px;
-    font-weight: 500;
-    padding: 0 6px 0 2px;
-    color: var(--text-primary);
+    font-weight: 600;
+    padding: 0 8px 0 4px;
+    color: #ffffff;
+    letter-spacing: 0.02em;
   }
 
   .badge-anchor.active {
     border-radius: 9999px;
-    padding: 2px 8px 2px 2px;
-    gap: 4px;
-    border-color: var(--accent);
-    background: var(--surface-raised);
-    box-shadow: 0 0 0 2px var(--accent);
+    padding: 3px 10px 3px 3px;
+    gap: 6px;
+    border-color: #38bdf8;
+    background: rgba(14, 20, 32, 0.95);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.75), inset 0 0 10px rgba(56, 189, 248, 0.2);
     z-index: 20;
   }
 
@@ -232,7 +263,6 @@ const metadata = getComponentBySlug(canonicalSlug);
 
       const partChip = root.querySelector<HTMLElement>('[data-part-chip]');
       const partTitle = root.querySelector<HTMLElement>('[data-part-title]');
-      const partSummary = root.querySelector<HTMLElement>('[data-part-summary]');
 
       if (!hostElement || !canvas) return;
 
@@ -262,18 +292,59 @@ const metadata = getComponentBySlug(canonicalSlug);
           }
         },
         onPartSelect: (partNum, partData) => {
+          const initialHint = root.querySelector<HTMLElement>('[data-part-initial-hint]');
+          const sections = root.querySelector<HTMLElement>('[data-part-sections]');
+          const descEl = root.querySelector<HTMLElement>('[data-part-description]');
+          const funcEl = root.querySelector<HTMLElement>('[data-part-function]');
+          const impEl = root.querySelector<HTMLElement>('[data-part-importance]');
+          const factsEl = root.querySelector<HTMLElement>('[data-part-facts]');
+
           if (partNum && partData) {
             if (partChip) partChip.textContent = partNum;
             if (partTitle) partTitle.textContent = partData.title;
-            if (partSummary) {
-              partSummary.textContent = partData.summary || partData.role || 'No additional summary available.';
+
+            if (initialHint) initialHint.classList.add('hidden');
+            if (sections) sections.classList.remove('hidden');
+
+            if (descEl) descEl.textContent = partData.description || partData.summary || 'Hardware component module.';
+            if (funcEl) {
+              const sec = funcEl.closest('[data-section-what-does]') as HTMLElement | null;
+              if (partData.function || partData.role) {
+                funcEl.textContent = partData.function || partData.role;
+                if (sec) sec.classList.remove('hidden');
+              } else if (sec) {
+                sec.classList.add('hidden');
+              }
+            }
+            if (impEl) {
+              const sec = impEl.closest('[data-section-why-matters]') as HTMLElement | null;
+              if (partData.importance) {
+                impEl.textContent = partData.importance;
+                if (sec) sec.classList.remove('hidden');
+              } else if (sec) {
+                sec.classList.add('hidden');
+              }
+            }
+            if (factsEl) {
+              const sec = factsEl.closest('[data-section-key-facts]') as HTMLElement | null;
+              factsEl.replaceChildren();
+              const factsList = Array.isArray(partData.facts) ? partData.facts : (Array.isArray(partData.specs) ? partData.specs : []);
+              if (factsList.length > 0) {
+                for (const fact of factsList) {
+                  const li = document.createElement('li');
+                  li.textContent = fact;
+                  factsEl.appendChild(li);
+                }
+                if (sec) sec.classList.remove('hidden');
+              } else if (sec) {
+                sec.classList.add('hidden');
+              }
             }
           } else {
             if (partChip) partChip.textContent = '--';
             if (partTitle) partTitle.textContent = 'Select an annotation pin or part';
-            if (partSummary) {
-              partSummary.textContent = 'Click any numbered badge in the 3D viewer or part geometry to inspect its technical role and specifications.';
-            }
+            if (initialHint) initialHint.classList.remove('hidden');
+            if (sections) sections.classList.add('hidden');
           }
         },
       });

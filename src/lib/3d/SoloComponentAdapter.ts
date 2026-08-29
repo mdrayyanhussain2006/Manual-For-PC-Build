@@ -30,12 +30,27 @@ export interface PartInfo {
   number: string;
   id: string;
   title: string;
+  description?: string;
+  function?: string;
+  importance?: string;
+  facts?: string[];
   summary?: string;
   role?: string;
   specs?: string[];
   connectionTips?: string[];
   meshes: THREE.Mesh[];
   anchor: THREE.Vector3;
+  badgeAnchor: THREE.Vector3;
+}
+
+function matchPattern(name: string, pattern?: string): boolean {
+  if (!pattern) return false;
+  try {
+    const regexStr = '^' + pattern.replace(/\./g, '\\.').replace(/\*/g, '.*') + '$';
+    return new RegExp(regexStr, 'i').test(name);
+  } catch {
+    return name === pattern;
+  }
 }
 
 export class SoloComponentAdapter {
@@ -55,8 +70,12 @@ export class SoloComponentAdapter {
   #partsByNum = new Map<string, PartInfo>();
   #restPos = new Map<THREE.Mesh, THREE.Vector3>();
   #originalMaterials = new Map<THREE.Mesh, THREE.Material | THREE.Material[]>();
-  #explodeOffsets = new Map<string, THREE.Vector3>();
+  #meshExplodeOffsets = new Map<THREE.Mesh, THREE.Vector3>();
+  #badgeExplodeOffsets = new Map<string, THREE.Vector3>();
   #badgeElements = new Map<string, HTMLButtonElement>();
+  #badgeAnchorDots = new Map<string, SVGCircleElement>();
+  #badgeLeaderLines = new Map<string, SVGLineElement>();
+  #svgOverlay: SVGSVGElement | null = null;
 
   #selectedPartNumber: string | null = null;
   #xrayActive = false;
@@ -273,11 +292,11 @@ export class SoloComponentAdapter {
     const meshNodes: THREE.Mesh[] = [];
 
     model.traverse((o) => {
-      if (o.isMesh) {
-        const pm = o.name.match(/^P(\d{2})/);
+      if ((o as THREE.Mesh).isMesh) {
+        const pm = o.name.match(/^P(\d{2})/i);
         if (pm) meshNodes.push(o as THREE.Mesh);
       }
-      const am = o.name.match(/^H(\d{2})$/);
+      const am = o.name.match(/^H(\d{2})$/i);
       if (am) anchorNodes.set(am[1], o);
     });
 
@@ -293,17 +312,24 @@ export class SoloComponentAdapter {
       this.#restPos.set(mesh, mesh.position.clone());
     }
 
-    // Group meshes into PartInfo
+    // Group meshes into PartInfo and compute exact per-mesh explode displacement
     this.#partsByNum.clear();
+    this.#meshExplodeOffsets.clear();
+    this.#badgeExplodeOffsets.clear();
+
     for (const part of this.#manifest.parts ?? []) {
       const nn = String(part.number).padStart(2, '0');
       const copyData = this.#copy?.[part.id] || {};
       const node = anchorNodes.get(nn);
+
+      // Find meshes matching part
       const meshes = meshNodes.filter((m) => {
-        const mnn = m.name.match(/^P(\d{2})/)?.[1];
+        if (part.meshPattern && matchPattern(m.name, part.meshPattern)) return true;
+        const mnn = m.name.match(/^P(\d{2})/i)?.[1];
         return mnn === nn;
       });
 
+      // Compute anchor position
       let anchorPos = new THREE.Vector3();
       if (node) {
         anchorPos = node.getWorldPosition(new THREE.Vector3());
@@ -318,30 +344,63 @@ export class SoloComponentAdapter {
         number: nn,
         id: part.id,
         title: copyData.title || part.id,
+        description: copyData.description || copyData.summary,
+        function: copyData.function || copyData.role,
+        importance: copyData.importance,
+        facts: copyData.facts || copyData.specs,
         summary: copyData.description || copyData.summary || copyData.function,
         role: copyData.function || copyData.role,
         specs: copyData.facts || copyData.specs,
         connectionTips: copyData.connectionTips,
         meshes,
-        anchor: anchorPos,
+        anchor: anchorPos.clone(),
+        badgeAnchor: anchorPos.clone(),
       });
 
-      // Calculate explode offset vector
-      if (part.explodeDirection) {
-        const dir = new THREE.Vector3(...part.explodeDirection).normalize();
-        const dist = part.explodeDistance ?? 0.45;
-        this.#explodeOffsets.set(nn, dir.multiplyScalar(dist));
+      // Calculate primary explode vector
+      const defaultDist = typeof part.explode?.dist === 'number' ? part.explode.dist : 0.45;
+      let primaryExplodeDir: THREE.Vector3 | null = null;
+      if (Array.isArray(part.explode?.dir)) {
+        primaryExplodeDir = new THREE.Vector3(...part.explode.dir).normalize().multiplyScalar(defaultDist);
+      }
+
+      // Calculate explode offset for each mesh individually
+      for (const mesh of meshes) {
+        let meshOffset = new THREE.Vector3(0, 0, 0);
+
+        let matchedOverride = false;
+        if (Array.isArray(part.explode?.overrides)) {
+          for (const ov of part.explode.overrides) {
+            if (ov.meshPattern && matchPattern(mesh.name, ov.meshPattern)) {
+              if (Array.isArray(ov.dir)) {
+                const ovDist = typeof ov.dist === 'number' ? ov.dist : defaultDist;
+                meshOffset = new THREE.Vector3(...ov.dir).normalize().multiplyScalar(ovDist);
+                matchedOverride = true;
+                break;
+              }
+            }
+          }
+        }
+
+        if (!matchedOverride && primaryExplodeDir) {
+          meshOffset = primaryExplodeDir.clone();
+        }
+
+        this.#meshExplodeOffsets.set(mesh, meshOffset);
+      }
+
+      // Set badge explode offset
+      if (primaryExplodeDir) {
+        this.#badgeExplodeOffsets.set(nn, primaryExplodeDir.clone());
       } else {
-        const center = this.#calculateMeshesCenter(meshes);
-        const dir = center.clone().normalize();
-        this.#explodeOffsets.set(nn, dir.multiplyScalar(0.4));
+        this.#badgeExplodeOffsets.set(nn, new THREE.Vector3(0, 0, 0));
       }
     }
 
     // Setup initial camera from manifest or default
     this.resetView(true);
 
-    // Create Badges
+    // Create Badges with SVG Leader Lines
     this.#createBadges();
   }
 
@@ -357,8 +416,37 @@ export class SoloComponentAdapter {
     if (!container) return;
     container.replaceChildren();
     this.#badgeElements.clear();
+    this.#badgeAnchorDots.clear();
+    this.#badgeLeaderLines.clear();
+
+    // Create SVG overlay for leader lines and anchor dots
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'absolute inset-0 size-full pointer-events-none z-0');
+    svg.style.position = 'absolute';
+    svg.style.top = '0';
+    svg.style.left = '0';
+    svg.style.width = '100%';
+    svg.style.height = '100%';
+    container.appendChild(svg);
+    this.#svgOverlay = svg;
 
     for (const [nn, part] of this.#partsByNum.entries()) {
+      // SVG Dashed Line
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('stroke', 'rgba(56, 189, 248, 0.45)');
+      line.setAttribute('stroke-width', '1.2');
+      line.setAttribute('stroke-dasharray', '3,3');
+      svg.appendChild(line);
+      this.#badgeLeaderLines.set(nn, line);
+
+      // SVG Anchor Dot
+      const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot.setAttribute('r', '3');
+      dot.setAttribute('fill', '#38bdf8');
+      svg.appendChild(dot);
+      this.#badgeAnchorDots.set(nn, dot);
+
+      // Button Badge
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'badge-anchor';
@@ -392,31 +480,53 @@ export class SoloComponentAdapter {
 
     for (const [nn, btn] of this.#badgeElements.entries()) {
       const part = this.#partsByNum.get(nn);
+      const line = this.#badgeLeaderLines.get(nn);
+      const dot = this.#badgeAnchorDots.get(nn);
       if (!part) continue;
 
-      const pos = part.anchor.clone();
-      if (this.#explodeProgress > 0) {
-        const offset = this.#explodeOffsets.get(nn);
-        if (offset) {
-          pos.addScaledVector(offset, this.#explodeProgress);
-        }
+      const meshAnchorPos = part.anchor.clone();
+      const badgePos = part.badgeAnchor.clone();
+
+      const explodeOffset = this.#badgeExplodeOffsets.get(nn);
+      if (this.#explodeProgress > 0 && explodeOffset) {
+        meshAnchorPos.addScaledVector(explodeOffset, this.#explodeProgress);
+        badgePos.addScaledVector(explodeOffset, this.#explodeProgress);
       }
 
-      // part.anchor is already in world space (captured via getWorldPosition after
-      // the normalized-root scaling was applied) — project it directly.
-      const projected = pos.project(this.#camera);
+      const projectedAnchor = meshAnchorPos.project(this.#camera);
+      const projectedBadge = badgePos.project(this.#camera);
 
       // Check if behind camera
-      if (projected.z > 1) {
+      if (projectedAnchor.z > 1 || projectedBadge.z > 1) {
         btn.style.display = 'none';
+        if (line) line.style.display = 'none';
+        if (dot) dot.style.display = 'none';
         continue;
       }
 
       btn.style.display = 'inline-flex';
-      const x = ((projected.x + 1) * 0.5) * clientWidth;
-      const y = ((-projected.y + 1) * 0.5) * clientHeight;
+      if (line) line.style.display = 'block';
+      if (dot) dot.style.display = 'block';
 
-      btn.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+      const anchorX = ((projectedAnchor.x + 1) * 0.5) * clientWidth;
+      const anchorY = ((-projectedAnchor.y + 1) * 0.5) * clientHeight;
+
+      const badgeX = ((projectedBadge.x + 1) * 0.5) * clientWidth;
+      const badgeY = ((-projectedBadge.y + 1) * 0.5) * clientHeight;
+
+      btn.style.transform = `translate(-50%, -50%) translate(${badgeX}px, ${badgeY}px)`;
+
+      if (dot) {
+        dot.setAttribute('cx', String(anchorX));
+        dot.setAttribute('cy', String(anchorY));
+      }
+
+      if (line) {
+        line.setAttribute('x1', String(anchorX));
+        line.setAttribute('y1', String(anchorY));
+        line.setAttribute('x2', String(badgeX));
+        line.setAttribute('y2', String(badgeY));
+      }
     }
   }
 
@@ -435,25 +545,8 @@ export class SoloComponentAdapter {
 
     const part = partNumber ? this.#partsByNum.get(partNumber) ?? null : null;
 
-    // Update Materials for Selection Highlight (isolated 3D interaction presentation)
-    const selectionEmissiveColor = new THREE.Color(0x3880ff);
-
-    for (const [nn, p] of this.#partsByNum.entries()) {
-      const isSelected = nn === partNumber;
-      for (const mesh of p.meshes) {
-        const mat = mesh.material;
-        if (mat && 'emissive' in mat) {
-          const stdMat = mat as THREE.MeshStandardMaterial;
-          if (isSelected) {
-            stdMat.emissive.copy(selectionEmissiveColor);
-            stdMat.emissiveIntensity = 0.35;
-          } else {
-            stdMat.emissive.setHex(0x000000);
-            stdMat.emissiveIntensity = 0;
-          }
-        }
-      }
-    }
+    // Apply materials
+    this.#applyXrayAndSelectionMaterials();
 
     // Camera Focus
     if (partNumber && focusCamera && part) {
@@ -467,41 +560,80 @@ export class SoloComponentAdapter {
     });
   }
 
-  setExplode(progress: number): void {
-    this.#explodeProgress = Math.max(0, Math.min(1, progress));
-    for (const [nn, part] of this.#partsByNum.entries()) {
-      const offset = this.#explodeOffsets.get(nn);
-      if (!offset) continue;
-      for (const mesh of part.meshes) {
-        const rest = this.#restPos.get(mesh);
-        if (rest) {
-          mesh.position.copy(rest).addScaledVector(offset, this.#explodeProgress);
+  #applyXrayAndSelectionMaterials(): void {
+    const selectionEmissiveColor = new THREE.Color(0x3880ff);
+
+    for (const [nn, p] of this.#partsByNum.entries()) {
+      const isSelected = nn === this.#selectedPartNumber;
+      for (const mesh of p.meshes) {
+        const origMat = this.#originalMaterials.get(mesh);
+        if (!origMat) continue;
+
+        if (this.#xrayActive) {
+          // X-Ray Mode: ghost non-selected parts, intensely highlight selected part
+          const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+          for (const mat of mats) {
+            if ('transparent' in mat && 'opacity' in mat) {
+              const stdMat = mat as THREE.MeshStandardMaterial;
+              if (isSelected) {
+                stdMat.transparent = false;
+                stdMat.opacity = 1.0;
+                stdMat.depthWrite = true;
+                if ('emissive' in stdMat) {
+                  stdMat.emissive.copy(selectionEmissiveColor);
+                  stdMat.emissiveIntensity = 0.6;
+                }
+              } else {
+                stdMat.transparent = true;
+                stdMat.opacity = this.#selectedPartNumber ? 0.18 : 0.25;
+                stdMat.depthWrite = false;
+                if ('emissive' in stdMat) {
+                  stdMat.emissive.setHex(0x000000);
+                  stdMat.emissiveIntensity = 0;
+                }
+              }
+            }
+          }
+        } else {
+          // Normal Mode: standard opacity, selection highlight on selected part
+          const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+          for (const mat of mats) {
+            if ('transparent' in mat && 'opacity' in mat) {
+              const stdMat = mat as THREE.MeshStandardMaterial;
+              stdMat.transparent = false;
+              stdMat.opacity = 1.0;
+              stdMat.depthWrite = true;
+              if ('emissive' in stdMat) {
+                if (isSelected) {
+                  stdMat.emissive.copy(selectionEmissiveColor);
+                  stdMat.emissiveIntensity = 0.4;
+                } else {
+                  stdMat.emissive.setHex(0x000000);
+                  stdMat.emissiveIntensity = 0;
+                }
+              }
+            }
+          }
         }
       }
     }
+  }
+
+  setExplode(progress: number): void {
+    this.#explodeProgress = Math.max(0, Math.min(1, progress));
+    for (const [mesh, offset] of this.#meshExplodeOffsets.entries()) {
+      const rest = this.#restPos.get(mesh);
+      if (rest) {
+        mesh.position.copy(rest).addScaledVector(offset, this.#explodeProgress);
+      }
+    }
+    this.#updateBadgesPosition();
     integrationState.update3DState({ explodeProgress: this.#explodeProgress });
   }
 
   setXray(active: boolean): void {
     this.#xrayActive = active;
-    for (const [nn, part] of this.#partsByNum.entries()) {
-      const isSelected = nn === this.#selectedPartNumber;
-      for (const mesh of part.meshes) {
-        const mat = mesh.material;
-        if (mat && 'opacity' in mat && 'transparent' in mat) {
-          const stdMat = mat as THREE.MeshStandardMaterial;
-          if (active) {
-            stdMat.transparent = true;
-            stdMat.opacity = isSelected ? 0.95 : 0.22;
-            stdMat.depthWrite = isSelected;
-          } else {
-            stdMat.transparent = false;
-            stdMat.opacity = 1.0;
-            stdMat.depthWrite = true;
-          }
-        }
-      }
-    }
+    this.#applyXrayAndSelectionMaterials();
     integrationState.update3DState({ xrayActive: active });
   }
 
@@ -646,7 +778,12 @@ export class SoloComponentAdapter {
     this.#partsByNum.clear();
     this.#restPos.clear();
     this.#originalMaterials.clear();
-    this.#explodeOffsets.clear();
+    this.#meshExplodeOffsets.clear();
+    this.#badgeExplodeOffsets.clear();
+    this.#badgeAnchorDots.clear();
+    this.#badgeLeaderLines.clear();
+    this.#svgOverlay?.remove();
+    this.#svgOverlay = null;
     this.#badgeElements.clear();
   }
 }

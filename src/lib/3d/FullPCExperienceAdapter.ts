@@ -121,7 +121,7 @@ export class FullPCExperienceAdapter {
       // Smooth lerp seeking towards pendingProgress
       const diff = this.#pendingProgress - this.#currentProgress;
       if (Math.abs(diff) > 0.0005) {
-        this.#currentProgress += diff * 0.15; // Smooth spring damp
+        this.#currentProgress += diff * 0.08; // Smooth spring damp
         const targetTime = this.#currentProgress * this.#totalTimelineDuration;
         this.#runtime?.timelineController?.seekTo(targetTime);
         integrationState.update3DState({ timelineProgress: this.#currentProgress });
