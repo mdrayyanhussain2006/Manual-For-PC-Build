@@ -1,0 +1,42 @@
+{
+  "chassis": {
+    "title": "Cast Aluminum Chassis",
+    "description": "Rigid precision-cast aluminum alloy housing with perimeter gasket channels and industry-standard 6-32 UNC mounting threads."
+  },
+  "top_cover": {
+    "title": "Stainless Steel Cover & Breather",
+    "description": "Stamped stainless steel lid with perimeter elastomer seal and sub-micron breather filter equalizing internal barometric pressure."
+  },
+  "platters": {
+    "title": "Dual Magnetic Recording Platters",
+    "description": "Polished aluminum-magnesium substrate disks coated with magnetic cobalt-alloy recording layers spinning at 7,200 RPM."
+  },
+  "spindle_motor": {
+    "title": "Fluid Dynamic Bearing Spindle",
+    "description": "Brushless DC spindle motor utilizing fluid dynamic bearings (FDB) to dampen microscopic vibration and ensure rotational accuracy."
+  },
+  "actuator_arm": {
+    "title": "Rotary Actuator Arm Assembly",
+    "description": "Balanced aluminum swing arm driven by the voice coil motor, translating angular motion into radial head track positioning."
+  },
+  "rw_heads": {
+    "title": "Giant Magnetoresistive (GMR) Heads",
+    "description": "Microscopic read/write slider elements aerodynamically flying nanometers above the spinning platter surface on an air bearing."
+  },
+  "vcm_magnets": {
+    "title": "Voice Coil Motor (VCM) Magnets",
+    "description": "High-strength rare-earth neodymium permanent magnet plates providing the fixed magnetic flux field for the actuator drive coil."
+  },
+  "controller_pcb": {
+    "title": "Drive Controller PCB",
+    "description": "Underside circuit board housing the drive system-on-chip (SoC), spindle/VCM motor controller, DRAM cache buffer, and firmware."
+  },
+  "sata_connectors": {
+    "title": "SATA Data & Power Connectors",
+    "description": "Standardized 7-pin SATA 6 Gb/s differential signaling interface and 15-pin DC power input connector with gold contacts."
+  },
+  "parking_ramp": {
+    "title": "Head Load/Unload Parking Ramp",
+    "description": "Engineered low-friction polymer ramp safely capturing and parking the head assembly off the platter surface during power-down."
+  }
+}

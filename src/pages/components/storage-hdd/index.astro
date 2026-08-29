@@ -1,0 +1,45 @@
+---
+// ============================================================
+// FILE: src/pages/components/storage-hdd/index.astro
+// Storage HDD component page
+// ============================================================
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StatGroup from '../../../components/StatGroup.astro';
+import Model3D from '../../../components/Model3D.astro';
+import { getComponentBySlug } from '../../../lib/3d/ComponentRegistry';
+
+const metadata = getComponentBySlug('storage-hdd')!;
+---
+
+<BaseLayout title={`${metadata.displayName} — Component library — PC Customization Manual`}>
+  <article class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
+    <div class="grid grid-cols-12 gap-6">
+      <header class="col-span-12">
+        <p class="font-mono text-xs text-secondary">Component 8 of 12</p>
+        <h1 class="mt-4 text-2xl font-medium md:text-3xl">{metadata.displayName}</h1>
+        <p class="mt-4 max-w-2xl text-lg text-secondary">
+          {metadata.description} Hard disk drives use spinning magnetic platters to offer cost-effective bulk capacity for archival storage, game libraries, and large media files.
+        </p>
+      </header>
+
+      <div class="col-span-12 lg:col-span-7">
+        <Model3D
+          slug="storage-hdd"
+          label={`3D model of ${metadata.displayName}`}
+        />
+      </div>
+
+      <div class="col-span-12 lg:col-span-5">
+        <div class="rounded-card border border-primary/10 bg-surface-raised p-6">
+          <p class="text-xs font-mono uppercase tracking-wider text-secondary">Technical Specifications</p>
+          <div class="mt-4">
+            <StatGroup stats={metadata.specs ?? []} />
+          </div>
+          <p class="mt-4 text-sm text-secondary">
+            Connect both the SATA 15-pin power cable from the PSU and the SATA 7-pin data cable to your motherboard SATA port.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,87 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "slug": "case-fan",
+  "name": "Case Fan (120 mm PWM)",
+  "version": 1,
+  "budget": {
+    "lod0Bytes": 1000000,
+    "lod1Bytes": 450000,
+    "trisLod0": 50000,
+    "trisLod1": 22000
+  },
+  "model": {
+    "lod0": "/models/case-fan/case-fan.lod0.glb",
+    "lod1": "/models/case-fan/case-fan.lod1.glb",
+    "poster": "/models/case-fan/case-fan.poster.avif"
+  },
+  "defaultCamera": { "direction": [0.04, 0.95, 0.30], "fitFraction": 0.58, "fov": 28 },
+  "parts": [
+    {
+      "id": "frame",
+      "number": 1,
+      "meshPattern": "P01_frame*",
+      "anchor": "H01",
+      "fallbackOffset": [-0.6, 0.6, 0.2]
+    },
+    {
+      "id": "blades",
+      "number": 2,
+      "meshPattern": "P02_blades*",
+      "anchor": "H02",
+      "fallbackOffset": [-0.5, 0.0, 0.3],
+      "explode": { "dir": [0, 1, 0], "dist": 0.5, "stagger": 0.0 }
+    },
+    {
+      "id": "hub",
+      "number": 3,
+      "meshPattern": "P03_hub*",
+      "anchor": "H03",
+      "fallbackOffset": [0.0, 0.0, 0.4]
+    },
+    {
+      "id": "bearing",
+      "number": 4,
+      "meshPattern": "P04_bearing*",
+      "anchor": "H04",
+      "fallbackOffset": [0.0, -0.3, 0.2]
+    },
+    {
+      "id": "stator",
+      "number": 5,
+      "meshPattern": "P05_stator*",
+      "anchor": "H05",
+      "fallbackOffset": [0.0, 0.4, -0.3]
+    },
+    {
+      "id": "pwm_cable",
+      "number": 6,
+      "meshPattern": "P06_pwm_*",
+      "anchor": "H06",
+      "fallbackOffset": [-0.7, -0.3, 0.0],
+      "explode": { "dir": [-1, 0, 0], "dist": 0.5, "stagger": 0.0 }
+    },
+    {
+      "id": "argb_ring",
+      "number": 7,
+      "meshPattern": "P07_argb*",
+      "anchor": "H07",
+      "fallbackOffset": [0.4, 0.4, 0.3],
+      "explode": { "dir": [0, 1, 0], "dist": 0.35, "stagger": 0.1 }
+    },
+    {
+      "id": "antivib_pins",
+      "number": 8,
+      "meshPattern": "P08_antivib*",
+      "anchor": "H08",
+      "fallbackOffset": [0.6, -0.6, 0.2],
+      "explode": { "dir": [1, -1, 0], "dist": 0.4, "stagger": 0.1 }
+    }
+  ],
+  "idle": [
+    { "type": "spin", "targets": "P02_blades*", "axis": "y", "rpm": 600, "reducedMotion": "stop" }
+  ],
+  "xrayGroups": [
+    { "id": "motor", "label": "Motor internals", "parts": ["bearing", "stator"] }
+  ],
+  "environment": "studio"
+}

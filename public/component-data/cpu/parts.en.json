@@ -1,0 +1,90 @@
+{
+  "heat_spreader": {
+    "title": "Integrated Heat Spreader (IHS)",
+    "description": "A nickel-plated copper lid soldered over the silicon, with a stepped retention flange that socket latches grip and a visible silicone seal bead where it meets the package substrate.",
+    "function": "Spreads heat from the small die surfaces across a much larger, flat cooling plane so an air or liquid cooler can remove it; mechanically protects the fragile silicon beneath.",
+    "importance": "The IHS is the entire thermal and mounting interface of the processor: its flatness and finish decide how well cooler contact transfers heat, and its stepped edge is what the motherboard socket holds onto.",
+    "facts": [
+      "The visible seam between lid and substrate is filled with adhesive sealant during manufacturing.",
+      "The blank rectangular field on this reference lid is where a vendor would laser-mark model data - kept empty for brand neutrality.",
+      "Delidding (removing the IHS) instantly voids warranties because the dies underneath have no other protection."
+    ]
+  },
+  "thermal_interface": {
+    "title": "Thermal Interface Material (TIM)",
+    "description": "A thin metallic-looking layer bridging the gap between the die surfaces and the inside of the heat spreader. This reference shows a solder-like slab; real packages ship indium solder, paste, or polymer depending on product tier.",
+    "function": "Fills microscopic air gaps between silicon and lid. Air is a terrible conductor, so even a hairline void would insulate the die and spike temperatures.",
+    "importance": "TIM quality sets the ceiling on cooling performance: better interface materials mean lower operating temperatures at the same fan speed and noise level.",
+    "facts": [
+      "Indium solder TIMs conduct heat several times better than silicone pastes.",
+      "Some processors let users replace the stock interface with liquid metal for a few extra degrees.",
+      "The layer is thinner than a millimeter yet carries hundreds of watts of heat flow in gaming workloads."
+    ]
+  },
+  "compute_die": {
+    "title": "Compute Die",
+    "description": "The primary silicon tile containing the CPU cores and cache. The etched partitions on this brand-neutral representation suggest functional blocks - cores, interconnect, memory subsystems - without copying any vendor floorplan.",
+    "function": "Executes instructions: fetches, decodes and runs billions of operations per second across its cores, exchanging results through on-die interconnect and shared cache.",
+    "importance": "This is 'the processor' in the everyday sense - the piece whose architecture generation largely determines system responsiveness and performance per watt.",
+    "facts": [
+      "A modern compute die packs tens of billions of transistors onto roughly a square centimeter.",
+      "Features are printed far smaller than a virus; ultraviolet lithography at these scales is one of humanity's most precise manufacturing processes.",
+      "Chiplet designs like this two-tile layout let vendors mix and match silicon process technologies for cost and yield."
+    ]
+  },
+  "io_die": {
+    "title": "I/O Controller Die",
+    "description": "The secondary silicon tile handling input/output: memory controller channels, PCIe root complex, and display links. Layout here is a generic educational representation.",
+    "function": "Translates between the fast internal world of the compute die and the outside: DRAM timing, expansion card lanes, USB and storage controllers all hang off this tile's fabric.",
+    "importance": "Splitting I/O onto its own die lets the compute tile shrink to the most advanced process available, while I/O circuitry stays on a cheaper, more mature node.",
+    "facts": [
+      "Memory support (DDR5 speeds, channel count) is fixed by the I/O die, not the compute die.",
+      "PCIe lane assignments you see in motherboard manuals originate from this tile.",
+      "Because I/O circuits scale poorly to new nodes, keeping them separate saves cost on the whole package."
+    ]
+  },
+  "substrate": {
+    "title": "Package Substrate",
+    "description": "A multi-layer fiberglass-resin board, 1.2 mm thick in this reference, that carries etched copper wiring between the tiny die solder balls and the much coarser land-grid pads below.",
+    "function": "Fans out thousands of nanometer-scale die connections into the millimeter-scale grid the motherboard socket can physically mate with, while distributing power and impedance-managing high-speed signals.",
+    "importance": "Without the substrate there is no way to connect something as small as a die to something as large as a motherboard - it is the electrical translator of the whole package.",
+    "facts": [
+      "Package substrates are made by the same industry as motherboard PCBs but with far finer traces.",
+      "The gold dot near the corner (Pin 1) tells the assembler which way round the chip goes.",
+      "Signal paths on the substrate are length-matched so data arrives in step across wide memory buses."
+    ]
+  },
+  "smd_capacitors": {
+    "title": "Decoupling Capacitors",
+    "description": "A bank of 24 multilayer ceramic chip capacitors (0402 size class) seated in a recessed pocket on the package underside - each a two-tone ceramic body with metallic end terminals.",
+    "function": "Act as tiny local reservoirs of charge. When cores switch on in nanoseconds, these caps deliver current before power can arrive from the motherboard voltage regulators.",
+    "importance": "Modern CPUs demand sudden hundred-amp current steps; without local decoupling the supply voltage would sag and crash the chip mid-computation.",
+    "facts": [
+      "Placing them inside the underside cavity puts the capacitance millimeters from the dies that need it.",
+      "A single 0402 MLCC contains hundreds of alternating ceramic and metal layers stacked like a mille-feuille.",
+      "They are soldered reflow-style: paste dots melt in an oven and surface tension self-aligns each part."
+    ]
+  },
+  "land_grid": {
+    "title": "Land Grid Array (LGA) Contacts",
+    "description": "A dense field of flat gold-plated contact pads arranged in dual banks around the central capacitor cavity - roughly thirteen hundred pads on this reference, at a 0.8 mm pitch.",
+    "function": "Presses against the spring pins of a motherboard socket to carry power, ground, and every data signal between processor and board. No pins on the CPU itself - the pins live in the socket.",
+    "importance": "LGA moved fragility from chip to socket: a bent pad is rarer and less fatal than the bent pins of older pin-grid packages, and denser grids became possible.",
+    "facts": [
+      "Gold plating over nickel prevents oxidation and guarantees contact reliability over thousands of installations.",
+      "The gap down the middle of the field is not wasted space - it is the protected cavity holding the decoupling capacitors.",
+      "Socket spring pins press up through protective film peel-away; touching the pads with fingers risks corrosion over time."
+    ]
+  },
+  "keying_features": {
+    "title": "Keying & Pin 1 Index",
+    "description": "Asymmetric orientation features: an oversized chamfered corner, gold index triangles on both faces beside that corner, and semicircular alignment notches on one flank only.",
+    "function": "Makes it physically impossible to seat the processor rotated the wrong way - every keying feature must line up with its socket counterpart before the package can sit flush.",
+    "importance": "Power and ground are not symmetric. A wrongly rotated CPU would short supply rails; the keying system turns a destructive mistake into a mechanical non-fit.",
+    "facts": [
+      "Pin 1 convention dates back to early DIP chips and still governs every chip package today.",
+      "The gold triangle sits at the Pin 1 corner on both sides of this reference package.",
+      "Socket lever force only lines up when the keyed corners match - if it resists, orientation is wrong, never force it."
+    ]
+  }
+}

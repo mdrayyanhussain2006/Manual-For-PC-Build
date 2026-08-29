@@ -1,0 +1,148 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "slug": "cpu-cooler-liquid",
+  "name": "Liquid CPU Cooler (240mm AIO)",
+  "version": 1,
+  "budget": {
+    "lod0Bytes": 1800000,
+    "lod1Bytes": 850000,
+    "trisLod0": 60000,
+    "trisLod1": 26000
+  },
+  "model": {
+    "lod0": "/models/cpu-cooler-liquid/cpu-cooler-liquid.lod0.glb",
+    "lod1": "/models/cpu-cooler-liquid/cpu-cooler-liquid.lod1.glb",
+    "poster": "/models/cpu-cooler-liquid/cpu-cooler-liquid.poster.avif"
+  },
+  "defaultCamera": {
+    "direction": [0.65, 0.45, 0.60],
+    "fitFraction": 0.74,
+    "fov": 28
+  },
+  "parts": [
+    {
+      "id": "radiator_core",
+      "number": 1,
+      "meshPattern": "P01_radiator_core*",
+      "anchor": "H01",
+      "fallbackOffset": [0, 0.6, 0.4]
+    },
+    {
+      "id": "cooling_fans",
+      "number": 2,
+      "meshPattern": "P02_cooling_fans*",
+      "anchor": "H02",
+      "fallbackOffset": [0, 0.6, 0.6],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.50,
+        "stagger": 0.1
+      }
+    },
+    {
+      "id": "radiator_shroud",
+      "number": 3,
+      "meshPattern": "P03_radiator_shroud*",
+      "anchor": "H03",
+      "fallbackOffset": [0, 0.6, 0.3]
+    },
+    {
+      "id": "epdm_tubing",
+      "number": 4,
+      "meshPattern": "P04_epdm_tubing*",
+      "anchor": "H04",
+      "fallbackOffset": [0, 0.3, 0.3],
+      "explode": {
+        "dir": [1, 0, 0],
+        "dist": 0.30,
+        "stagger": 0.2
+      }
+    },
+    {
+      "id": "swivel_barbs",
+      "number": 5,
+      "meshPattern": "P05_swivel_barbs*",
+      "anchor": "H05",
+      "fallbackOffset": [0.3, 0, 0.2],
+      "explode": {
+        "dir": [1, 0, 0],
+        "dist": 0.40,
+        "stagger": 0.2
+      }
+    },
+    {
+      "id": "pump_block",
+      "number": 6,
+      "meshPattern": "P06_pump_block*",
+      "anchor": "H06",
+      "fallbackOffset": [0, 0, 0.3],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.25,
+        "stagger": 0.1
+      }
+    },
+    {
+      "id": "copper_coldplate",
+      "number": 7,
+      "meshPattern": "P07_copper_coldplate*",
+      "anchor": "H07",
+      "fallbackOffset": [0, 0, -0.1]
+    },
+    {
+      "id": "mounting_ring",
+      "number": 8,
+      "meshPattern": "P08_mounting_ring*",
+      "anchor": "H08",
+      "fallbackOffset": [0, -0.3, 0.1],
+      "explode": {
+        "dir": [0, -1, 0],
+        "dist": 0.35,
+        "stagger": 0.15
+      }
+    },
+    {
+      "id": "top_infinity_cap",
+      "number": 9,
+      "meshPattern": "P09_top_infinity_cap*",
+      "anchor": "H09",
+      "fallbackOffset": [0, 0, 0.6],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.40,
+        "stagger": 0.0
+      }
+    },
+    {
+      "id": "fan_screws",
+      "number": 10,
+      "meshPattern": "P10_fan_screws*",
+      "anchor": "H10",
+      "fallbackOffset": [0.3, 0.6, 0.7],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.70,
+        "stagger": 0.05
+      }
+    },
+    {
+      "id": "wiring_harness",
+      "number": 11,
+      "meshPattern": "P11_wiring_harness*",
+      "anchor": "H11",
+      "fallbackOffset": [0, -0.3, 0.2]
+    },
+    {
+      "id": "thermal_paste_layer",
+      "number": 12,
+      "meshPattern": "P12_thermal_paste*",
+      "anchor": "H12",
+      "fallbackOffset": [0, 0, -0.2],
+      "explode": {
+        "dir": [0, 0, -1],
+        "dist": 0.25,
+        "stagger": 0.25
+      }
+    }
+  ]
+}

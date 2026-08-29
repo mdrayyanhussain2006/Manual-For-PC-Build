@@ -1,0 +1,34 @@
+{
+  "atx_24pin_cable": {
+    "title": "24-Pin ATX Main Motherboard Cable",
+    "description": "Primary high-current power harness featuring 24 individually sleeved conductors delivering +12V, +5V, +3.3V, and standby rails."
+  },
+  "eps_8pin_cable": {
+    "title": "8-Pin (4+4) EPS CPU Power Cable",
+    "description": "Dedicated +12V processor power delivery cable with separable 4+4 pin housing for multi-generation motherboard compatibility."
+  },
+  "pcie_12vhpwr_cable": {
+    "title": "16-Pin 12V-2x6 (12VHPWR) GPU Cable",
+    "description": "PCIe Gen 5 high-power harness combining 12 heavy 16 AWG power conductors with 4 micro-gauge sideband sense lines delivering up to 600W."
+  },
+  "pcie_8pin_cable": {
+    "title": "8-Pin (6+2) Auxiliary PCIe Cable",
+    "description": "High-current auxiliary graphics power harness with a split 6+2 pin connector terminal supporting legacy and modern PCIe cards."
+  },
+  "sata_power_cable": {
+    "title": "15-Pin SATA Multi-Drop Power Cable",
+    "description": "Flexible flat ribbon cable featuring 90-degree pass-through connectors powering solid-state drives, HDDs, and RGB controllers."
+  },
+  "sata_data_cable": {
+    "title": "7-Pin SATA 6 Gb/s Data Cable",
+    "description": "Shielded differential serial ATA data cable equipped with spring-steel locking latches ensuring vibration-proof connection."
+  },
+  "front_panel_harness": {
+    "title": "Front Panel I/O Wire Loom",
+    "description": "Modular breakout harness routing chassis power button, reset switch, activity LEDs, and audio front-panel signals."
+  },
+  "cable_combs": {
+    "title": "Acrylic Cable Management Combs",
+    "description": "Precision laser-cut transparent organizing combs maintaining parallel wire alignment and tight custom loop aesthetics."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "d1": [
+    {
+      "p": 0,
+      "tp": 0,
+      "hud": {
+        "pct": "0%",
+        "stage": "Assembled System"
+      }
+    },
+    {
+      "p": 0.25,
+      "tp": 0.2385,
+      "hud": {
+        "pct": "25%",
+        "stage": "CPU Cooler Removal"
+      }
+    },
+    {
+      "p": 0.5,
+      "tp": 0.4903,
+      "hud": {
+        "pct": "50%",
+        "stage": "Memory Removal"
+      }
+    },
+    {
+      "p": 0.75,
+      "tp": 0.7363,
+      "hud": {
+        "pct": "75%",
+        "stage": "Power Supply Removal"
+      }
+    },
+    {
+      "p": 1,
+      "tp": 0.9902,
+      "hud": {
+        "pct": "100%",
+        "stage": "Final Explode View"
+      }
+    }
+  ],
+  "reverse": 0.0872,
+  "d2": {
+    "before": 1819,
+    "after": 1819,
+    "scrolled": false,
+    "log": [
+      {
+        "target": "CANVAS",
+        "defaultPrevented": false
+      }
+    ]
+  }
+}

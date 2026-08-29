@@ -1,0 +1,45 @@
+---
+// ============================================================
+// FILE: src/pages/components/case-fan/index.astro
+// Case Fan component page
+// ============================================================
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StatGroup from '../../../components/StatGroup.astro';
+import Model3D from '../../../components/Model3D.astro';
+import { getComponentBySlug } from '../../../lib/3d/ComponentRegistry';
+
+const metadata = getComponentBySlug('case-fan')!;
+---
+
+<BaseLayout title={`${metadata.displayName} — Component library — PC Customization Manual`}>
+  <article class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
+    <div class="grid grid-cols-12 gap-6">
+      <header class="col-span-12">
+        <p class="font-mono text-xs text-secondary">Component 11 of 12</p>
+        <h1 class="mt-4 text-2xl font-medium md:text-3xl">{metadata.displayName}</h1>
+        <p class="mt-4 max-w-2xl text-lg text-secondary">
+          {metadata.description} Orienting fans correctly establishes directional airflow, drawing cool ambient air across components and exhausting hot air through the rear and top.
+        </p>
+      </header>
+
+      <div class="col-span-12 lg:col-span-7">
+        <Model3D
+          slug="case-fan"
+          label={`3D model of ${metadata.displayName}`}
+        />
+      </div>
+
+      <div class="col-span-12 lg:col-span-5">
+        <div class="rounded-card border border-primary/10 bg-surface-raised p-6">
+          <p class="text-xs font-mono uppercase tracking-wider text-secondary">Technical Specifications</p>
+          <div class="mt-4">
+            <StatGroup stats={metadata.specs ?? []} />
+          </div>
+          <p class="mt-4 text-sm text-secondary">
+            Ensure fan headers connect to 4-pin PWM slots on your motherboard for automated RPM temperature curves.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

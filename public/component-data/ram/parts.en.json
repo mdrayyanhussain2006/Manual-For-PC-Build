@@ -1,0 +1,90 @@
+{
+  "heat_spreader": {
+    "title": "Heat Spreader",
+    "description": "Two anodized aluminum plates clamped to either face of the module. They pull heat away from the DRAM packages and give the stick its rigid, finished look — most of what you physically see when a DIMM is installed is this shell, not the memory itself.",
+    "function": "Conducts heat from the DRAM packages into the case airflow, and stiffens the module so the thin PCB cannot flex in its slot.",
+    "importance": "Without spreaders, sustained memory loads can throttle the chips. With them, a modern DIMM sheds its modest heat passively and quietly — no moving parts, nothing to fail.",
+    "facts": [
+      "The spreader touches every DRAM package through thermal pads — metal-to-chip contact is never direct.",
+      "On many modules the spreader is largely cosmetic; low-profile 'naked' DIMMs run fine with airflow.",
+      "Spreader colors and finishes are styling choices — they have no electrical function."
+    ]
+  },
+  "thermal_pads": {
+    "title": "Thermal Pads",
+    "description": "Soft, slightly tacky gap-filler sheets sandwiched between each DRAM package and the spreader plates. They only become visible when the spreaders fly apart in the exploded view.",
+    "function": "Fill the microscopic air gap between chip and metal so heat can flow — air is an insulator, and even a hair-thin gap dramatically slows heat transfer.",
+    "importance": "The entire cooling performance of a spreader depends on these humble pads. A poorly seated pad means one hot chip quietly running slower than its neighbors.",
+    "facts": [
+      "Pads are one-time-use in practice: re-mounting a spreader ideally means fresh pads.",
+      "Pad thickness is engineered — too thick slows heat transfer, too thin risks no contact at all.",
+      "They are electrically non-conductive, which is why they can safely touch live chip packages."
+    ]
+  },
+  "pcb": {
+    "title": "PCB (Printed Circuit Board)",
+    "description": "The stick's green-or-black backbone: a thin multi-layer fiberglass board with copper traces routing every DRAM chip to the edge connector.",
+    "function": "Carries power, address, and data lines between all eight DRAM packages and the memory controller in the CPU, with lengths matched so closely that signals arrive in step.",
+    "importance": "A DIMM is a precision transmission line. Trace lengths are tuned to fractions of a millimeter so that chips at different positions all respond within the same timing window.",
+    "facts": [
+      "Modern DIMMs route through 8–10 internal copper layers — invisible from outside.",
+      "The board's edge is chamfered so the stick slides smoothly into the slot.",
+      "Higher-capacity modules often use both PCB faces, placing chips front and back."
+    ]
+  },
+  "dram_packages": {
+    "title": "DRAM Packages",
+    "description": "The black rectangular chips lined along the board — usually eight of them. Each package is a sealed stack of DRAM silicon dies, and together they are the actual memory.",
+    "function": "Store the working data of every running program — each bit held in a microscopic capacitor that is read and refreshed thousands of times per second.",
+    "importance": "Everything the CPU is actively using lives here. Capacity (how many programs fit) and speed (how fast they respond) both trace back to these chips.",
+    "facts": [
+      "Each package can contain multiple stacked silicon dies — capacity without more floor space.",
+      "DRAM forgets when power is cut, which is why this is 'memory' and not 'storage'.",
+      "The chips are deliberately spread out along the stick to share the cooling load."
+    ]
+  },
+  "spd_pmic": {
+    "title": "SPD Hub & PMIC",
+    "description": "Two small unassuming chips that run the module's housekeeping: one stores the module's identity card, the other regulates its power supply.",
+    "function": "The SPD (Serial Presence Detect) chip tells the motherboard what the module is — capacity, speed, timings — so the system can configure itself. The PMIC (Power Management IC) converts the slot's input voltage to exactly what the DRAM chips need.",
+    "importance": "Without the SPD, every RAM upgrade would require manual timing entry in firmware. On modern DDR5 modules, moving voltage regulation onto the stick (the PMIC) is what enables the tightest, fastest power delivery.",
+    "facts": [
+      "Reading the SPD is why a new PC can list your exact RAM details before the OS even loads.",
+      "Enthusiast 'overclocking profiles' are simply extra data records stored in this tiny chip.",
+      "The PMIC is why DDR5 modules run slightly warmer at idle than older generations."
+    ]
+  },
+  "contacts": {
+    "title": "Gold Contacts & Keying Notch",
+    "description": "The shining row of edge 'fingers' along the bottom of the stick, interrupted by a single offset notch. The gold is real — a thin plating over copper.",
+    "function": "Each finger is one electrical lane into the slot; hundreds of them together carry all data and power. The notch mates with a key in the slot so the stick can only insert one way.",
+    "importance": "This edge is the entire physical interface to the system. A worn or dirty contact causes errors no software can fix, and the notch prevents inserting an incompatible generation.",
+    "facts": [
+      "Gold is used because it never oxidizes — copper contacts would corrode within months.",
+      "The notch position differs by generation, so a DDR4 stick physically cannot fit a DDR5 slot.",
+      "Inserting a DIMM takes firm, even pressure — the slot's latches click when fully seated."
+    ]
+  },
+  "diffuser": {
+    "title": "Light Diffuser",
+    "description": "The milky white strip running along the module's top edge. Underneath it sit small LEDs; the diffuser's job is to blend their pinpoints into one smooth, continuous glow.",
+    "function": "Spreads concentrated LED light into an even line of illumination that can shift color and brightness under software control.",
+    "importance": "Lighting is the most visible feature of modern memory — and the diffuser is what separates a premium even glow from a string of harsh dots. It has no effect on performance whatsoever, and that is fine.",
+    "facts": [
+      "Each LED is individually addressable, enabling effects like cascading color waves.",
+      "The frosted material works exactly like a lampshade — scattering light sideways along its length.",
+      "Lighting can be disabled entirely; the module runs identically in the dark."
+    ]
+  },
+  "mounting": {
+    "title": "Notch, Latches & Mechanicals",
+    "description": "The small physical details that make a DIMM installable: the side notches the slot's latches grip, and the chamfered ends that guide insertion.",
+    "function": "Lock the module firmly into the slot so vibration and transport can never work it loose, while still allowing release with a gentle press on the latch.",
+    "importance": "A properly latched DIMM is held with enough force to maintain hundreds of parallel electrical contacts for years. An unlatched one is a intermittent-crash generator.",
+    "facts": [
+      "The slot's latches close automatically as the stick reaches full insertion — the click is real feedback.",
+      "DIMM stands for Dual Inline Memory Module — contacts on both faces, independently wired.",
+      "A 133.35 mm standard length has been shared by DIMM generations for decades."
+    ]
+  }
+}

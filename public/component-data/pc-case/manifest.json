@@ -1,0 +1,138 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "slug": "pc-case",
+  "name": "PC Case (Mid-Tower ATX Enclosure)",
+  "version": 1,
+  "budget": {
+    "lod0Bytes": 2100000,
+    "lod1Bytes": 950000,
+    "trisLod0": 65000,
+    "trisLod1": 28000
+  },
+  "model": {
+    "lod0": "/models/pc-case/pc-case.lod0.glb",
+    "lod1": "/models/pc-case/pc-case.lod1.glb",
+    "poster": "/models/pc-case/pc-case.poster.avif"
+  },
+  "defaultCamera": {
+    "direction": [0.65, 0.45, 0.60],
+    "fitFraction": 0.74,
+    "fov": 28
+  },
+  "parts": [
+    {
+      "id": "main_chassis_frame",
+      "number": 1,
+      "meshPattern": "P01_main_chassis*",
+      "anchor": "H01",
+      "fallbackOffset": [0, 0, 0.4]
+    },
+    {
+      "id": "tempered_glass_panel",
+      "number": 2,
+      "meshPattern": "P02_tempered_glass*",
+      "anchor": "H02",
+      "fallbackOffset": [0.6, 0, 0],
+      "explode": {
+        "dir": [1, 0, 0],
+        "dist": 0.85,
+        "stagger": 0.0
+      }
+    },
+    {
+      "id": "steel_side_panel",
+      "number": 3,
+      "meshPattern": "P03_steel_side*",
+      "anchor": "H03",
+      "fallbackOffset": [-0.6, 0, 0],
+      "explode": {
+        "dir": [-1, 0, 0],
+        "dist": 0.85,
+        "stagger": 0.0
+      }
+    },
+    {
+      "id": "front_mesh_panel",
+      "number": 4,
+      "meshPattern": "P04_front_mesh*",
+      "anchor": "H04",
+      "fallbackOffset": [0, 0.6, 0],
+      "explode": {
+        "dir": [0, 1, 0],
+        "dist": 0.70,
+        "stagger": 0.1
+      }
+    },
+    {
+      "id": "top_dust_filter",
+      "number": 5,
+      "meshPattern": "P05_top_dust*",
+      "anchor": "H05",
+      "fallbackOffset": [0, 0, 0.6],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.50,
+        "stagger": 0.15
+      }
+    },
+    {
+      "id": "psu_shroud",
+      "number": 6,
+      "meshPattern": "P06_psu_shroud*",
+      "anchor": "H06",
+      "fallbackOffset": [0, 0, -0.4]
+    },
+    {
+      "id": "motherboard_standoffs",
+      "number": 7,
+      "meshPattern": "P07_motherboard_stand*",
+      "anchor": "H07",
+      "fallbackOffset": [-0.2, -0.2, 0.1]
+    },
+    {
+      "id": "pcie_slot_covers",
+      "number": 8,
+      "meshPattern": "P08_pcie_slot*",
+      "anchor": "H08",
+      "fallbackOffset": [0, -0.6, -0.2],
+      "explode": {
+        "dir": [0, -1, 0],
+        "dist": 0.35,
+        "stagger": 0.2
+      }
+    },
+    {
+      "id": "front_io_module",
+      "number": 9,
+      "meshPattern": "P09_front_io*",
+      "anchor": "H09",
+      "fallbackOffset": [0, 0.5, 0.6]
+    },
+    {
+      "id": "drive_cages",
+      "number": 10,
+      "meshPattern": "P10_drive_cages*",
+      "anchor": "H10",
+      "fallbackOffset": [-0.2, 0.4, -0.4],
+      "explode": {
+        "dir": [0, 1, 0],
+        "dist": 0.40,
+        "stagger": 0.2
+      }
+    },
+    {
+      "id": "cable_grommets",
+      "number": 11,
+      "meshPattern": "P11_cable_grommets*",
+      "anchor": "H11",
+      "fallbackOffset": [-0.2, 0.2, 0.1]
+    },
+    {
+      "id": "case_feet",
+      "number": 12,
+      "meshPattern": "P12_case_feet*",
+      "anchor": "H12",
+      "fallbackOffset": [0.4, 0.5, -0.6]
+    }
+  ]
+}

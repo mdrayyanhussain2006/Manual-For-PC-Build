@@ -1,9 +1,8 @@
 ---
 // ============================================================
 // FILE: src/pages/index.astro
-// Phase 1 — real landing page. Phase 0 verification scaffolding
-// (swatches, type-scale list, callout demo) has been removed.
-// Copy below is used exactly as given.
+// Production Landing Page with Integrated Full-PC 3D Scroll Experience
+// Preserves all existing copy, sections, and layout structure
 // ============================================================
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StatGroup from '../components/StatGroup.astro';
@@ -11,7 +10,7 @@ import StatGroup from '../components/StatGroup.astro';
 const buildProfile = [
   { label: 'Skill level', value: 'Beginner–Intermediate' },
   { label: 'Estimated time', value: '2–4 hours' },
-  { label: 'Components covered', value: '8' },
+  { label: 'Components covered', value: '12' },
   { label: 'Prerequisite', value: 'None — first-time builders welcome' },
 ];
 
@@ -72,6 +71,107 @@ const sections = [
     </div>
   </section>
 
+  <!-- Full-PC 3D Scroll Assembly Experience -->
+  <section
+    class="relative w-full border-b border-primary/10"
+    id="pc-3d-scroll-section"
+    data-scroll-container
+    style="height: 350vh;"
+  >
+    <div class="sticky top-0 h-screen w-full select-none overflow-hidden bg-surface flex flex-col justify-between" data-sticky-viewport>
+      <!-- Top HUD Header -->
+      <div class="flex items-center justify-between p-6 z-20 pointer-events-none">
+        <div class="flex items-center gap-2 rounded-card border border-primary/10 bg-surface/80 px-3.5 py-1.5 backdrop-blur-md pointer-events-auto">
+          <span class="size-2 rounded-full bg-accent animate-pulse" aria-hidden="true"></span>
+          <span class="font-mono text-xs font-medium text-primary">Full-PC Technical Visualization</span>
+        </div>
+
+        <div class="hidden sm:flex items-center gap-2 rounded-card border border-primary/10 bg-surface/80 px-3.5 py-1.5 backdrop-blur-md pointer-events-auto">
+          <span class="font-mono text-xs text-secondary">Scroll progress:</span>
+          <span class="font-mono text-xs font-semibold text-accent" data-scroll-percentage>0%</span>
+        </div>
+      </div>
+
+      <!-- 3D Canvas Host -->
+      <div class="absolute inset-0 size-full" data-canvas-host>
+        <canvas
+          id="landing-experience-canvas"
+          class="size-full block touch-none focus:outline-none"
+          role="img"
+          aria-label="Interactive 3D visualization of the complete PC assembly. Scroll to view disassembly animation."
+          tabindex="0"
+        ></canvas>
+
+        <!-- Loading Overlay -->
+        <div
+          class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-surface z-30 transition-opacity duration-500"
+          data-landing-loading
+        >
+          <div class="size-10 rounded-full border-2 border-primary/20 border-t-accent animate-spin"></div>
+          <p class="font-mono text-xs text-secondary" data-landing-loading-text>Loading full PC assembly model…</p>
+        </div>
+      </div>
+
+      <!-- Bottom Floating Controls & Contextual Info -->
+      <div class="relative z-20 flex flex-col gap-4 p-6 pointer-events-none">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <!-- Contextual Component Card -->
+          <div
+            class="max-w-md rounded-card border border-primary/15 bg-surface/90 p-5 shadow-2xl backdrop-blur-md pointer-events-auto transition-all duration-300 opacity-90 hover:opacity-100"
+            data-component-card
+          >
+            <div class="flex items-center justify-between gap-3">
+              <span class="rounded bg-accent/10 px-2 py-0.5 font-mono text-[10px] font-bold text-accent uppercase tracking-wider" data-comp-badge>
+                Interactive 3D Assembly
+              </span>
+              <button
+                type="button"
+                class="font-mono text-xs text-secondary hover:text-primary transition-colors hidden"
+                data-reset-cam-btn
+              >
+                Reset view
+              </button>
+            </div>
+
+            <h3 class="mt-2 text-base font-medium text-primary" data-comp-title>
+              Explore the PC Architecture
+            </h3>
+            <p class="mt-1 text-xs text-secondary leading-relaxed" data-comp-desc>
+              Scroll down to watch the full system disassemble in sequential order. Click on any component to isolate it.
+            </p>
+
+            <div class="mt-4 pt-3 border-t border-primary/10 flex items-center justify-between gap-4">
+              <a
+                href="/components/"
+                class="inline-flex items-center gap-2 font-mono text-xs font-medium text-accent hover:underline underline-offset-4"
+                data-view-detail-link
+              >
+                <span>View in Component Library</span>
+                <span aria-hidden="true">→</span>
+              </a>
+
+              <span class="font-mono text-[10px] text-secondary">
+                Drag to rotate · Scroll to explore
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Stage Scrub Guide -->
+          <div class="hidden md:flex items-center gap-2 rounded-card border border-primary/10 bg-surface/80 px-4 py-2 backdrop-blur-md pointer-events-auto">
+            <span class="font-mono text-[11px] text-secondary">Timeline:</span>
+            <span class="font-mono text-[11px] text-primary" data-stage-label>Assembled System</span>
+          </div>
+        </div>
+
+        <!-- Progress Track Bar -->
+        <div class="w-full h-1 bg-primary/10 rounded-full overflow-hidden pointer-events-auto">
+          <div class="h-full bg-accent transition-all duration-75" style="width: 0%;" data-progress-bar></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's in this release & Section Teasers -->
   <section class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
     <!-- What's in this release -->
     <div class="max-w-3xl rounded-card border border-primary/10 bg-surface-raised p-6">
@@ -100,3 +200,162 @@ const sections = [
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  import { FullPCExperienceAdapter } from '../lib/3d/FullPCExperienceAdapter';
+  import { STAGES, TIMELINE_DURATION } from '../lib/3d/runtime/animation/stage-data';
+
+  // Canonical stage labels — thresholds derived from the animation data itself
+  // (stage start times normalized against the canonical timeline duration),
+  // never hard-coded.
+  const STAGE_LABELS: Record<string, string> = {
+    ASSEMBLED: 'Assembled System',
+    OPEN_CASE: 'Chassis & Side Panel Disassembly',
+    MOTHERBOARD_OUT: 'Motherboard Extraction',
+    CPU_COOLER_OUT: 'CPU Cooler Removal',
+    CPU_OUT: 'CPU Extraction',
+    RAM_OUT: 'Memory Removal',
+    GPU_OUT: 'Graphics Card Extraction',
+    STORAGE_OUT: 'Storage Removal',
+    PSU_OUT: 'Power Supply Removal',
+    SECONDARY_OUT: 'Secondary Components Out',
+    FINAL_EXPLODE: 'Final Explode View',
+  };
+
+  const stages = STAGES.map((stage) => ({
+    name: STAGE_LABELS[stage.id] ?? stage.id,
+    threshold: stage.startTime / TIMELINE_DURATION,
+  }));
+
+  function initLandingScrollExperience() {
+    const section = document.querySelector<HTMLElement>('[data-scroll-container]');
+    const canvas = document.querySelector<HTMLCanvasElement>('#landing-experience-canvas');
+    const loadingOverlay = document.querySelector<HTMLElement>('[data-landing-loading]');
+    const loadingText = document.querySelector<HTMLElement>('[data-landing-loading-text]');
+    const scrollPercentageEl = document.querySelector<HTMLElement>('[data-scroll-percentage]');
+    const progressBar = document.querySelector<HTMLElement>('[data-progress-bar]');
+    const stageLabel = document.querySelector<HTMLElement>('[data-stage-label]');
+
+    const compTitle = document.querySelector<HTMLElement>('[data-comp-title]');
+    const compDesc = document.querySelector<HTMLElement>('[data-comp-desc]');
+    const compBadge = document.querySelector<HTMLElement>('[data-comp-badge]');
+    const viewDetailLink = document.querySelector<HTMLAnchorElement>('[data-view-detail-link]');
+    const resetCamBtn = document.querySelector<HTMLButtonElement>('[data-reset-cam-btn]');
+
+    if (!section || !canvas) return;
+    if ((section as any).__full_adapter) return;
+
+    let adapter: FullPCExperienceAdapter | null = null;
+
+    adapter = new FullPCExperienceAdapter({
+      canvas,
+      enableCameraZoom: false,
+      onLoadProgress: (ratio) => {
+        if (loadingText && ratio !== null) {
+          loadingText.textContent = `Loading 3D PC assembly… ${Math.round(ratio * 100)}%`;
+        }
+      },
+      onReady: () => {
+        if (loadingOverlay) {
+          loadingOverlay.style.opacity = '0';
+          setTimeout(() => {
+            loadingOverlay.style.display = 'none';
+          }, 500);
+        }
+      },
+      onError: (err) => {
+        if (loadingText) {
+          loadingText.textContent = `Failed to load 3D PC model: ${err.message}`;
+          loadingText.classList.add('text-danger');
+        }
+      },
+      onComponentSelect: (component, semanticId) => {
+        if (component && semanticId) {
+          if (compTitle) compTitle.textContent = component.displayName;
+          if (compDesc) compDesc.textContent = component.description;
+          if (compBadge) compBadge.textContent = component.category;
+          if (viewDetailLink) {
+            viewDetailLink.href = component.route;
+            viewDetailLink.querySelector('span')!.textContent = `Inspect ${component.displayName}`;
+          }
+          if (resetCamBtn) resetCamBtn.classList.remove('hidden');
+        } else {
+          if (compTitle) compTitle.textContent = 'Explore the PC Architecture';
+          if (compDesc) {
+            compDesc.textContent = 'Scroll down to watch the full system disassemble in sequential order. Click on any component to isolate it.';
+          }
+          if (compBadge) compBadge.textContent = 'Interactive 3D Assembly';
+          if (viewDetailLink) {
+            viewDetailLink.href = '/components/';
+            viewDetailLink.querySelector('span')!.textContent = 'View in Component Library';
+          }
+          if (resetCamBtn) resetCamBtn.classList.add('hidden');
+        }
+      },
+    });
+
+    (section as any).__full_adapter = adapter;
+    adapter.initialize();
+
+    // Landing-only touch policy: vertical swipes must scroll the page (touch-action
+    // pan-y overrides OrbitControls' inline 'none'); horizontal drags still rotate.
+    canvas.style.touchAction = 'pan-y';
+
+    resetCamBtn?.addEventListener('click', () => {
+      adapter?.resetView();
+    });
+
+    // Native Scroll Mapping with RAF-driven updates
+    // (stage thresholds come from the canonical `stages` mapping above)
+    function calculateScrollProgress() {
+      if (!section) return 0;
+      const rect = section.getBoundingClientRect();
+      const scrollTrackHeight = rect.height - window.innerHeight;
+      if (scrollTrackHeight <= 0) return 0;
+
+      const progress = -rect.top / scrollTrackHeight;
+      return Math.max(0, Math.min(1, progress));
+    }
+
+    let isObserving = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          isObserving = entry.isIntersecting;
+        }
+      },
+      { rootMargin: '100px 0px 100px 0px' }
+    );
+    observer.observe(section);
+
+    function onScroll() {
+      if (!adapter) return;
+      const progress = calculateScrollProgress();
+      adapter.updateScrollProgress(progress);
+
+      const percent = Math.round(progress * 100);
+      if (scrollPercentageEl) scrollPercentageEl.textContent = `${percent}%`;
+      if (progressBar) progressBar.style.width = `${percent}%`;
+
+      if (stageLabel) {
+        let currentStage = stages[0].name;
+        for (const s of stages) {
+          if (progress >= s.threshold) currentStage = s.name;
+        }
+        stageLabel.textContent = currentStage;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLandingScrollExperience);
+  } else {
+    initLandingScrollExperience();
+  }
+
+  document.addEventListener('astro:page-load', initLandingScrollExperience);
+</script>

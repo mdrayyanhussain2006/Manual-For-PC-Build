@@ -1,0 +1,86 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "slug": "storage-m2",
+  "name": "M.2 NVMe SSD",
+  "version": 1,
+  "budget": {
+    "lod0Bytes": 500000,
+    "lod1Bytes": 250000,
+    "trisLod0": 10000,
+    "trisLod1": 4500
+  },
+  "model": {
+    "lod0": "/models/storage-m2/storage-m2.lod0.glb",
+    "lod1": "/models/storage-m2/storage-m2.lod1.glb",
+    "poster": "/models/storage-m2/storage-m2.poster.avif"
+  },
+  "defaultCamera": { "direction": [0.04, 0.12, 0.99], "fitFraction": 0.85, "fov": 28 },
+  "parts": [
+    {
+      "id": "pcb",
+      "number": 1,
+      "meshPattern": "P01_pcb*",
+      "anchor": "H01",
+      "fallbackOffset": [0, 1, 0.2]
+    },
+    {
+      "id": "controller",
+      "number": 2,
+      "meshPattern": "P02_controller*",
+      "anchor": "H02",
+      "fallbackOffset": [0, 1, 0.3],
+      "camera": { "position": [-0.08, 0.45, 0.55], "target": [-0.10, 0.0, 0.0], "fov": 24 }
+    },
+    {
+      "id": "nand",
+      "number": 3,
+      "meshPattern": "P03_nand_*",
+      "anchor": "H03",
+      "fallbackOffset": [0, 1, 0.3],
+      "camera": { "position": [0.22, 0.45, 0.55], "target": [0.20, 0.0, 0.0], "fov": 24 }
+    },
+    {
+      "id": "dram",
+      "number": 4,
+      "meshPattern": "P04_dram*",
+      "anchor": "H04",
+      "fallbackOffset": [0, 1, 0.3]
+    },
+    {
+      "id": "connector",
+      "number": 5,
+      "meshPattern": "P05_connector*",
+      "anchor": "H05",
+      "fallbackOffset": [0, 1, 0.2],
+      "camera": { "position": [-0.48, 0.35, 0.45], "target": [-0.45, 0.0, 0.0], "fov": 22 }
+    },
+    {
+      "id": "passives",
+      "number": 6,
+      "meshPattern": "P06_passives*",
+      "anchor": "H06",
+      "fallbackOffset": [0, 1, 0.3]
+    },
+    {
+      "id": "mounting",
+      "number": 7,
+      "meshPattern": "P07_mounting*",
+      "anchor": "H07",
+      "fallbackOffset": [0, 1, 0.4],
+      "explode": { "dir": [0, 1, 0], "dist": 0.4, "stagger": 0.0 },
+      "camera": { "position": [0.45, 0.35, 0.45], "target": [0.42, 0.0, 0.0], "fov": 22 }
+    },
+    {
+      "id": "label",
+      "number": 8,
+      "meshPattern": "P08_label*",
+      "anchor": "H08",
+      "fallbackOffset": [0, 1, 0.4],
+      "explode": { "dir": [0, 1, 0], "dist": 0.55, "stagger": 0.1 }
+    }
+  ],
+  "xrayGroups": [
+    { "id": "silicon", "label": "Just the silicon", "parts": ["controller", "nand", "dram"] }
+  ],
+  "environment": "studio"
+}

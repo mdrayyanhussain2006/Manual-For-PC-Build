@@ -1,0 +1,134 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "slug": "storage-hdd",
+  "name": "HDD (Hard Disk Drive)",
+  "version": 1,
+  "budget": {
+    "lod0Bytes": 1300000,
+    "lod1Bytes": 600000,
+    "trisLod0": 40000,
+    "trisLod1": 18000
+  },
+  "model": {
+    "lod0": "/models/storage-hdd/storage-hdd.lod0.glb",
+    "lod1": "/models/storage-hdd/storage-hdd.lod1.glb",
+    "poster": "/models/storage-hdd/storage-hdd.poster.avif"
+  },
+  "defaultCamera": {
+    "direction": [0.65, 0.45, 0.60],
+    "fitFraction": 0.74,
+    "fov": 28
+  },
+  "parts": [
+    {
+      "id": "chassis",
+      "number": 1,
+      "meshPattern": "P01_chassis*",
+      "anchor": "H01",
+      "fallbackOffset": [0.5, 0, 0.3]
+    },
+    {
+      "id": "top_cover",
+      "number": 2,
+      "meshPattern": "P02_top_cover*",
+      "anchor": "H02",
+      "fallbackOffset": [0.3, 0.3, 0.4],
+      "explode": {
+        "dir": [0, 1, 0],
+        "dist": 0.85,
+        "stagger": 0.0
+      }
+    },
+    {
+      "id": "platters",
+      "number": 3,
+      "meshPattern": "P03_platter*",
+      "anchor": "H03",
+      "fallbackOffset": [0, 0.3, 0.3],
+      "explode": {
+        "dir": [0, 1, 0],
+        "dist": 0.50,
+        "stagger": 0.2
+      }
+    },
+    {
+      "id": "spindle_motor",
+      "number": 4,
+      "meshPattern": "P04_spindle*",
+      "anchor": "H04",
+      "fallbackOffset": [0, 0.3, 0.35],
+      "explode": {
+        "dir": [0, 1, 0],
+        "dist": 0.35,
+        "stagger": 0.2
+      }
+    },
+    {
+      "id": "actuator_arm",
+      "number": 5,
+      "meshPattern": "P05_actuator*",
+      "anchor": "H05",
+      "fallbackOffset": [-0.3, -0.2, 0.3],
+      "explode": {
+        "dir": [-1, 0, 0],
+        "dist": 0.45,
+        "stagger": 0.15
+      }
+    },
+    {
+      "id": "rw_heads",
+      "number": 6,
+      "meshPattern": "P06_rw_heads*",
+      "anchor": "H06",
+      "fallbackOffset": [-0.1, 0.2, 0.25],
+      "explode": {
+        "dir": [-1, 0, 0],
+        "dist": 0.55,
+        "stagger": 0.15
+      }
+    },
+    {
+      "id": "vcm_magnets",
+      "number": 7,
+      "meshPattern": "P07_vcm_magnets*",
+      "anchor": "H07",
+      "fallbackOffset": [-0.4, -0.4, 0.3],
+      "explode": {
+        "dir": [0, 1, 0],
+        "dist": 0.40,
+        "stagger": 0.1
+      }
+    },
+    {
+      "id": "controller_pcb",
+      "number": 8,
+      "meshPattern": "P08_controller*",
+      "anchor": "H08",
+      "fallbackOffset": [0, 0, -0.4],
+      "explode": {
+        "dir": [0, -1, 0],
+        "dist": 0.45,
+        "stagger": 0.1
+      }
+    },
+    {
+      "id": "sata_connectors",
+      "number": 9,
+      "meshPattern": "P09_sata*",
+      "anchor": "H09",
+      "fallbackOffset": [0.3, -0.6, -0.15]
+    },
+    {
+      "id": "parking_ramp",
+      "number": 10,
+      "meshPattern": "P10_parking*",
+      "anchor": "H10",
+      "fallbackOffset": [0.3, 0.5, 0.3],
+      "explode": {
+        "dir": [1, 0, 0],
+        "dist": 0.30,
+        "stagger": 0.2
+      }
+    }
+  ]
+}

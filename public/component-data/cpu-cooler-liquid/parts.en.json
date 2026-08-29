@@ -1,0 +1,50 @@
+{
+  "radiator_core": {
+    "title": "240mm Aluminum Radiator Core",
+    "description": "High-density dual-pass aluminum heat exchanger featuring 12 flattened water micro-channels intertwined with serpentine cooling fins."
+  },
+  "cooling_fans": {
+    "title": "Dual 120mm PWM Radiator Fans",
+    "description": "Twin 120mm high-static-pressure cooling fans optimized for pushing laminar airflow through dense radiator fin matrices."
+  },
+  "radiator_shroud": {
+    "title": "Radiator Housing & End Tanks",
+    "description": "Formed steel protective outer frame with integrated fluid distribution end tanks and standardized 240mm chassis mounting threads."
+  },
+  "epdm_tubing": {
+    "title": "Braided EPDM Coolant Hoses",
+    "description": "Dual flexible low-permeability synthetic EPDM rubber tubes enclosed in dense nylon braiding to eliminate coolant evaporation."
+  },
+  "swivel_barbs": {
+    "title": "Rotary 90-Degree Swivel Fittings",
+    "description": "Dual sealed rotary swivel hose barbs allowing 360-degree articulation for kink-free tube routing inside compact PC chassis."
+  },
+  "pump_block": {
+    "title": "3-Phase Motor Pump Block",
+    "description": "High-efficiency ceramic bearing 3-phase motor spinning a closed impeller to circulate liquid coolant across the copper micro-channels."
+  },
+  "copper_coldplate": {
+    "title": "Micro-Skived Copper Coldplate",
+    "description": "Oxygen-free copper baseplate machined with sub-0.1mm micro-fins to maximize thermal contact surface area over the CPU core."
+  },
+  "mounting_ring": {
+    "title": "Universal Multi-Socket Retention Ring",
+    "description": "Stamped steel socket mounting bracket equipped with 4 spring-loaded thumbscrews delivering uniform retention downforce."
+  },
+  "top_infinity_cap": {
+    "title": "Infinity Mirror Pump Top Display",
+    "description": "High-polish tinted dark acrylic top cover with semi-reflective internal mirror optics and subtle accent diffusion ring."
+  },
+  "fan_screws": {
+    "title": "Radiator Long Fan Screws",
+    "description": "Eight black steel 30mm UNC 6-32 pan-head screws securing the dual 120mm fans firmly against the radiator core."
+  },
+  "wiring_harness": {
+    "title": "Pump & Fan Wiring Harness",
+    "description": "Braided wiring harness providing 3-pin pump tachometer feedback and daisy-chained 4-pin PWM fan speed synchronization."
+  },
+  "thermal_paste_layer": {
+    "title": "Pre-Applied Thermal Compound",
+    "description": "Factory-applied circular grid pattern of high-conductivity non-curing thermal paste ensuring zero microscopic air gaps."
+  }
+}

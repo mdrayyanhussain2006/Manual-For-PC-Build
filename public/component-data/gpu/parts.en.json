@@ -1,0 +1,58 @@
+{
+  "graphics_processor": {
+    "title": "Monolithic GPU Compute Die",
+    "description": "High-transistor-density silicon micro-architecture core executing thousands of parallel compute threads for real-time graphics rendering and tensor computation."
+  },
+  "vram_modules": {
+    "title": "GDDR6X Video Memory Modules",
+    "description": "Eight high-speed BGA memory chips utilizing PAM4 multi-level signaling to deliver over 1 TB/s of dedicated frame-buffer memory bandwidth."
+  },
+  "vrm_power_stages": {
+    "title": "16-Phase DrMOS Voltage Regulator",
+    "description": "Multi-phase digital power delivery system with monolithic smart power stages (DrMOS) and alloy chokes supplying clean low-ripple voltage to the GPU core."
+  },
+  "pcb_board": {
+    "title": "12-Layer High-Density FR4 PCB",
+    "description": "Custom multi-layer server-grade printed circuit board with 2oz copper ground planes, ultra-dense trace routing, and back-drilled via holes."
+  },
+  "vapor_chamber_base": {
+    "title": "Copper Vapor Chamber & Heatpipes",
+    "description": "Nickel-plated copper planar vacuum chamber paired with six composite sintered heatpipes spreading localized thermal flux rapidly across the fin matrix."
+  },
+  "heatsink_fin_array": {
+    "title": "Dual High-Density Aluminum Fin Stack",
+    "description": "Wave-contoured aluminum cooling fin arrays engineered to maximize boundary-layer air turbulence while minimizing aerodynamic fan noise."
+  },
+  "triple_fans": {
+    "title": "Triple 90mm Axial Cooling Fans",
+    "description": "Fluid-dynamic bearing axial fans featuring alternate counter-rotation to eliminate airflow turbulence and push pressurized air through the heatsink."
+  },
+  "cooler_shroud": {
+    "title": "Die-Cast Metal Cooler Shroud",
+    "description": "Precision die-cast aluminum outer armor directing airflow across the heatsink fins while shielding internal components from physical damage."
+  },
+  "backplate": {
+    "title": "Brushed Aluminum Backplate",
+    "description": "Full-coverage structural aluminum backplate preventing PCB sagging and featuring a flow-through exhaust window for pass-through chassis ventilation."
+  },
+  "io_bracket": {
+    "title": "Dual-Slot Stainless Steel I/O Bracket",
+    "description": "Anti-corrosion stainless steel bracket anchoring the card to the PC chassis and providing precision cutouts for display video outputs."
+  },
+  "pcie_interface": {
+    "title": "PCIe 5.0 ×16 Gold Interface",
+    "description": "Standardized 16-lane high-speed differential bus edge connector with hard gold-plated contact fingers delivering up to 64 GB/s bidirectional throughput."
+  },
+  "power_connector": {
+    "title": "16-Pin 12V-2x6 (12VHPWR) Power Socket",
+    "description": "High-density 12V DC power connector featuring 12 primary power conductors and 4 top sense pins capable of safely delivering up to 600W."
+  },
+  "thermal_pads": {
+    "title": "High-Conductivity Thermal Gap Pads",
+    "description": "Compressible silicone-based thermal pads bridging the mechanical tolerance gap between VRAM/VRM components and the vapor chamber."
+  },
+  "display_outputs": {
+    "title": "DisplayPort 2.1 & HDMI 2.1a Outputs",
+    "description": "Full array of video output ports supporting multi-monitor high-refresh 4K and 8K HDR displays with DSC compression."
+  }
+}

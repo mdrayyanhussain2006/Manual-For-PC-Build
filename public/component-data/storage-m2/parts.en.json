@@ -1,0 +1,90 @@
+{
+  "pcb": {
+    "title": "PCB Substrate",
+    "description": "A 22 × 80 mm fiberglass board — the M.2 2280 standard — that carries every chip on the drive and routes them all to a single edge connector.",
+    "function": "Carries the PCIe data lanes from the controller to the host slot, plus all power routing, through four to six copper layers laminated into just 0.8 mm of thickness.",
+    "importance": "The M.2 standard is what makes NVMe drives drop-in parts: any 2280 board fits any M-key 2280 slot, and the mounting notch and hole line up exactly.",
+    "facts": [
+      "2280 means 22 mm wide, 80 mm long — the most common of twelve M.2 sizes.",
+      "The gold pads under each chip are its solder landing — no wires anywhere.",
+      "Higher-end boards route the PCIe lanes with length-matched serpentine traces."
+    ]
+  },
+  "controller": {
+    "title": "Controller",
+    "description": "The drive's own small computer: a square chip that runs the SSD's operating brain every moment power is on.",
+    "function": "Translates the host's requests into flash operations — wear-leveling, error correction, garbage collection, and encryption all happen inside this chip in real time.",
+    "importance": "Every SSD characteristic you read on a box — speed, endurance, cache behavior — is ultimately a promise about what this one chip's firmware can sustain.",
+    "facts": [
+      "A controller manages millions of flash cells it can never read directly — only through its own translation tables.",
+      "Controller firmware updates are why SSDs get faster and fix bugs over their lives.",
+      "When a drive 'dies', often the controller gave up, not the flash."
+    ]
+  },
+  "nand": {
+    "title": "NAND Flash",
+    "description": "The four black packages that actually store your data — stacked silicon dies sealed into standard chip packages.",
+    "function": "Hold every bit as trapped electric charge in floating-gate cells that keep their state with the power off — the property that makes this storage rather than memory.",
+    "importance": "NAND is most of a drive's cost and all of its capacity. How many bits each cell holds (TLC, QLC) sets the price-per-gigabyte and the endurance.",
+    "facts": [
+      "Each package can stack 8–16 dies — capacity without growing the footprint.",
+      "Flash cells wear out with writes; the controller spreads wear across them all.",
+      "NAND forgets slowly if unpowered for years — which is why cold archives migrate data."
+    ]
+  },
+  "dram": {
+    "title": "DRAM Buffer",
+    "description": "A small conventional memory chip that acts as the drive's desk space for its mapping tables and write cache.",
+    "function": "Holds the controller's live translation map — where every file block physically lives — plus buffered writes, so the NAND itself is accessed in big, efficient blocks.",
+    "importance": "With DRAM, an SSD stays fast under random workloads and its flash wears evenly. DRAM-less drives exist and work, but lean on tricks that cost sustained performance.",
+    "facts": [
+      "The map entry for one terabyte of data is megabytes wide — it can't fit in the controller alone.",
+      "Losing power mid-write is safe: the drive replays journal data from NAND at boot.",
+      "Some budget drives replace this chip with a slice of the NAND itself (HMB)."
+    ]
+  },
+  "connector": {
+    "title": "M-key Connector & Keying Notch",
+    "description": "The gold-plated finger field on the underside edge, interrupted by one semicircular notch — the entire electrical and mechanical interface to the motherboard.",
+    "function": "Carries four lanes of PCIe (about 8 GB/s per lane on Gen4) plus 3.3 V power. The notch mates with a peg in the socket so an M-key drive can only seat in an M-key slot.",
+    "importance": "This edge is why NVMe is drop-in: the keying physically prevents installing a slower or incompatible key class, and the gold plating survives hundreds of insertions.",
+    "facts": [
+      "The notch position encodes the key: B, M, or both — NVMe drives are M-key.",
+      "Gold never oxidizes, which is why the fingers outlast the drive's rated life.",
+      "There is no SATA on these fingers — an M.2 SATA drive uses a different key."
+    ]
+  },
+  "passives": {
+    "title": "PMIC & Passives",
+    "description": "The power-management chip and its crowd of tiny capacitors and resistors — the drive's quiet electrical plumbing, on both faces of the board.",
+    "function": "The PMIC turns the slot's 3.3 V into the exact rails the controller, DRAM and NAND need; the capacitors deliver momentary bursts of current and smooth the supply.",
+    "importance": "Clean power is why SSDs neither corrupt data nor throttle: every brown-out event the PMIC can't absorb becomes a write error the controller must retry.",
+    "facts": [
+      "Back-side components are why some drives can't have chips on both faces — the socket pads are reserved.",
+      "MLCC capacitors are ceramic — the tan blocks — and there are dozens per board.",
+      "High-end drives add a fifth capacitor bank to finish writes during power loss."
+    ]
+  },
+  "mounting": {
+    "title": "Standoff & Screw",
+    "description": "One hex standoff and a tiny pan-head screw — the entire mounting system, holding the drive flat at a single point.",
+    "function": "Anchors the drive's far end to the motherboard so the edge connector carries zero mechanical load and the fingers can't work loose over time.",
+    "importance": "An unscrewed M.2 drive still works — until vibration or a cable tug lifts an edge and the connection drops. The screw is one turn of effort for years of stability.",
+    "facts": [
+      "The standoff height sets the clearance for chips on the underside.",
+      "M.2 screws are the most-lost part in PC building — thread-locker is your friend.",
+      "Only one screw: the connector end floats, held by the socket itself."
+    ]
+  },
+  "label": {
+    "title": "Label Layer",
+    "description": "The printed sticker covering the controller zone. On this neutral model it is deliberately blank — but on a real drive it carries the model number and capacity.",
+    "function": "Identifies the drive and, on many models, doubles as a thermal spreader that evens out surface heat across the controller and DRAM.",
+    "importance": "The label is the only part of an SSD a user ever reads — and removing it can void the warranty, since it hides the screws and serial that prove identity.",
+    "facts": [
+      "Some labels are copper-lined specifically to spread heat — they feel warm to the touch.",
+      "Capacity, serial and firmware live here; the drive reports the same data electronically.",
+      "Never block an M.2 label with a heatsink you can't remove — warranty first."
+    ]
+  }
+}

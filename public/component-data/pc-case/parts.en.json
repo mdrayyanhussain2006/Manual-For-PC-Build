@@ -1,0 +1,50 @@
+{
+  "main_chassis_frame": {
+    "title": "SPCC Steel Unibody Frame",
+    "description": "Rigid 0.8 mm electro-galvanized cold-rolled steel chassis structure integrating the motherboard tray, fan mounting rails, and rear I/O framing."
+  },
+  "tempered_glass_panel": {
+    "title": "Tempered Glass Left Side Panel",
+    "description": "Full-coverage 4.0 mm tinted scratch-resistant tempered glass panel with steel reinforcement brackets and tool-less captive thumb screws."
+  },
+  "steel_side_panel": {
+    "title": "Solid Steel Right Side Panel",
+    "description": "Heavy-gauge solid stamped steel side panel concealing behind-the-motherboard cable management runs and 2.5\" SSD mounting trays."
+  },
+  "front_mesh_panel": {
+    "title": "High-Airflow Front Perforated Mesh",
+    "description": "Precision micro-perforated stamped metal intake bezel delivering unrestricted laminar airflow directly to GPU and CPU coolers."
+  },
+  "top_dust_filter": {
+    "title": "Magnetic Top Dust Filter Sheet",
+    "description": "Flexible ultra-fine nylon mesh filter with perimeter magnetic stripping covering top exhaust fan/radiator mounting positions."
+  },
+  "psu_shroud": {
+    "title": "Full-Length PSU Basement Chamber",
+    "description": "Integrated steel divider isolating power supply heat and cable clutter from the main hardware bay, featuring rubber routing grommets."
+  },
+  "motherboard_standoffs": {
+    "title": "ATX Motherboard Brass Standoffs",
+    "description": "Nine pre-installed standard 6-32 UNC brass standoffs establishing ground isolation and securing standard ATX and Micro-ATX motherboards."
+  },
+  "pcie_slot_covers": {
+    "title": "Ventilated PCIe Expansion Slot Covers",
+    "description": "Seven reusable stamped steel expansion slot brackets featuring ventilation cutouts and single-screw retention."
+  },
+  "front_io_module": {
+    "title": "Front I/O Interface Module",
+    "description": "Top-front connectivity cluster featuring high-speed USB 3.2 Gen 2 Type-C, dual USB 3.0 Type-A, unified 3.5mm audio jack, and power button."
+  },
+  "drive_cages": {
+    "title": "Modular 3.5\" & 2.5\" Storage Cages",
+    "description": "Repositionable and removable dual 3.5\" hard drive cage located in the lower basement with rubber vibration dampening grommets."
+  },
+  "cable_grommets": {
+    "title": "Silicone Cable Routing Grommets",
+    "description": "Multi-segment pliable silicone grommets sealing cable pass-through openings while preventing wire insulation abrasion."
+  },
+  "case_feet": {
+    "title": "Elevated Rubberized Chassis Feet",
+    "description": "Four heavy-duty elevated support feet with non-marking rubber pads ensuring clearance for bottom power supply intake ventilation."
+  }
+}

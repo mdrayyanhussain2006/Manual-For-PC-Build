@@ -1,0 +1,87 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "slug": "cpu",
+  "name": "CPU (Desktop LGA Processor)",
+  "version": 1,
+  "budget": {
+    "lod0Bytes": 1000000,
+    "lod1Bytes": 450000,
+    "trisLod0": 50000,
+    "trisLod1": 22000,
+    "lodReductionPolicy": "low-complexity-exception"
+  },
+  "model": {
+    "lod0": "/models/cpu/cpu.lod0.glb",
+    "lod1": "/models/cpu/cpu.lod1.glb",
+    "poster": "/models/cpu/cpu.poster.avif"
+  },
+  "defaultCamera": { "direction": [0.04, 0.95, 0.30], "fitFraction": 0.74, "fov": 28 },
+  "parts": [
+    {
+      "id": "heat_spreader",
+      "number": 1,
+      "meshPattern": "P01_ihs*",
+      "anchor": "H01",
+      "fallbackOffset": [0, 0.5, 0.4],
+      "explode": { "dir": [0, 1, 0], "dist": 0.7, "stagger": 0.0 }
+    },
+    {
+      "id": "thermal_interface",
+      "number": 2,
+      "meshPattern": "P02_tim*",
+      "anchor": "H02",
+      "fallbackOffset": [0, -0.3, 0.3],
+      "explode": { "dir": [0, 1, 0], "dist": 0.5, "stagger": 0.1, "fadeIn": true }
+    },
+    {
+      "id": "compute_die",
+      "number": 3,
+      "meshPattern": "P03_compute_die*",
+      "anchor": "H03",
+      "fallbackOffset": [-0.35, 0, 0.25],
+      "explode": { "dir": [0, 1, 0], "dist": 0.32, "stagger": 0.2 }
+    },
+    {
+      "id": "io_die",
+      "number": 4,
+      "meshPattern": "P04_io_die*",
+      "anchor": "H04",
+      "fallbackOffset": [0.35, 0, 0.25],
+      "explode": { "dir": [0, 1, 0], "dist": 0.32, "stagger": 0.2 }
+    },
+    {
+      "id": "substrate",
+      "number": 5,
+      "meshPattern": "P05_substrate*",
+      "anchor": "H05",
+      "fallbackOffset": [0.6, 0, 0.15]
+    },
+    {
+      "id": "smd_capacitors",
+      "number": 6,
+      "meshPattern": "P06_smd_*",
+      "anchor": "H06",
+      "fallbackOffset": [0, -0.2, -0.35]
+    },
+    {
+      "id": "land_grid",
+      "number": 7,
+      "meshPattern": "P07_land_grid*",
+      "anchor": "H07",
+      "fallbackOffset": [0.35, -0.35, -0.3],
+      "explode": { "dir": [0, -1, 0], "dist": 0.25, "stagger": 0.1 }
+    },
+    {
+      "id": "keying_features",
+      "number": 8,
+      "meshPattern": "P08_keying*",
+      "anchor": "H08",
+      "fallbackOffset": [-0.55, 0.45, 0.2]
+    }
+  ],
+  "xrayGroups": [
+    { "id": "power_delivery", "label": "Power delivery", "parts": ["thermal_interface", "smd_capacitors", "land_grid"] },
+    { "id": "silicon", "label": "Just the silicon", "parts": ["compute_die", "io_die"] }
+  ],
+  "environment": "studio"
+}

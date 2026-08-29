@@ -1,0 +1,66 @@
+{
+  "cpu_socket_lga": {
+    "title": "LGA CPU Socket & Retention Frame",
+    "description": "High-density land grid array (LGA) CPU socket equipped with a stainless steel Independent Loading Mechanism (ILM) actuation lever and precision spring contact array."
+  },
+  "vrm_heatsinks": {
+    "title": "Dual VRM Aluminum Heatsinks",
+    "description": "Massive CNC-milled aluminum heatsink blocks linked by an embedded nickel-plated copper heatpipe providing thermal dissipation for power stage MOSFETs."
+  },
+  "dimm_slots": {
+    "title": "Quad DDR5 DIMM Memory Slots",
+    "description": "Surface-mounted high-speed DDR5 memory sockets with single-sided locking latches, surface-mount trace routing, and gold-plated contact pins."
+  },
+  "pcie_x16_slots": {
+    "title": "PCIe 5.0 ×16 Steel-Reinforced Slots",
+    "description": "High-bandwidth primary expansion slots featuring stainless steel armor shielding to support heavy graphics cards and eliminate signal cross-talk."
+  },
+  "m2_thermal_shields": {
+    "title": "M.2 NVMe SSD Thermal Armor",
+    "description": "Full-coverage aluminum heatsink plates with pre-applied high-conductivity thermal pads keeping high-speed Gen 5 NVMe drives cool under sustained loads."
+  },
+  "chipset_heatsink": {
+    "title": "Platform Controller Hub (PCH) Heatsink",
+    "description": "Passive high-surface-area aluminum heatsink cooling the motherboard chipset controller managing SATA, USB, and PCIe lane switching."
+  },
+  "rear_io_shield": {
+    "title": "Integrated Rear I/O Armor & Ports",
+    "description": "Factory pre-mounted electromagnetic interference (EMI) shield housing USB 3.2 Gen 2x2 Type-C, 2.5 GbE Ethernet, WiFi 7 antenna terminals, and audio jacks."
+  },
+  "audio_section": {
+    "title": "Isolated HD Audio Circuit & Codec",
+    "description": "Electrically isolated PCB audio trace zone featuring high-end gold audio capacitors, impedance-matching operational amplifiers, and a shielded codec."
+  },
+  "power_headers": {
+    "title": "Main ATX 24-Pin & Dual 8-Pin EPS Headers",
+    "description": "Heavy-duty solid-pin power delivery input sockets distributing 12V, 5V, 3.3V, and ground rails from the power supply unit."
+  },
+  "fan_pump_headers": {
+    "title": "PWM Fan & Dedicated AIO Pump Headers",
+    "description": "Six 4-pin smart pulse-width modulation (PWM) headers with dedicated 3A current delivery for high-performance liquid cooling pumps."
+  },
+  "rgb_headers": {
+    "title": "5V Addressable RGB & 12V RGB Headers",
+    "description": "Standardized lighting control headers synchronizing addressable LED illumination ribbons, case fans, and liquid cooler RGB lighting."
+  },
+  "front_panel_io": {
+    "title": "Front Panel USB-C & USB 3.0 Headers",
+    "description": "Internal high-speed interconnect headers routing front chassis USB Type-C (20 Gbps), dual USB 3.0 Type-A ports, and power switch leads."
+  },
+  "sata_ports": {
+    "title": "Quad SATA 6 Gb/s Data Connectors",
+    "description": "Right-angle Serial ATA storage connectors enabling high-speed data cabling to solid-state drives and traditional magnetic hard drives."
+  },
+  "debug_diagnostic": {
+    "title": "7-Segment Q-Code Debug LED Display",
+    "description": "Hardware diagnostic display displaying two-digit POST error hex codes alongside four individual status LEDs (CPU, DRAM, VGA, BOOT)."
+  },
+  "pcb_substrate": {
+    "title": "8-Layer Server-Grade FR4 PCB",
+    "description": "Eight-layer matte black server-grade glass epoxy substrate with 2oz copper inner power planes, matched-length differential trace pairs, and back-drilled vias."
+  },
+  "mounting_holes": {
+    "title": "Standard ATX Grounded Standoff Holes",
+    "description": "Nine perimeter and center copper-ringed mounting holes securing the motherboard to case standoffs and providing chassis earth grounding."
+  }
+}

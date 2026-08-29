@@ -1,0 +1,90 @@
+{
+  "frame": {
+    "title": "Housing & Frame",
+    "description": "A brand-neutral 120 × 120 × 25 mm rigid thermoplastic PBT frame with a trumpet-shaped intake bellmouth, exhaust flare, aerodynamic rear stator support struts, and standard 105 mm mounting holes.",
+    "function": "Maintains a precise 2.5 mm blade-tip clearance across all RPM ranges, minimizes air recirculation losses through the intake flare, and channels airflow smoothly along four aerodynamic rear guide struts.",
+    "importance": "Frame rigidity prevents structural flexing and harmonic buzzing against the PC chassis, while the intake bellmouth geometry reduces turbulence noise at high intake velocity.",
+    "facts": [
+      "120 mm is the ubiquitous desktop PC form factor, utilizing standard 105 × 105 mm screw spacing.",
+      "The four rear stator struts support the central motor hub; one strut incorporates an integrated wire channel.",
+      "Molded directional arrows on the frame exterior indicate airflow direction and impeller rotation."
+    ]
+  },
+  "blades": {
+    "title": "Aerodynamic Impeller",
+    "description": "A nine-blade rotor array engineered with cambered airfoil cross-sections, spanwise pitch twist, backward-curved sweep, and faired hub root transitions.",
+    "function": "Draws air axially through the intake bellmouth and accelerates it across the blade surface, converting motor torque into static pressure and linear airflow.",
+    "importance": "Blade curvature, pitch angle, and tip clearance dictate the fan's pressure-to-airflow curve and acoustic profile: true cambered airfoils move more air with less vortex shedding.",
+    "facts": [
+      "Nine blades balance static pressure for radiators with high volume airflow for chassis ventilation.",
+      "Pitch twist (28° at root tapering to 20° at tip) ensures uniform air velocity across the entire blade radius.",
+      "Micro-beveled blade tips reduce tip vortex turbulence against the inner frame wall."
+    ]
+  },
+  "hub": {
+    "title": "Rotor Hub & Magnet Bell",
+    "description": "The central 38 mm cylindrical rotor hub that locks onto the hardened steel motor shaft and houses the internal permanent magnet ring.",
+    "function": "Houses the multipole permanent magnet ring that reacts with the stator electromagnets, providing continuous rotational torque to the impeller array.",
+    "importance": "Rotational balance is critical: any mass eccentricity causes bearing wear and audible high-frequency chassis vibration.",
+    "facts": [
+      "A stepped concentric top cap provides aerodynamic air deflection away from the center dead zone.",
+      "The internal steel flux ring concentrates magnetic field lines across the stator coil gaps.",
+      "Precision dynamic balancing weights are applied inside the hub rim during manufacturing."
+    ]
+  },
+  "bearing": {
+    "title": "Fluid Dynamic Bearing",
+    "description": "A cutaway view of a high-precision Fluid Dynamic Bearing (FDB) showing the sintered copper sleeve, spiral herringbone oil grooves, and polished steel shaft.",
+    "function": "Pumps lubricating oil through microscopic herringbone grooves when rotating, creating a pressurized hydrodynamic film that completely floats the shaft away from metal-to-metal contact.",
+    "importance": "Eliminates surface friction, ensuring nearly silent operation and extending the operational lifespan up to 150,000 hours.",
+    "facts": [
+      "Herringbone grooves self-center the shaft dynamically as rotational speed increases.",
+      "Sealed lubricant reservoirs prevent oil evaporation and leakage in horizontal or vertical mounting orientations.",
+      "Polished hardened steel shafts are machined to sub-micron surface tolerances."
+    ]
+  },
+  "stator": {
+    "title": "Stator & Copper Coils",
+    "description": "The stationary four-pole electromagnetic stator core seated on the rear housing, featuring laminated silicon steel pole shoes and high-purity copper winding bobbins.",
+    "function": "Energizes alternating coil phases via the motor driver IC, generating a rotating magnetic field that pulls the rotor magnet ring around continuously.",
+    "importance": "Brushless DC operation eliminates mechanical commutators and brushes, generating zero friction, zero electrical sparks, and zero carbon dust.",
+    "facts": [
+      "Laminated silicon steel plates minimize eddy current heat losses in the motor core.",
+      "The motor control PCB incorporates a Hall-effect sensor to track rotor position for precise phase timing.",
+      "Precision copper wire gauge and turn count determine the motor's operating torque and RPM range."
+    ]
+  },
+  "pwm_cable": {
+    "title": "4-Pin PWM Cable Harness",
+    "description": "A flexible four-conductor ribbon cable harness routed along the frame channel, terminating in a standardized 4-pin female PWM motherboard connector.",
+    "function": "Carries +12V DC power, ground, tachometer pulse feedback, and high-frequency PWM speed control signals between the motherboard and fan controller.",
+    "importance": "PWM control allows dynamic, stepless RPM adjustment from near-silent low-speed idle up to maximum cooling under heavy thermal loads.",
+    "facts": [
+      "Pin 1 is Ground, Pin 2 is +12V Power, Pin 3 is Tachometer sense, and Pin 4 is PWM speed control.",
+      "Polarization ribs and a locking ramp prevent reverse insertion onto motherboard fan headers.",
+      "Tachometer signals generate two pulses per revolution for accurate system hardware monitoring."
+    ]
+  },
+  "argb_ring": {
+    "title": "ARGB Diffuser Ring",
+    "description": "A translucent frosted optical acrylic light ring seated around the intake perimeter, illuminated from beneath by 12 individually addressable RGB LEDs.",
+    "function": "Diffuses and homogenizes light emitted from discrete SMD LEDs into a continuous, uniform glowing halo without visible hotspots.",
+    "importance": "Enables synchronized 5V 3-pin digital illumination effects without obstructing aerodynamic intake airflow.",
+    "facts": [
+      "Frosted optical-grade acrylic uses microscopic light-scattering particles for even diffusion.",
+      "Each WS2812B/SK6812-compatible SMD LED contains integrated logic for individual color addressing.",
+      "The diffuser ring snaps securely into precision retention clips molded into the frame corners."
+    ]
+  },
+  "antivib_pins": {
+    "title": "Silicone Anti-Vibration Pads",
+    "description": "Molded elastomeric silicone corner dampening pads seated on the front and rear mounting wings with integrated screw pass-through sleeves.",
+    "function": "Acoustically decouples the fan frame from the computer case sheet metal, absorbing high-frequency mechanical vibration before it can resonate.",
+    "importance": "Prevents chassis panels from acting as acoustic sounding boards, significantly lowering total system noise levels.",
+    "facts": [
+      "Soft 40-durometer silicone absorbs motor vibration and micro-harmonics across a wide frequency range.",
+      "Corner pads feature textured grip ridges that seat firmly against painted case panels.",
+      "Compatible with standard self-tapping fan screws and tool-less rubber mounting pull-pins."
+    ]
+  }
+}

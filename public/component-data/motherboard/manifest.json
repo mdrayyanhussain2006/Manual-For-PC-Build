@@ -1,0 +1,156 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "slug": "motherboard",
+  "name": "Motherboard (ATX System Board — Flagship)",
+  "version": 1,
+  "budget": {
+    "lod0Bytes": 2600000,
+    "lod1Bytes": 1200000,
+    "trisLod0": 80000,
+    "trisLod1": 36000
+  },
+  "model": {
+    "lod0": "/models/motherboard/motherboard.lod0.glb",
+    "lod1": "/models/motherboard/motherboard.lod1.glb",
+    "poster": "/models/motherboard/motherboard.poster.avif"
+  },
+  "defaultCamera": {
+    "direction": [0.65, 0.45, 0.60],
+    "fitFraction": 0.74,
+    "fov": 28
+  },
+  "parts": [
+    {
+      "id": "cpu_socket_lga",
+      "number": 1,
+      "meshPattern": "P01_cpu_socket*",
+      "anchor": "H01",
+      "fallbackOffset": [0, 0.2, 0.2]
+    },
+    {
+      "id": "vrm_heatsinks",
+      "number": 2,
+      "meshPattern": "P02_vrm_heatsinks*",
+      "anchor": "H02",
+      "fallbackOffset": [-0.3, 0.4, 0.4],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.60,
+        "stagger": 0.0
+      }
+    },
+    {
+      "id": "dimm_slots",
+      "number": 3,
+      "meshPattern": "P03_dimm_slots*",
+      "anchor": "H03",
+      "fallbackOffset": [0.35, 0.2, 0.2]
+    },
+    {
+      "id": "pcie_x16_slots",
+      "number": 4,
+      "meshPattern": "P04_pcie_x16*",
+      "anchor": "H04",
+      "fallbackOffset": [-0.2, -0.2, 0.2]
+    },
+    {
+      "id": "m2_thermal_shields",
+      "number": 5,
+      "meshPattern": "P05_m2_thermal*",
+      "anchor": "H05",
+      "fallbackOffset": [0, 0, 0.35],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.50,
+        "stagger": 0.05
+      }
+    },
+    {
+      "id": "chipset_heatsink",
+      "number": 6,
+      "meshPattern": "P06_chipset_heat*",
+      "anchor": "H06",
+      "fallbackOffset": [0.3, -0.3, 0.3],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.40,
+        "stagger": 0.1
+      }
+    },
+    {
+      "id": "rear_io_shield",
+      "number": 7,
+      "meshPattern": "P07_rear_io*",
+      "anchor": "H07",
+      "fallbackOffset": [-0.5, 0.4, 0.3],
+      "explode": {
+        "dir": [-1, 0, 0],
+        "dist": 0.45,
+        "stagger": 0.15
+      }
+    },
+    {
+      "id": "audio_section",
+      "number": 8,
+      "meshPattern": "P08_audio_section*",
+      "anchor": "H08",
+      "fallbackOffset": [-0.4, -0.5, 0.1]
+    },
+    {
+      "id": "power_headers",
+      "number": 9,
+      "meshPattern": "P09_power_headers*",
+      "anchor": "H09",
+      "fallbackOffset": [0.5, 0.3, 0.1]
+    },
+    {
+      "id": "fan_pump_headers",
+      "number": 10,
+      "meshPattern": "P10_fan_pump*",
+      "anchor": "H10",
+      "fallbackOffset": [0.1, 0.6, 0.1]
+    },
+    {
+      "id": "rgb_headers",
+      "number": 11,
+      "meshPattern": "P11_rgb_headers*",
+      "anchor": "H11",
+      "fallbackOffset": [0.2, -0.6, 0.1]
+    },
+    {
+      "id": "front_panel_io",
+      "number": 12,
+      "meshPattern": "P12_front_panel*",
+      "anchor": "H12",
+      "fallbackOffset": [0.5, -0.2, 0.1]
+    },
+    {
+      "id": "sata_ports",
+      "number": 13,
+      "meshPattern": "P13_sata_ports*",
+      "anchor": "H13",
+      "fallbackOffset": [0.55, -0.4, 0.1]
+    },
+    {
+      "id": "debug_diagnostic",
+      "number": 14,
+      "meshPattern": "P14_debug_diag*",
+      "anchor": "H14",
+      "fallbackOffset": [0.5, 0.55, 0.1]
+    },
+    {
+      "id": "pcb_substrate",
+      "number": 15,
+      "meshPattern": "P15_pcb_substrate*",
+      "anchor": "H15",
+      "fallbackOffset": [0, 0, 0]
+    },
+    {
+      "id": "mounting_holes",
+      "number": 16,
+      "meshPattern": "P16_mounting_holes*",
+      "anchor": "H16",
+      "fallbackOffset": [-0.5, 0.6, 0]
+    }
+  ]
+}

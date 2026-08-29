@@ -2,14 +2,232 @@
 {"message":"Generated 1ms","label":"types","level":"info"}
 {"message":"connected.","label":"vite","level":"info"}
 {"message":"Re-optimizing dependencies because vite config has changed","label":"vite","level":"info"}
-{"message":" astro  v7.2.2 ready in 3657 ms\n┃ Local    http://localhost:4321/\n┃ Network  http://192.168.1.7:4321/","label":"SKIP_FORMAT","level":"info"}
+{"message":" astro  v7.2.2 ready in 2187 ms\n┃ Local    http://localhost:4321/\n┃ Network  use --host to expose","label":"SKIP_FORMAT","level":"info"}
 {"message":"watching for file changes...","label":null,"level":"info"}
-{"message":"[200] / 61ms","label":null,"level":"info"}
+{"message":"[200] / 26ms","label":null,"level":"info"}
+{"message":"[200] / 4ms","label":null,"level":"info"}
+{"message":"dependencies optimized: three, three/examples/jsm/controls/OrbitControls.js, three/examples/jsm/environments/RoomEnvironment.js, three/examples/jsm/libs/meshopt_decoder.module.js, three/examples/jsm/loaders/GLTFLoader.js","label":"vite","level":"info"}
+{"message":"[200] /components/ 69ms","label":null,"level":"info"}
+{"message":"[200] /components/pc-case/ 34ms","label":null,"level":"info"}
+{"message":"dependency optimized: three/examples/jsm/loaders/DRACOLoader.js","label":"vite","level":"info"}
+{"message":"[200] /components/motherboard/ 48ms","label":null,"level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"[200] /components/ram/ 15ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-m2/ 32ms","label":null,"level":"info"}
+{"message":"[200] /components/case-fan/ 16ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu/ 50ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-hdd/ 17ms","label":null,"level":"info"}
+{"message":"[200] /components/psu/ 18ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler-air/ 23ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler-liquid/ 20ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 89ms","label":null,"level":"info"}
+{"message":"[200] /components/cables/ 147ms","label":null,"level":"info"}
+{"message":"[200] /components/pc-case/ 5ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] /components/ram/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-m2/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/case-fan/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-hdd/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/psu/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler-air/ 5ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler-liquid/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/cables/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/pc-case/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/ram/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-m2/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/case-fan/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-hdd/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/psu/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler-air/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler-liquid/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/cables/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/pc-case/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/motherboard/ 5ms","label":null,"level":"info"}
+{"message":"[200] /components/case-fan/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-hdd/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/psu/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 5ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] /components/ram/ 5ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-m2/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/cables/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/pc-case/ 2ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] /components/ram/ 5ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-m2/ 5ms","label":null,"level":"info"}
+{"message":"[200] /components/case-fan/ 5ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-hdd/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/psu/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler-air/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler-liquid/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/cables/ 3ms","label":null,"level":"info"}
+{"message":"[200] /components/pc-case/ 4ms","label":null,"level":"info"}
+{"message":"[200] /components/motherboard/ 2ms","label":null,"level":"info"}
+{"message":"[200] /components/case/ 78ms","label":null,"level":"info"}
+{"message":"[200] /components/cpu-cooler/ 24ms","label":null,"level":"info"}
+{"message":"[200] /components/storage/ 22ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 3ms","label":null,"level":"info"}
+{"message":"[200] / 3ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 3ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 3ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 2ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 3ms","label":null,"level":"info"}
+{"message":"[200] / 3ms","label":null,"level":"info"}
+{"message":"[200] /get-ready/ 13ms","label":null,"level":"info"}
+{"message":"[200] /build/ 17ms","label":null,"level":"info"}
+{"message":"[200] /troubleshooting/ 14ms","label":null,"level":"info"}
+{"message":"[200] / 1ms","label":null,"level":"info"}
+{"message":"[200] / 1ms","label":null,"level":"info"}
+{"message":"[200] / 1ms","label":null,"level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"src/layouts/BaseLayout.astro","label":"watch","level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"src/layouts/BaseLayout.astro","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] HEAD / 38ms","label":null,"level":"info"}
+{"message":"[200] / 2ms","label":null,"level":"info"}
+{"message":"[200] / 6ms","label":null,"level":"info"}
+{"message":"[200] / 5ms","label":null,"level":"info"}
+{"message":"[200] /components/gpu/ 61ms","label":null,"level":"info"}
 {"message":"[200] / 10ms","label":null,"level":"info"}
-{"message":"[200] /get-ready/ 29ms","label":null,"level":"info"}
-{"message":"[200] /components/ 24ms","label":null,"level":"info"}
-{"message":"[200] /components/cpu/ 22ms","label":null,"level":"info"}
-{"message":"dependencies optimized: three, three/addons/controls/OrbitControls.js","label":"vite","level":"info"}
-{"message":"[200] /build/ 23ms","label":null,"level":"info"}
-{"message":"[200] /troubleshooting/ 27ms","label":null,"level":"info"}
+{"message":"[200] /components/ 69ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-m2/ 32ms","label":null,"level":"info"}
+{"message":"[200] /components/storage-hdd/ 34ms","label":null,"level":"info"}
+{"message":"[200] /build/ 26ms","label":null,"level":"info"}
+{"message":"[200] /components/case/ 39ms","label":null,"level":"info"}
+{"message":"[200] /troubleshooting/ 35ms","label":null,"level":"info"}
 {"message":"[200] / 8ms","label":null,"level":"info"}
+{"message":"[200] / 60ms","label":null,"level":"info"}
+{"message":"[200] /components/ 11ms","label":null,"level":"info"}
+{"message":"[200] /components/pc-case/ 68ms","label":null,"level":"info"}
+{"message":"[200] /components/motherboard/ 48ms","label":null,"level":"info"}

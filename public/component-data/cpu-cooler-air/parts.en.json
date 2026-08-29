@@ -1,0 +1,42 @@
+{
+  "heatsink_fins": {
+    "title": "Stamped Aluminum Fin Stack",
+    "description": "Dense matrix of 48 stamped aluminum cooling fins featuring micro-louvered turbulence dimples and folded interlocking edge tabs."
+  },
+  "heatpipes": {
+    "title": "Direct-Contact Copper Heatpipes",
+    "description": "Four 6mm sintered copper U-shaped vapor chambers utilizing phase-change thermodynamics to rapidly lift heat from the base into the fin array."
+  },
+  "copper_base": {
+    "title": "Nickel-Plated Copper Baseplate",
+    "description": "Precision CNC-machined copper base block with a micro-convex mirror finish ensuring uniform contact pressure over the CPU heat spreader."
+  },
+  "cooling_fan": {
+    "title": "120mm PWM High-Static Pressure Fan",
+    "description": "Fluid dynamic bearing 9-blade cooling fan engineered to push high-pressure laminar airflow through tight heatsink fin gaps."
+  },
+  "fan_clips": {
+    "title": "Spring-Steel Fan Retention Clips",
+    "description": "Dual heat-treated spring steel wire brackets securing the 120mm fan tightly into the recessed side grooves of the heatsink tower."
+  },
+  "mounting_bracket": {
+    "title": "Crossbar Mounting Bridge",
+    "description": "Reinforced steel crossbar clamp featuring dual spring-tensioned captive screws delivering standardized mounting downforce."
+  },
+  "anti_vibration_pads": {
+    "title": "Silicone Anti-Vibration Dampeners",
+    "description": "Molded elastomeric corner pads isolating mechanical motor harmonics and preventing resonance transmission into the aluminum fins."
+  },
+  "pwm_cable": {
+    "title": "4-Pin PWM Fan Lead Cable",
+    "description": "Braided black wiring harness terminating in a standardized 4-pin motherboard fan header plug with tachometer RPM feedback."
+  },
+  "top_fin_shroud": {
+    "title": "Anodized Top Cover & Pipe Caps",
+    "description": "Brushed black anodized aluminum top plate with stealth copper heatpipe termination caps providing premium aesthetics."
+  },
+  "thermal_paste_layer": {
+    "title": "Pre-Applied Thermal Compound",
+    "description": "Micro-thin cross-hatch layer of high-conductivity non-curing thermal paste filling microscopic surface voids between base and IHS."
+  }
+}

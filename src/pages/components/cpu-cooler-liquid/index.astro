@@ -1,0 +1,45 @@
+---
+// ============================================================
+// FILE: src/pages/components/cpu-cooler-liquid/index.astro
+// CPU Cooler (Liquid AIO) component page
+// ============================================================
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StatGroup from '../../../components/StatGroup.astro';
+import Model3D from '../../../components/Model3D.astro';
+import { getComponentBySlug } from '../../../lib/3d/ComponentRegistry';
+
+const metadata = getComponentBySlug('cpu-cooler-liquid')!;
+---
+
+<BaseLayout title={`${metadata.displayName} — Component library — PC Customization Manual`}>
+  <article class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
+    <div class="grid grid-cols-12 gap-6">
+      <header class="col-span-12">
+        <p class="font-mono text-xs text-secondary">Component 5 of 12</p>
+        <h1 class="mt-4 text-2xl font-medium md:text-3xl">{metadata.displayName}</h1>
+        <p class="mt-4 max-w-2xl text-lg text-secondary">
+          {metadata.description} Liquid coolers transfer thermal energy via liquid coolant pumped to an aluminum radiator, providing substantial surface area and low thermal resistance under heavy multi-threaded workloads.
+        </p>
+      </header>
+
+      <div class="col-span-12 lg:col-span-7">
+        <Model3D
+          slug="cpu-cooler-liquid"
+          label={`3D model of ${metadata.displayName}`}
+        />
+      </div>
+
+      <div class="col-span-12 lg:col-span-5">
+        <div class="rounded-card border border-primary/10 bg-surface-raised p-6">
+          <p class="text-xs font-mono uppercase tracking-wider text-secondary">Technical Specifications</p>
+          <div class="mt-4">
+            <StatGroup stats={metadata.specs ?? []} />
+          </div>
+          <p class="mt-4 text-sm text-secondary">
+            Mount the radiator at the top or front of the chassis with the pump lower than the highest point of the loop to prevent air pockets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

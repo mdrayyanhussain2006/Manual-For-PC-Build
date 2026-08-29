@@ -1,57 +1,45 @@
 ---
 // ============================================================
 // FILE: src/pages/components/ram/index.astro
-// Phase 7 (RAM) — mirrors the established component-page
-// structure exactly (viewer 7/12 + specs 5/12 at md:).
+// Memory (RAM) component page
 // ============================================================
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import StatGroup from '../../../components/StatGroup.astro';
 import Model3D from '../../../components/Model3D.astro';
+import { getComponentBySlug, getAllComponents } from '../../../lib/3d/ComponentRegistry';
 
-const specs = [
-  { label: 'Type', value: 'DDR5' },
-  { label: 'Capacity', value: '16GB (single module)' },
-  { label: 'Speed', value: '5600 MT/s' },
-  { label: 'Configuration', value: 'Dual-channel (2×16GB)' },
-  { label: 'Voltage', value: '1.1V' },
-  { label: 'Form factor', value: 'UDIMM' },
-];
+const metadata = getComponentBySlug('ram')!;
+const allComponents = getAllComponents();
+const currentIndex = allComponents.findIndex((c) => c.slug === metadata.slug);
+const indexDisplay = currentIndex !== -1 ? `${currentIndex + 1} of ${allComponents.length}` : '';
 ---
 
-<BaseLayout title="RAM — Component library — PC Customization Manual">
+<BaseLayout title={`${metadata.displayName} — Component library — PC Customization Manual`}>
   <article class="mx-auto w-full max-w-content px-6 py-12 md:py-16">
     <div class="grid grid-cols-12 gap-6">
       <header class="col-span-12">
-        <p class="font-mono text-xs text-secondary">Component 4 of 8</p>
-        <h1 class="mt-4 text-2xl font-medium md:text-3xl">RAM</h1>
+        <p class="font-mono text-xs text-secondary">Component {indexDisplay}</p>
+        <h1 class="mt-4 text-2xl font-medium md:text-3xl">{metadata.displayName}</h1>
         <p class="mt-4 max-w-2xl text-lg text-secondary">
-          RAM is what your system uses for fast, temporary storage while
-          running — more of it (and faster) generally means smoother
-          multitasking. Getting the notch alignment right is simple, but it's
-          also the single most common reason a new build won't boot on the
-          first try.
+          {metadata.description} Memory slots require firm, even pressure until the locking latches click shut. For dual-channel performance, populate slots A2 and B2 first.
         </p>
       </header>
 
-      <div class="col-span-12 md:col-span-7">
+      <div class="col-span-12 lg:col-span-7">
         <Model3D
-          geometry="ram"
-          label="Stylized 3D model of a RAM stick showing the thin standing card body and a small notch marker positioned off-center near the bottom edge of the front face"
+          slug={metadata.slug}
+          label={`3D model of ${metadata.displayName}`}
         />
-        <p class="mt-2 text-xs text-secondary">
-          Drag to rotate · scroll or pinch to zoom
-        </p>
       </div>
 
-      <div class="col-span-12 md:col-span-5">
+      <div class="col-span-12 lg:col-span-5">
         <div class="rounded-card border border-primary/10 bg-surface-raised p-6">
-          <p class="text-xs text-secondary">Example specifications</p>
+          <p class="text-xs font-mono uppercase tracking-wider text-secondary">Technical Specifications</p>
           <div class="mt-4">
-            <StatGroup stats={specs} />
+            <StatGroup stats={metadata.specs ?? []} />
           </div>
           <p class="mt-4 text-sm text-secondary">
-            Specifications above are illustrative — refer to your specific
-            module's documentation for exact values.
+            Specifications above are illustrative — refer to your RAM kit for rated XMP/EXPO timings and voltage.
           </p>
         </div>
       </div>

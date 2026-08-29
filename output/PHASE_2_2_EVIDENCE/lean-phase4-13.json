@@ -1,0 +1,8423 @@
+{
+  "phase4": [
+    {
+      "component": "ram",
+      "partId": "heat_spreader",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.943337,
+          1.437867,
+          2.120004
+        ],
+        "target": [
+          0,
+          0.024531,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.204449,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "ram",
+      "partId": "thermal_pads",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.908414,
+          1.415869,
+          2.082482
+        ],
+        "target": [
+          0,
+          0.027932,
+          0.000575
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.146864,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "ram",
+      "partId": "pcb",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.59954,
+          1.218869,
+          1.71592
+        ],
+        "target": [
+          0,
+          0.055568,
+          -0.029032
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.637548,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "ram",
+      "partId": "dram_packages",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.649333,
+          1.241583,
+          1.785083
+        ],
+        "target": [
+          0,
+          0.042068,
+          -0.014189
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.719654,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "ram",
+      "partId": "spd_pmic",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.661217,
+          1.271452,
+          1.796501
+        ],
+        "target": [
+          0,
+          0.063293,
+          -0.015737
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.73925,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "ram",
+      "partId": "contacts",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.736754,
+          0.43867,
+          0.780556
+        ],
+        "target": [
+          0,
+          -0.097151,
+          -0.023176
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.214864,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "ram",
+      "partId": "diffuser",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.778154,
+          1.500201,
+          1.939804
+        ],
+        "target": [
+          0,
+          0.206998,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.932071,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "ram",
+      "partId": "mounting",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.899067,
+          1.308018,
+          2.07171
+        ],
+        "target": [
+          0,
+          -0.073122,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.131451,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-m2",
+      "partId": "pcb",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.947781,
+          1.398226,
+          2.124346
+        ],
+        "target": [
+          0.000465,
+          -0.018005,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.211011,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-m2",
+      "partId": "controller",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.601202,
+          0.542131,
+          0.810879
+        ],
+        "target": [
+          -0.142103,
+          0.001545,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.225668,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-m2",
+      "partId": "nand",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.1483,
+          0.56088,
+          0.83811
+        ],
+        "target": [
+          0.380033,
+          0.00214,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.266828,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-m2",
+      "partId": "dram",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.432554,
+          0.533517,
+          0.666577
+        ],
+        "target": [
+          -0.298054,
+          0.002167,
+          -0.130449
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.204729,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-m2",
+      "partId": "connector",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          -0.164548,
+          0.511487,
+          0.788062
+        ],
+        "target": [
+          -0.892294,
+          -0.017783,
+          -0.005842
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.20001,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-m2",
+      "partId": "passives",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.983567,
+          0.811322,
+          1.236945
+        ],
+        "target": [
+          -0.150321,
+          -0.013324,
+          -0.000024
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.869715,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-m2",
+      "partId": "mounting",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.55316,
+          0.553907,
+          0.807857
+        ],
+        "target": [
+          0.812624,
+          0.015335,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2211,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-m2",
+      "partId": "label",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.705645,
+          0.544273,
+          0.793964
+        ],
+        "target": [
+          -0.022154,
+          0.014964,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2001,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "case-fan",
+      "partId": "frame",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.86027,
+          1.180437,
+          1.771232
+        ],
+        "target": [
+          0.236641,
+          -0.000384,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.67727,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "case-fan",
+      "partId": "blades",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.697856,
+          1.030457,
+          1.544831
+        ],
+        "target": [
+          0.282239,
+          0.000917,
+          0.000521
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.334271,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "case-fan",
+      "partId": "hub",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.045427,
+          0.56644,
+          0.834421
+        ],
+        "target": [
+          0.280568,
+          0.01018,
+          0.00003
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.261207,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "case-fan",
+      "partId": "bearing",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.008205,
+          0.541514,
+          0.794256
+        ],
+        "target": [
+          0.280465,
+          0.012248,
+          0.000359
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "case-fan",
+      "partId": "stator",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.008205,
+          0.480669,
+          0.778944
+        ],
+        "target": [
+          0.280465,
+          -0.048597,
+          -0.014954
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "case-fan",
+      "partId": "pwm_cable",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.068635,
+          0.434292,
+          0.777536
+        ],
+        "target": [
+          0.340896,
+          -0.094973,
+          -0.016361
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "case-fan",
+      "partId": "argb_ring",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.444096,
+          1.047412,
+          1.502952
+        ],
+        "target": [
+          0.108956,
+          0.076401,
+          0.046436
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.201569,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "case-fan",
+      "partId": "antivib_pins",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.761046,
+          1.083508,
+          1.615179
+        ],
+        "target": [
+          0.280465,
+          0.006722,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.44139,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu",
+      "partId": "heat_spreader",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.650956,
+          1.220973,
+          1.801043
+        ],
+        "target": [
+          0,
+          0.020278,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.72233,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu",
+      "partId": "thermal_interface",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.057131,
+          0.772879,
+          1.153234
+        ],
+        "target": [
+          0,
+          0.004056,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.743147,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu",
+      "partId": "compute_die",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.62069,
+          0.552468,
+          0.852127
+        ],
+        "target": [
+          -0.160426,
+          -0.015617,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.288015,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu",
+      "partId": "io_die",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.922587,
+          0.509008,
+          0.794012
+        ],
+        "target": [
+          0.194742,
+          -0.020334,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.200173,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu",
+      "partId": "substrate",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.885126,
+          1.309559,
+          2.040511
+        ],
+        "target": [
+          0.014658,
+          -0.050781,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.084292,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu",
+      "partId": "smd_capacitors",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.92399,
+          0.605737,
+          1.007613
+        ],
+        "target": [
+          0.000346,
+          -0.066005,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.523036,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu",
+      "partId": "land_grid",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.769184,
+          1.211848,
+          1.930019
+        ],
+        "target": [
+          0,
+          -0.074831,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.917281,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu",
+      "partId": "keying_features",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.75211,
+          0.817321,
+          1.219851
+        ],
+        "target": [
+          -0.450094,
+          -0.057009,
+          -0.091644
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.982363,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "chassis",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.920142,
+          1.404025,
+          2.079065
+        ],
+        "target": [
+          0,
+          0.007557,
+          -0.015636
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.166203,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "top_cover",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.868782,
+          1.507251,
+          2.026444
+        ],
+        "target": [
+          -0.003753,
+          0.145408,
+          -0.016321
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.087701,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "platters",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.448045,
+          1.089704,
+          1.385316
+        ],
+        "target": [
+          -0.003808,
+          0.033811,
+          -0.198525
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.394022,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "spindle_motor",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.9007,
+          0.713917,
+          0.77456
+        ],
+        "target": [
+          -0.003808,
+          0.056093,
+          -0.212176
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.491481,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "actuator_arm",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.494264,
+          0.598747,
+          1.007189
+        ],
+        "target": [
+          -0.2927,
+          0.026409,
+          0.148682
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.297659,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "rw_heads",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.629529,
+          0.550568,
+          0.628723
+        ],
+        "target": [
+          -0.101227,
+          0.019109,
+          -0.168466
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.204975,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "vcm_magnets",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.649571,
+          0.548035,
+          0.586358
+        ],
+        "target": [
+          -0.078169,
+          0.018769,
+          -0.207539
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "controller_pcb",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.198335,
+          0.824486,
+          1.594872
+        ],
+        "target": [
+          -0.083815,
+          -0.107988,
+          0.196162
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.114191,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "sata_connectors",
+      "number": "09",
+      "selected": "09",
+      "expected": "09",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.998976,
+          0.410635,
+          1.568809
+        ],
+        "target": [
+          0.257223,
+          -0.128821,
+          0.759624
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.223106,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "storage-hdd",
+      "partId": "parking_ramp",
+      "number": "10",
+      "selected": "10",
+      "expected": "10",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.934835,
+          0.508373,
+          0.608005
+        ],
+        "target": [
+          0.207095,
+          -0.020892,
+          -0.185892
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "psu",
+      "partId": "enclosure",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.95964,
+          1.419055,
+          2.152059
+        ],
+        "target": [
+          0.001371,
+          -0.005141,
+          0.015766
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.229072,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "psu",
+      "partId": "cooling_fan",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.433326,
+          1.260393,
+          1.492572
+        ],
+        "target": [
+          0.001651,
+          0.219175,
+          -0.069255
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.360748,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "psu",
+      "partId": "intake_grill",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.339375,
+          1.32589,
+          1.37971
+        ],
+        "target": [
+          0.001651,
+          0.353,
+          -0.079625
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.205828,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "psu",
+      "partId": "ac_inlet_switch",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.481625,
+          0.538231,
+          1.29798
+        ],
+        "target": [
+          -0.257604,
+          0.00061,
+          0.491548
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.218945,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "psu",
+      "partId": "modular_panel",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.796755,
+          0.635928,
+          0.340822
+        ],
+        "target": [
+          -0.049147,
+          0.020727,
+          -0.58198
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.394842,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "psu",
+      "partId": "main_transformer",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.828053,
+          0.659552,
+          0.230935
+        ],
+        "target": [
+          -0.036081,
+          0.03109,
+          -0.711757
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.424907,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "psu",
+      "partId": "pfc_inductor_caps",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.740047,
+          0.440524,
+          0.798994
+        ],
+        "target": [
+          0.012291,
+          -0.088753,
+          0.005079
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.200027,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "psu",
+      "partId": "main_pcb",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.276026,
+          0.421846,
+          0.66778
+        ],
+        "target": [
+          -0.407177,
+          -0.07503,
+          -0.077533
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.126563,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "psu",
+      "partId": "dc_dc_daughterboards",
+      "number": "09",
+      "selected": "09",
+      "expected": "09",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.1235,
+          0.433364,
+          0.576807
+        ],
+        "target": [
+          0.374409,
+          -0.111429,
+          -0.240383
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.235207,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "psu",
+      "partId": "protection_supervision",
+      "number": "10",
+      "selected": "10",
+      "expected": "10",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.07328,
+          0.794128,
+          1.193812
+        ],
+        "target": [
+          0.015529,
+          0.024855,
+          0.039902
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.74417,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "psu",
+      "partId": "secondary_caps_chokes",
+      "number": "11",
+      "selected": "11",
+      "expected": "11",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.081422,
+          0.832572,
+          1.248786
+        ],
+        "target": [
+          -0.007196,
+          0.040849,
+          0.061202
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.795069,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "psu",
+      "partId": "rating_plate",
+      "number": "12",
+      "selected": "12",
+      "expected": "12",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.972241,
+          0.366645,
+          0.609317
+        ],
+        "target": [
+          0.25066,
+          -0.158141,
+          -0.177861
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.189844,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "heatsink_fins",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.607199,
+          1.305039,
+          1.853431
+        ],
+        "target": [
+          0,
+          0.136167,
+          0.100123
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.650178,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "heatpipes",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.533048,
+          1.272336,
+          1.785233
+        ],
+        "target": [
+          0,
+          0.157392,
+          0.112817
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.527907,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "copper_base",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.538539,
+          1.198714,
+          1.791223
+        ],
+        "target": [
+          0,
+          0.079777,
+          0.112817
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.53696,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "cooling_fan",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.412491,
+          1.091709,
+          1.359029
+        ],
+        "target": [
+          0,
+          0.064443,
+          -0.181871
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.329116,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "fan_clips",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.504781,
+          1.247817,
+          1.4109
+        ],
+        "target": [
+          0,
+          0.153431,
+          -0.230679
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.481296,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "mounting_bracket",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.48425,
+          1.238097,
+          1.575421
+        ],
+        "target": [
+          0,
+          0.158642,
+          -0.043761
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.447442,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "anti_vibration_pads",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.410488,
+          1.110512,
+          1.447926
+        ],
+        "target": [
+          0,
+          0.084702,
+          -0.090788
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.325813,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "pwm_cable",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.505799,
+          1.292246,
+          1.53032
+        ],
+        "target": [
+          0,
+          0.19712,
+          -0.112371
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.482975,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "top_fin_shroud",
+      "number": "09",
+      "selected": "09",
+      "expected": "09",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.710521,
+          -0.107371,
+          0.645517
+        ],
+        "target": [
+          0,
+          -0.624113,
+          -0.129596
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.171607,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-air",
+      "partId": "thermal_paste_layer",
+      "number": "10",
+      "selected": "10",
+      "expected": "10",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.184962,
+          1.686786,
+          1.403711
+        ],
+        "target": [
+          0,
+          0.824996,
+          0.111026
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.953933,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "radiator_core",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.329937,
+          1.067501,
+          1.115365
+        ],
+        "target": [
+          0,
+          0.100274,
+          -0.335475
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.192988,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "cooling_fans",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.152521,
+          0.955327,
+          0.853506
+        ],
+        "target": [
+          0,
+          0.11713,
+          -0.40379
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.90044,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "radiator_shroud",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.158929,
+          1.082636,
+          0.860496
+        ],
+        "target": [
+          0,
+          0.239779,
+          -0.40379
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.911006,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "epdm_tubing",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.286268,
+          1.09319,
+          0.998834
+        ],
+        "target": [
+          -0.026195,
+          0.138671,
+          -0.432943
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.164174,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "swivel_barbs",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.46291,
+          0.735366,
+          1.165243
+        ],
+        "target": [
+          0.338427,
+          -0.08244,
+          -0.061467
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.854208,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "pump_block",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.762643,
+          0.229154,
+          1.166626
+        ],
+        "target": [
+          0.034632,
+          -0.300309,
+          0.372432
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.200448,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "copper_coldplate",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.7279,
+          0.145467,
+          1.166627
+        ],
+        "target": [
+          0.000159,
+          -0.3838,
+          0.372727
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.200002,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "mounting_ring",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.72774,
+          0.176182,
+          1.166627
+        ],
+        "target": [
+          0,
+          -0.353083,
+          0.372729
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "top_infinity_cap",
+      "number": "09",
+      "selected": "09",
+      "expected": "09",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.72774,
+          0.311775,
+          1.166627
+        ],
+        "target": [
+          0,
+          -0.21749,
+          0.372729
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "fan_screws",
+      "number": "10",
+      "selected": "10",
+      "expected": "10",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.080321,
+          1.102758,
+          0.83221
+        ],
+        "target": [
+          0,
+          0.31707,
+          -0.346322
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.781386,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "wiring_harness",
+      "number": "11",
+      "selected": "11",
+      "expected": "11",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.827986,
+          0.418644,
+          1.238397
+        ],
+        "target": [
+          0,
+          -0.183527,
+          0.33514
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.365301,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "partId": "thermal_paste_layer",
+      "number": "12",
+      "selected": "12",
+      "expected": "12",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.72774,
+          0.126155,
+          1.226901
+        ],
+        "target": [
+          0,
+          -0.40311,
+          0.433003
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "graphics_processor",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          2.289572,
+          1.671807,
+          2.497042
+        ],
+        "target": [
+          -0.000542,
+          0.00627,
+          -0.001265
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.776264,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "vram_modules",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.736736,
+          0.426958,
+          0.814714
+        ],
+        "target": [
+          0.008855,
+          -0.10241,
+          0.020662
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.200234,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "vrm_power_stages",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.735201,
+          0.424256,
+          0.81304
+        ],
+        "target": [
+          0.008856,
+          -0.103995,
+          0.020664
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.197701,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "pcb_board",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.925733,
+          0.574938,
+          1.019727
+        ],
+        "target": [
+          0.009925,
+          -0.091104,
+          0.020664
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.510114,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "vapor_chamber_base",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.587508,
+          1.076324,
+          1.809826
+        ],
+        "target": [
+          -0.052558,
+          -0.11645,
+          0.020664
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.704372,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "heatsink_fin_array",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.662369,
+          1.150196,
+          1.824497
+        ],
+        "target": [
+          0.008856,
+          -0.05236,
+          0.020664
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.726547,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "triple_fans",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.508295,
+          1.080909,
+          1.656415
+        ],
+        "target": [
+          0.008856,
+          -0.009592,
+          0.020664
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.472487,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "cooler_shroud",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.558327,
+          1.2098,
+          1.710996
+        ],
+        "target": [
+          0.008856,
+          0.082912,
+          0.020664
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.554987,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "backplate",
+      "number": "09",
+      "selected": "09",
+      "expected": "09",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.908442,
+          1.463942,
+          2.090623
+        ],
+        "target": [
+          0.010979,
+          0.083969,
+          0.020664
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.128805,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "io_bracket",
+      "number": "10",
+      "selected": "10",
+      "expected": "10",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.663175,
+          1.104215,
+          1.867961
+        ],
+        "target": [
+          -0.029405,
+          -0.126752,
+          0.02151
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.790965,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "gpu",
+      "partId": "pcie_interface",
+      "number": "11",
+      "selected": "11",
+      "expected": "11",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          -0.051647,
+          0.607226,
+          0.882217
+        ],
+        "target": [
+          -0.900729,
+          -0.010288,
+          -0.044054
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.400087,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "gpu",
+      "partId": "power_connector",
+      "number": "12",
+      "selected": "12",
+      "expected": "12",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.541106,
+          0.418495,
+          1.201855
+        ],
+        "target": [
+          -0.188042,
+          -0.111794,
+          0.406422
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.202321,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "gpu",
+      "partId": "thermal_pads",
+      "number": "13",
+      "selected": "13",
+      "expected": "13",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.313932,
+          0.462185,
+          0.462082
+        ],
+        "target": [
+          0.586193,
+          -0.06708,
+          -0.331816
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "gpu",
+      "partId": "display_outputs",
+      "number": "14",
+      "selected": "14",
+      "expected": "14",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.290902,
+          0.462219,
+          0.467769
+        ],
+        "target": [
+          0.563162,
+          -0.067046,
+          -0.326129
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "cables",
+      "partId": "atx_24pin_cable",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.057946,
+          0.745963,
+          0.911508
+        ],
+        "target": [
+          0.015193,
+          -0.012403,
+          -0.22604
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.719438,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cables",
+      "partId": "eps_8pin_cable",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.760523,
+          0.540954,
+          0.553811
+        ],
+        "target": [
+          -0.004469,
+          -0.015403,
+          -0.280726
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.261426,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cables",
+      "partId": "pcie_12vhpwr_cable",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.1572,
+          0.51297,
+          0.513115
+        ],
+        "target": [
+          0.429512,
+          -0.016258,
+          -0.280726
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.199914,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "cables",
+      "partId": "pcie_8pin_cable",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.325402,
+          0.530785,
+          0.514325
+        ],
+        "target": [
+          -0.403394,
+          0.000751,
+          -0.280726
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.201742,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cables",
+      "partId": "sata_power_cable",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.054024,
+          0.507014,
+          0.522468
+        ],
+        "target": [
+          -0.673716,
+          -0.022251,
+          -0.271429
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "cables",
+      "partId": "sata_data_cable",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.63665,
+          0.519791,
+          0.954487
+        ],
+        "target": [
+          -0.091089,
+          -0.009474,
+          0.160589
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cables",
+      "partId": "front_panel_harness",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.746609,
+          0.467298,
+          1.238572
+        ],
+        "target": [
+          0.018869,
+          -0.061967,
+          0.444674
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "cables",
+      "partId": "cable_combs",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.31052,
+          0.795138,
+          1.097738
+        ],
+        "target": [
+          0.166115,
+          -0.037157,
+          -0.150705
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.887058,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "main_chassis_frame",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          2.229451,
+          1.620392,
+          2.421292
+        ],
+        "target": [
+          0.000053,
+          -0.000989,
+          -0.010779
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.676147,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "tempered_glass_panel",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.568894,
+          1.16851,
+          1.952558
+        ],
+        "target": [
+          -0.008795,
+          0.021099,
+          0.231443
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.601517,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "steel_side_panel",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.689142,
+          1.047833,
+          1.722781
+        ],
+        "target": [
+          0.277382,
+          0.021099,
+          0.18268
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.327908,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "front_mesh_panel",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.157115,
+          1.04878,
+          1.748078
+        ],
+        "target": [
+          -0.255946,
+          0.021099,
+          0.206557
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.330055,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "top_dust_filter",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.437773,
+          1.050625,
+          1.216326
+        ],
+        "target": [
+          -0.001125,
+          0.004153,
+          -0.353381
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.37266,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "psu_shroud",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.870001,
+          1.210515,
+          1.133067
+        ],
+        "target": [
+          -0.001125,
+          0.576968,
+          0.182747
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.436437,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "motherboard_standoffs",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.129664,
+          0.360866,
+          1.399028
+        ],
+        "target": [
+          0.009515,
+          -0.453788,
+          0.177047
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.84706,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "pcie_slot_covers",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.604108,
+          0.710906,
+          1.031873
+        ],
+        "target": [
+          -0.132355,
+          0.175297,
+          0.228459
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.214384,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "front_io_module",
+      "number": "09",
+      "selected": "09",
+      "expected": "09",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.702145,
+          0.53546,
+          1.504685
+        ],
+        "target": [
+          -0.025595,
+          0.006195,
+          0.710787
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "pc-case",
+      "partId": "drive_cages",
+      "number": "10",
+      "selected": "10",
+      "expected": "10",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.774195,
+          1.103626,
+          0.517905
+        ],
+        "target": [
+          0.050261,
+          0.577128,
+          -0.271842
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.193725,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "cable_grommets",
+      "number": "11",
+      "selected": "11",
+      "expected": "11",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.846924,
+          0.571386,
+          0.944348
+        ],
+        "target": [
+          -0.067095,
+          -0.093355,
+          -0.052764
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.507164,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "pc-case",
+      "partId": "case_feet",
+      "number": "12",
+      "selected": "12",
+      "expected": "12",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.559796,
+          0.676429,
+          0.659302
+        ],
+        "target": [
+          -0.144668,
+          0.164092,
+          -0.109204
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.161619,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "cpu_socket_lga",
+      "number": "01",
+      "selected": "01",
+      "expected": "01",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.049025,
+          0.703557,
+          0.962154
+        ],
+        "target": [
+          0.002787,
+          -0.057343,
+          -0.179196
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.725184,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "vrm_heatsinks",
+      "number": "02",
+      "selected": "02",
+      "expected": "02",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.732888,
+          0.454883,
+          0.566894
+        ],
+        "target": [
+          0.005148,
+          -0.074382,
+          -0.227004
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "dimm_slots",
+      "number": "03",
+      "selected": "03",
+      "expected": "03",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.963994,
+          0.484631,
+          0.546793
+        ],
+        "target": [
+          0.236254,
+          -0.044634,
+          -0.247105
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "pcie_x16_slots",
+      "number": "04",
+      "selected": "04",
+      "expected": "04",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.044763,
+          0.472174,
+          0.540599
+        ],
+        "target": [
+          0.32021,
+          -0.054773,
+          -0.249823
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.194745,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "motherboard",
+      "partId": "m2_thermal_shields",
+      "number": "05",
+      "selected": "05",
+      "expected": "05",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.786618,
+          0.549576,
+          1.177832
+        ],
+        "target": [
+          -0.046314,
+          -0.056192,
+          0.269178
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.373456,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "chipset_heatsink",
+      "number": "06",
+      "selected": "06",
+      "expected": "06",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.958339,
+          0.491672,
+          1.135919
+        ],
+        "target": [
+          0.208229,
+          -0.053863,
+          0.317617
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.236888,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "rear_io_shield",
+      "number": "07",
+      "selected": "07",
+      "expected": "07",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.028019,
+          0.472259,
+          1.146616
+        ],
+        "target": [
+          0.302928,
+          -0.05508,
+          0.355608
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.195632,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "audio_section",
+      "number": "08",
+      "selected": "08",
+      "expected": "08",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          0.293093,
+          0.466095,
+          1.334887
+        ],
+        "target": [
+          -0.437445,
+          -0.065205,
+          0.537937
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.204613,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "power_headers",
+      "number": "09",
+      "selected": "09",
+      "expected": "09",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.134819,
+          0.678462,
+          0.687765
+        ],
+        "target": [
+          0.122272,
+          -0.057936,
+          -0.416832
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.669631,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "motherboard",
+      "partId": "fan_pump_headers",
+      "number": "10",
+      "selected": "10",
+      "expected": "10",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.153771,
+          0.672783,
+          0.602527
+        ],
+        "target": [
+          0.150066,
+          -0.057184,
+          -0.492424
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.655051,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "rgb_headers",
+      "number": "11",
+      "selected": "11",
+      "expected": "11",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.739536,
+          0.988571,
+          1.592305
+        ],
+        "target": [
+          0.291209,
+          -0.064758,
+          0.012311
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.388207,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "front_panel_io",
+      "number": "12",
+      "selected": "12",
+      "expected": "12",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.381435,
+          0.583275,
+          1.249885
+        ],
+        "target": [
+          0.492372,
+          -0.063316,
+          0.279999
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.466012,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "sata_ports",
+      "number": "13",
+      "selected": "13",
+      "expected": "13",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.292823,
+          0.471102,
+          1.215652
+        ],
+        "target": [
+          0.562504,
+          -0.060039,
+          0.418941
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.204253,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "debug_diagnostic",
+      "number": "14",
+      "selected": "14",
+      "expected": "14",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.214121,
+          0.459318,
+          0.22694
+        ],
+        "target": [
+          0.486382,
+          -0.069947,
+          -0.566958
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 1.2,
+        "fov": 38
+      },
+      "result": "PASS"
+    },
+    {
+      "component": "motherboard",
+      "partId": "pcb_substrate",
+      "number": "15",
+      "selected": "15",
+      "expected": "15",
+      "visible": true,
+      "inViewport": false,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.878035,
+          1.261478,
+          1.987402
+        ],
+        "target": [
+          0.024097,
+          -0.086841,
+          -0.035076
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 3.057035,
+        "fov": 38
+      },
+      "result": "FAIL"
+    },
+    {
+      "component": "motherboard",
+      "partId": "mounting_holes",
+      "number": "16",
+      "selected": "16",
+      "expected": "16",
+      "visible": true,
+      "inViewport": true,
+      "focus": true,
+      "clipped": false,
+      "cameraState": {
+        "position": [
+          1.764521,
+          1.19926,
+          1.930753
+        ],
+        "target": [
+          -0.005335,
+          -0.087908,
+          0
+        ],
+        "quaternion": [
+          -0.211005,
+          0.353109,
+          0.082077,
+          0.907774
+        ],
+        "distance": 2.91839,
+        "fov": 38
+      },
+      "result": "PASS"
+    }
+  ],
+  "phase5": [
+    {
+      "component": "ram",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              1.900992,
+              1.302013,
+              2.073809
+            ],
+            "target": [
+              0,
+              -0.080527,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.134624,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.922637,
+              1.422245,
+              2.099365
+            ],
+            "target": [
+              0,
+              0.023964,
+              0.001943
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.170316,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.592307,
+              1.212806,
+              1.707317
+            ],
+            "target": [
+              0,
+              0.054764,
+              -0.029746
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.625621,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.902416,
+              1.412017,
+              2.075362
+            ],
+            "target": [
+              0,
+              0.028442,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.136972,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.91792,
+              1.421973,
+              2.093763
+            ],
+            "target": [
+              0,
+              0.027122,
+              0.001487
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.162537,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.611729,
+              1.225355,
+              1.730367
+            ],
+            "target": [
+              0,
+              0.053188,
+              -0.027883
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.657646,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.902416,
+              1.412017,
+              2.075362
+            ],
+            "target": [
+              0,
+              0.028442,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.136972,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.922962,
+              1.425211,
+              2.099748
+            ],
+            "target": [
+              0,
+              0.026693,
+              0.001971
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.170853,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.604297,
+              1.220583,
+              1.721547
+            ],
+            "target": [
+              0,
+              0.053821,
+              -0.028596
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.645393,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.902416,
+              1.412017,
+              2.075362
+            ],
+            "target": [
+              0,
+              0.028442,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.136972,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.91109,
+              1.417588,
+              2.085658
+            ],
+            "target": [
+              0,
+              0.027704,
+              0.000832
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.151276,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.606992,
+              1.222313,
+              1.724746
+            ],
+            "target": [
+              0,
+              0.053591,
+              -0.028337
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.649836,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.902416,
+              1.412017,
+              2.075362
+            ],
+            "target": [
+              0,
+              0.028442,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.136972,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.91492,
+              1.420047,
+              2.090203
+            ],
+            "target": [
+              0,
+              0.027378,
+              0.001199
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.15759,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.604814,
+              1.220914,
+              1.72216
+            ],
+            "target": [
+              0,
+              0.053777,
+              -0.028546
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.646244,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.5007064696426442,
+      "maxTargetDelta": 0.13852248625042793
+    },
+    {
+      "component": "storage-m2",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              1.845711,
+              1.331962,
+              2.022432
+            ],
+            "target": [
+              -0.008185,
+              -0.016326,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.056967,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.756357,
+              0.640594,
+              0.962048
+            ],
+            "target": [
+              -0.12552,
+              -0.000771,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.454164,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.841531,
+              1.329285,
+              2.019712
+            ],
+            "target": [
+              -0.009872,
+              -0.01719,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.052855,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.938649,
+              1.39092,
+              2.114365
+            ],
+            "target": [
+              0.000481,
+              -0.018657,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.195926,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.699195,
+              0.604316,
+              0.90638
+            ],
+            "target": [
+              -0.131654,
+              0.000062,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.370021,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.837792,
+              1.326912,
+              2.016068
+            ],
+            "target": [
+              -0.010271,
+              -0.017133,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.047347,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.938649,
+              1.39092,
+              2.114365
+            ],
+            "target": [
+              0.000481,
+              -0.018657,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.195926,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.764321,
+              0.645647,
+              0.969853
+            ],
+            "target": [
+              -0.124711,
+              -0.000921,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.465961,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.857145,
+              1.339194,
+              2.03493
+            ],
+            "target": [
+              -0.008208,
+              -0.017426,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.075857,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.938649,
+              1.39092,
+              2.114365
+            ],
+            "target": [
+              0.000481,
+              -0.018657,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.195926,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.75692,
+              0.640951,
+              0.96264
+            ],
+            "target": [
+              -0.1255,
+              -0.000809,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.455059,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.840113,
+              1.328385,
+              2.01833
+            ],
+            "target": [
+              -0.010023,
+              -0.017169,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.050766,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.938649,
+              1.39092,
+              2.114365
+            ],
+            "target": [
+              0.000481,
+              -0.018657,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.195926,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.750188,
+              0.636678,
+              0.956078
+            ],
+            "target": [
+              -0.126217,
+              -0.000708,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.445141,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.842152,
+              1.329679,
+              2.020317
+            ],
+            "target": [
+              -0.009806,
+              -0.017199,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.05377,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.1546979596568743,
+      "maxTargetDelta": 0.010859469600307375
+    },
+    {
+      "component": "case-fan",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              1.757003,
+              1.07339,
+              1.610768
+            ],
+            "target": [
+              0.280465,
+              -0.000456,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.434725,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.698311,
+              1.030787,
+              1.545336
+            ],
+            "target": [
+              0.282228,
+              0.000909,
+              0.000518
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.335038,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.684981,
+              1.021104,
+              1.530603
+            ],
+            "target": [
+              0.282468,
+              0.001095,
+              0.000589
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.312662,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.797354,
+              1.102737,
+              1.654788
+            ],
+            "target": [
+              0.280465,
+              -0.000456,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.501262,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.698562,
+              1.03097,
+              1.545611
+            ],
+            "target": [
+              0.282226,
+              0.000907,
+              0.000518
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.335455,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.688353,
+              1.023554,
+              1.534329
+            ],
+            "target": [
+              0.282408,
+              0.001048,
+              0.000571
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.318321,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.797354,
+              1.102737,
+              1.654788
+            ],
+            "target": [
+              0.280465,
+              -0.000456,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.501262,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.699491,
+              1.031645,
+              1.546638
+            ],
+            "target": [
+              0.282209,
+              0.000894,
+              0.000513
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.337014,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.683961,
+              1.020363,
+              1.529476
+            ],
+            "target": [
+              0.282486,
+              0.001109,
+              0.000594
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.31095,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.797354,
+              1.102737,
+              1.654788
+            ],
+            "target": [
+              0.280465,
+              -0.000456,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.501262,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.699258,
+              1.031475,
+              1.54638
+            ],
+            "target": [
+              0.282214,
+              0.000898,
+              0.000514
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.336623,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.685032,
+              1.021141,
+              1.530659
+            ],
+            "target": [
+              0.282467,
+              0.001094,
+              0.000588
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.312747,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.797354,
+              1.102737,
+              1.654788
+            ],
+            "target": [
+              0.280465,
+              -0.000456,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.501262,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.698522,
+              1.03094,
+              1.545567
+            ],
+            "target": [
+              0.282227,
+              0.000908,
+              0.000518
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.335388,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.685337,
+              1.021362,
+              1.530996
+            ],
+            "target": [
+              0.282462,
+              0.00109,
+              0.000587
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.313259,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.1880067702743706,
+      "maxTargetDelta": 0.0026242145491556096
+    },
+    {
+      "component": "cpu",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              1.571252,
+              1.181098,
+              1.740448
+            ],
+            "target": [
+              -0.029703,
+              0.016767,
+              -0.006048
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.639881,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.058799,
+              0.774303,
+              1.155271
+            ],
+            "target": [
+              -0.000244,
+              0.00409,
+              -0.00005
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.746301,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.497993,
+              1.106547,
+              1.634174
+            ],
+            "target": [
+              -0.000001,
+              0.017098,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.470103,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.630755,
+              1.207028,
+              1.779006
+            ],
+            "target": [
+              0,
+              0.021024,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.68902,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.0711,
+              0.783456,
+              1.168473
+            ],
+            "target": [
+              0,
+              0.004474,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.766181,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.499086,
+              1.107375,
+              1.635367
+            ],
+            "target": [
+              0,
+              0.01713,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.471906,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.630755,
+              1.207028,
+              1.779006
+            ],
+            "target": [
+              0,
+              0.021024,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.68902,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.060377,
+              0.77534,
+              1.156775
+            ],
+            "target": [
+              0,
+              0.004157,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.7485,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.49003,
+              1.100521,
+              1.625487
+            ],
+            "target": [
+              0,
+              0.016862,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.456972,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.630755,
+              1.207028,
+              1.779006
+            ],
+            "target": [
+              0,
+              0.021024,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.68902,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.07051,
+              0.783009,
+              1.167829
+            ],
+            "target": [
+              0,
+              0.004456,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.765209,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.497658,
+              1.106294,
+              1.633809
+            ],
+            "target": [
+              0,
+              0.017088,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.469551,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.630755,
+              1.207028,
+              1.779006
+            ],
+            "target": [
+              0,
+              0.021024,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.68902,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.072543,
+              0.784547,
+              1.170046
+            ],
+            "target": [
+              0,
+              0.004516,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.76856,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.497233,
+              1.105972,
+              1.633345
+            ],
+            "target": [
+              0,
+              0.017075,
+              0
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.46885,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.23391312497378175,
+      "maxTargetDelta": 0.03031330844695115
+    },
+    {
+      "component": "storage-hdd",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              1.906241,
+              1.39404,
+              2.062018
+            ],
+            "target": [
+              0.000308,
+              0.007907,
+              -0.017183
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.142773,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.873941,
+              1.492486,
+              2.031532
+            ],
+            "target": [
+              -0.003257,
+              0.127251,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.095391,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.902709,
+              1.410224,
+              2.059903
+            ],
+            "target": [
+              -0.000496,
+              0.026074,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.138275,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.90788,
+              1.395438,
+              2.065003
+            ],
+            "target": [
+              0,
+              0.007889,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.145983,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.873747,
+              1.493043,
+              2.03134
+            ],
+            "target": [
+              -0.003276,
+              0.127935,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.095101,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.902165,
+              1.411782,
+              2.059366
+            ],
+            "target": [
+              -0.000549,
+              0.027991,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.137463,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.90788,
+              1.395438,
+              2.065003
+            ],
+            "target": [
+              0,
+              0.007889,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.145983,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.873982,
+              1.492371,
+              2.031572
+            ],
+            "target": [
+              -0.003254,
+              0.127109,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.095451,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.902352,
+              1.411245,
+              2.059551
+            ],
+            "target": [
+              -0.000531,
+              0.02733,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.137743,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.90788,
+              1.395438,
+              2.065003
+            ],
+            "target": [
+              0,
+              0.007889,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.145983,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.874166,
+              1.491843,
+              2.031754
+            ],
+            "target": [
+              -0.003236,
+              0.12646,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.095726,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.902388,
+              1.411142,
+              2.059587
+            ],
+            "target": [
+              -0.000527,
+              0.027203,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.137796,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.90788,
+              1.395438,
+              2.065003
+            ],
+            "target": [
+              0,
+              0.007889,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.145983,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.873801,
+              1.492887,
+              2.031394
+            ],
+            "target": [
+              -0.003271,
+              0.127744,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.095182,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.903134,
+              1.409008,
+              2.060322
+            ],
+            "target": [
+              -0.000455,
+              0.024579,
+              -0.016321
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.138909,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.01820888052572164,
+      "maxTargetDelta": 0.020109495393967496
+    },
+    {
+      "component": "psu",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              0.371243,
+              0.718151,
+              1.006029
+            ],
+            "target": [
+              -0.624737,
+              -0.006198,
+              -0.080496
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.642314,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.444605,
+              1.263227,
+              1.507091
+            ],
+            "target": [
+              0.001559,
+              0.213739,
+              -0.067141
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.379499,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.367851,
+              1.243701,
+              1.409034
+            ],
+            "target": [
+              0.001651,
+              0.250101,
+              -0.081365
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.252782,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.910448,
+              1.382023,
+              2.101316
+            ],
+            "target": [
+              0.001651,
+              -0.006193,
+              0.018992
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.147494,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.449338,
+              1.264474,
+              1.513001
+            ],
+            "target": [
+              0.001651,
+              0.211611,
+              -0.066293
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.38715,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.362856,
+              1.242427,
+              1.402662
+            ],
+            "target": [
+              0.001651,
+              0.252461,
+              -0.082288
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.244546,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.910448,
+              1.382023,
+              2.101316
+            ],
+            "target": [
+              0.001651,
+              -0.006193,
+              0.018992
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.147494,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.440164,
+              1.262135,
+              1.501296
+            ],
+            "target": [
+              0.001651,
+              0.215945,
+              -0.06799
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.372022,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.355054,
+              1.240439,
+              1.392707
+            ],
+            "target": [
+              0.001651,
+              0.256146,
+              -0.083732
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.231681,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.910448,
+              1.382023,
+              2.101316
+            ],
+            "target": [
+              0.001651,
+              -0.006193,
+              0.018992
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.147494,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.442379,
+              1.2627,
+              1.504123
+            ],
+            "target": [
+              0.001651,
+              0.214898,
+              -0.06758
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.375676,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.368846,
+              1.243955,
+              1.410304
+            ],
+            "target": [
+              0.001651,
+              0.249631,
+              -0.081181
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.254424,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.910448,
+              1.382023,
+              2.101316
+            ],
+            "target": [
+              0.001651,
+              -0.006193,
+              0.018992
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 3.147494,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.442987,
+              1.262855,
+              1.504898
+            ],
+            "target": [
+              0.001651,
+              0.214611,
+              -0.067468
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.376678,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.347433,
+              1.238496,
+              1.382984
+            ],
+            "target": [
+              0.001651,
+              0.259746,
+              -0.085141
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.219115,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 1.196596564506601,
+      "maxTargetDelta": 0.6767952859661479
+    },
+    {
+      "component": "cpu-cooler-air",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              1.268109,
+              0.81511,
+              1.496208
+            ],
+            "target": [
+              0,
+              -0.107151,
+              0.112816
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.091038,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.533012,
+              1.272167,
+              1.785193
+            ],
+            "target": [
+              0,
+              0.157249,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.527847,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.506052,
+              1.14634,
+              1.755783
+            ],
+            "target": [
+              0,
+              0.051029,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.483392,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.532043,
+              1.267644,
+              1.784136
+            ],
+            "target": [
+              0,
+              0.153431,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.526249,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.532734,
+              1.270871,
+              1.78489
+            ],
+            "target": [
+              0,
+              0.156155,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.527389,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.504454,
+              1.138881,
+              1.75404
+            ],
+            "target": [
+              0,
+              0.044733,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.480757,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.532043,
+              1.267644,
+              1.784136
+            ],
+            "target": [
+              0,
+              0.153431,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.526249,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.53356,
+              1.274728,
+              1.785792
+            ],
+            "target": [
+              0,
+              0.159412,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.528752,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.504762,
+              1.140317,
+              1.754375
+            ],
+            "target": [
+              0,
+              0.045945,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.481265,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.532043,
+              1.267644,
+              1.784136
+            ],
+            "target": [
+              0,
+              0.153431,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.526249,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.533918,
+              1.276398,
+              1.786182
+            ],
+            "target": [
+              0,
+              0.160821,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.529341,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.506255,
+              1.147288,
+              1.756005
+            ],
+            "target": [
+              0,
+              0.051829,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.483727,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.532043,
+              1.267644,
+              1.784136
+            ],
+            "target": [
+              0,
+              0.153431,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.526249,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.533893,
+              1.276282,
+              1.786155
+            ],
+            "target": [
+              0,
+              0.160723,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.5293,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.505585,
+              1.144158,
+              1.755273
+            ],
+            "target": [
+              0,
+              0.049187,
+              0.112817
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.482621,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.4834349643685281,
+      "maxTargetDelta": 0.15818000000316093
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              1.061942,
+              0.779143,
+              0.921232
+            ],
+            "target": [
+              0,
+              0.006821,
+              -0.23725
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.75108,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.152412,
+              0.953635,
+              0.853387
+            ],
+            "target": [
+              0,
+              0.115518,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.90026,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.161179,
+              1.089707,
+              0.862951
+            ],
+            "target": [
+              0,
+              0.245213,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.914717,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.152762,
+              0.959065,
+              0.853769
+            ],
+            "target": [
+              0,
+              0.120693,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.900837,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.152476,
+              0.954629,
+              0.853457
+            ],
+            "target": [
+              0,
+              0.116465,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.900365,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.160992,
+              1.086795,
+              0.862747
+            ],
+            "target": [
+              0,
+              0.242437,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.914407,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.152762,
+              0.959065,
+              0.853769
+            ],
+            "target": [
+              0,
+              0.120693,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.900837,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.152275,
+              0.951514,
+              0.853238
+            ],
+            "target": [
+              0,
+              0.113496,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.900034,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.16091,
+              1.085534,
+              0.862658
+            ],
+            "target": [
+              0,
+              0.241236,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.914273,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.152762,
+              0.959065,
+              0.853769
+            ],
+            "target": [
+              0,
+              0.120693,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.900837,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.152176,
+              0.949968,
+              0.853129
+            ],
+            "target": [
+              0,
+              0.112022,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.89987,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.160854,
+              1.084653,
+              0.862596
+            ],
+            "target": [
+              0,
+              0.240396,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.91418,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.152762,
+              0.959065,
+              0.853769
+            ],
+            "target": [
+              0,
+              0.120693,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.900837,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.152618,
+              0.956831,
+              0.853612
+            ],
+            "target": [
+              0,
+              0.118564,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.900599,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.161014,
+              1.087143,
+              0.862771
+            ],
+            "target": [
+              0,
+              0.242769,
+              -0.40379
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.914444,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.33120183457523295,
+      "maxTargetDelta": 0.2908028838646549
+    },
+    {
+      "component": "gpu",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              -0.180113,
+              0.466978,
+              0.816142
+            ],
+            "target": [
+              -0.907853,
+              -0.062287,
+              0.022244
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.72576,
+              0.427401,
+              0.81458
+            ],
+            "target": [
+              -0.00198,
+              -0.101864,
+              0.020682
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.736595,
+              0.425335,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.10393,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              0.736595,
+              0.426833,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.102433,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.736595,
+              0.426903,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.102362,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.736595,
+              0.425317,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.103948,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              0.736595,
+              0.426833,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.102433,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.736595,
+              0.426881,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.102384,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.736595,
+              0.425308,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.103957,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              0.736595,
+              0.426833,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.102433,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.736595,
+              0.426946,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.102319,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.736595,
+              0.425273,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.103992,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              0.736595,
+              0.426833,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.102433,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.736595,
+              0.426902,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.102363,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.736595,
+              0.425321,
+              0.814561
+            ],
+            "target": [
+              0.008856,
+              -0.103944,
+              0.020664
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.9176547260674899,
+      "maxTargetDelta": 0.9176557233134877
+    },
+    {
+      "component": "cables",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              1.363442,
+              0.824867,
+              1.098776
+            ],
+            "target": [
+              0.180129,
+              -0.035724,
+              -0.192111
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.951213,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.780262,
+              0.545577,
+              0.562957
+            ],
+            "target": [
+              0.008395,
+              -0.015781,
+              -0.27908
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.272763,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.138938,
+              0.512139,
+              0.510588
+            ],
+            "target": [
+              0.413568,
+              -0.015403,
+              -0.280725
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.196093,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              0.781649,
+              0.539345,
+              0.551397
+            ],
+            "target": [
+              0.018869,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.257779,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.771193,
+              0.540142,
+              0.552592
+            ],
+            "target": [
+              0.007319,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.259584,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.136689,
+              0.512308,
+              0.510842
+            ],
+            "target": [
+              0.411085,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.196478,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              0.781649,
+              0.539345,
+              0.551397
+            ],
+            "target": [
+              0.018869,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.257779,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.76004,
+              0.540991,
+              0.553866
+            ],
+            "target": [
+              -0.005002,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.26151,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.141477,
+              0.511944,
+              0.510295
+            ],
+            "target": [
+              0.416375,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.195651,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              0.781649,
+              0.539345,
+              0.551397
+            ],
+            "target": [
+              0.018869,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.257779,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.77072,
+              0.540178,
+              0.552646
+            ],
+            "target": [
+              0.006796,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.259666,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.142587,
+              0.511859,
+              0.510168
+            ],
+            "target": [
+              0.417601,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.195459,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              0.781649,
+              0.539345,
+              0.551397
+            ],
+            "target": [
+              0.018869,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.257779,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.76437,
+              0.540661,
+              0.553371
+            ],
+            "target": [
+              -0.000219,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.260762,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.130673,
+              0.512766,
+              0.511529
+            ],
+            "target": [
+              0.404439,
+              -0.015403,
+              -0.280726
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.197516,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.7029693957378229,
+      "maxTargetDelta": 0.398732
+    },
+    {
+      "component": "pc-case",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              0.985915,
+              0.146873,
+              1.257147
+            ],
+            "target": [
+              -0.001125,
+              -0.570975,
+              0.180375
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.627573,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.569019,
+              1.168344,
+              1.952244
+            ],
+            "target": [
+              -0.008443,
+              0.021099,
+              0.231376
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.601143,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.661415,
+              1.046001,
+              1.719332
+            ],
+            "target": [
+              0.252175,
+              0.021099,
+              0.18198
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.323754,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              1.571613,
+              1.164909,
+              1.945704
+            ],
+            "target": [
+              -0.001125,
+              0.021099,
+              0.229989
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.593354,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.569019,
+              1.168344,
+              1.952244
+            ],
+            "target": [
+              -0.008443,
+              0.021099,
+              0.231376
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.601143,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.663659,
+              1.043029,
+              1.713674
+            ],
+            "target": [
+              0.258506,
+              0.021099,
+              0.18078
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.317015,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              1.571613,
+              1.164909,
+              1.945704
+            ],
+            "target": [
+              -0.001125,
+              0.021099,
+              0.229989
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.593354,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.570137,
+              1.166864,
+              1.949426
+            ],
+            "target": [
+              -0.00529,
+              0.021099,
+              0.230778
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.597786,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.663785,
+              1.042862,
+              1.713357
+            ],
+            "target": [
+              0.258861,
+              0.021099,
+              0.180713
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.316637,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              1.571613,
+              1.164909,
+              1.945704
+            ],
+            "target": [
+              -0.001125,
+              0.021099,
+              0.229989
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.593354,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.569682,
+              1.167466,
+              1.950571
+            ],
+            "target": [
+              -0.006571,
+              0.021099,
+              0.231021
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.59915,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.666838,
+              1.038819,
+              1.70566
+            ],
+            "target": [
+              0.267474,
+              0.021099,
+              0.17908
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.307471,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              1.571613,
+              1.164909,
+              1.945704
+            ],
+            "target": [
+              -0.001125,
+              0.021099,
+              0.229989
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.593354,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              1.569972,
+              1.167083,
+              1.949842
+            ],
+            "target": [
+              -0.005755,
+              0.021099,
+              0.230867
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.598282,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              1.662616,
+              1.044411,
+              1.716305
+            ],
+            "target": [
+              0.255562,
+              0.021099,
+              0.181338
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 2.320148,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 1.2158726843748897,
+      "maxTargetDelta": 0.643983763383053
+    },
+    {
+      "component": "motherboard",
+      "aNum": "01",
+      "bNum": "02",
+      "cycles": [
+        {
+          "cycle": 1,
+          "a": {
+            "position": [
+              0.852594,
+              0.543314,
+              0.726241
+            ],
+            "target": [
+              0.002487,
+              -0.074945,
+              -0.201148
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.401776,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.735401,
+              0.452971,
+              0.569515
+            ],
+            "target": [
+              0.007662,
+              -0.076294,
+              -0.224382
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.713392,
+              0.469713,
+              0.546564
+            ],
+            "target": [
+              -0.014347,
+              -0.059552,
+              -0.247334
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 2,
+          "a": {
+            "position": [
+              0.731297,
+              0.456093,
+              0.565235
+            ],
+            "target": [
+              0.003557,
+              -0.073172,
+              -0.228663
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.733217,
+              0.454632,
+              0.567238
+            ],
+            "target": [
+              0.005478,
+              -0.074633,
+              -0.22666
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.713974,
+              0.46927,
+              0.547171
+            ],
+            "target": [
+              -0.013765,
+              -0.059995,
+              -0.246727
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 3,
+          "a": {
+            "position": [
+              0.731297,
+              0.456093,
+              0.565235
+            ],
+            "target": [
+              0.003557,
+              -0.073172,
+              -0.228663
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.735306,
+              0.453043,
+              0.569416
+            ],
+            "target": [
+              0.007566,
+              -0.076222,
+              -0.224482
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.710516,
+              0.471901,
+              0.543564
+            ],
+            "target": [
+              -0.017224,
+              -0.057364,
+              -0.250333
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 4,
+          "a": {
+            "position": [
+              0.731297,
+              0.456093,
+              0.565235
+            ],
+            "target": [
+              0.003557,
+              -0.073172,
+              -0.228663
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.736938,
+              0.451801,
+              0.571118
+            ],
+            "target": [
+              0.009199,
+              -0.077464,
+              -0.222779
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.711616,
+              0.471064,
+              0.544712
+            ],
+            "target": [
+              -0.016123,
+              -0.058201,
+              -0.249186
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        },
+        {
+          "cycle": 5,
+          "a": {
+            "position": [
+              0.731297,
+              0.456093,
+              0.565235
+            ],
+            "target": [
+              0.003557,
+              -0.073172,
+              -0.228663
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "b": {
+            "position": [
+              0.737858,
+              0.451101,
+              0.572078
+            ],
+            "target": [
+              0.010119,
+              -0.078164,
+              -0.22182
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          },
+          "a2": {
+            "position": [
+              0.711286,
+              0.471315,
+              0.544367
+            ],
+            "target": [
+              -0.016454,
+              -0.05795,
+              -0.249531
+            ],
+            "quaternion": [
+              -0.211005,
+              0.353109,
+              0.082077,
+              0.907774
+            ],
+            "distance": 1.2,
+            "fov": 38
+          }
+        }
+      ],
+      "maxPosDelta": 0.23891029348690687,
+      "maxTargetDelta": 0.051511887958023826
+    }
+  ],
+  "phase11": [
+    {
+      "component": "ram",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "storage-m2",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "case-fan",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "cpu",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "storage-hdd",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "psu",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "cpu-cooler-air",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "gpu",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "cables",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "pc-case",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "component": "motherboard",
+      "explode": [
+        {
+          "v": 0,
+          "ev": 0,
+          "ok": true
+        },
+        {
+          "v": 0.5,
+          "ev": 0.5,
+          "ok": true
+        },
+        {
+          "v": 1,
+          "ev": 1,
+          "ok": true
+        },
+        {
+          "v": "reset",
+          "ev": 0,
+          "ok": true
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "phase12": [
+    {
+      "component": "ram",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "storage-m2",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "case-fan",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "cpu",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "storage-hdd",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "psu",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "cpu-cooler-air",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "gpu",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "cables",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "pc-case",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    },
+    {
+      "component": "motherboard",
+      "isX": true,
+      "isOff": false,
+      "pass": true
+    }
+  ],
+  "phase13": [
+    {
+      "component": "ram",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "storage-m2",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "case-fan",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "cpu",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "storage-hdd",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "psu",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "cpu-cooler-air",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "cpu-cooler-liquid",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "gpu",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "cables",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "pc-case",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    },
+    {
+      "component": "motherboard",
+      "defaultOk": false,
+      "onlyOneActive": true,
+      "onlyOneLabel": true,
+      "pass": false
+    }
+  ],
+  "console": [
+    {
+      "slug": "ram",
+      "type": "warning",
+      "text": "[.WebGL-0xd1c00ba5200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "slug": "ram",
+      "type": "warning",
+      "text": "[.WebGL-0xd1c00ba5200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "slug": "ram",
+      "type": "warning",
+      "text": "[.WebGL-0xd1c00ba5200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "slug": "ram",
+      "type": "warning",
+      "text": "[.WebGL-0xd1c00ba5200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    }
+  ],
+  "network": []
+}

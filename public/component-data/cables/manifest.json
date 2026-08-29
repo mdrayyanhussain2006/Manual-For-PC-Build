@@ -1,0 +1,115 @@
+{
+  "$schema": "../../schemas/manifest.schema.json",
+  "slug": "cables",
+  "name": "Cables (Modular PC Power & Data Cables)",
+  "version": 1,
+  "budget": {
+    "lod0Bytes": 1400000,
+    "lod1Bytes": 650000,
+    "trisLod0": 45000,
+    "trisLod1": 20000
+  },
+  "model": {
+    "lod0": "/models/cables/cables.lod0.glb",
+    "lod1": "/models/cables/cables.lod1.glb",
+    "poster": "/models/cables/cables.poster.avif"
+  },
+  "defaultCamera": {
+    "direction": [0.65, 0.45, 0.60],
+    "fitFraction": 0.74,
+    "fov": 28
+  },
+  "parts": [
+    {
+      "id": "atx_24pin_cable",
+      "number": 1,
+      "meshPattern": "P01_atx_24pin*",
+      "anchor": "H01",
+      "fallbackOffset": [0, 0, 0.4]
+    },
+    {
+      "id": "eps_8pin_cable",
+      "number": 2,
+      "meshPattern": "P02_eps_8pin*",
+      "anchor": "H02",
+      "fallbackOffset": [0.3, 0, 0.4],
+      "explode": {
+        "dir": [1, 0, 0],
+        "dist": 0.30,
+        "stagger": 0.1
+      }
+    },
+    {
+      "id": "pcie_12vhpwr_cable",
+      "number": 3,
+      "meshPattern": "P03_pcie_12vhpwr*",
+      "anchor": "H03",
+      "fallbackOffset": [-0.3, 0, 0.4],
+      "explode": {
+        "dir": [-1, 0, 0],
+        "dist": 0.30,
+        "stagger": 0.1
+      }
+    },
+    {
+      "id": "pcie_8pin_cable",
+      "number": 4,
+      "meshPattern": "P04_pcie_8pin*",
+      "anchor": "H04",
+      "fallbackOffset": [0.5, 0, 0.4],
+      "explode": {
+        "dir": [1, 0, 0],
+        "dist": 0.50,
+        "stagger": 0.15
+      }
+    },
+    {
+      "id": "sata_power_cable",
+      "number": 5,
+      "meshPattern": "P05_sata_power*",
+      "anchor": "H05",
+      "fallbackOffset": [-0.5, 0, 0.4],
+      "explode": {
+        "dir": [-1, 0, 0],
+        "dist": 0.50,
+        "stagger": 0.15
+      }
+    },
+    {
+      "id": "sata_data_cable",
+      "number": 6,
+      "meshPattern": "P06_sata_data*",
+      "anchor": "H06",
+      "fallbackOffset": [0, 0.4, 0.2],
+      "explode": {
+        "dir": [0, 1, 0],
+        "dist": 0.40,
+        "stagger": 0.2
+      }
+    },
+    {
+      "id": "front_panel_harness",
+      "number": 7,
+      "meshPattern": "P07_front_panel*",
+      "anchor": "H07",
+      "fallbackOffset": [0, -0.4, 0.2],
+      "explode": {
+        "dir": [0, -1, 0],
+        "dist": 0.40,
+        "stagger": 0.2
+      }
+    },
+    {
+      "id": "cable_combs",
+      "number": 8,
+      "meshPattern": "P08_cable_combs*",
+      "anchor": "H08",
+      "fallbackOffset": [0, 0, 0.1],
+      "explode": {
+        "dir": [0, 0, 1],
+        "dist": 0.40,
+        "stagger": 0.0
+      }
+    }
+  ]
+}

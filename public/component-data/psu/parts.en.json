@@ -1,0 +1,50 @@
+{
+  "enclosure": {
+    "title": "SECC Steel Enclosure",
+    "description": "Grounded 0.8 mm electro-galvanized steel casing providing electromagnetic interference (EMI) shielding and structural rigidity."
+  },
+  "cooling_fan": {
+    "title": "120mm Temperature-Controlled Fan",
+    "description": "Thermally regulated fluid-dynamic bearing exhaust fan maintaining internal component temperatures with silent low-RPM operation."
+  },
+  "intake_grill": {
+    "title": "Honeycomb Intake Fan Grill",
+    "description": "Stamped hexagonal mesh guard maximizing airflow intake area while preventing foreign object intrusion and user contact."
+  },
+  "ac_inlet_switch": {
+    "title": "AC Inlet & Rocker Power Switch",
+    "description": "Standard IEC C14 3-pin appliance inlet receptacle with integrated master power disconnect rocker switch and line EMI filter."
+  },
+  "modular_panel": {
+    "title": "Modular Cable Output Panel",
+    "description": "Detachable wiring receptacle matrix routing regulated +12V, +5V, and +3.3V power rails to motherboards, GPUs, and peripherals."
+  },
+  "main_transformer": {
+    "title": "High-Frequency Main Transformer",
+    "description": "Ferrite E-core power transformer providing galvanic safety isolation while stepping down high-voltage rectified DC to secondary rails."
+  },
+  "pfc_inductor_caps": {
+    "title": "Active PFC Choke & Bulk Capacitor",
+    "description": "Toroidal power factor correction (PFC) inductor and 450V electrolytic reservoir capacitor stabilizing rectified mains voltage."
+  },
+  "main_pcb": {
+    "title": "Heavy-Copper Main PCB",
+    "description": "Multi-layer FR4 circuit board with 2oz copper power planes minimizing electrical resistance and thermal losses during high loads."
+  },
+  "dc_dc_daughterboards": {
+    "title": "DC-DC Synchronous Step-Down Modules",
+    "description": "Dedicated vertical daughterboards converting the main +12V rail into tightly regulated +5V and +3.3V secondary outputs."
+  },
+  "protection_supervision": {
+    "title": "Protection & Supervisor Circuitry",
+    "description": "Hardware monitoring circuit providing Over-Current (OCP), Over-Voltage (OVP), Under-Voltage (UVP), and Short-Circuit Protection (SCP)."
+  },
+  "secondary_caps_chokes": {
+    "title": "Solid Polymer Capacitors & Chokes",
+    "description": "High-end solid conductive polymer output filtering capacitors smoothing voltage ripple and transient response spikes."
+  },
+  "rating_plate": {
+    "title": "Electrical Specification Plate",
+    "description": "Comprehensive specification label detailing continuous wattage ratings, rail amperage limits, efficiency tier, and safety certifications."
+  }
+}
