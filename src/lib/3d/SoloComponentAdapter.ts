@@ -394,10 +394,12 @@ export class SoloComponentAdapter {
           meshOffset = primaryExplodeDir.clone();
         }
 
-        this.#meshExplodeOffsets.set(mesh, meshOffset);
+        // Convert world displacement into local mesh space so it displaces by the exact world distance
+        const localOffset = meshOffset.clone().divideScalar(Math.max(this.#normScale, 1e-6));
+        this.#meshExplodeOffsets.set(mesh, localOffset);
       }
 
-      // Set badge explode offset
+      // Set badge explode offset in WORLD space
       if (primaryExplodeDir) {
         this.#badgeExplodeOffsets.set(nn, primaryExplodeDir.clone());
       } else {
@@ -496,16 +498,11 @@ export class SoloComponentAdapter {
       const meshAnchorPos = part.anchor.clone();
       const badgePos = part.badgeAnchor.clone();
 
-      // Mesh anchor moves with the mesh displacement
-      const meshOffset = (part.meshes[0] && this.#meshExplodeOffsets.get(part.meshes[0])) || this.#badgeExplodeOffsets.get(nn);
-      if (this.#explodeProgress > 0 && meshOffset) {
-        meshAnchorPos.addScaledVector(meshOffset, this.#explodeProgress);
-      }
-
-      // Badge floats outward with explode progression
-      const badgeOffset = this.#badgeExplodeOffsets.get(nn);
-      if (this.#explodeProgress > 0 && badgeOffset) {
-        badgePos.addScaledVector(badgeOffset, this.#explodeProgress * 1.15);
+      // Both the mesh anchor point and the badge displace by the exact world explode vector
+      const worldExplodeOffset = this.#badgeExplodeOffsets.get(nn);
+      if (this.#explodeProgress > 0 && worldExplodeOffset) {
+        meshAnchorPos.addScaledVector(worldExplodeOffset, this.#explodeProgress);
+        badgePos.addScaledVector(worldExplodeOffset, this.#explodeProgress);
       }
 
       const projectedAnchor = meshAnchorPos.project(this.#camera);
