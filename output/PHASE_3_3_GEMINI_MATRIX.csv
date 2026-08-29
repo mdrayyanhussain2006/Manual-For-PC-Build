@@ -1,0 +1,13 @@
+Component,Route,Load,Select,Focus,Explode Geometry,Explode Reset,XRay Ghost,XRay Selected Glow,XRay Switch,XRay Restore,Summary,Annotations,Camera,Responsive,Result
+"Memory (RAM)","/components/ram/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"Storage (M.2 NVMe)","/components/storage-m2/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"Case Fan","/components/case-fan/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"Processor (CPU)","/components/cpu/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"Storage (HDD)","/components/storage-hdd/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"Power Supply (PSU)","/components/psu/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"CPU Cooler (Air)","/components/cpu-cooler-air/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"CPU Cooler (Liquid AIO)","/components/cpu-cooler-liquid/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"Graphics Card (GPU)","/components/gpu/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"Power & Data Cables","/components/cables/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"PC Chassis (Case)","/components/pc-case/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+"Motherboard","/components/motherboard/",PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
