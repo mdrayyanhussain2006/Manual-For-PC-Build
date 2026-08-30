@@ -19,15 +19,16 @@ Browser (client)
   └─ POST /api/ask-builder
          │
          ▼
-   Astro API Route (server)
+    Astro API Route (server)
          │
          ├─ Request validation (size, message length, history length)
+         ├─ Rate limiting (per-IP, 20 req/min)
          ├─ Input sanitisation
-         ├─ buildSystemPrompt(context) → knowledge layer
+         ├─ buildSystemPrompt(context) → knowledge layer (async)
          │
          ├─ createProvider(mode)
-         │       ├─ MockAIProvider  (when AI_API_KEY is empty/dev mode)
-         │       └─ DeepSeekProvider (when AI_API_KEY is set)
+         │       ├─ MockAIProvider  (when GEMINI_API_KEY is empty/dev mode)
+         │       └─ GeminiProvider (when GEMINI_API_KEY is set)
          │
          ├─ provider.sendMessage(...)  → AIResponsePayload
          │
@@ -45,10 +46,10 @@ Browser (client)
 | `src/components/AskBuilder.astro` | UI trigger + panel + client logic | Client |
 | `src/lib/ask-builder/types.ts` | All shared TypeScript types | Both |
 | `src/lib/ask-builder/AIProvider.ts` | Provider interface + factory | Server |
-| `src/lib/ask-builder/providers/DeepSeekProvider.ts` | DeepSeek implementation | Server |
+| `src/lib/ask-builder/providers/GeminiProvider.ts` | Google Gemini implementation | Server |
 | `src/lib/ask-builder/providers/MockAIProvider.ts` | Deterministic mock | Server |
-| `src/lib/ask-builder/knowledge.ts` | System prompt builder | Server |
-| `src/lib/ask-builder/actionValidator.ts` | Action security validator | Server |
+| `src/lib/ask-builder/knowledge.ts` | System prompt builder (async, semantic parts) | Server |
+| `src/lib/ask-builder/actionValidator.ts` | Action security validator (component-scoped) | Server |
 | `src/lib/ask-builder/contextBridge.ts` | IntegrationState → context snapshot | Client |
 | `src/pages/api/ask-builder.ts` | Server endpoint | Server |
 | `src/styles/global.css` (appended) | `ab-*` scoped styles | Client |
@@ -65,15 +66,15 @@ interface AIProvider {
 }
 ```
 
-The provider is selected at **server startup** based on the presence of `AI_API_KEY`. No provider selection logic ever reaches the browser.
+The provider is selected at **server startup** based on the presence of `GEMINI_API_KEY`. No provider selection logic ever reaches the browser.
 
 ---
 
-## DeepSeek Configuration
+## Gemini Configuration
 
-- **API base**: `https://api.deepseek.com` (configurable via `AI_BASE_URL`)
-- **Model**: `deepseek-chat` (configurable via `AI_MODEL`)
-- **Output mode**: JSON object (`response_format: { type: 'json_object' }`)
+- **API base**: `https://generativelanguage.googleapis.com`
+- **Model**: `gemini-2.5-flash` (configurable via `AI_MODEL`)
+- **Output mode**: `application/json` via `generationConfig.responseMimeType`
 - **Temperature**: 0.3 (consistent, factual answers)
 - **Max tokens**: 512 per response
 - **Timeout**: 30s per request, 35s at endpoint level
@@ -90,7 +91,7 @@ The model is prompted to always respond with:
 
 ## Mock Provider
 
-The `MockAIProvider` activates automatically when `AI_API_KEY` is empty or unset.
+The `MockAIProvider` activates automatically when `GEMINI_API_KEY` is empty or unset.
 
 - All responses are prefixed with `[MOCK]` so they are never confused with real AI
 - 15 keyword-matched PC build scenarios
@@ -105,16 +106,18 @@ The `MockAIProvider` activates automatically when `AI_API_KEY` is empty or unset
 
 1. **Static site knowledge** — navigation routes, page purposes
 2. **ComponentRegistry** — all 12 component descriptions and specs (from `ComponentRegistry.ts`)
-3. **Build sequence** — 10-step guided build knowledge
-4. **Safety guidelines** — conservative installation guidance
-5. **Troubleshooting** — common first-build failure modes
-6. **Runtime context** — `AskBuilderContext` snapshot (current page, active component, X-Ray state, etc.)
+3. **Semantic parts knowledge** — 126 parts across 12 components loaded from `public/component-data/*/parts.en.json`
+4. **Build sequence** — 10-step guided build knowledge
+5. **Safety guidelines** — conservative installation guidance
+6. **Troubleshooting** — common first-build failure modes (anchors from `/troubleshooting/`)
+7. **Runtime context** — `AskBuilderContext` snapshot (current page, active component, activeSemanticId, X-Ray state, etc.)
 
 The prompt instructs the model to:
 - Respond in structured JSON only
 - Never invent specs, voltages, or compatibility claims
 - State uncertainty clearly
 - Recommend manufacturer documentation for model-specific details
+- Use component-scoped semantic IDs for focusFeature actions
 
 ---
 
@@ -126,18 +129,23 @@ The prompt instructs the model to:
 interface AskBuilderContext {
   route: string;              // Current pathname, e.g. /components/gpu/
   theme: 'light' | 'dark' | 'accent';
-  activeComponent: string | null;    // e.g. 'gpu'
-  activeSemanticId: string | null;   // e.g. 'GPU'
+  activeComponent: string | null;    // e.g. 'gpu' (canonical slug)
+  activeSemanticId: string | null;   // e.g. 'graphics_processor' (from parts.en.json)
   cameraTarget: string | null;
   timelineProgress: number;          // 0-1 scroll progress
   explodeProgress: number;           // 0-1 explode state
   xrayActive: boolean;
   isInteracting: boolean;
-  buildStep: number | null;          // 1-10 or null
+  buildStep: number | null;          // 1-10 or null (from URL hash #step-N)
 }
 ```
 
 This is derived from `IntegrationState.getSnapshot()` via `contextBridge.ts`. The 3D state system is not duplicated.
+
+**Critical fixes:**
+- `activeComponent` is now the canonical slug (e.g., `cpu`, `gpu`), never a part number
+- `activeSemanticId` is populated from the component's `parts.en.json` ID (e.g., `heat_spreader`, `compute_die`)
+- `buildStep` is parsed from `window.location.hash` on `/build/` pages (e.g., `#step-06`)
 
 ---
 
@@ -149,9 +157,9 @@ Ask Builder can request these application-owned actions:
 |--------|--------|
 | `navigate` | Navigate to an internal route |
 | `openComponent` | Open a component page by slug |
-| `openBuildStep` | Navigate to a build step anchor |
-| `focusFeature` | Dispatch `ask-builder:focus-feature` event |
-| `openTroubleshooting` | Navigate to troubleshooting page |
+| `openBuildStep` | Navigate to a build step anchor (`/build/#step-N`) |
+| `focusFeature` | Dispatch `ask-builder:focus-feature` event with component + semanticId |
+| `openTroubleshooting` | Navigate to troubleshooting page with valid topic anchor |
 
 **All actions are validated server-side before being sent to the browser, and validated again client-side before execution.**
 
@@ -159,15 +167,14 @@ Ask Builder can request these application-owned actions:
 
 ## Environment Setup
 
-Copy `.env.example` to `.env` and set `AI_API_KEY`:
+Copy `.env.example` to `.env` and set `GEMINI_API_KEY`:
 
 ```env
-AI_API_KEY=your_deepseek_api_key_here
-AI_BASE_URL=https://api.deepseek.com
-AI_MODEL=deepseek-chat
+GEMINI_API_KEY=your_gemini_api_key_here
+AI_MODEL=gemini-2.5-flash
 ```
 
-When `AI_API_KEY` is empty, Ask Builder automatically uses `MockAIProvider` for development.
+When `GEMINI_API_KEY` is empty, Ask Builder automatically uses `MockAIProvider` for development.
 
 ---
 

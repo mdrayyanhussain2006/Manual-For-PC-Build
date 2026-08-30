@@ -464,14 +464,45 @@ const metadata = getComponentBySlug(canonicalSlug);
     document.addEventListener('DOMContentLoaded', () => {
       initSoloViewers();
       setupThemeObserver();
+      setupFocusFeatureListener();
     });
   } else {
     initSoloViewers();
     setupThemeObserver();
+    setupFocusFeatureListener();
   }
 
   document.addEventListener('astro:page-load', () => {
     initSoloViewers();
     setupThemeObserver();
+    setupFocusFeatureListener();
   });
+
+  // ── Ask Builder focusFeature integration ──────────────────────
+  // Listens for ask-builder:focus-feature events and routes them to the
+  // correct SoloComponentAdapter instance by matching semanticId to part number.
+  function setupFocusFeatureListener(): void {
+    if ((window as any).__ab_focus_listener_attached) return;
+    (window as any).__ab_focus_listener_attached = true;
+
+    window.addEventListener('ask-builder:focus-feature', ((e: CustomEvent) => {
+      const { component, semanticId } = e.detail ?? {};
+      if (!component || !semanticId) return;
+
+      const viewers = document.querySelectorAll<HTMLElement>('[data-solo-viewer]');
+      for (const root of viewers) {
+        if (root.dataset.slug !== component) continue;
+        const adapter = (root as any).__solo_adapter;
+        if (!adapter) continue;
+
+        // Find part number by semanticId
+        const parts = adapter.parts; // PartInfo[]
+        const match = parts.find((p: any) => p.id === semanticId);
+        if (match) {
+          adapter.selectPart(match.number, true);
+        }
+        break;
+      }
+    }) as EventListener);
+  }
 </script>

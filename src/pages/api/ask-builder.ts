@@ -3,7 +3,7 @@
  * POST /api/ask-builder
  *
  * Security guarantees:
- * - AI_API_KEY never leaves the server
+ * - GEMINI_API_KEY never leaves the server
  * - All AI actions are validated before returning to client
  * - Request size and message length are capped
  * - Error responses are sanitised (no stack traces, no server paths)
@@ -15,6 +15,60 @@ import { createProvider } from '../../lib/ask-builder/AIProvider.js';
 import { buildSystemPrompt } from '../../lib/ask-builder/knowledge.js';
 import { validateActions } from '../../lib/ask-builder/actionValidator.js';
 import type { AskBuilderRequest, AskBuilderResponse, AskBuilderErrorResponse } from '../../lib/ask-builder/types.js';
+
+// ──────────────────────────────────────────────────────────────
+// RATE LIMITING
+// ──────────────────────────────────────────────────────────────
+
+interface RateLimitEntry {
+  count: number;
+  resetTime: number;
+}
+
+const rateLimitMap = new Map<string, RateLimitEntry>();
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute window
+const RATE_LIMIT_MAX_REQUESTS = 20;  // 20 requests per minute per IP
+const RATE_LIMIT_CLEANUP_INTERVAL = 5 * 60 * 1000; // 5 minutes
+
+// Cleanup old entries periodically
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, entry] of rateLimitMap.entries()) {
+    if (entry.resetTime < now) {
+      rateLimitMap.delete(key);
+    }
+  }
+}, RATE_LIMIT_CLEANUP_INTERVAL);
+
+function getClientIdentifier(request: Request): string {
+  // Try to get IP from various headers (for proxy environments)
+  const forwarded = request.headers.get('x-forwarded-for');
+  const realIp = request.headers.get('x-real-ip');
+  const ip = forwarded?.split(',')[0]?.trim() || realIp || 'unknown';
+  return ip;
+}
+
+function checkRateLimit(identifier: string): { allowed: boolean; remaining: number; resetTime: number } {
+  const now = Date.now();
+  const entry = rateLimitMap.get(identifier);
+
+  if (!entry || entry.resetTime < now) {
+    // New window
+    const newEntry: RateLimitEntry = {
+      count: 1,
+      resetTime: now + RATE_LIMIT_WINDOW_MS,
+    };
+    rateLimitMap.set(identifier, newEntry);
+    return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - 1, resetTime: newEntry.resetTime };
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return { allowed: false, remaining: 0, resetTime: entry.resetTime };
+  }
+
+  entry.count++;
+  return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - entry.count, resetTime: entry.resetTime };
+}
 
 // ──────────────────────────────────────────────────────────────
 // LIMITS
@@ -30,9 +84,9 @@ const REQUEST_TIMEOUT_MS = 35_000;  // 35 s total endpoint timeout
 // ──────────────────────────────────────────────────────────────
 
 function resolveProviderMode(): 'gemini' | 'mock' {
-  const key = process.env.AI_API_KEY;
+  const key = process.env.GEMINI_API_KEY;
   if (!key || key.trim() === '') {
-    console.info('[ask-builder] No AI_API_KEY — using MockAIProvider');
+    console.info('[ask-builder] No GEMINI_API_KEY — using MockAIProvider');
     return 'mock';
   }
   return 'gemini';
@@ -68,6 +122,18 @@ function sanitiseError(err: unknown): string {
 // ──────────────────────────────────────────────────────────────
 
 export const POST: APIRoute = async ({ request }) => {
+  // ── Rate limiting ──
+  const clientId = getClientIdentifier(request);
+  const rateLimit = checkRateLimit(clientId);
+  if (!rateLimit.allowed) {
+    const retryAfter = Math.ceil((rateLimit.resetTime - Date.now()) / 1000);
+    return jsonResponse(
+      { ok: false, error: 'Too many requests. Please wait before trying again.' } satisfies AskBuilderErrorResponse,
+      429,
+      { 'Retry-After': String(retryAfter) }
+    );
+  }
+
   // ── Request size guard ──
   const contentLength = request.headers.get('content-length');
   if (contentLength && parseInt(contentLength, 10) > MAX_REQUEST_BYTES) {
@@ -107,7 +173,7 @@ export const POST: APIRoute = async ({ request }) => {
   // ── Build system prompt with context ──
   let systemPrompt: string;
   try {
-    systemPrompt = buildSystemPrompt(context as any);
+    systemPrompt = await buildSystemPrompt(context as any);
   } catch {
     systemPrompt = 'You are Ask Builder, an AI assistant for PC building. Respond with JSON: {"message":"...","actions":[]}.';
   }
@@ -166,13 +232,14 @@ export const GET: APIRoute = () =>
 // HELPERS
 // ──────────────────────────────────────────────────────────────
 
-function jsonResponse(data: unknown, status: number): Response {
+function jsonResponse(data: unknown, status: number, extraHeaders: Record<string, string> = {}): Response {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
+      ...extraHeaders,
     },
   });
 }

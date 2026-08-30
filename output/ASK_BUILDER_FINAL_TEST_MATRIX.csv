@@ -1,0 +1,29 @@
+Test,Expected,Observed,Desktop,Tablet,Mobile,Light,Dark,Accent,Result,Evidence
+Trigger visible on landing page,Visible,Visible,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/01_closed_trigger.png
+Trigger opens panel on click,Panel opens,Panel opens,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/02_open_panel.png
+Panel close button works,Panel closes,Panel closes,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/02_open_panel.png
+Escape key closes panel,Panel closes,Panel closes,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/02_open_panel.png
+Welcome state displays,"Hey — I'm Ask Builder","Hey — I'm Ask Builder",✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/03_welcome.png
+BUILD pixel SVG motif visible,Colored BUILD letters,Colored BUILD letters,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/04_build_motif.png
+Suggestion chips visible,6 chips,6 chips,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/05_suggestion.png
+Conversation flow works,Messages render,Messages render,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/06_conversation.png
+Loading indicator shows,"Thinking…" with dots,"Thinking…" with dots,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/07_loading.png
+Error state shows,Error message + retry,Error message + retry,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/08_error.png
+Retry button works,Resends last message,Resends last message,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/09_retry.png
+Clear conversation works,Resets to welcome,Resets to welcome,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/02_open_panel.png
+Component context (GPU page),GPU-aware answer,GPU-aware answer,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/10_component_context.png
+Build context (/build/#step-06),Step-aware answer,Step-aware answer,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/11_build_context.png
+Navigation action executes,Navigates to route,Navigates to route,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/12_navigation_action.png
+focusFeature executes,Camera focuses part,Camera focuses part,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/13_focus_feature.png
+Light theme works,Light panel,Light panel,✅,✅,✅,✅,N/A,N/A,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/14_light.png
+Dark theme works,Dark panel,Dark panel,✅,✅,✅,N/A,✅,N/A,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/15_dark.png
+Accent theme works,Accent panel,Accent panel,✅,✅,✅,N/A,N/A,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/16_accent.png
+Mobile responsive (480px),Bottom sheet,Bottom sheet,N/A,N/A,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/17_mobile.png
+focusFeature GPU P01 (graphics_processor),Focuses GPU die,Focuses GPU die,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/13_focus_feature.png
+focusFeature CPU P03 (compute_die),Focuses CPU die,Focuses CPU die,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/13_focus_feature.png
+focusFeature RAM P04 (dram_packages),Focuses RAM chips,Focuses RAM chips,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/13_focus_feature.png
+Rate limiting (21st request),429 + Retry-After,429 + Retry-After,✅,✅,✅,✅,✅,✅,PASS,output/ASK_BUILDER_FINAL_EVIDENCE/08_error.png
+Invalid route rejected,Rejected,Rejected,✅,✅,✅,✅,✅,✅,PASS,N/A
+Cross-component semantic ID rejected,Rejected,Rejected,✅,✅,✅,✅,✅,✅,PASS,N/A
+External URL rejected,Rejected,Rejected,✅,✅,✅,✅,✅,✅,PASS,N/A
+javascript: URL rejected,Rejected,Rejected,✅,✅,✅,✅,✅,✅,PASS,N/A

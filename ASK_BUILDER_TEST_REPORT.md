@@ -1,10 +1,10 @@
 # ASK BUILDER — TEST REPORT
 
 ## Test Environment
-- **Date**: 2026-08-30
-- **Browser**: Chromium (Playwright)
-- **Server**: Astro dev server on localhost:4321
-- **Provider Mode**: MockAIProvider (no AI_API_KEY configured)
+- **Date**: 2026-08-31
+- **Browser**: Chromium (Playwright) / Manual verification
+- **Server**: Astro dev server on localhost:4322
+- **Provider Mode**: MockAIProvider (no GEMINI_API_KEY configured)
 - **Themes tested**: Light, Dark, Accent
 
 ---
@@ -27,75 +27,98 @@
 | # | Test | Result | Notes |
 |---|------|--------|-------|
 | 7 | Welcome message displays | ✅ PASS | "Hey — I'm Ask Builder" |
-| 8 | BUILD pixel SVG motif visible | ✅ PASS | Colored pixel-art letters |
+| 8 | BUILD pixel SVG motif visible | ✅ PASS | Colored pixel-art letters (6 colors) |
 | 9 | Suggestion chips visible | ✅ PASS | 6 context chips shown |
 | 10 | Context footnote visible | ✅ PASS | Shows "understands your context" |
+| 11 | Footer shows "Ask Builder" (no "Gemini") | ✅ PASS | Brand identity correct |
 
 ### Conversation Flow
 
 | # | Test | Result | Notes |
 |---|------|--------|-------|
-| 11 | Suggestion chip submits message | ✅ PASS | User bubble appears |
-| 12 | Welcome state hidden after first message | ✅ PASS | Welcome div removed |
-| 13 | Thinking indicator appears | ✅ PASS | Animated dots + "Thinking…" |
-| 14 | Mock response appears | ✅ PASS | [MOCK] prefix confirmed |
-| 15 | Response time 600-1000ms | ✅ PASS | Matches mock delay |
-| 16 | Action chips rendered below response | ✅ PASS | Navigation chips shown |
-| 17 | Composer: text input works | ✅ PASS | Types and auto-resizes |
-| 18 | Composer: Enter sends message | ✅ PASS | Sends without newline |
-| 19 | Composer: Shift+Enter is newline | ✅ PASS | Does not send |
-| 20 | Send button enabled when text present | ✅ PASS | |
-| 21 | Send button disabled when empty | ✅ PASS | |
-| 22 | Send button disabled while thinking | ✅ PASS | |
-| 23 | Clear conversation resets to welcome | ✅ PASS | History wiped, welcome shown |
+| 12 | Suggestion chip submits message | ✅ PASS | User bubble appears |
+| 13 | Welcome state hidden after first message | ✅ PASS | Welcome div removed |
+| 14 | Thinking indicator appears | ✅ PASS | Animated dots + "Thinking…" |
+| 15 | Mock response appears | ✅ PASS | [MOCK] prefix confirmed |
+| 16 | Response time 600-1000ms | ✅ PASS | Matches mock delay |
+| 17 | Action chips rendered below response | ✅ PASS | Navigation chips shown |
+| 18 | Composer: text input works | ✅ PASS | Types and auto-resizes |
+| 19 | Composer: Enter sends message | ✅ PASS | Sends without newline |
+| 20 | Composer: Shift+Enter is newline | ✅ PASS | Does not send |
+| 21 | Send button enabled when text present | ✅ PASS | |
+| 22 | Send button disabled when empty | ✅ PASS | |
+| 23 | Send button disabled while thinking | ✅ PASS | |
+| 24 | Clear conversation resets to welcome | ✅ PASS | History wiped, welcome shown |
 
 ### Navigation Actions
 
 | # | Test | Result | Notes |
 |---|------|--------|-------|
-| 24 | Action chip "→ /components/gpu/" navigates | ✅ PASS | Navigated to GPU page |
-| 25 | Action chip "Troubleshooting: no-post" | ✅ PASS | Navigated to troubleshooting |
-| 26 | Action chip "Go to Step 1" | ✅ PASS | Navigated with anchor |
-| 27 | External URL rejected client-side | ✅ PASS | `isInternalPath` blocks it |
+| 25 | Action chip "→ /components/gpu/" navigates | ✅ PASS | Navigated to GPU page |
+| 26 | Action chip "Troubleshooting: no-post" | ✅ PASS | Navigated to troubleshooting |
+| 27 | Action chip "Go to Step 1" | ✅ PASS | Navigated with anchor |
+| 28 | External URL rejected client-side | ✅ PASS | `isInternalPath` blocks it |
 
 ### Context Awareness
 
 | # | Test | Result | Notes |
 |---|------|--------|-------|
-| 28 | Context bar updates with route | ✅ PASS | Shows on component pages |
-| 29 | Ask "What does the GPU do?" on GPU page | ✅ PASS | GPU response returned |
-| 30 | Mock uses "gpu" keyword to match | ✅ PASS | Scenario matched |
+| 29 | Context bar updates with route | ✅ PASS | Shows on component pages |
+| 30 | Ask "What does the GPU do?" on GPU page | ✅ PASS | GPU response returned |
+| 31 | Ask "What does this part do?" with activeSemanticId | ✅ PASS | Part-aware response |
+| 32 | Mock uses "gpu" keyword to match | ✅ PASS | Scenario matched |
 
 ### Build Knowledge
 
 | # | Test | Result | Notes |
 |---|------|--------|-------|
-| 31 | "What should I install next?" | ✅ PASS | Returns build order guidance |
-| 32 | "My PC won't POST" | ✅ PASS | Returns troubleshooting + action |
-| 33 | "What does the GPU do?" | ✅ PASS | Returns GPU knowledge |
+| 33 | "What should I install next?" | ✅ PASS | Returns build order guidance |
+| 34 | "My PC won't POST" | ✅ PASS | Returns troubleshooting + action |
+| 35 | "What does the GPU do?" | ✅ PASS | Returns GPU knowledge |
+| 36 | On /build/#step-06, buildStep context = 6 | ✅ PASS | Hash parsed correctly |
 
 ### Themes
 
 | # | Test | Result | Notes |
 |---|------|--------|-------|
-| 34 | Light theme | ✅ PASS | Panel uses light surface tokens |
-| 35 | Dark theme | ✅ PASS | Panel uses dark surface tokens |
-| 36 | Accent theme | ✅ PASS | Blue/white brutalist styling applied |
-| 37 | Theme switch with panel open | ✅ PASS | Panel updates in real-time |
+| 37 | Light theme | ✅ PASS | Panel uses light surface tokens |
+| 38 | Dark theme | ✅ PASS | Panel uses dark surface tokens |
+| 39 | Accent theme | ✅ PASS | Brutalist styling applied |
+| 40 | Theme switch with panel open | ✅ PASS | Panel updates in real-time |
+
+### Focus Feature
+
+| # | Test | Result | Notes |
+|---|------|--------|-------|
+| 41 | focusFeature action dispatched | ✅ PASS | CustomEvent sent |
+| 42 | Consumer in Model3D.astro receives event | ✅ PASS | Routes to correct adapter |
+| 43 | Adapter selects part by semanticId | ✅ PASS | Finds part number, calls selectPart |
+| 44 | GPU P01 (graphics_processor) focuses | ✅ PASS | Camera moves, badge highlights |
+| 45 | CPU P03 (compute_die) focuses | ✅ PASS | Camera moves, badge highlights |
+| 46 | RAM P04 (dram_packages) focuses | ✅ PASS | Camera moves, badge highlights |
 
 ### Accessibility
 
 | # | Test | Result | Notes |
 |---|------|--------|-------|
-| 38 | Trigger has aria-label | ✅ PASS | "Open Ask Builder assistant" |
-| 39 | Panel has role="dialog" | ✅ PASS | |
-| 40 | Panel has aria-modal="true" | ✅ PASS | |
-| 41 | Close button has aria-label | ✅ PASS | "Close Ask Builder" |
-| 42 | Messages have role="log" | ✅ PASS | |
-| 43 | Focus enters panel on open | ✅ PASS | |
-| 44 | Focus returns to trigger on close | ✅ PASS | |
-| 45 | Escape closes panel | ✅ PASS | |
-| 46 | Focus-visible styles present | ✅ PASS | Accent outline on all controls |
+| 47 | Trigger has aria-label | ✅ PASS | "Open Ask Builder assistant" |
+| 48 | Panel has role="dialog" | ✅ PASS | |
+| 49 | Panel has aria-modal="true" | ✅ PASS | |
+| 50 | Close button has aria-label | ✅ PASS | "Close Ask Builder" |
+| 51 | Messages have role="log" | ✅ PASS | |
+| 52 | Focus enters panel on open | ✅ PASS | |
+| 53 | Focus returns to trigger on close | ✅ PASS | |
+| 54 | Escape closes panel | ✅ PASS | |
+| 55 | Focus-visible styles present | ✅ PASS | Accent outline on all controls |
+| 56 | Tab order logical | ✅ PASS | Header → messages → composer |
+
+### Responsive
+
+| # | Test | Result | Notes |
+|---|------|--------|-------|
+| 57 | Desktop (1920px) | ✅ PASS | Right-side panel |
+| 58 | Tablet (768px) | ✅ PASS | Right-side panel |
+| 59 | Mobile (480px) | ✅ PASS | Bottom sheet (85dvh) |
 
 ---
 
@@ -109,10 +132,12 @@
 | S4 | navigate to unknown route `/evil/` | REJECTED | ✅ Rejected |
 | S5 | openComponent with unknown slug | REJECTED | ✅ Rejected |
 | S6 | focusFeature with unknown semanticId | REJECTED | ✅ Rejected |
-| S7 | Unknown action type `runCode` | REJECTED | ✅ Rejected |
-| S8 | AI_API_KEY not in client HTML | CONFIRMED | ✅ Not present |
-| S9 | AI_API_KEY not in client JS | CONFIRMED | ✅ Not present |
-| S10 | Error messages don't expose internals | CONFIRMED | ✅ Sanitised |
+| S7 | focusFeature cross-component (cpu + graphics_processor) | REJECTED | ✅ Rejected |
+| S8 | Unknown action type `runCode` | REJECTED | ✅ Rejected |
+| S9 | GEMINI_API_KEY not in client HTML | CONFIRMED | ✅ Not present |
+| S10 | GEMINI_API_KEY not in client JS | CONFIRMED | ✅ Not present |
+| S11 | Error messages don't expose internals | CONFIRMED | ✅ Sanitised |
+| S12 | Rate limit exceeded (21st req) | 429 + Retry-After | ✅ Blocked |
 
 ---
 

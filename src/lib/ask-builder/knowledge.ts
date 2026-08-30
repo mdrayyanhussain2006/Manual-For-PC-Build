@@ -3,13 +3,67 @@
  * Builds a structured, context-aware system prompt from:
  *  1. Static site knowledge (components, routes, build steps)
  *  2. Runtime context snapshot (current page, active component, etc.)
+ *  3. Semantic part knowledge (126 parts across 12 components)
  *
  * This file runs server-side only.
- * It does NOT invent facts — it uses data from ComponentRegistry.
+ * It does NOT invent facts — it uses data from ComponentRegistry and parts.en.json.
  */
 
 import { COMPONENT_REGISTRY, getAllComponents } from '../3d/ComponentRegistry.js';
 import type { AskBuilderContext } from './types.js';
+import { readFile } from 'fs/promises';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const COMPONENT_DATA_DIR = join(__dirname, '../../../public/component-data');
+
+// Cache for semantic parts knowledge
+let semanticPartsCache: Map<string, Record<string, any>> | null = null;
+
+async function loadSemanticPartsKnowledge(): Promise<Map<string, Record<string, any>>> {
+  if (semanticPartsCache) return semanticPartsCache;
+
+  const partsMap = new Map<string, Record<string, any>>();
+
+  for (const [slug, comp] of Object.entries(COMPONENT_REGISTRY)) {
+    const partsPath = join(COMPONENT_DATA_DIR, slug, 'parts.en.json');
+    try {
+      const content = await readFile(partsPath, 'utf-8');
+      const parts = JSON.parse(content);
+      partsMap.set(slug, parts);
+    } catch {
+      // Component may not have parts data
+      partsMap.set(slug, {});
+    }
+  }
+
+  semanticPartsCache = partsMap;
+  return partsMap;
+}
+
+function buildSemanticPartsKnowledge(): string {
+  // This is called synchronously, so we return a static summary
+  // The full data is available via loadSemanticPartsKnowledge() for async use
+  const lines: string[] = ['## Semantic Parts Knowledge (126 parts across 12 components)'];
+
+  for (const [slug, comp] of Object.entries(COMPONENT_REGISTRY)) {
+    const fullPcIds = comp.fullPcSemanticIds ?? [];
+    if (fullPcIds.length > 0) {
+      lines.push(`\n### ${comp.displayName} (${slug})`);
+      lines.push(`Full-PC Semantic IDs: ${fullPcIds.join(', ')}`);
+      lines.push(`Route: ${comp.route}`);
+    }
+  }
+
+  lines.push('\n---');
+  lines.push('NOTE: Detailed per-part information (title, description, function, importance, facts)');
+  lines.push('is available for the active component via context. When a user asks about a');
+  lines.push('specific part on a component page, use the activeSemanticId from context to');
+  lines.push('provide precise information about that part.');
+
+  return lines.join('\n');
+}
 
 // ──────────────────────────────────────────────────────────────
 // STATIC KNOWLEDGE: SITE NAVIGATION
@@ -121,10 +175,10 @@ Valid steps: 1 through 10.
 
 Troubleshooting:
 {"type":"openTroubleshooting","topic":"no-post"}
-Valid topics: no-post, no-display, random-shutdowns, overheating, slow-boot, usb-not-detected, storage-not-detected, gpu-not-detected, ram-not-detected.
+Valid topics: no-power, no-post, ram-not-detected, gpu-not-detected, storage-not-detected, random-shutdowns.
 
 Focus a 3D feature:
-{"type":"focusFeature","component":"cpu","semanticId":"CPU"}
+{"type":"focusFeature","component":"cpu","semanticId":"heat_spreader"}
 
 IMPORTANT: Only include actions that are genuinely helpful. Omit actions array if no navigation is needed.
 IMPORTANT: Do not use external URLs. Do not execute code. Only use the action types listed above.
@@ -133,6 +187,49 @@ IMPORTANT: Do not use external URLs. Do not execute code. Only use the action ty
 // ──────────────────────────────────────────────────────────────
 // CONTEXT-AWARE PROMPT SECTION
 // ──────────────────────────────────────────────────────────────
+
+async function loadActiveComponentParts(ctx: AskBuilderContext): Promise<string> {
+  if (!ctx.activeComponent) return '';
+
+  const partsMap = await loadSemanticPartsKnowledge();
+  const parts = partsMap.get(ctx.activeComponent);
+  if (!parts || Object.keys(parts).length === 0) return '';
+
+  const lines: string[] = [`\n### Active Component Parts Detail (${ctx.activeComponent})`];
+
+  // If there's a specific semantic ID highlighted, prioritize it
+  if (ctx.activeSemanticId && parts[ctx.activeSemanticId]) {
+    const part = parts[ctx.activeSemanticId];
+    lines.push(`\n#### Highlighted Part: ${part.title} (${ctx.activeSemanticId})`);
+    if (part.description) lines.push(`Description: ${part.description}`);
+    if (part.function) lines.push(`Function: ${part.function}`);
+    if (part.importance) lines.push(`Importance: ${part.importance}`);
+    if (part.facts && part.facts.length > 0) {
+      lines.push('Facts:');
+      for (const fact of part.facts) {
+        lines.push(`  - ${fact}`);
+      }
+    }
+    lines.push('\n---');
+    lines.push('Other parts in this component:');
+  }
+
+  for (const [id, part] of Object.entries(parts)) {
+    if (id === ctx.activeSemanticId) continue;
+    lines.push(`\n#### ${part.title} (${id})`);
+    if (part.description) lines.push(`Description: ${part.description}`);
+    if (part.function) lines.push(`Function: ${part.function}`);
+    if (part.importance) lines.push(`Importance: ${part.importance}`);
+    if (part.facts && part.facts.length > 0) {
+      lines.push('Key facts:');
+      for (const fact of part.facts.slice(0, 3)) {
+        lines.push(`  - ${fact}`);
+      }
+    }
+  }
+
+  return lines.join('\n');
+}
 
 function buildContextSection(ctx: AskBuilderContext): string {
   const lines: string[] = ['## Current User Context'];
@@ -179,8 +276,10 @@ function buildContextSection(ctx: AskBuilderContext): string {
 // PUBLIC: BUILD SYSTEM PROMPT
 // ──────────────────────────────────────────────────────────────
 
-export function buildSystemPrompt(ctx: AskBuilderContext): string {
+export async function buildSystemPrompt(ctx: AskBuilderContext): Promise<string> {
   const componentKnowledge = buildComponentKnowledge();
+  const semanticPartsKnowledge = buildSemanticPartsKnowledge();
+  const activePartsDetail = await loadActiveComponentParts(ctx);
 
   return `You are Ask Builder, the AI assistant embedded in PC Customization Manual — an interactive educational website for people building their first PC.
 
@@ -209,6 +308,11 @@ ${SITE_KNOWLEDGE}
 
 ## Component Knowledge
 ${componentKnowledge}
+
+---
+
+${semanticPartsKnowledge}
+${activePartsDetail}
 
 ---
 

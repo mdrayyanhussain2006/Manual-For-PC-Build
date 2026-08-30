@@ -586,7 +586,8 @@ export class SoloComponentAdapter {
 
     this.#options.onPartSelect?.(partNumber, part);
     integrationState.update3DState({
-      activeComponent: partNumber,
+      activeComponent: this.#options.slug,
+      activeSemanticId: part ? part.id : null,
       cameraTarget: part ? part.title : null,
     });
   }

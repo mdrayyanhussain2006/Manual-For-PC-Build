@@ -7,7 +7,7 @@
  * - Only application-owned action types are allowed
  * - Routes are validated against an internal allowlist
  * - Component slugs are validated against the ComponentRegistry
- * - Semantic IDs are validated against known patterns
+ * - Semantic IDs are validated against the component's allowed semantic IDs (component-scoped)
  * - No external URLs, javascript:, file:, data:, or about: are ever executable
  * - Invalid actions are silently dropped (not thrown to client)
  */
@@ -42,15 +42,12 @@ export const BUILD_STEP_RANGE: [number, number] = [1, 10];
 
 /** Known troubleshooting topic anchors */
 export const ALLOWED_TROUBLESHOOTING_TOPICS: ReadonlySet<string> = new Set([
+  'no-power',
   'no-post',
-  'no-display',
-  'random-shutdowns',
-  'overheating',
-  'slow-boot',
-  'usb-not-detected',
-  'storage-not-detected',
-  'gpu-not-detected',
   'ram-not-detected',
+  'gpu-not-detected',
+  'storage-not-detected',
+  'random-shutdowns',
 ]);
 
 /** All valid component slugs */
@@ -59,11 +56,14 @@ export const ALLOWED_COMPONENT_SLUGS: ReadonlySet<string> = new Set(
 );
 
 /**
- * Semantic ID pattern: known prefixes from the ComponentRegistry fullPcSemanticIds
- * We collect all semantic IDs across all components.
+ * Semantic IDs scoped by component slug.
+ * Each component only allows its own semantic IDs.
  */
-export const ALLOWED_SEMANTIC_IDS: ReadonlySet<string> = new Set(
-  Object.values(COMPONENT_REGISTRY).flatMap((c) => c.fullPcSemanticIds ?? [])
+export const COMPONENT_SEMANTIC_IDS: ReadonlyMap<string, ReadonlySet<string>> = new Map(
+  Object.entries(COMPONENT_REGISTRY).map(([slug, comp]) => [
+    slug,
+    new Set(comp.fullPcSemanticIds ?? []),
+  ])
 );
 
 // ──────────────────────────────────────────────────────────────
@@ -98,8 +98,15 @@ function isValidBuildStep(step: unknown): step is number {
   );
 }
 
-function isValidSemanticId(id: unknown): id is string {
-  return typeof id === 'string' && ALLOWED_SEMANTIC_IDS.has(id);
+/**
+ * Validate semanticId against the component's allowed semantic IDs.
+ * This is component-scoped: a semanticId is only valid if it belongs to the specified component.
+ */
+function isValidSemanticIdForComponent(component: string, semanticId: unknown): semanticId is string {
+  if (typeof semanticId !== 'string') return false;
+  const allowed = COMPONENT_SEMANTIC_IDS.get(component);
+  if (!allowed) return false;
+  return allowed.has(semanticId);
 }
 
 function isValidTroubleshootingTopic(topic: unknown): topic is string | undefined {
@@ -140,8 +147,11 @@ function validateFocusFeature(raw: Record<string, unknown>): ActionFocusFeature 
     console.warn('[ActionValidator] Rejected focusFeature — unknown component:', raw.component);
     return null;
   }
-  if (!isValidSemanticId(raw.semanticId)) {
-    console.warn('[ActionValidator] Rejected focusFeature — unknown semanticId:', raw.semanticId);
+  if (!isValidSemanticIdForComponent(raw.component as string, raw.semanticId)) {
+    console.warn('[ActionValidator] Rejected focusFeature — semanticId not valid for component:', {
+      component: raw.component,
+      semanticId: raw.semanticId,
+    });
     return null;
   }
   return {

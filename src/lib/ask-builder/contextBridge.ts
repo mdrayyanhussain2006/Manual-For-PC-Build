@@ -13,10 +13,15 @@ import type { AskBuilderContext } from './types.js';
  * Returns null if not on a build page.
  */
 function parseBuildStep(route: string): number | null {
+  // Check window.location.hash for build step anchor
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/build/')) {
+    const hash = window.location.hash;
+    const match = hash.match(/#step-(\d+)/);
+    if (match) return parseInt(match[1], 10);
+  }
+  // Fallback: check route string (for SSR or when hash not available)
   const match = route.match(/\/build\/.*#step-(\d+)/);
   if (match) return parseInt(match[1], 10);
-  // If just on /build/ with no hash, treat as step 0 (intro)
-  if (route === '/build/' || route.startsWith('/build/')) return null;
   return null;
 }
 
