@@ -38,11 +38,11 @@
 }
 
 [data-theme="accent"] {
-  /* Hermes Agent visual language — brutalist electric blue + chartreuse aesthetic */
-  --surface: #0000f2;
-  --surface-raised: #FFFFFF;
-  --text-primary: #f5f5f5;
-  --text-secondary: #eceaf5;
+  /* Hermes Agent visual language — vibrant royal cobalt + chartreuse aesthetic */
+  --surface: #0a1033;
+  --surface-raised: #121c4e;
+  --text-primary: #ffffff;
+  --text-secondary: #c5cffc;
   --accent: #edff45;
   --caution: #ffa726;
   --danger: #ef5350;
