@@ -194,55 +194,160 @@ body.no-transition * {
    Leaves Light and Dark themes 100% untouched
    ============================================================ */
 
-/* SVG Noise Texture ONLY in Accent mode */
+/* 1. Global & Body Brutalist Override */
+[data-theme="accent"] body {
+  background-color: #0000f2;
+  color: #f5f5f5;
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: crosshair;
+}
+
+[data-theme="accent"] h1,
+[data-theme="accent"] h2,
+[data-theme="accent"] h3,
+[data-theme="accent"] h4 {
+  font-family: var(--font-display), "Orbitron", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* 2. Crosshair & Pointer Cursors */
+[data-theme="accent"] a,
+[data-theme="accent"] button,
+[data-theme="accent"] input,
+[data-theme="accent"] select,
+[data-theme="accent"] label,
+[data-theme="accent"] [role="button"],
+[data-theme="accent"] [data-ctrl-reset] {
+  cursor: pointer;
+}
+
+/* 3. SVG Noise Texture Overlay ONLY in Accent mode */
 [data-theme="accent"] body::before,
 html[data-theme="accent"] body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
   opacity: 0.15;
   pointer-events: none;
   z-index: 1;
   mix-blend-mode: overlay;
 }
 
-/* Brutalist Focus Rings in Accent mode */
-[data-theme="accent"] *:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px;
+/* 4. Monitor Bezel Viewport Frame */
+[data-theme="accent"] body::after,
+html[data-theme="accent"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  border: 4px solid #f5f5f5;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 5. Zero-Radius Geometry in Accent mode */
+[data-theme="accent"] * {
   border-radius: 0 !important;
 }
 
-/* Custom Scrollbar in Accent mode */
+/* 6. Brutalist Hard Offset Shadows on Cards */
+[data-theme="accent"] .bg-surface-raised,
+[data-theme="accent"] .bg-surface {
+  background-color: #0000cc;
+  border: 2px solid #f5f5f5;
+  box-shadow: 4px 4px 0px 0px #edff45;
+  color: #f5f5f5;
+}
+
+[data-theme="accent"] header {
+  background-color: rgba(0, 0, 242, 0.95);
+  border-bottom: 2px solid #f5f5f5;
+}
+
+/* 7. Aggressive Micro-Interactions (Mechanical Button Press) */
+[data-theme="accent"] a.rounded-card,
+[data-theme="accent"] .group {
+  transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease !important;
+}
+
+[data-theme="accent"] a.rounded-card:hover,
+[data-theme="accent"] .group:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px 0px #edff45 !important;
+  border-color: #edff45 !important;
+}
+
+[data-theme="accent"] button:not([data-theme-set]):not(.badge-anchor) {
+  background-color: #f5f5f5 !important;
+  color: #0000f2 !important;
+  font-weight: 800 !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 3px 3px 0px 0px #edff45 !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+[data-theme="accent"] button:not([data-theme-set]):not(.badge-anchor):hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 0px 0px 0px 0px #edff45 !important;
+  background-color: #ffffff !important;
+}
+
+/* 8. Navigation Links in Accent mode */
+[data-theme="accent"] nav a {
+  font-family: var(--font-mono), monospace !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+}
+
+[data-theme="accent"] nav a:hover {
+  text-decoration: underline !important;
+  text-underline-offset: 0.3em !important;
+  color: #ffffff !important;
+}
+
+[data-theme="accent"] nav a[aria-current="page"] {
+  color: #edff45 !important;
+  border-bottom: 2px solid #edff45 !important;
+  background: transparent !important;
+}
+
+/* 9. Brutalist Focus Rings */
+[data-theme="accent"] *:focus-visible {
+  outline: 3px solid #edff45;
+  outline-offset: 2px;
+}
+
+/* 10. Custom Scrollbar in Accent mode */
 [data-theme="accent"] ::-webkit-scrollbar-track {
   background: #0000f2;
 }
 
 [data-theme="accent"] ::-webkit-scrollbar-thumb {
   background: #edff45;
-  border-radius: 2px;
+  border-radius: 0 !important;
 }
 
-/* Selection in Accent mode */
+/* 11. Selection in Accent mode */
 [data-theme="accent"] ::selection {
   background: #edff45;
   color: #0000f2;
 }
 
-/* Accent Mode Form Inputs */
+/* 12. Accent Mode Form Inputs */
 [data-theme="accent"] input,
 [data-theme="accent"] select,
 [data-theme="accent"] textarea {
   background-color: #0000cc;
   color: #ffffff;
-  border: 1.5px solid rgba(237, 255, 69, 0.4);
-  border-radius: 0;
+  border: 2px solid #f5f5f5;
+  padding: 0.5rem 0.75rem;
 }
 
 [data-theme="accent"] input:focus-visible,
 [data-theme="accent"] select:focus-visible,
 [data-theme="accent"] textarea:focus-visible {
-  border-color: var(--accent);
-  outline: 2px solid var(--accent);
+  border-color: #edff45;
+  outline: 2px solid #edff45;
 }
