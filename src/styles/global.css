@@ -351,3 +351,634 @@ html[data-theme="accent"] body::after {
   border-color: #edff45;
   outline: 2px solid #edff45;
 }
+
+/* ============================================================
+   ASK BUILDER — Scoped component styles
+   All classes prefixed with .ab- to avoid conflicts.
+   Uses existing design tokens (--surface, --accent, etc.)
+   ============================================================ */
+
+/* ── Build Pixel Motif Colors ── */
+:root {
+  --ab-px-blue:    #2563EB;
+  --ab-px-cyan:    #06B6D4;
+  --ab-px-green:   #22C55E;
+  --ab-px-red:     #EF4444;
+  --ab-px-amber:   #F59E0B;
+  --ab-px-magenta: #A855F7;
+}
+
+/* ── Trigger Button ── */
+.ab-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 49;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 10px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.18);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: box-shadow .18s ease, transform .12s ease, border-color .15s ease;
+  outline: none;
+}
+
+.ab-trigger:hover {
+  box-shadow: 0 6px 22px rgba(0,0,0,.22);
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.ab-trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ab-trigger[aria-expanded="true"] {
+  border-color: var(--accent);
+}
+
+/* Pixel motif in trigger */
+.ab-trigger-motif {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.ab-trigger-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+}
+
+/* Status dot */
+.ab-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  flex-shrink: 0;
+}
+
+.ab-status-dot.thinking {
+  background: var(--caution);
+  animation: ab-pulse 1.2s ease-in-out infinite;
+}
+
+.ab-status-dot.error {
+  background: var(--danger);
+}
+
+@keyframes ab-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .35; }
+}
+
+/* ── Panel ── */
+.ab-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  width: 380px;
+  max-width: calc(100vw - 16px);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-raised);
+  border-left: 1px solid var(--border-subtle);
+  box-shadow: -8px 0 40px rgba(0,0,0,.18);
+  /* Hidden state */
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    transform .25s cubic-bezier(.4,0,.2,1),
+    opacity   .2s ease,
+    visibility 0s linear .25s;
+}
+
+.ab-panel.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  transition:
+    transform .25s cubic-bezier(.4,0,.2,1),
+    opacity   .2s ease,
+    visibility 0s linear 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-panel {
+    transition: visibility 0s linear .01s;
+  }
+  .ab-panel.is-open {
+    transition: visibility 0s linear 0s;
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .ab-panel {
+    width: 320px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .ab-panel {
+    width: 100%;
+    max-width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--border-subtle);
+    top: auto;
+    height: 85dvh;
+    bottom: 0;
+    transform: translateY(100%);
+  }
+  .ab-panel.is-open {
+    transform: translateY(0);
+  }
+  .ab-trigger {
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+/* ── Panel Header ── */
+.ab-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.ab-header-identity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ab-header-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.ab-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: background .15s ease, color .15s ease;
+  flex-shrink: 0;
+  outline: none;
+}
+
+.ab-close-btn:hover {
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.ab-close-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── BUILD Pixel Motif ── */
+.ab-build-motif {
+  display: inline-flex;
+  gap: 2px;
+  align-items: flex-end;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.ab-build-letter {
+  display: grid;
+  gap: 1.5px;
+}
+
+.ab-pixel {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: .5px;
+  background: transparent;
+}
+
+/* ── Context Bar ── */
+.ab-context-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  overflow: hidden;
+}
+
+.ab-context-bar.hidden {
+  display: none;
+}
+
+.ab-context-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.ab-context-chip-label {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Messages ── */
+.ab-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.ab-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.ab-messages::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 2px;
+}
+
+/* ── Welcome State ── */
+.ab-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ab-welcome-intro {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.ab-welcome-intro strong {
+  color: var(--text-primary);
+}
+
+/* ── Suggestion Chips ── */
+.ab-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ab-suggestion-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
+  text-align: left;
+  font-family: var(--font-sans);
+  outline: none;
+}
+
+.ab-suggestion-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface-raised);
+}
+
+.ab-suggestion-chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Message Bubbles ── */
+.ab-message {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 100%;
+}
+
+.ab-message.user {
+  align-items: flex-end;
+}
+
+.ab-message.assistant {
+  align-items: flex-start;
+}
+
+.ab-bubble {
+  padding: 10px 13px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  max-width: 85%;
+  word-wrap: break-word;
+}
+
+.ab-bubble.user {
+  background: var(--accent);
+  color: var(--surface);
+  border-bottom-right-radius: 3px;
+}
+
+.ab-bubble.assistant {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-bottom-left-radius: 3px;
+}
+
+.ab-bubble.error {
+  background: var(--surface);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+/* ── Thinking Indicator ── */
+.ab-thinking {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-family: var(--font-mono);
+}
+
+.ab-thinking-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.ab-thinking-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: ab-bounce .9s ease-in-out infinite;
+}
+
+.ab-thinking-dot:nth-child(2) { animation-delay: .15s; }
+.ab-thinking-dot:nth-child(3) { animation-delay: .3s; }
+
+@keyframes ab-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: .5; }
+  40%            { transform: translateY(-4px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-thinking-dot { animation: none; opacity: .5; }
+  .ab-status-dot.thinking { animation: none; }
+}
+
+/* ── Action Chips (inline under assistant bubble) ── */
+.ab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.ab-action-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  transition: background .15s ease, color .15s ease;
+  outline: none;
+}
+
+.ab-action-chip:hover {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+.ab-action-chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Retry Button ── */
+.ab-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--danger);
+  background: transparent;
+  color: var(--danger);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: background .15s ease;
+  outline: none;
+}
+
+.ab-retry-btn:hover { background: var(--surface); }
+.ab-retry-btn:focus-visible {
+  outline: 2px solid var(--danger);
+  outline-offset: 2px;
+}
+
+/* ── Divider ── */
+.ab-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* ── Composer ── */
+.ab-composer {
+  padding: 12px 14px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+  background: var(--surface-raised);
+}
+
+.ab-composer-textarea {
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.5;
+  padding: 9px 12px;
+  outline: none;
+  min-height: 40px;
+  max-height: 120px;
+  overflow-y: auto;
+  transition: border-color .15s ease;
+}
+
+.ab-composer-textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+.ab-composer-textarea:focus {
+  border-color: var(--accent);
+}
+
+.ab-composer-textarea:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.ab-send-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  color: var(--surface);
+  flex-shrink: 0;
+  transition: opacity .15s ease, transform .1s ease;
+  outline: none;
+}
+
+.ab-send-btn:hover:not(:disabled) {
+  opacity: .88;
+  transform: translateY(-1px);
+}
+
+.ab-send-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ab-send-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+/* ── Footer note ── */
+.ab-footer-note {
+  padding: 6px 14px 10px;
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ── Clear button ── */
+.ab-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  margin-left: auto;
+  transition: border-color .15s, color .15s;
+  outline: none;
+}
+
+.ab-clear-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ab-clear-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Accent mode overrides ── */
+[data-theme="accent"] .ab-trigger {
+  background-color: #0000cc !important;
+  border: 2px solid #f5f5f5 !important;
+  box-shadow: 3px 3px 0px 0px #edff45 !important;
+  border-radius: 0 !important;
+}
+
+[data-theme="accent"] .ab-trigger:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 0 0 0 0 #edff45 !important;
+}
+
+[data-theme="accent"] .ab-panel {
+  border-left: 2px solid #f5f5f5 !important;
+  background: #0000cc !important;
+}
+
+[data-theme="accent"] .ab-bubble.user {
+  background: #edff45 !important;
+  color: #0000f2 !important;
+}
+
+[data-theme="accent"] .ab-suggestion-chip:hover,
+[data-theme="accent"] .ab-suggestion-chip:focus-visible {
+  outline: 2px solid #edff45 !important;
+  border-color: #edff45 !important;
+  color: #edff45 !important;
+}

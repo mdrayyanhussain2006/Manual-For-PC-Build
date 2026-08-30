@@ -2,8 +2,10 @@
 // ============================================================
 // FILE: src/layouts/BaseLayout.astro
 // Base shell: header/nav, footer, content slot, 3-mode theme switcher
+// Phase 5: Added Ask Builder persistent assistant
 // ============================================================
 import '../styles/global.css';
+import AskBuilder from '../components/AskBuilder.astro';
 
 interface Props {
   title?: string;
@@ -199,5 +201,8 @@ function isCurrent(href: string) {
 
       document.addEventListener('astro:page-load', initThemeSwitcher);
     </script>
+
+    <!-- Ask Builder — persistent AI assistant, rendered site-wide -->
+    <AskBuilder />
   </body>
 </html>

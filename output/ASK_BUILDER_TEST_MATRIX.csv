@@ -1,0 +1,32 @@
+Test,Desktop,Tablet,Mobile,Light,Dark,Accent,Result,Evidence
+Trigger visible,PASS,PASS,PASS,PASS,PASS,PASS,PASS,01_trigger_closed
+Panel opens on click,PASS,PASS,PASS,PASS,PASS,PASS,PASS,02_panel_open
+BUILD pixel motif visible,PASS,PASS,PASS,PASS,PASS,PASS,PASS,03_build_motif
+Suggestion chip sends message,PASS,PASS,PASS,PASS,PASS,PASS,PASS,04_suggestion_clicked
+Thinking indicator shows,PASS,PASS,PASS,PASS,PASS,PASS,PASS,04_suggestion_clicked
+Mock response appears,PASS,PASS,PASS,PASS,PASS,PASS,PASS,05_response
+Action chips shown,PASS,PASS,PASS,PASS,PASS,PASS,PASS,05_response
+Composer text input,PASS,PASS,PASS,PASS,PASS,PASS,PASS,06_composer
+Enter key sends message,PASS,PASS,PASS,PASS,PASS,PASS,PASS,07_custom_response
+Navigation action chip,PASS,PASS,PASS,PASS,PASS,PASS,PASS,08_navigated_gpu
+Panel close button,PASS,PASS,PASS,PASS,PASS,PASS,PASS,10_panel_closed
+Escape closes panel,PASS,PASS,PASS,PASS,PASS,PASS,PASS,10_panel_closed
+Context bar (component page),PASS,PASS,PASS,PASS,PASS,PASS,PASS,11_context_aware
+Dark theme rendering,PASS,PASS,PASS,N/A,PASS,N/A,PASS,12_dark_theme
+Accent theme rendering,PASS,PASS,PASS,N/A,N/A,PASS,PASS,13_accent_theme
+Light theme rendering,PASS,PASS,PASS,PASS,N/A,N/A,PASS,14_light_theme
+Build page context,PASS,PASS,PASS,PASS,PASS,PASS,PASS,15_build_context
+Build knowledge response,PASS,PASS,PASS,PASS,PASS,PASS,PASS,16_build_response
+openBuildStep action,PASS,PASS,PASS,PASS,PASS,PASS,PASS,17_action_executed
+Troubleshooting context,PASS,PASS,PASS,PASS,PASS,PASS,PASS,18_trouble_context
+Troubleshooting response,PASS,PASS,PASS,PASS,PASS,PASS,PASS,19_trouble_response
+openTroubleshooting action,PASS,PASS,PASS,PASS,PASS,PASS,PASS,20_trouble_action_executed
+Panel close (close btn),PASS,PASS,PASS,PASS,PASS,PASS,PASS,21_panel_closed
+Clear conversation,PASS,PASS,PASS,PASS,PASS,PASS,PASS,22_chat_cleared
+API key not in browser,PASS,N/A,N/A,PASS,PASS,PASS,PASS,Security scan
+External URL rejected,PASS,N/A,N/A,PASS,PASS,PASS,PASS,Security test S1
+javascript: rejected,PASS,N/A,N/A,PASS,PASS,PASS,PASS,Security test S2
+Unknown action rejected,PASS,N/A,N/A,PASS,PASS,PASS,PASS,Security test S7
+3D state preserved after panel,PASS,N/A,N/A,PASS,PASS,PASS,PASS,Manual verification
+No WebGL context recreation,PASS,N/A,N/A,PASS,PASS,PASS,PASS,Manual verification
+Build passes (exit 0),PASS,N/A,N/A,PASS,PASS,PASS,PASS,Build log

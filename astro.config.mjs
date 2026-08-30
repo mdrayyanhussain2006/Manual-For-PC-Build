@@ -1,17 +1,15 @@
 // ============================================================
 // FILE: astro.config.mjs
 // Phase 0 — Foundation
-// ------------------------------------------------------------
-// Bootstrap for reference (package.json is intentionally not a
-// deliverable of this prompt):
-//   npm create astro@latest -- --template minimal
-//   npm install tailwindcss @tailwindcss/vite
-//   drop these files in, then: npm run dev
+// Phase 5 — Ask Builder: added SSR + Node adapter for /api/ask-builder
 // ============================================================
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import node from '@astrojs/node';
 
 export default defineConfig({
+  output: 'server',
+  adapter: node({ mode: 'standalone' }),
   vite: {
     plugins: [tailwindcss()],
   },

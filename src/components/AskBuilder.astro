@@ -1,0 +1,634 @@
+---
+// ============================================================
+// FILE: src/components/AskBuilder.astro
+// Ask Builder — Persistent AI assistant panel
+// Self-contained Astro island with all client logic inline.
+// ============================================================
+---
+
+<!-- ── Trigger Button ── -->
+<button
+  id="ab-trigger"
+  type="button"
+  class="ab-trigger"
+  aria-label="Open Ask Builder assistant"
+  aria-expanded="false"
+  aria-controls="ab-panel"
+>
+  <!-- Pixel motif: 5 small coloured squares -->
+  <span class="ab-trigger-motif" aria-hidden="true">
+    <span class="ab-trigger-dot" style="background:var(--ab-px-blue)"></span>
+    <span class="ab-trigger-dot" style="background:var(--ab-px-cyan)"></span>
+    <span class="ab-trigger-dot" style="background:var(--ab-px-green)"></span>
+    <span class="ab-trigger-dot" style="background:var(--ab-px-amber)"></span>
+    <span class="ab-trigger-dot" style="background:var(--ab-px-magenta)"></span>
+  </span>
+  Ask Builder
+</button>
+
+<!-- ── Panel ── -->
+<aside
+  id="ab-panel"
+  class="ab-panel"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Ask Builder assistant panel"
+  aria-hidden="true"
+>
+  <!-- Header -->
+  <div class="ab-header">
+    <div class="ab-header-identity">
+      <!-- BUILD pixel motif (SVG-based, original artwork) -->
+      <svg
+        class="ab-build-motif"
+        aria-label="BUILD pixel identity"
+        role="img"
+        width="52"
+        height="18"
+        viewBox="0 0 52 18"
+        xmlns="http://www.w3.org/2000/svg"
+        style="flex-shrink:0"
+      >
+        <!-- Letter B -->
+        <rect x="0"  y="0"  width="3" height="3" fill="#2563EB"/>
+        <rect x="3"  y="0"  width="3" height="3" fill="#2563EB"/>
+        <rect x="0"  y="3"  width="3" height="3" fill="#06B6D4"/>
+        <rect x="3"  y="3"  width="3" height="3" fill="#06B6D4"/>
+        <rect x="0"  y="6"  width="3" height="3" fill="#2563EB"/>
+        <rect x="3"  y="6"  width="3" height="3" fill="#2563EB"/>
+        <rect x="0"  y="9"  width="3" height="3" fill="#06B6D4"/>
+        <rect x="3"  y="9"  width="3" height="3" fill="#06B6D4"/>
+        <rect x="0"  y="12" width="3" height="3" fill="#2563EB"/>
+        <rect x="3"  y="12" width="3" height="3" fill="#2563EB"/>
+        <rect x="6"  y="0"  width="3" height="3" fill="#2563EB"/>
+        <rect x="6"  y="6"  width="3" height="3" fill="#06B6D4"/>
+        <rect x="6"  y="12" width="3" height="3" fill="#2563EB"/>
+        <!-- Letter U -->
+        <rect x="10" y="0"  width="3" height="3" fill="#22C55E"/>
+        <rect x="10" y="3"  width="3" height="3" fill="#22C55E"/>
+        <rect x="10" y="6"  width="3" height="3" fill="#22C55E"/>
+        <rect x="10" y="9"  width="3" height="3" fill="#22C55E"/>
+        <rect x="10" y="12" width="3" height="3" fill="#22C55E"/>
+        <rect x="13" y="12" width="3" height="3" fill="#22C55E"/>
+        <rect x="16" y="0"  width="3" height="3" fill="#22C55E"/>
+        <rect x="16" y="3"  width="3" height="3" fill="#22C55E"/>
+        <rect x="16" y="6"  width="3" height="3" fill="#22C55E"/>
+        <rect x="16" y="9"  width="3" height="3" fill="#22C55E"/>
+        <rect x="16" y="12" width="3" height="3" fill="#22C55E"/>
+        <!-- Letter I -->
+        <rect x="20" y="0"  width="3" height="3" fill="#EF4444"/>
+        <rect x="20" y="3"  width="3" height="3" fill="#EF4444"/>
+        <rect x="20" y="6"  width="3" height="3" fill="#EF4444"/>
+        <rect x="20" y="9"  width="3" height="3" fill="#EF4444"/>
+        <rect x="20" y="12" width="3" height="3" fill="#EF4444"/>
+        <!-- Letter L -->
+        <rect x="24" y="0"  width="3" height="3" fill="#F59E0B"/>
+        <rect x="24" y="3"  width="3" height="3" fill="#F59E0B"/>
+        <rect x="24" y="6"  width="3" height="3" fill="#F59E0B"/>
+        <rect x="24" y="9"  width="3" height="3" fill="#F59E0B"/>
+        <rect x="24" y="12" width="3" height="3" fill="#F59E0B"/>
+        <rect x="27" y="12" width="3" height="3" fill="#F59E0B"/>
+        <rect x="30" y="12" width="3" height="3" fill="#F59E0B"/>
+        <!-- Letter D -->
+        <rect x="34" y="0"  width="3" height="3" fill="#A855F7"/>
+        <rect x="34" y="3"  width="3" height="3" fill="#A855F7"/>
+        <rect x="34" y="6"  width="3" height="3" fill="#A855F7"/>
+        <rect x="34" y="9"  width="3" height="3" fill="#A855F7"/>
+        <rect x="34" y="12" width="3" height="3" fill="#A855F7"/>
+        <rect x="37" y="0"  width="3" height="3" fill="#A855F7"/>
+        <rect x="37" y="12" width="3" height="3" fill="#A855F7"/>
+        <rect x="40" y="3"  width="3" height="3" fill="#2563EB"/>
+        <rect x="40" y="6"  width="3" height="3" fill="#2563EB"/>
+        <rect x="40" y="9"  width="3" height="3" fill="#2563EB"/>
+      </svg>
+
+      <span class="ab-header-title">Ask Builder</span>
+      <span id="ab-status-dot" class="ab-status-dot" title="Online" aria-label="Status: online"></span>
+    </div>
+
+    <!-- Clear conversation -->
+    <button
+      id="ab-clear-btn"
+      type="button"
+      class="ab-clear-btn"
+      aria-label="Clear conversation"
+      title="Clear conversation"
+    >
+      Clear
+    </button>
+
+    <!-- Close button -->
+    <button
+      id="ab-close-btn"
+      type="button"
+      class="ab-close-btn"
+      aria-label="Close Ask Builder"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Context Bar -->
+  <div id="ab-context-bar" class="ab-context-bar hidden" aria-live="polite" aria-label="Current context">
+    <span style="opacity:.6;font-size:10px">Context:</span>
+    <span id="ab-context-chips"></span>
+  </div>
+
+  <!-- Message Area -->
+  <div
+    id="ab-messages"
+    class="ab-messages"
+    role="log"
+    aria-live="polite"
+    aria-relevant="additions"
+    aria-label="Conversation"
+  >
+    <!-- Welcome State (shown when no messages) -->
+    <div id="ab-welcome" class="ab-welcome">
+      <div class="ab-welcome-intro">
+        <strong>Hey — I'm Ask Builder.</strong><br>
+        I can guide you through your PC build, explain what you're looking at, and help you troubleshoot.
+      </div>
+
+      <div class="ab-suggestions" id="ab-suggestions" role="group" aria-label="Suggested questions">
+        <button type="button" class="ab-suggestion-chip" data-suggestion="What should I install next?">What should I install next?</button>
+        <button type="button" class="ab-suggestion-chip" data-suggestion="Explain this component">Explain this component</button>
+        <button type="button" class="ab-suggestion-chip" data-suggestion="Where does this cable go?">Where does this cable go?</button>
+        <button type="button" class="ab-suggestion-chip" data-suggestion="Help me troubleshoot">Help me troubleshoot</button>
+        <button type="button" class="ab-suggestion-chip" data-suggestion="What's the build order?">What's the build order?</button>
+        <button type="button" class="ab-suggestion-chip" data-suggestion="What does the GPU do?">What does the GPU do?</button>
+      </div>
+
+      <p style="font-size:11.5px;color:var(--text-secondary);font-family:var(--font-mono);margin-top:4px;">
+        Ask Builder understands your current page and 3D context.
+      </p>
+    </div>
+  </div>
+
+  <div class="ab-divider"></div>
+
+  <!-- Composer -->
+  <div class="ab-composer">
+    <textarea
+      id="ab-composer-input"
+      class="ab-composer-textarea"
+      placeholder="Ask Builder…"
+      rows="1"
+      aria-label="Message to Ask Builder"
+      aria-multiline="true"
+      maxlength="2000"
+    ></textarea>
+    <button
+      id="ab-send-btn"
+      type="button"
+      class="ab-send-btn"
+      aria-label="Send message"
+      disabled
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8L13 8M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="ab-footer-note" id="ab-footer-note">
+    Ask Builder • Gemini
+  </div>
+</aside>
+
+<script>
+// ============================================================
+// Ask Builder — Client Logic  (bug-fixed v2)
+//
+// Bugs fixed vs. initial version:
+//   1. Panel collapsed on suggestion chip click because duplicate
+//      document-level "click outside" listeners accumulated on
+//      every Astro page navigation. Fixed with a one-time guard.
+//   2. "Click outside" used p.contains(target) which was unreliable
+//      after DOM mutations. Now uses composedPath() with capture phase.
+//   3. Suggestion chips previously used one listener per chip,
+//      re-attached on every init. Now uses a single delegated listener
+//      on the messages container.
+//   4. sendMessage() now calls openPanel() first if the panel is
+//      closed when a suggestion is activated.
+// ============================================================
+
+import { getAskBuilderContext } from '../lib/ask-builder/contextBridge.js';
+import type { UIMessage, AssistantAction, AskBuilderResponse, AskBuilderErrorResponse } from '../lib/ask-builder/types.js';
+
+// ── One-time guard — document listeners registered only once ──
+let documentListenersAttached = false;
+
+// ── State ──────────────────────────────────────────────────────
+let isOpen = false;
+let isThinking = false;
+let messages: UIMessage[] = [];
+let lastUserMessage = '';
+
+// ── DOM helpers ────────────────────────────────────────────────
+function getEl<T extends HTMLElement>(id: string): T {
+  return document.getElementById(id) as T;
+}
+const trigger     = () => getEl<HTMLButtonElement>('ab-trigger');
+const panel       = () => getEl('ab-panel');
+const closeBtn    = () => getEl<HTMLButtonElement>('ab-close-btn');
+const clearBtn    = () => getEl<HTMLButtonElement>('ab-clear-btn');
+const messagesEl  = () => getEl('ab-messages');
+const composer    = () => getEl<HTMLTextAreaElement>('ab-composer-input');
+const sendBtn     = () => getEl<HTMLButtonElement>('ab-send-btn');
+const statusDot   = () => getEl('ab-status-dot');
+const contextBar  = () => getEl('ab-context-bar');
+const contextChips= () => getEl('ab-context-chips');
+
+// ── Panel open / close ─────────────────────────────────────────
+function openPanel() {
+  if (isOpen) return;
+  isOpen = true;
+  panel().classList.add('is-open');
+  panel().setAttribute('aria-hidden', 'false');
+  trigger().setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(() => composer()?.focus());
+  updateContext();
+}
+
+function closePanel() {
+  if (!isOpen) return;
+  isOpen = false;
+  panel().classList.remove('is-open');
+  panel().setAttribute('aria-hidden', 'true');
+  trigger().setAttribute('aria-expanded', 'false');
+  trigger().focus();
+}
+
+function togglePanel() {
+  if (isOpen) closePanel(); else openPanel();
+}
+
+// ── Context bar ────────────────────────────────────────────────
+function updateContext() {
+  try {
+    const ctx = getAskBuilderContext();
+    const bar = contextBar();
+    const chips = contextChips();
+    if (!bar || !chips) return;
+    const parts: string[] = [];
+    if (ctx.activeComponent)
+      parts.push(`<span class="ab-context-chip"><span class="ab-context-chip-label">Component</span>${esc(ctx.activeComponent)}</span>`);
+    if (ctx.buildStep != null)
+      parts.push(`<span class="ab-context-chip"><span class="ab-context-chip-label">Step</span>${ctx.buildStep}/10</span>`);
+    if (ctx.xrayActive)
+      parts.push(`<span class="ab-context-chip" style="border-color:var(--accent)">X-Ray</span>`);
+    chips.innerHTML = parts.join('');
+    bar.classList.toggle('hidden', parts.length === 0);
+  } catch { /* non-critical */ }
+}
+
+function esc(s: string) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#x27;');
+}
+
+// ── Messaging ──────────────────────────────────────────────────
+function genId() { return `ab-${Date.now()}-${Math.random().toString(36).slice(2,7)}`; }
+
+function addMessage(msg: UIMessage) {
+  messages.push(msg);
+  document.getElementById('ab-welcome')?.remove(); // hide welcome on first message
+  renderMessage(msg);
+  scrollToBottom();
+}
+
+function renderMessage(msg: UIMessage) {
+  const container = messagesEl();
+  if (!container) return;
+
+  const wrapper = document.createElement('div');
+  wrapper.className = `ab-message ${msg.role}`;
+  wrapper.id = msg.id;
+
+  const bubble = document.createElement('div');
+  bubble.className = `ab-bubble ${msg.role}${msg.error ? ' error' : ''}`;
+  bubble.textContent = msg.content; // never innerHTML for AI content
+  wrapper.appendChild(bubble);
+
+  if (msg.actions?.length && !msg.error) {
+    const row = document.createElement('div');
+    row.className = 'ab-actions';
+    for (const action of msg.actions) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'ab-action-chip';
+      btn.textContent = actionLabel(action);
+      btn.setAttribute('aria-label', `Execute: ${actionLabel(action)}`);
+      btn.addEventListener('click', (e) => { e.stopPropagation(); executeAction(action); });
+      row.appendChild(btn);
+    }
+    wrapper.appendChild(row);
+  }
+
+  if (msg.error) {
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'ab-retry-btn';
+    retry.textContent = '↺ Retry';
+    retry.addEventListener('click', (e) => { e.stopPropagation(); retryLast(); });
+    wrapper.appendChild(retry);
+  }
+
+  container.appendChild(wrapper);
+}
+
+function actionLabel(a: AssistantAction): string {
+  switch (a.type) {
+    case 'navigate':            return `→ ${a.route}`;
+    case 'openComponent':       return `Open ${a.slug}`;
+    case 'openBuildStep':       return `Go to Step ${a.step}`;
+    case 'focusFeature':        return `Focus ${a.semanticId}`;
+    case 'openTroubleshooting': return a.topic ? `Troubleshooting: ${a.topic}` : 'Troubleshooting';
+    default:                    return 'Execute';
+  }
+}
+
+// ── Thinking indicator ─────────────────────────────────────────
+let thinkingEl: HTMLElement | null = null;
+
+function showThinking() {
+  const el = document.createElement('div');
+  el.className = 'ab-thinking';
+  el.id = 'ab-thinking-indicator';
+  el.setAttribute('aria-label', 'Ask Builder is thinking');
+  el.innerHTML = '<div class="ab-thinking-dots"><span class="ab-thinking-dot"></span><span class="ab-thinking-dot"></span><span class="ab-thinking-dot"></span></div><span>Thinking…</span>';
+  messagesEl()?.appendChild(el);
+  thinkingEl = el;
+  scrollToBottom();
+  const dot = statusDot();
+  if (dot) { dot.className = 'ab-status-dot thinking'; dot.title = 'Thinking'; }
+}
+
+function hideThinking() {
+  thinkingEl?.remove(); thinkingEl = null;
+  const dot = statusDot();
+  if (dot) { dot.className = 'ab-status-dot'; dot.title = 'Online'; }
+}
+
+// ── Send message ───────────────────────────────────────────────
+async function sendMessage(text: string) {
+  if (!text.trim() || isThinking) return;
+
+  if (!isOpen) openPanel(); // ensure panel is visible
+
+  const userText = text.trim().slice(0, 2000);
+  lastUserMessage = userText;
+
+  const ta = composer();
+  if (ta) { ta.value = ''; ta.style.height = 'auto'; }
+  updateSendBtn();
+
+  addMessage({ id: genId(), role: 'user', content: userText, timestamp: Date.now() });
+
+  const history = messages.slice(-21, -1).map(m => ({
+    role: m.role as 'user' | 'assistant',
+    content: m.content,
+  }));
+
+  let context: any;
+  try { context = getAskBuilderContext(); }
+  catch {
+    context = {
+      route: window.location.pathname, theme: 'dark',
+      activeComponent: null, activeSemanticId: null, cameraTarget: null,
+      timelineProgress: 0, explodeProgress: 0, xrayActive: false,
+      isInteracting: false, buildStep: null,
+    };
+  }
+
+  isThinking = true;
+  showThinking();
+  setComposerDisabled(true);
+
+  try {
+    const res = await fetch('/api/ask-builder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userText, context, history }),
+      signal: AbortSignal.timeout(38_000),
+    });
+
+    hideThinking(); isThinking = false; setComposerDisabled(false);
+
+    if (!res.ok) {
+      let errMsg = 'Something went wrong. Please try again.';
+      try { const e = await res.json() as AskBuilderErrorResponse; if (e.error) errMsg = e.error; } catch {}
+      addMessage({ id: genId(), role: 'assistant', content: errMsg, error: true, timestamp: Date.now() });
+      setErrorStatus(); return;
+    }
+
+    const data = await res.json() as AskBuilderResponse;
+    if (!data.ok || !data.payload) {
+      addMessage({ id: genId(), role: 'assistant', content: 'No response received. Please try again.', error: true, timestamp: Date.now() });
+      setErrorStatus(); return;
+    }
+
+    addMessage({
+      id: genId(), role: 'assistant',
+      content: data.payload.message,
+      actions: data.payload.actions ?? [],
+      timestamp: Date.now(),
+    });
+
+  } catch (err) {
+    hideThinking(); isThinking = false; setComposerDisabled(false);
+    const msg = err instanceof Error && err.name === 'TimeoutError'
+      ? 'The request timed out. Please try again.'
+      : 'Network error. Please check your connection and try again.';
+    addMessage({ id: genId(), role: 'assistant', content: msg, error: true, timestamp: Date.now() });
+    setErrorStatus();
+  }
+
+  updateSendBtn();
+  composer()?.focus();
+}
+
+function retryLast() { if (lastUserMessage) sendMessage(lastUserMessage); }
+
+// ── Action execution ───────────────────────────────────────────
+function executeAction(a: AssistantAction) {
+  switch (a.type) {
+    case 'navigate':
+      if (isInternal(a.route)) window.location.href = a.route;
+      break;
+    case 'openComponent':
+      if (isInternal(`/components/${a.slug}/`)) window.location.href = `/components/${a.slug}/`;
+      break;
+    case 'openBuildStep':
+      if (Number.isInteger(a.step) && a.step >= 1 && a.step <= 10)
+        window.location.href = `/build/#step-${a.step}`;
+      break;
+    case 'openTroubleshooting':
+      window.location.href = a.topic && /^[a-z0-9-]+$/.test(a.topic)
+        ? `/troubleshooting/#${a.topic}` : '/troubleshooting/';
+      break;
+    case 'focusFeature':
+      window.dispatchEvent(new CustomEvent('ask-builder:focus-feature',
+        { detail: { component: a.component, semanticId: a.semanticId } }));
+      break;
+  }
+}
+
+function isInternal(p: string) {
+  return typeof p === 'string' && p.startsWith('/') &&
+    !/^[a-z][a-z0-9+.-]*:/i.test(p) && !p.startsWith('//');
+}
+
+// ── Status ─────────────────────────────────────────────────────
+function setErrorStatus() {
+  const dot = statusDot();
+  if (dot) { dot.className = 'ab-status-dot error'; dot.title = 'Error'; }
+  setTimeout(() => {
+    const d = statusDot();
+    if (d) { d.className = 'ab-status-dot'; d.title = 'Online'; }
+  }, 4000);
+}
+
+// ── Clear ──────────────────────────────────────────────────────
+function clearConversation() {
+  messages = []; lastUserMessage = '';
+  const c = messagesEl();
+  if (!c) return;
+  c.textContent = '';
+  buildWelcome(c);
+}
+
+function buildWelcome(container: HTMLElement) {
+  const div = document.createElement('div');
+  div.id = 'ab-welcome'; div.className = 'ab-welcome';
+
+  const intro = document.createElement('div');
+  intro.className = 'ab-welcome-intro';
+  intro.innerHTML = "<strong>Hey \u2014 I'm Ask Builder.</strong><br>I can guide you through your PC build, explain what you're looking at, and help you troubleshoot.";
+  div.appendChild(intro);
+
+  const sg = document.createElement('div');
+  sg.className = 'ab-suggestions'; sg.setAttribute('role','group');
+  sg.setAttribute('aria-label','Suggested questions');
+  const chips = [
+    "What should I install next?","Explain this component",
+    "Where does this cable go?","Help me troubleshoot",
+    "What's the build order?","What does the GPU do?",
+  ];
+  chips.forEach(t => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'ab-suggestion-chip';
+    b.dataset.suggestion = t; b.textContent = t;
+    sg.appendChild(b);
+  });
+  div.appendChild(sg);
+
+  const note = document.createElement('p');
+  note.style.cssText = 'font-size:11.5px;color:var(--text-secondary);font-family:var(--font-mono);margin-top:4px;';
+  note.textContent = 'Ask Builder understands your current page and 3D context.';
+  div.appendChild(note);
+
+  container.appendChild(div);
+}
+
+// ── Composer helpers ───────────────────────────────────────────
+function updateSendBtn() {
+  const b = sendBtn(), ta = composer();
+  if (b && ta) b.disabled = !ta.value.trim() || isThinking;
+}
+function setComposerDisabled(d: boolean) {
+  const ta = composer(), b = sendBtn();
+  if (ta) ta.disabled = d;
+  if (b) b.disabled = d || !composer()?.value.trim();
+}
+function autoResize(ta: HTMLTextAreaElement) {
+  ta.style.height = 'auto';
+  ta.style.height = Math.min(ta.scrollHeight, 120) + 'px';
+}
+function scrollToBottom() {
+  const el = messagesEl();
+  if (el) requestAnimationFrame(() => { el.scrollTop = el.scrollHeight; });
+}
+
+// ── Init ───────────────────────────────────────────────────────
+function initAskBuilder() {
+  // Clone the trigger to shed any stale listeners from previous navigation
+  const t = document.getElementById('ab-trigger') as HTMLButtonElement | null;
+  if (!t) return;
+  const fresh = t.cloneNode(true) as HTMLButtonElement;
+  t.parentNode?.replaceChild(fresh, t);
+
+  // Trigger
+  fresh.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(); });
+
+  // Close / Clear
+  closeBtn()?.addEventListener('click', (e) => { e.stopPropagation(); closePanel(); });
+  clearBtn()?.addEventListener('click', (e) => { e.stopPropagation(); clearConversation(); });
+
+  // Composer
+  const ta = composer();
+  ta?.addEventListener('input', () => { autoResize(ta); updateSendBtn(); });
+  ta?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      const txt = ta.value.trim();
+      if (txt && !isThinking) sendMessage(txt);
+    }
+  });
+
+  // Send button
+  sendBtn()?.addEventListener('click', () => {
+    const txt = composer()?.value.trim() || '';
+    if (txt) sendMessage(txt);
+  });
+
+  // Suggestion chips — single delegated listener on the messages container
+  // Handles both the static HTML chips and rebuilt chips after clearConversation()
+  const msgContainer = messagesEl();
+  if (msgContainer) {
+    msgContainer.addEventListener('click', (e) => {
+      const chip = (e.target as HTMLElement).closest<HTMLButtonElement>('.ab-suggestion-chip');
+      if (!chip) return;
+      e.stopPropagation(); // never let this reach the click-outside handler
+      const text = chip.dataset.suggestion || chip.textContent || '';
+      if (text.trim()) sendMessage(text.trim());
+    });
+  }
+
+  // ── Document-level listeners — only attached ONCE per page session ──
+  if (!documentListenersAttached) {
+    documentListenersAttached = true;
+
+    // Escape → close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) { e.preventDefault(); closePanel(); }
+    });
+
+    // Click outside → close
+    // Uses capture phase + composedPath() so it sees the full event path
+    // before any inner stopPropagation() can suppress it, but we check
+    // the path to ensure we only close when the click was truly outside.
+    document.addEventListener('click', (e) => {
+      if (!isOpen) return;
+      const path = e.composedPath();
+      const p = document.getElementById('ab-panel');
+      const tr = document.getElementById('ab-trigger');
+      if (!p || !tr) return;
+      if (path.includes(p) || path.includes(tr)) return; // click was inside
+      closePanel();
+    }, true /* capture — runs before element handlers */);
+  }
+}
+
+// ── Boot ───────────────────────────────────────────────────────
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAskBuilder);
+} else {
+  initAskBuilder();
+}
+
+// Re-wire element listeners on every Astro client-side navigation
+document.addEventListener('astro:page-load', initAskBuilder);
+</script>
