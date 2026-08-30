@@ -125,17 +125,15 @@ function isCurrent(href: string) {
 
           <!-- Primary nav: wraps onto its own row on small screens (no overflow at 375px) -->
           <nav aria-label="Primary" class="order-3 -mx-1 w-full md:order-2 md:mx-0 md:ml-auto md:w-auto">
-            <ul class="flex flex-wrap items-center gap-2 text-xs md:text-sm">
+            <ul class="flex flex-wrap items-center gap-1 text-sm">
               {navItems.map((item) => (
                 <li>
                   <a
                     href={item.href}
                     aria-current={isCurrent(item.href) ? 'page' : undefined}
                     class:list={[
-                      'nav-link block rounded-card px-2.5 py-1 uppercase tracking-wider font-semibold transition-colors',
-                      isCurrent(item.href)
-                        ? 'text-accent underline underline-offset-4'
-                        : 'text-secondary hover:text-primary hover:underline hover:underline-offset-4',
+                      'block rounded-card px-3 py-1.5 text-secondary transition-colors hover:bg-surface-raised hover:text-primary',
+                      { 'bg-surface-raised font-medium text-accent': isCurrent(item.href) },
                     ]}
                   >
                     {item.label}

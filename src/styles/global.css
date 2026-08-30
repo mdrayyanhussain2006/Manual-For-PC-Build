@@ -11,17 +11,6 @@
 @custom-variant accent (&:where([data-theme="accent"], [data-theme="accent"] *));
 
 /* ---------- Canonical Theme Tokens ---------- */
-:root {
-  --hw-bg: #0000f2;
-  --hw-fg: #f5f5f5;
-  --hw-accent: #edff45;
-  --hw-paper: #ffffff;
-  --hw-ink: #1a1a1a;
-  --hw-muted: #0029de;
-  --hermes-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  --u: max(0.4vw, 1px);
-}
-
 :root,
 [data-theme="light"] {
   --surface: #FAFAF9;
@@ -32,7 +21,7 @@
   --caution: #B45309;
   --danger: #B91C1C;
   --success: #15803D;
-  --border-subtle: rgba(237, 255, 69, 0.08);
+  --border-subtle: rgba(23, 23, 21, 0.08);
 }
 
 .dark,
@@ -49,16 +38,17 @@
 }
 
 [data-theme="accent"] {
-  /* Hermes Agent visual language — electric blue + chartreuse aesthetic */
-  --surface: var(--hw-bg);
-  --surface-raised: var(--hw-paper);
-  --text-primary: var(--hw-fg);
-  --text-secondary: rgba(245, 245, 245, 0.78);
-  --accent: var(--hw-accent);
+  /* Hermes Agent visual language — brutalist electric blue + chartreuse aesthetic */
+  --surface: #0000f2;
+  --surface-raised: #0000cc;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(245, 245, 245, 0.8);
+  --accent: #edff45;
   --caution: #ffa726;
   --danger: #ef5350;
   --success: #4caf50;
-  --border-subtle: rgba(0, 41, 222, 0.15);
+  --border-subtle: rgba(237, 255, 69, 0.25);
+  --hermes-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 /* ---------- Tailwind v4 theme wiring ---------- */
@@ -75,9 +65,9 @@
   --color-border-subtle: var(--border-subtle);
 
   /* Typography — Geist Sans (UI/body), Geist Mono (specs/code), Orbitron (display headings) */
-  --font-sans: "Inter", "Geist Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, "Cascadia Code", "SF Mono", monospace;
-  --font-display: "Inter", "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", "SF Mono", monospace;
+  --font-display: "Orbitron", ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale: 12 / 14 / 16 / 18 / 24 / 32 / 48px */
   --text-xs: 12px;
@@ -122,21 +112,6 @@
 
   body {
     @apply bg-surface font-sans text-base text-primary antialiased;
-    margin: 0;
-    position: relative;
-  }
-
-  /* THE SECRET SAUCE: SVG Noise Texture Overlay for Hermes Agent theme */
-  [data-theme="accent"] body::before,
-  html[data-theme="accent"] body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 1;
-    mix-blend-mode: overlay;
   }
 
   h1 {
@@ -149,26 +124,16 @@
     outline-offset: 2px;
   }
 
-  [data-theme="accent"] *:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 2px;
-    border-radius: 0 !important;
-  }
-
-  /* Brutalist polish features */
+  /* Selection colors */
   ::selection {
     background: var(--accent);
     color: var(--surface);
   }
 
-  [data-theme="accent"] ::selection {
-    background-color: var(--hw-accent, #edff45);
-    color: var(--hw-bg, #0000f2);
-  }
-
+  /* Default scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
   }
 
   ::-webkit-scrollbar-track {
@@ -180,42 +145,10 @@
     border-radius: 4px;
   }
 
-  [data-theme="accent"] ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  [data-theme="accent"] ::-webkit-scrollbar-track {
-    background: var(--hw-bg, #0000f2);
-  }
-
-  [data-theme="accent"] ::-webkit-scrollbar-thumb {
-    background: var(--hw-fg, #f5f5f5);
-    border-radius: 4px;
-  }
-
   input,
   textarea,
   select {
     accent-color: var(--accent);
-  }
-
-  [data-theme="accent"] input,
-  [data-theme="accent"] select,
-  [data-theme="accent"] textarea {
-    background-color: var(--surface-raised);
-    color: #171715;
-    border: 2px solid rgba(237, 255, 69, 0.6);
-    border-radius: 0;
-    padding: 0.5rem 0.75rem;
-  }
-
-  [data-theme="accent"] input:focus-visible,
-  [data-theme="accent"] select:focus-visible,
-  [data-theme="accent"] textarea:focus-visible {
-    border-color: var(--accent);
-    outline: 3px solid var(--accent);
-    outline-offset: 1px;
   }
 
   input[type="range"]::-webkit-slider-thumb {
@@ -257,123 +190,59 @@ body.no-transition * {
 }
 
 /* ============================================================
-   Hermes Agent Brutalist Component System
+   Accent Mode ONLY Scoped Enhancements (Hermes Agent Aesthetic)
+   Leaves Light and Dark themes 100% untouched
    ============================================================ */
 
-/* Meta / Eyebrow Text (Use above headers) */
-.hw-eyebrow {
-  font-family: var(--font-mono), monospace;
-  font-size: calc(14 * var(--u, max(0.4vw, 1px)));
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--hw-accent, #edff45);
-  font-weight: 700;
+/* SVG Noise Texture ONLY in Accent mode */
+[data-theme="accent"] body::before,
+html[data-theme="accent"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
 }
 
-/* Main Headers */
-.hw-h1 {
-  font-size: calc(132 * var(--u, max(0.4vw, 1px)));
-  line-height: 0.88;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  margin: 0;
+/* Brutalist Focus Rings in Accent mode */
+[data-theme="accent"] *:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 0 !important;
 }
 
-/* Body Text */
-.hw-body {
-  font-size: calc(21 * var(--u, max(0.4vw, 1px)));
-  line-height: 1.4;
-  color: var(--hw-fg, #f5f5f5);
+/* Custom Scrollbar in Accent mode */
+[data-theme="accent"] ::-webkit-scrollbar-track {
+  background: #0000f2;
 }
 
-/* Primary Buttons (The "Off-White to Pure White" Hover) */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
-  background-color: var(--hw-fg, #f5f5f5);
-  color: var(--hw-bg, #0000f2);
-  font-family: var(--font-sans), sans-serif;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding: calc(20 * var(--u, max(0.4vw, 1px))) calc(30 * var(--u, max(0.4vw, 1px)));
-  border: none;
-  box-shadow: var(--hermes-shadow, 0 4px 14px rgba(0, 0, 0, 0.25));
-  cursor: pointer;
-  transition: background-color 0.2s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
+[data-theme="accent"] ::-webkit-scrollbar-thumb {
+  background: #edff45;
+  border-radius: 2px;
 }
 
-.btn-primary:hover {
-  background-color: #ffffff;
-  color: var(--hw-bg, #0000f2);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+/* Selection in Accent mode */
+[data-theme="accent"] ::selection {
+  background: #edff45;
+  color: #0000f2;
 }
 
-/* Navigation & Secondary Links (The "Underline & Opacity" Hover) */
-.nav-link {
-  color: var(--hw-fg, #f5f5f5);
-  text-decoration: none;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  padding: 0.5rem 0;
-  transition: text-decoration 0.2s, opacity 0.2s;
+/* Accent Mode Form Inputs */
+[data-theme="accent"] input,
+[data-theme="accent"] select,
+[data-theme="accent"] textarea {
+  background-color: #0000cc;
+  color: #ffffff;
+  border: 1.5px solid rgba(237, 255, 69, 0.4);
+  border-radius: 0;
 }
 
-.nav-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
-  text-decoration-thickness: 1px;
-}
-
-/* Tabs / Secondary Actions */
-.tab-link {
-  color: #0029de73;
-  border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
-  padding-bottom: 0.75rem;
-  font-family: var(--font-mono), monospace;
-  font-weight: 700;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.tab-link:hover {
-  color: #0029deb3;
-}
-
-.tab-link.active {
-  color: var(--hw-bg, #0000f2);
-  border-bottom-color: var(--hw-bg, #0000f2);
-}
-
-/* The "Paper" Cards (Content Containers) */
-.hw-card,
-[data-theme="accent"] .hw-card,
-[data-theme="accent"] .bg-surface-raised {
-  --text-primary: var(--hw-ink, #1a1a1a);
-  --text-secondary: rgba(26, 26, 26, 0.75);
-  --color-primary: var(--hw-ink, #1a1a1a);
-  --color-secondary: rgba(26, 26, 26, 0.75);
-  background-color: var(--hw-paper, #ffffff);
-  color: var(--hw-ink, #1a1a1a);
-  border-radius: 4px;
-  border: 1px solid rgba(0, 41, 222, 0.15);
-  box-shadow: var(--hermes-shadow, 0 4px 14px rgba(0, 0, 0, 0.25));
-  position: relative;
-  z-index: 2;
-}
-
-[data-theme="accent"] .bg-surface-raised *,
-[data-theme="accent"] .hw-card * {
-  --text-primary: var(--hw-ink, #1a1a1a);
-  --text-secondary: rgba(26, 26, 26, 0.75);
-}
-
-[data-theme="accent"] .bg-surface-raised [class*="text-accent"],
-[data-theme="accent"] .hw-card [class*="text-accent"] {
-  color: var(--hw-accent, #edff45);
+[data-theme="accent"] input:focus-visible,
+[data-theme="accent"] select:focus-visible,
+[data-theme="accent"] textarea:focus-visible {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
 }
