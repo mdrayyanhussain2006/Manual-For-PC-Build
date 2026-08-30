@@ -777,6 +777,46 @@ export class SoloComponentAdapter {
     this.#rafId = requestAnimationFrame(loop);
   }
 
+  /**
+   * Update 3D scene materials based on current theme
+   * Adjusts accent colors and material properties to match the site theme
+   */
+  updateTheme(theme: string): void {
+    if (this.#disposed) return;
+
+    // Define theme-specific accent colors
+    const accentColors = {
+      light: 0x2563EB,    // Blue
+      dark: 0x5B8DEF,     // Light Blue
+      accent: 0xedff45,   // Chartreuse (Hermes theme)
+    };
+
+    const accentColor = accentColors[theme as keyof typeof accentColors] || accentColors.light;
+    const selectionEmissiveColor = new THREE.Color(accentColor);
+
+    // Re-apply materials with the new theme color
+    for (const [nn, p] of this.#partsByNum.entries()) {
+      const isSelected = nn === this.#selectedPartNumber;
+      for (const mesh of p.meshes) {
+        const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+        for (const mat of mats) {
+          if ('emissive' in mat) {
+            const stdMat = mat as THREE.MeshStandardMaterial;
+            if (isSelected) {
+              stdMat.emissive.copy(selectionEmissiveColor);
+            }
+          }
+        }
+      }
+    }
+
+    // Update badge styles via CSS custom property
+    const badgesContainer = this.#options.badgesContainer;
+    if (badgesContainer) {
+      badgesContainer.style.setProperty('--theme-accent', `#${accentColor.toString(16).padStart(6, '0')}`);
+    }
+  }
+
   dispose(): void {
     if (this.#disposed) return;
     this.#disposed = true;

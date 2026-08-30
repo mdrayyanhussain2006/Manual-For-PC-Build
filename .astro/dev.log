@@ -427,3 +427,93 @@
 {"message":"dist/get-ready/index.html","label":"watch","level":"info"}
 {"message":"dist/index.html","label":"watch","level":"info"}
 {"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"[200] / 31ms","label":null,"level":"info"}
+{"message":"[200] / 3ms","label":null,"level":"info"}
+{"message":"[200] /components/ 73ms","label":null,"level":"info"}
+{"message":"[200] /components/motherboard/ 30ms","label":null,"level":"info"}
+{"message":"[200] /build/ 50ms","label":null,"level":"info"}
+{"message":"[200] /troubleshooting/ 35ms","label":null,"level":"info"}
+{"message":"[200] / 410ms","label":null,"level":"info"}
+{"message":"[200] /components/ 14ms","label":null,"level":"info"}
+{"message":"[200] /build/ 13ms","label":null,"level":"info"}
+{"message":"[200] /troubleshooting/ 11ms","label":null,"level":"info"}
+{"message":"[200] /components/ 18ms","label":null,"level":"info"}
+{"message":"[200] /components/pc-case/ 113ms","label":null,"level":"info"}
+{"message":"[200] /build/ 6ms","label":null,"level":"info"}
+{"message":"[200] / 11ms","label":null,"level":"info"}
+{"message":"[200] / 22ms","label":null,"level":"info"}
+{"message":"[200] /get-ready/ 143ms","label":null,"level":"info"}
+{"message":"[200] / 3ms","label":null,"level":"info"}
+{"message":"[200] / 11ms","label":null,"level":"info"}
+{"message":"[200] / 43ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"src/components/Model3D.astro","label":"watch","level":"info"}
+{"message":"src/lib/3d/SoloComponentAdapter.ts","label":"watch","level":"info"}
+{"message":"[200] / 396ms","label":null,"level":"info"}
+{"message":"src/components/Model3D.astro","label":"watch","level":"info"}
+{"message":"[200] / 218ms","label":null,"level":"info"}
+{"message":"[200] / 19ms","label":null,"level":"info"}
+{"message":"[200] /components/ 109ms","label":null,"level":"info"}
+{"message":"[200] /components/motherboard/ 23ms","label":null,"level":"info"}
+{"message":"[200] /components/motherboard/ 16ms","label":null,"level":"info"}
+{"message":"[200] /get-ready/ 43ms","label":null,"level":"info"}
+{"message":"[200] / 17ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"[200] / 20ms","label":null,"level":"info"}
+{"message":"[200] /components/ 18ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"/src/components/Model3D.astro?astro&type=style&index=0&lang.css","label":"watch","level":"info"}
+{"message":"src/lib/3d/SoloComponentAdapter.ts","label":"watch","level":"info"}
+{"message":"src/layouts/BaseLayout.astro","label":"watch","level":"info"}
+{"message":"src/layouts/BaseLayout.astro","label":"watch","level":"info"}
+{"message":"[200] /components/ 40ms","label":null,"level":"info"}
+{"message":"[200] / 40ms","label":null,"level":"info"}
+{"message":"[200] / 21ms","label":null,"level":"info"}
+{"message":"[200] /get-ready/ 52ms","label":null,"level":"info"}
+{"message":"[200] /components/ 6ms","label":null,"level":"info"}
+{"message":"/src/styles/global.css","label":"watch","level":"info"}
+{"message":"dist/build/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cables/index.html","label":"watch","level":"info"}
+{"message":"dist/components/case-fan/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-air/index.html","label":"watch","level":"info"}
+{"message":"dist/components/cpu-cooler-liquid/index.html","label":"watch","level":"info"}
+{"message":"dist/components/gpu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/psu/index.html","label":"watch","level":"info"}
+{"message":"dist/components/ram/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage/index.html","label":"watch","level":"info"}
+{"message":"dist/components/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-hdd/index.html","label":"watch","level":"info"}
+{"message":"dist/components/storage-m2/index.html","label":"watch","level":"info"}
+{"message":"dist/index.html","label":"watch","level":"info"}
+{"message":"dist/get-ready/index.html","label":"watch","level":"info"}
+{"message":"dist/troubleshooting/index.html","label":"watch","level":"info"}
+{"message":"dist/components/pc-case/index.html","label":"watch","level":"info"}
+{"message":"dist/components/motherboard/index.html","label":"watch","level":"info"}

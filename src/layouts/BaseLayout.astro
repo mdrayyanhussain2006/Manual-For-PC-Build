@@ -49,10 +49,16 @@ function isCurrent(href: string) {
     <script is:inline>
       (function () {
         try {
+          document.documentElement.classList.add('no-transition');
           var stored = localStorage.getItem('pc-manual-theme');
           var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
           document.documentElement.setAttribute('data-theme', theme);
           document.documentElement.classList.toggle('dark', theme === 'dark' || theme === 'accent');
+          requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+              document.documentElement.classList.remove('no-transition');
+            });
+          });
         } catch (e) {}
       })();
     </script>
@@ -177,6 +183,8 @@ function isCurrent(href: string) {
             rootEl.classList.toggle('dark', mode === 'dark' || mode === 'accent');
             localStorage.setItem('pc-manual-theme', mode);
             syncButtons();
+            // Ensure transitions work after manual theme switch
+            rootEl.classList.remove('no-transition');
           });
         }
 
