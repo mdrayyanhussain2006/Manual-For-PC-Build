@@ -222,10 +222,58 @@ import type { UIMessage, AssistantAction, AskBuilderResponse, AskBuilderErrorRes
 let documentListenersAttached = false;
 
 // ── State ──────────────────────────────────────────────────────
+const PANEL_HISTORY_KEY = 'ask-builder-panel-history';
+
 let isOpen = false;
 let isThinking = false;
 let messages: UIMessage[] = [];
 let lastUserMessage = '';
+
+function loadPersistedMessages() {
+  try {
+    const raw = window.sessionStorage.getItem(PANEL_HISTORY_KEY);
+    if (!raw) {
+      messages = [];
+      return;
+    }
+
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) {
+      messages = [];
+      return;
+    }
+
+    messages = parsed.filter((m): m is UIMessage => {
+      return !!m && typeof m === 'object' && typeof m.id === 'string' && typeof m.role === 'string' && typeof m.content === 'string';
+    });
+  } catch {
+    messages = [];
+  }
+}
+
+function persistMessages() {
+  try {
+    window.sessionStorage.setItem(PANEL_HISTORY_KEY, JSON.stringify(messages));
+  } catch {
+    // Ignore storage quota / privacy issues.
+  }
+}
+
+function renderPersistedMessages() {
+  const container = messagesEl();
+  if (!container) return;
+
+  container.textContent = '';
+  if (messages.length === 0) {
+    buildWelcome(container);
+    return;
+  }
+
+  for (const msg of messages) {
+    renderMessage(msg);
+  }
+  scrollToBottom();
+}
 
 // ── DOM helpers ────────────────────────────────────────────────
 function getEl<T extends HTMLElement>(id: string): T {
@@ -294,6 +342,7 @@ function genId() { return `ab-${Date.now()}-${Math.random().toString(36).slice(2
 
 function addMessage(msg: UIMessage) {
   messages.push(msg);
+  persistMessages();
   document.getElementById('ab-welcome')?.remove(); // hide welcome on first message
   renderMessage(msg);
   scrollToBottom();
@@ -494,6 +543,7 @@ function setErrorStatus() {
 // ── Clear ──────────────────────────────────────────────────────
 function clearConversation() {
   messages = []; lastUserMessage = '';
+  try { window.sessionStorage.removeItem(PANEL_HISTORY_KEY); } catch {}
   const c = messagesEl();
   if (!c) return;
   c.textContent = '';
@@ -554,11 +604,16 @@ function scrollToBottom() {
 
 // ── Init ───────────────────────────────────────────────────────
 function initAskBuilder() {
+  loadPersistedMessages();
+
   // Clone the trigger to shed any stale listeners from previous navigation
   const t = document.getElementById('ab-trigger') as HTMLButtonElement | null;
   if (!t) return;
   const fresh = t.cloneNode(true) as HTMLButtonElement;
   t.parentNode?.replaceChild(fresh, t);
+
+  // Restore message history on page load so it survives navigation
+  renderPersistedMessages();
 
   // Trigger
   fresh.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(); });
@@ -606,19 +661,8 @@ function initAskBuilder() {
       if (e.key === 'Escape' && isOpen) { e.preventDefault(); closePanel(); }
     });
 
-    // Click outside → close
-    // Uses capture phase + composedPath() so it sees the full event path
-    // before any inner stopPropagation() can suppress it, but we check
-    // the path to ensure we only close when the click was truly outside.
-    document.addEventListener('click', (e) => {
-      if (!isOpen) return;
-      const path = e.composedPath();
-      const p = document.getElementById('ab-panel');
-      const tr = document.getElementById('ab-trigger');
-      if (!p || !tr) return;
-      if (path.includes(p) || path.includes(tr)) return; // click was inside
-      closePanel();
-    }, true /* capture — runs before element handlers */);
+    // Outside clicks are intentionally ignored so users can continue inspecting
+    // the model or page without the assistant closing on them.
 
     // ── focusFeature consumer ──────────────────────────────────────
     // Listens for the event dispatched by executeAction('focusFeature').
