@@ -11,6 +11,7 @@ import type { AIResponsePayload, ConversationMessage } from '../types.js';
 const API_BASE = 'https://generativelanguage.googleapis.com';
 const API_MODEL = process.env.AI_MODEL || 'gemini-2.5-flash';
 const REQUEST_TIMEOUT_MS = 30_000;
+const MAX_RETRIES = 2;
 
 /**
  * Gemini generateContent response shape (REST API v1beta).
@@ -29,70 +30,113 @@ interface GeminiResponse {
   };
 }
 
+import fs from 'node:fs';
+import path from 'node:path';
+
 export class GeminiProvider implements AIProvider {
   readonly name = 'GeminiProvider';
 
   private get apiKey(): string {
-    const key = process.env.GEMINI_API_KEY;
-    if (!key) throw new Error('GEMINI_API_KEY environment variable is not set');
+    let key = process.env.AI_API_KEY;
+    if (key && key.trim() !== '') key = key.trim();
+    else {
+      const metaKey = (import.meta.env as Record<string, any>)?.AI_API_KEY;
+      if (metaKey && typeof metaKey === 'string' && metaKey.trim() !== '') key = metaKey.trim();
+    }
+
+    if (!key) {
+      try {
+        const envPaths = [path.resolve('.env'), path.resolve(process.cwd(), '.env')];
+        for (const p of envPaths) {
+          if (fs.existsSync(p)) {
+            const content = fs.readFileSync(p, 'utf-8');
+            for (const line of content.split('\n')) {
+              const trimmed = line.trim();
+              if (trimmed.startsWith('AI_API_KEY=')) {
+                key = trimmed.slice('AI_API_KEY='.length).trim();
+                if (key) {
+                  process.env.AI_API_KEY = key;
+                  break;
+                }
+              }
+            }
+          }
+        }
+      } catch {}
+    }
+
+    if (!key || !/^(AIza[0-9A-Za-z\-_]{35,}|AQ\.[0-9A-Za-z\-_\.]{30,})$/.test(key)) {
+      throw new Error('AI_API_KEY is missing or not a valid Google Gemini key');
+    }
+
     return key;
   }
 
   async sendMessage(options: AIProviderSendOptions): Promise<AIResponsePayload> {
-    const { contents, systemInstruction } = this.buildContents(
-      options.systemPrompt,
-      options.history,
-      options.userMessage
-    );
+    let lastError: unknown;
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+      const { contents, systemInstruction } = this.buildContents(
+        options.systemPrompt,
+        options.history,
+        options.userMessage
+      );
 
-    let raw: GeminiResponse;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
-    try {
-      const url = `${API_BASE}/v1beta/models/${API_MODEL}:generateContent?key=${this.apiKey}`;
+      try {
+        const url = `${API_BASE}/v1beta/models/${API_MODEL}:generateContent?key=${this.apiKey}`;
 
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          system_instruction: systemInstruction,
-          contents,
-          generationConfig: {
-            maxOutputTokens: options.maxTokens ?? 512,
-            temperature: 0.3,
-            responseMimeType: 'application/json',
-          },
-        }),
-        signal: controller.signal,
-      });
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            system_instruction: systemInstruction,
+            contents,
+            generationConfig: {
+              maxOutputTokens: options.maxTokens ?? 2048,
+              temperature: 0.3,
+              responseMimeType: 'application/json',
+            },
+          }),
+          signal: controller.signal,
+        });
 
-      clearTimeout(timeoutId);
+        clearTimeout(timeoutId);
 
-      if (!res.ok) {
-        // Do NOT forward full error body — may contain key hints
-        throw new Error(`Gemini API error: HTTP ${res.status}`);
+        if (!res.ok) {
+          throw new Error(`Gemini API error: HTTP ${res.status}`);
+        }
+
+        const raw = (await res.json()) as GeminiResponse;
+
+        if (raw.error) {
+          throw new Error(`Gemini API returned an error: ${raw.error.status}`);
+        }
+
+        const text = raw.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!text) throw new Error('Empty response from Gemini');
+
+        return this.parseResponse(text);
+      } catch (err) {
+        clearTimeout(timeoutId);
+        lastError = err;
+
+        if (err instanceof Error && err.name === 'AbortError') {
+          lastError = new Error('AI provider request timed out');
+        }
+
+        if (attempt < MAX_RETRIES) {
+          await new Promise((resolve) => setTimeout(resolve, 300 * (attempt + 1)));
+          continue;
+        }
+
+        throw lastError;
       }
-
-      raw = (await res.json()) as GeminiResponse;
-    } catch (err) {
-      clearTimeout(timeoutId);
-      if (err instanceof Error && err.name === 'AbortError') {
-        throw new Error('AI provider request timed out');
-      }
-      throw err;
     }
 
-    if (raw.error) {
-      // Don't expose raw error message (may contain key/quota details)
-      throw new Error(`Gemini API returned an error: ${raw.error.status}`);
-    }
-
-    const text = raw.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!text) throw new Error('Empty response from Gemini');
-
-    return this.parseResponse(text);
+    throw lastError instanceof Error ? lastError : new Error('Gemini request failed');
   }
 
   async getHealth(): Promise<{ ok: boolean; latencyMs?: number; message?: string }> {

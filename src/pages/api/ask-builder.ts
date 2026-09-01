@@ -79,14 +79,61 @@ const MAX_MESSAGE_LENGTH = 2_000;   // characters per user message
 const MAX_HISTORY_TURNS = 20;       // messages in conversation history
 const REQUEST_TIMEOUT_MS = 35_000;  // 35 s total endpoint timeout
 
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Ensure .env is loaded in all execution modes
+function getApiKey(): string | undefined {
+  if (process.env.AI_API_KEY && process.env.AI_API_KEY.trim() !== '') {
+    return process.env.AI_API_KEY.trim();
+  }
+  // Try import.meta.env
+  const metaKey = (import.meta.env as Record<string, any>)?.AI_API_KEY;
+  if (metaKey && typeof metaKey === 'string' && metaKey.trim() !== '') {
+    return metaKey.trim();
+  }
+  // Fallback: load directly from .env file
+  try {
+    const envPaths = [
+      path.resolve('.env'),
+      path.resolve(process.cwd(), '.env'),
+    ];
+    for (const p of envPaths) {
+      if (fs.existsSync(p)) {
+        const content = fs.readFileSync(p, 'utf-8');
+        for (const line of content.split('\n')) {
+          const trimmed = line.trim();
+          if (trimmed.startsWith('AI_API_KEY=')) {
+            const val = trimmed.slice('AI_API_KEY='.length).trim();
+            if (val) {
+              process.env.AI_API_KEY = val;
+              return val;
+            }
+          }
+          if (trimmed.startsWith('AI_MODEL=')) {
+            const val = trimmed.slice('AI_MODEL='.length).trim();
+            if (val) process.env.AI_MODEL = val;
+          }
+        }
+      }
+    }
+  } catch {}
+  return undefined;
+}
+
 // ──────────────────────────────────────────────────────────────
 // PROVIDER SELECTION
 // ──────────────────────────────────────────────────────────────
 
+function isLikelyGeminiKey(value: string): boolean {
+  // Support both AIza format and AQ. format for Gemini keys
+  return /^(AIza[0-9A-Za-z\-_]{35,}|AQ\.[0-9A-Za-z\-_\.]{30,})$/.test(value.trim());
+}
+
 function resolveProviderMode(): 'gemini' | 'mock' {
-  const key = process.env.GEMINI_API_KEY;
-  if (!key || key.trim() === '') {
-    console.info('[ask-builder] No GEMINI_API_KEY — using MockAIProvider');
+  const key = getApiKey();
+  if (!key || key.trim() === '' || !isLikelyGeminiKey(key)) {
+    console.info('[ask-builder] No valid Gemini key — using MockAIProvider');
     return 'mock';
   }
   return 'gemini';
@@ -118,19 +165,74 @@ function sanitiseError(err: unknown): string {
 }
 
 // ──────────────────────────────────────────────────────────────
+// RATE LIMITING — 20 requests/minute/IP (server-side, in-memory)
+// ──────────────────────────────────────────────────────────────
+
+interface RateLimitRecord {
+  count: number;
+  windowStart: number;
+}
+
+const RATE_LIMIT_MAX = 20;       // requests per window
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1-minute window
+
+// In-memory store: IP → { count, windowStart }
+// Map is GC'd naturally; old entries are cleaned on access.
+const rateLimitStore = new Map<string, RateLimitRecord>();
+
+function getClientIp(request: Request): string {
+  return (
+    request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    request.headers.get('x-real-ip') ||
+    'unknown'
+  );
+}
+
+function checkRateLimit(ip: string): { allowed: boolean; retryAfterSeconds: number } {
+  const now = Date.now();
+  const record = rateLimitStore.get(ip);
+
+  if (!record || now - record.windowStart >= RATE_LIMIT_WINDOW_MS) {
+    // New window
+    rateLimitStore.set(ip, { count: 1, windowStart: now });
+    // Prune old entries occasionally (every ~100 checks)
+    if (Math.random() < 0.01) {
+      for (const [k, v] of rateLimitStore.entries()) {
+        if (now - v.windowStart >= RATE_LIMIT_WINDOW_MS * 2) rateLimitStore.delete(k);
+      }
+    }
+    return { allowed: true, retryAfterSeconds: 0 };
+  }
+
+  if (record.count >= RATE_LIMIT_MAX) {
+    const retryAfterSeconds = Math.ceil((record.windowStart + RATE_LIMIT_WINDOW_MS - now) / 1000);
+    return { allowed: false, retryAfterSeconds };
+  }
+
+  record.count++;
+  return { allowed: true, retryAfterSeconds: 0 };
+}
+
+// ──────────────────────────────────────────────────────────────
 // HANDLER
 // ──────────────────────────────────────────────────────────────
 
 export const POST: APIRoute = async ({ request }) => {
-  // ── Rate limiting ──
-  const clientId = getClientIdentifier(request);
-  const rateLimit = checkRateLimit(clientId);
-  if (!rateLimit.allowed) {
-    const retryAfter = Math.ceil((rateLimit.resetTime - Date.now()) / 1000);
-    return jsonResponse(
-      { ok: false, error: 'Too many requests. Please wait before trying again.' } satisfies AskBuilderErrorResponse,
-      429,
-      { 'Retry-After': String(retryAfter) }
+  // ── Rate limit check ──
+  const ip = getClientIp(request);
+  const rl = checkRateLimit(ip);
+  if (!rl.allowed) {
+    return new Response(
+      JSON.stringify({ ok: false, error: 'Too many requests. Please wait a moment before asking again.' } satisfies AskBuilderErrorResponse),
+      {
+        status: 429,
+        headers: {
+          'Content-Type': 'application/json',
+          'Retry-After': String(rl.retryAfterSeconds),
+          'X-Content-Type-Options': 'nosniff',
+          'X-Frame-Options': 'DENY',
+        },
+      }
     );
   }
 
@@ -193,6 +295,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   // ── Call provider with timeout ──
   let payload;
+  let providerStatus: { provider: string; model: string; mode: string };
   try {
     const timeoutPromise = new Promise<never>((_, reject) =>
       setTimeout(() => reject(new Error('Request timed out')), REQUEST_TIMEOUT_MS)
@@ -206,11 +309,20 @@ export const POST: APIRoute = async ({ request }) => {
     // ── Validate actions produced by AI ──
     const validatedActions = validateActions(responsePayload.actions ?? []);
 
+    // ── Provider status reporting ──
+    const currentModel = process.env.AI_MODEL || 'gemini-3.7-flash';
+    providerStatus = {
+      provider: mode === 'gemini' ? 'GeminiProvider' : 'MockAIProvider',
+      model: mode === 'gemini' ? currentModel : 'mock',
+      mode: mode.toUpperCase(),
+    };
+
     payload = {
       message: typeof responsePayload.message === 'string'
         ? responsePayload.message
         : 'I could not generate a response. Please try again.',
       actions: validatedActions,
+      providerStatus,
     };
   } catch (err) {
     console.error('[ask-builder] Provider error:', err);

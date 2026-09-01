@@ -6,10 +6,12 @@
  *  3. Semantic part knowledge (126 parts across 12 components)
  *
  * This file runs server-side only.
- * It does NOT invent facts — it uses data from ComponentRegistry and parts.en.json.
+ * It does NOT invent facts — it uses data from ComponentRegistry and the semantic parts registry.
+ * The prompt stays focused on the active component and relevant facts rather than dumping the full dataset.
  */
 
 import { COMPONENT_REGISTRY, getAllComponents } from '../3d/ComponentRegistry.js';
+import { getComponentPartMap, getPartIdsForComponent } from './semanticPartsRegistry.js';
 import type { AskBuilderContext } from './types.js';
 import { readFile } from 'fs/promises';
 import { join, dirname } from 'path';
@@ -175,10 +177,13 @@ Valid steps: 1 through 10.
 
 Troubleshooting:
 {"type":"openTroubleshooting","topic":"no-post"}
-Valid topics: no-power, no-post, ram-not-detected, gpu-not-detected, storage-not-detected, random-shutdowns.
+Valid topics: no-power, no-post, ram-not-detected, gpu-not-detected, storage-not-detected, random-shutdowns, overheating.
+Omit topic to link to the general troubleshooting page.
 
 Focus a 3D feature:
 {"type":"focusFeature","component":"cpu","semanticId":"heat_spreader"}
+The semanticId MUST be an exact part id listed in the Component Parts Reference below.
+Never use full-PC semantic ids like "GPU" or "CPU" — use the lowercase underscore part ids instead.
 
 IMPORTANT: Only include actions that are genuinely helpful. Omit actions array if no navigation is needed.
 IMPORTANT: Do not use external URLs. Do not execute code. Only use the action types listed above.
@@ -245,6 +250,11 @@ function buildContextSection(ctx: AskBuilderContext): string {
     if (comp) {
       lines.push(`  Description: ${comp.description}`);
     }
+    // Provide the exact part ids for ONLY the active component (targeted context)
+    const partIds = getPartIdsForComponent(ctx.activeComponent);
+    if (partIds.length > 0) {
+      lines.push(`  Available part ids for focusFeature: ${partIds.join(', ')}`);
+    }
   }
 
   if (ctx.activeSemanticId) {
@@ -273,6 +283,31 @@ function buildContextSection(ctx: AskBuilderContext): string {
 }
 
 // ──────────────────────────────────────────────────────────────
+// CONTEXT-AWARE COMPONENT PARTS REFERENCE
+// Provides the AI with semantic part IDs only for relevant components
+// to reduce prompt size and improve focus.
+// ──────────────────────────────────────────────────────────────
+
+function buildRelevantPartsReference(ctx: AskBuilderContext): string {
+  const lines: string[] = ['## Component Parts Reference (for focusFeature actions)'];
+  
+  // Only include parts for the active component to keep prompt focused
+  if (ctx.activeComponent) {
+    const partIds = getPartIdsForComponent(ctx.activeComponent);
+    if (partIds.length > 0) {
+      lines.push(`${ctx.activeComponent}: ${partIds.join(', ')}`);
+    }
+  }
+  
+  // If no active component, provide a minimal reference for common components
+  if (!ctx.activeComponent && lines.length === 1) {
+    lines.push('(Focus a component to see available part IDs)');
+  }
+  
+  return lines.join('\n');
+}
+
+// ──────────────────────────────────────────────────────────────
 // PUBLIC: BUILD SYSTEM PROMPT
 // ──────────────────────────────────────────────────────────────
 
@@ -280,6 +315,7 @@ export async function buildSystemPrompt(ctx: AskBuilderContext): Promise<string>
   const componentKnowledge = buildComponentKnowledge();
   const semanticPartsKnowledge = buildSemanticPartsKnowledge();
   const activePartsDetail = await loadActiveComponentParts(ctx);
+  const componentPartsRef = buildRelevantPartsReference(ctx);
 
   return `You are Ask Builder, the AI assistant embedded in PC Customization Manual — an interactive educational website for people building their first PC.
 
@@ -316,6 +352,10 @@ ${activePartsDetail}
 
 ---
 
+${componentPartsRef}
+
+---
+
 ${BUILD_STEPS}
 
 ---
@@ -325,6 +365,10 @@ ${SAFETY_KNOWLEDGE}
 ---
 
 ${TROUBLESHOOTING_KNOWLEDGE}
+
+---
+
+${componentPartsRef}
 
 ---
 

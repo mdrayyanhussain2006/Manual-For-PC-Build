@@ -9,19 +9,21 @@ import { integrationState } from '../3d/IntegrationState.js';
 import type { AskBuilderContext } from './types.js';
 
 /**
- * Derive the current guided-build step number from the URL.
- * Returns null if not on a build page.
+ * Derive the current guided-build step number from the URL pathname + hash.
+ * Returns null if not on a build page or no step hash is present.
  */
 function parseBuildStep(route: string): number | null {
-  // Check window.location.hash for build step anchor
+  if (!route.startsWith('/build')) return null;
+
   if (typeof window !== 'undefined' && window.location.pathname.startsWith('/build/')) {
     const hash = window.location.hash;
-    const match = hash.match(/#step-(\d+)/);
-    if (match) return parseInt(match[1], 10);
+    const hashMatch = hash.match(/#step-(\d+)/);
+    if (hashMatch) return parseInt(hashMatch[1], 10);
   }
-  // Fallback: check route string (for SSR or when hash not available)
-  const match = route.match(/\/build\/.*#step-(\d+)/);
-  if (match) return parseInt(match[1], 10);
+
+  const routeMatch = route.match(/\/build\/.*#step-(\d+)/);
+  if (routeMatch) return parseInt(routeMatch[1], 10);
+
   return null;
 }
 

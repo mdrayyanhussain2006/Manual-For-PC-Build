@@ -13,6 +13,7 @@
  */
 
 import { COMPONENT_REGISTRY } from '../3d/ComponentRegistry.js';
+import { isValidComponentPart } from './semanticPartsRegistry.js';
 import type {
   AssistantAction,
   ActionNavigate,
@@ -40,7 +41,10 @@ export const ALLOWED_ROUTES: ReadonlySet<string> = new Set([
 /** Valid build steps (1-indexed, currently 10 steps) */
 export const BUILD_STEP_RANGE: [number, number] = [1, 10];
 
-/** Known troubleshooting topic anchors */
+/**
+ * Known troubleshooting topic anchors — MUST match id attributes on
+ * sections in src/pages/troubleshooting/index.astro
+ */
 export const ALLOWED_TROUBLESHOOTING_TOPICS: ReadonlySet<string> = new Set([
   'no-power',
   'no-post',
@@ -48,6 +52,7 @@ export const ALLOWED_TROUBLESHOOTING_TOPICS: ReadonlySet<string> = new Set([
   'gpu-not-detected',
   'storage-not-detected',
   'random-shutdowns',
+  'overheating',
 ]);
 
 /** All valid component slugs */
@@ -147,17 +152,35 @@ function validateFocusFeature(raw: Record<string, unknown>): ActionFocusFeature 
     console.warn('[ActionValidator] Rejected focusFeature — unknown component:', raw.component);
     return null;
   }
-  if (!isValidSemanticIdForComponent(raw.component as string, raw.semanticId)) {
+
+  const component = raw.component as string;
+  const semanticId = raw.semanticId;
+
+  if (!isValidSemanticIdForComponent(component, semanticId)) {
     console.warn('[ActionValidator] Rejected focusFeature — semanticId not valid for component:', {
-      component: raw.component,
-      semanticId: raw.semanticId,
+      component,
+      semanticId,
     });
     return null;
   }
+
+  if (typeof semanticId !== 'string' || !semanticId) {
+    console.warn('[ActionValidator] Rejected focusFeature — missing semanticId');
+    return null;
+  }
+
+  // Extra strict check against the per-component semantic registry.
+  if (!isValidComponentPart(component, semanticId)) {
+    console.warn(
+      `[ActionValidator] Rejected focusFeature — "${semanticId}" is not a part of "${component}"`
+    );
+    return null;
+  }
+
   return {
     type: 'focusFeature',
-    component: raw.component as string,
-    semanticId: raw.semanticId as string,
+    component,
+    semanticId,
   };
 }
 

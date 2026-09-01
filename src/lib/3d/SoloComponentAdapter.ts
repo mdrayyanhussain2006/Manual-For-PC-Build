@@ -259,6 +259,8 @@ export class SoloComponentAdapter {
       this.#buildSceneGraph(gltf);
       this.#options.onLoadProgress?.(1.0);
       this.#options.onReady?.();
+      // Report the active component slug to IntegrationState as soon as model is ready.
+      integrationState.update3DState({ activeComponent: this.#options.slug });
     } catch (err) {
       console.error(`[SoloComponentAdapter] Error loading ${slug}:`, err);
       this.#options.onError?.(err instanceof Error ? err : new Error(String(err)));
@@ -585,6 +587,9 @@ export class SoloComponentAdapter {
     }
 
     this.#options.onPartSelect?.(partNumber, part);
+    // FIX: activeComponent must be the component slug (e.g. "gpu"), not the
+    // part number ("01"). activeSemanticId is the part's manifest id
+    // (e.g. "graphics_processor") so Ask Builder context is correct.
     integrationState.update3DState({
       activeComponent: this.#options.slug,
       activeSemanticId: part ? part.id : null,

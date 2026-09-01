@@ -87,6 +87,14 @@ export type AssistantAction =
 export interface AIResponsePayload {
   message: string;
   actions?: AssistantAction[];
+  providerStatus?: ProviderStatusInfo;
+}
+
+/** Provider status information for debugging and monitoring */
+export interface ProviderStatusInfo {
+  provider: string;
+  model: string;
+  mode: string;
 }
 
 // ──────────────────────────────────────────────────────────────

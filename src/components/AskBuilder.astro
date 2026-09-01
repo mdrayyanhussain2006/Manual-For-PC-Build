@@ -619,6 +619,36 @@ function initAskBuilder() {
       if (path.includes(p) || path.includes(tr)) return; // click was inside
       closePanel();
     }, true /* capture — runs before element handlers */);
+
+    // ── focusFeature consumer ──────────────────────────────────────
+    // Listens for the event dispatched by executeAction('focusFeature').
+    // Finds the matching SoloComponentAdapter by slug and selects the part
+    // by its manifest id (e.g. "graphics_processor"), preserving 3D state.
+    window.addEventListener('ask-builder:focus-feature', (e: Event) => {
+      const { component, semanticId } = (e as CustomEvent<{ component: string; semanticId: string }>).detail;
+      if (!component || !semanticId) return;
+
+      // Find all solo viewer roots
+      const viewers = document.querySelectorAll<HTMLElement>('[data-solo-viewer]');
+      for (const root of Array.from(viewers)) {
+        const slug = root.dataset.slug;
+        if (slug !== component) continue;
+
+        const adapter = (root as any).__solo_adapter;
+        if (!adapter) continue;
+
+        // Find the part whose manifest id matches semanticId
+        const parts: Array<{ number: string; id: string }> = adapter.parts ?? [];
+        const match = parts.find((p: any) => p.id === semanticId);
+        if (match) {
+          adapter.selectPart(match.number, true);
+        } else {
+          // Fallback: try treating semanticId as part number directly
+          adapter.selectPart(semanticId, true);
+        }
+        break;
+      }
+    });
   }
 }
 
