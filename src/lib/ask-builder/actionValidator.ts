@@ -52,7 +52,6 @@ export const ALLOWED_TROUBLESHOOTING_TOPICS: ReadonlySet<string> = new Set([
   'gpu-not-detected',
   'storage-not-detected',
   'random-shutdowns',
-  'overheating',
 ]);
 
 /** All valid component slugs */

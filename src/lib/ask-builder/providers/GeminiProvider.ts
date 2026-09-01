@@ -9,7 +9,7 @@ import type { AIProvider, AIProviderSendOptions } from '../AIProvider.js';
 import type { AIResponsePayload, ConversationMessage } from '../types.js';
 
 const API_BASE = 'https://generativelanguage.googleapis.com';
-const API_MODEL = process.env.AI_MODEL || 'gemini-2.5-flash';
+const API_MODEL = process.env.AI_MODEL || 'gemini-3.7-flash';
 const REQUEST_TIMEOUT_MS = 30_000;
 const MAX_RETRIES = 2;
 

@@ -17,60 +17,6 @@ import { validateActions } from '../../lib/ask-builder/actionValidator.js';
 import type { AskBuilderRequest, AskBuilderResponse, AskBuilderErrorResponse } from '../../lib/ask-builder/types.js';
 
 // ──────────────────────────────────────────────────────────────
-// RATE LIMITING
-// ──────────────────────────────────────────────────────────────
-
-interface RateLimitEntry {
-  count: number;
-  resetTime: number;
-}
-
-const rateLimitMap = new Map<string, RateLimitEntry>();
-const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute window
-const RATE_LIMIT_MAX_REQUESTS = 20;  // 20 requests per minute per IP
-const RATE_LIMIT_CLEANUP_INTERVAL = 5 * 60 * 1000; // 5 minutes
-
-// Cleanup old entries periodically
-setInterval(() => {
-  const now = Date.now();
-  for (const [key, entry] of rateLimitMap.entries()) {
-    if (entry.resetTime < now) {
-      rateLimitMap.delete(key);
-    }
-  }
-}, RATE_LIMIT_CLEANUP_INTERVAL);
-
-function getClientIdentifier(request: Request): string {
-  // Try to get IP from various headers (for proxy environments)
-  const forwarded = request.headers.get('x-forwarded-for');
-  const realIp = request.headers.get('x-real-ip');
-  const ip = forwarded?.split(',')[0]?.trim() || realIp || 'unknown';
-  return ip;
-}
-
-function checkRateLimit(identifier: string): { allowed: boolean; remaining: number; resetTime: number } {
-  const now = Date.now();
-  const entry = rateLimitMap.get(identifier);
-
-  if (!entry || entry.resetTime < now) {
-    // New window
-    const newEntry: RateLimitEntry = {
-      count: 1,
-      resetTime: now + RATE_LIMIT_WINDOW_MS,
-    };
-    rateLimitMap.set(identifier, newEntry);
-    return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - 1, resetTime: newEntry.resetTime };
-  }
-
-  if (entry.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return { allowed: false, remaining: 0, resetTime: entry.resetTime };
-  }
-
-  entry.count++;
-  return { allowed: true, remaining: RATE_LIMIT_MAX_REQUESTS - entry.count, resetTime: entry.resetTime };
-}
-
-// ──────────────────────────────────────────────────────────────
 // LIMITS
 // ──────────────────────────────────────────────────────────────
 
@@ -130,10 +76,45 @@ function isLikelyGeminiKey(value: string): boolean {
   return /^(AIza[0-9A-Za-z\-_]{35,}|AQ\.[0-9A-Za-z\-_\.]{30,})$/.test(value.trim());
 }
 
-function resolveProviderMode(): 'gemini' | 'mock' {
+function getNvidiaApiKey(): string | undefined {
+  if (process.env.NVIDIA_API_KEY && process.env.NVIDIA_API_KEY.trim() !== '') {
+    return process.env.NVIDIA_API_KEY.trim();
+  }
+  const metaKey = (import.meta.env as Record<string, any>)?.NVIDIA_API_KEY;
+  if (metaKey && typeof metaKey === 'string' && metaKey.trim() !== '') {
+    return metaKey.trim();
+  }
+  try {
+    const envPaths = [path.resolve('.env'), path.resolve(process.cwd(), '.env')];
+    for (const p of envPaths) {
+      if (fs.existsSync(p)) {
+        const content = fs.readFileSync(p, 'utf-8');
+        for (const line of content.split('\n')) {
+          const trimmed = line.trim();
+          if (trimmed.startsWith('NVIDIA_API_KEY=')) {
+            const val = trimmed.slice('NVIDIA_API_KEY='.length).trim();
+            if (val) {
+              process.env.NVIDIA_API_KEY = val;
+              return val;
+            }
+          }
+        }
+      }
+    }
+  } catch {}
+  return undefined;
+}
+
+function resolveProviderMode(): 'gemini' | 'nvidia' | 'mock' {
+  const nvidiaKey = getNvidiaApiKey();
+  if (nvidiaKey && nvidiaKey.trim() !== '') {
+    console.info('[ask-builder] NVIDIA key detected — using NvidiaProvider');
+    return 'nvidia';
+  }
+
   const key = getApiKey();
   if (!key || key.trim() === '' || !isLikelyGeminiKey(key)) {
-    console.info('[ask-builder] No valid Gemini key — using MockAIProvider');
+    console.info('[ask-builder] No valid Gemini or Nvidia key — using MockAIProvider');
     return 'mock';
   }
   return 'gemini';
@@ -312,8 +293,13 @@ export const POST: APIRoute = async ({ request }) => {
     // ── Provider status reporting ──
     const currentModel = process.env.AI_MODEL || 'gemini-3.7-flash';
     providerStatus = {
-      provider: mode === 'gemini' ? 'GeminiProvider' : 'MockAIProvider',
-      model: mode === 'gemini' ? currentModel : 'mock',
+      provider:
+        mode === 'gemini'
+          ? 'GeminiProvider'
+          : mode === 'nvidia'
+            ? 'NvidiaProvider'
+            : 'MockAIProvider',
+      model: mode === 'gemini' ? currentModel : mode === 'nvidia' ? (process.env.NVIDIA_MODEL || 'meta/llama-3.2-11b-vision-instruct') : 'mock',
       mode: mode.toUpperCase(),
     };
 

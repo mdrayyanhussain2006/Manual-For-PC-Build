@@ -29,13 +29,19 @@ export interface AIProvider {
 // PROVIDER FACTORY — lazy imports to avoid loading both providers
 // ──────────────────────────────────────────────────────────────
 
-export type ProviderMode = 'gemini' | 'mock';
+export type ProviderMode = 'gemini' | 'nvidia' | 'mock';
 
 export async function createProvider(mode: ProviderMode): Promise<AIProvider> {
   if (mode === 'mock') {
     const { MockAIProvider } = await import('./providers/MockAIProvider.js');
     return new MockAIProvider();
   }
+
+  if (mode === 'nvidia') {
+    const { NvidiaProvider } = await import('./providers/NvidiaProvider.js');
+    return new NvidiaProvider();
+  }
+
   const { GeminiProvider } = await import('./providers/GeminiProvider.js');
   return new GeminiProvider();
 }
