@@ -46,26 +46,40 @@ const sections = [
 ---
 
 <BaseLayout title="BuildForge Lab — v1.0">
-  <!-- Hero: release-notes style -->
-  <section class="border-b border-primary/10">
-    <div class="mx-auto w-full max-w-content px-6 py-16 md:py-24">
-      <p class="inline-flex items-center gap-2 rounded-badge border border-primary/10 bg-surface-raised px-2 py-1 font-mono text-xs text-secondary">
-        <span class="size-1.5 rounded-full bg-success" aria-hidden="true"></span>
-        v1.0 · General availability
-      </p>
+  <section class="bf-hero border-b border-primary/10">
+    <div class="bf-hero-grid" aria-hidden="true"></div>
+    <div class="relative z-10 mx-auto w-full max-w-content px-6 py-16 md:py-24">
+      <div class="max-w-4xl">
+        <p class="bf-hero-kicker inline-flex items-center gap-2 rounded-badge border border-primary/10 bg-surface-raised px-2 py-1 font-mono text-xs text-secondary">
+          <span class="size-1.5 rounded-full bg-success" aria-hidden="true"></span>
+          v1.0 · General availability
+        </p>
 
-      <h1 class="mt-6 max-w-3xl text-2xl font-medium md:text-3xl">
-        Build Your Own PC — The Complete Wiring & Assembly Guide
-      </h1>
+        <h1 class="bf-hero-title mt-6 text-3xl font-medium md:text-5xl lg:text-6xl">
+          Build Your Own PC
+          <span>with confidence.</span>
+        </h1>
 
-      <p class="mt-4 max-w-2xl text-lg text-secondary">
-        Most component manuals stop at the part in your hand. This one covers
-        what they leave out — how every piece connects, in the order that
-        actually works, with a 3D model of each component so you know what
-        you're looking at before you install it.
-      </p>
+        <p class="mt-6 max-w-2xl text-lg text-secondary md:text-xl">
+          See how every component connects before you install it, with a guided
+          build path, interactive 3D hardware, and practical troubleshooting.
+        </p>
 
-      <div class="mt-8">
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href="/build/"
+            class="bf-hero-cta inline-flex items-center gap-2 rounded-card bg-accent px-5 py-3 font-medium text-white shadow-lg shadow-accent/20 transition-transform hover:-translate-y-0.5"
+          >
+            Start the build
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#pc-3d-scroll-section" class="font-mono text-sm font-medium text-accent underline-offset-4 hover:underline">
+            Explore the 3D system
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-12 max-w-4xl">
         <StatGroup stats={buildProfile} />
       </div>
     </div>
