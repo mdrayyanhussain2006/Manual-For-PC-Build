@@ -189,67 +189,6 @@ body.no-transition * {
   transition: none !important;
 }
 
-/* Landing hero atmosphere and display treatment */
-.bf-hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 86% 18%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 28rem),
-    var(--surface);
-}
-
-.bf-hero-grid {
-  position: absolute;
-  inset: 0;
-  opacity: 0.45;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--border-subtle) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to right, black, transparent 82%);
-}
-
-.bf-hero-title {
-  max-width: 11ch;
-  line-height: 1.05;
-  letter-spacing: 0;
-}
-
-.bf-hero-title span {
-  display: block;
-  color: transparent;
-  background: linear-gradient(100deg, var(--accent), #06b6d4 72%, var(--text-primary));
-  background-clip: text;
-  -webkit-background-clip: text;
-}
-
-.bf-hero-kicker {
-  animation: bf-rise 500ms ease both;
-}
-
-.bf-hero-title {
-  animation: bf-rise 650ms 80ms ease both;
-}
-
-.bf-hero-cta {
-  animation: bf-rise 650ms 160ms ease both;
-}
-
-@keyframes bf-rise {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bf-hero-kicker,
-  .bf-hero-title,
-  .bf-hero-cta {
-    animation: none;
-  }
-}
-
 /* ============================================================
    Accent Mode ONLY Scoped Enhancements (Hermes Agent Aesthetic)
    Leaves Light and Dark themes 100% untouched
