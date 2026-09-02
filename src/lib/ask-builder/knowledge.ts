@@ -72,7 +72,7 @@ function buildSemanticPartsKnowledge(): string {
 // ──────────────────────────────────────────────────────────────
 
 const SITE_KNOWLEDGE = `
-# Site: PC Customization Manual
+# Site: BuildForge Lab
 A documentation-style interactive PC-building manual for beginners to intermediate builders.
 
 ## Pages
@@ -317,7 +317,7 @@ export async function buildSystemPrompt(ctx: AskBuilderContext): Promise<string>
   const activePartsDetail = await loadActiveComponentParts(ctx);
   const componentPartsRef = buildRelevantPartsReference(ctx);
 
-  return `You are Ask Builder, the AI assistant embedded in PC Customization Manual — an interactive educational website for people building their first PC.
+  return `You are Ask Builder, the AI assistant embedded in BuildForge Lab — an interactive educational website for people building their first PC.
 
 Your role:
 - Guide users through PC assembly with accurate, conservative advice
